@@ -1,6 +1,9 @@
 import docplex.cp.model as cp
 import math
 import json
+import os 
+import validate as vlad
+import visualize as viz
 
 def main (fpath, opt):
 
@@ -51,10 +54,10 @@ def main (fpath, opt):
   traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
               for i in range(n+1) for j in range(1,n+2) if (i != j and j-i != n+1)}
 
-  enter = { i : mdl.interval_var(name='In:{}'.format(i))
+  enter = { i : mdl.interval_var(name='In:{}'.format(i), end = (0,upper_bound))
           for i in range(1,n+2)}
 
-  out = { i : mdl.interval_var(name='Out:{}'.format(i))
+  out = { i : mdl.interval_var(name='Out:{}'.format(i), end = (0,upper_bound))
           for i in range(n+1)}
   
   def sequence_all():
@@ -109,6 +112,9 @@ def main (fpath, opt):
     mdl.add(mdl.first(sequence_in, enter[1]))
     mdl.add(mdl.last(sequence_in, enter[n+1]))
 
+  elif opt == "none":
+    pass
+
   # Out interval starts when Enter interval ends
   mdl.add(mdl.start_at_end(out[i],enter[i]) for i in range(1,n+1))
 
@@ -124,18 +130,46 @@ def main (fpath, opt):
   # Minimize termination date
   mdl.add(cp.minimize(mdl.end_of(enter[n+1])))
 
-
-  #-----------------------------------------------------------------------------
-  # Solve the model 
-  #-----------------------------------------------------------------------------
-
   #mdl.export_model(r"C:\Users\pekar\OneDrive - University of Toronto\Masters\Masters\Code\TSP-ED\burma14-3.1.cpo")
 
   # Solve model
   print('Solving model...')
   res = mdl.solve()
-  print('Solution:')
-  res.print_solution()
+  #res.print_solution()
+
+  solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}}
+
+  for i in traverse:
+    if res.get_value(traverse[i]) != ():
+        solution_dict["sequence"][i[0]] = i[1]
+        solution_dict["traverse"][i[0]] = res.get_value(traverse[i])
+
+  for i in enter:
+    if res.get_value(enter[i]) != ():
+      solution_dict["in"][i] = res.get_value(enter[i])
+
+  for i in out:
+    if res.get_value(out[i]) != ():
+      solution_dict["out"][i] = res.get_value(out[i])
+
+  #checks sequence is valid (all locations visited)
+  print(vlad.checkSequence(solution_dict["sequence"]))
+
+  #check starting is at 0
+  print(vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
+
+  #check length makes sense
+  print(vlad.checkLength(solution_dict["traverse"],solution_dict["in"][n+1]))
+
+  #check don't go along removed edges
+  print(vlad.checkRemovedEdges(solution_dict["sequence"],Delete_Dict))
+
+  #visualize as job shop
+  viz.tsp_as_jobshop(res,traverse,14)
 
 
-main(r"C:\Users\pekar\OneDrive - University of Toronto\Masters\Masters\Code\TSP-ED\burma14-3.1.json", "all")
+folderpath = os.getcwd()
+instance = "burma14-3.1"
+fname = os.path.join(folderpath,"instances",instance+".json")
+
+main(fname, "none")
