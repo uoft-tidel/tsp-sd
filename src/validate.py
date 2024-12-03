@@ -6,6 +6,7 @@ def checkFirst(interval):
 def checkSequence(sequence_list):
   #Check each value is used (1 to n-1)
   #Check sequence makes sense
+  #Also checks last value is dummy node at end
 
   #sequence_list as dict: {i:j, j:k, k:l ... }
 
