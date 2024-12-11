@@ -38,22 +38,13 @@ def main (fpath, opt, export_results = False):
             dij = math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)
 
             return round(dij*1000)
+    
+    # Number of locations
+    n = len(instance["NODE_COORDS"].keys())+1 #+1 for dummy start
 
     del_node = instance["DELETE"]
 
-    # Number of locations
-    n = len(instance["NODE_COORDS"].keys())+1 #+1 for dummy start
-    # Travel time
-    # c = [[0, 0, 0, 0, 0],
-    #     [0, 0, 10, 4, 2],
-    #     [0, 2, 0, 11, 4],
-    #     [0, 4, 2, 0, 12],
-    #     [0, 13, 4, 8, 0]
-    # ]
-
-    #del_node = {1:[(1,3), (1,4)],2:[(1,2),(2,4)],3:[(1,3), (2,3)],4:[(2,4),(1,2),(2,3),(1,4)]}
     del_arc = [[set() for j in range(n)] for i in range(n)]
-
     for node in del_node:
         for [i, j] in del_node[node]:
             i = int(i)
@@ -63,9 +54,7 @@ def main (fpath, opt, export_results = False):
 
     del_arc = [[list(j) for j in i] for i in del_arc]
 
-
     # Travel time
-    #w_i,j
     c = [[getDistance(instance,str(i),str(j)) for j in range(n)] for i in range(n)]
 
     model = dp.Model(maximize=False, float_cost=False)
@@ -77,7 +66,7 @@ def main (fpath, opt, export_results = False):
     # i
     location = model.add_element_var(object_type=customer, target=0)
     # first visited location
-    # first = model.add_element_var(object_type=customer, target=0)
+    first = model.add_element_var(object_type=customer, target=2)
     # t (resource variable)
     time = model.add_int_resource_var(target=0, less_is_better=True)
     # del table
@@ -89,7 +78,7 @@ def main (fpath, opt, export_results = False):
         visit = dp.Transition(
             name="visit {}".format(j),
             cost=travel_time[location, j] + dp.IntExpr.state_cost(),
-            preconditions=[unvisited.contains(j), d[location,j].issubset(unvisited)], #first != 0, 
+            preconditions=[unvisited.contains(j), d[location,j].issubset(unvisited), first != 0],
             effects=[
                 (unvisited, unvisited.remove(j)),
                 (location, j),
@@ -98,19 +87,19 @@ def main (fpath, opt, export_results = False):
         )
         model.add_transition(visit)
 
-    # for j in range(1, n):
-    #     first_visit = dp.Transition(
-    #         name="first_visit {}".format(j),
-    #         cost=0, #travel_time[location, j] + dp.IntExpr.state_cost(),
-    #         #preconditions=[time == 0, set(range(1,n)) == unvisited],
-    #         effects=[
-    #             (unvisited, unvisited.remove(j)),
-    #             (location, j),
-    #             (first, j)
-    #             #(time, time + travel_time[location, j]),
-    #         ],
-    #     )
-    #     model.add_transition(first_visit)
+    for j in range(1, n):
+        first_visit = dp.Transition(
+            name="first_visit {}".format(j),
+            cost= travel_time[location, j] + dp.IntExpr.state_cost(),
+            preconditions=[time == 0], #, set(range(1,n)) == unvisited
+            effects=[
+                (unvisited, unvisited.remove(j)),
+                (location, j),
+                (first, j),
+                (time, time + travel_time[location, j])
+            ],
+        )
+        model.add_transition(first_visit)
 
     return_to_depot = dp.Transition(
         name="return",
@@ -118,7 +107,7 @@ def main (fpath, opt, export_results = False):
         effects=[
             (location, 0),
         ],
-        preconditions=[unvisited.is_empty(), location != 0], #d[location,first].issubset(unvisited)
+        preconditions=[unvisited.is_empty(), location != 0, d[location,first].issubset(unvisited)]
     )
     model.add_transition(return_to_depot)
 
