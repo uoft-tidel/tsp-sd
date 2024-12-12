@@ -28,6 +28,15 @@ def checkLength(traverse_list,last_in):
     l += traverse_list[i][2]
   return length == l
 
+def checkLengthDIDP(sequence, c):
+  sequence = [int(x) for x in sequence]
+  prev_node = sequence[0]
+  l = c[prev_node][sequence[-1]]
+  for cur_node in sequence[1:]:
+    l += c[prev_node][cur_node]
+    prev_node = cur_node
+  return l
+
 def checkRemovedEdgesDIDP(sequence_list, delete_dict):
   removed_edges = set()
   prev_node = sequence_list[0]
@@ -46,6 +55,7 @@ def checkRemovedEdgesDIDP(sequence_list, delete_dict):
       prev_node = cur_node
 
     else:
+      print("ENTERING NODE: ", cur_node)
       return False
     
   #completing the cycle

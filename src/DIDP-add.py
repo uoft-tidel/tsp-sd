@@ -161,7 +161,7 @@ def main (fpath, opt, export_results = False):
         min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
     )
 
-    solver = dp.DFBB(model, time_limit=1)
+    solver = dp.CABS(model, time_limit=10)
     solution = solver.search()
 
     print("Transitions to apply:")
@@ -174,10 +174,15 @@ def main (fpath, opt, export_results = False):
 
     sequence = list(reversed(sequence))
 
+    #sequence = ['40','41','4','39','67','25','55','54','29','20','66','63','64','49','11','48','7','52','31','70','30','1','26','28','27','89','6','61','85','93','18','83','5','99','87','98','92','91','42','2','80','76','12','68','78','35','65','71','34','33','77','81','62','36','8','59','37','95','13','21','74','72','73','58','53','57','43','14','38','84','17','45','60','16','96','47','15','23','22','97','100','24','69','79','10','88','9','32','82','75','94','56','46','44','51','50','19','86','3','90','101']
+    
     print(sequence)
 
     #check don't go along removed edges
     print("DELETION CHECK: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
+    print(vlad.checkLengthDIDP(sequence,c))
+
+    viz.tsp_plot(sequence, instance["NODE_COORDS"], solution.cost)
 
     print("Cost: {}".format(solution.cost))
 
