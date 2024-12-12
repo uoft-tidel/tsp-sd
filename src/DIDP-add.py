@@ -94,7 +94,10 @@ def main (fpath, opt, export_results = False):
             #del: d[location,j].issubset(unvisited)
             #del ? : d[location,j].difference(unvisited).len() > 0
             #add: d[location,j].intersection(unvisited).len() == 0
-            preconditions=[unvisited.contains(j), unvisited.len()>1, d[location,j].intersection(unvisited).len() == 0, first != 0],
+
+            #use is_empty instead of len
+
+            preconditions=[unvisited.contains(j), unvisited.len()>1, d[location,j].intersection(unvisited).is_empty(), first != 0],
             effects=[
                 (unvisited, unvisited.remove(j)),
                 (location, j)
@@ -122,8 +125,8 @@ def main (fpath, opt, export_results = False):
             effects=[
                 (unvisited, unvisited.remove(j)),
             ],
-            preconditions=[d[first,j].issubset(unvisited), 
-                           d[location,j].intersection(unvisited).len() == 0, unvisited.contains(j), 
+            preconditions=[d[first,j].is_empty(), 
+                           d[location,j].intersection(unvisited).is_empty(), unvisited.contains(j), 
                            unvisited.len()==1, location != 0]
         )
         model.add_transition(last_visit)
@@ -168,28 +171,35 @@ def main (fpath, opt, export_results = False):
 
     sequence = []
 
+
+
     for t in solution.transitions:
+        #print(t.name)
         if t.name != "return":
             sequence.append(t.name.split(" ")[-1])
 
     sequence = list(reversed(sequence))
-
-    #sequence = ['40','41','4','39','67','25','55','54','29','20','66','63','64','49','11','48','7','52','31','70','30','1','26','28','27','89','6','61','85','93','18','83','5','99','87','98','92','91','42','2','80','76','12','68','78','35','65','71','34','33','77','81','62','36','8','59','37','95','13','21','74','72','73','58','53','57','43','14','38','84','17','45','60','16','96','47','15','23','22','97','100','24','69','79','10','88','9','32','82','75','94','56','46','44','51','50','19','86','3','90','101']
+    
+    #PAPER SOLUTION FOR BERLIN52-10.4:
+    #sequence = ['21', '30', '29', '44', '37', '35', '24', '5', '4', '12', '51', '52', '14', '27', '11', '13', '25', '1', '8', '39', '9', '32', '23', '48', '38', '22', '45', '34', '7', '46', '20', '36', '28', '43', '41', '50', '2', '26', '6', '42', '47', '49', '3', '19', '18', '15', '17', '40', '33', '31', '10', '16']
     
     print(sequence)
 
     #check don't go along removed edges
     print("DELETION CHECK: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
     print(vlad.checkLengthDIDP(sequence,c))
+    print(not(solution.is_infeasible))
 
-    viz.tsp_plot(sequence, instance["NODE_COORDS"], solution.cost)
+    viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 
     print("Cost: {}".format(solution.cost))
 
 folderpath = os.getcwd()
-instance = "berlin52-13.2"
+instance = "lin318-99.3"
 fname = os.path.join(folderpath,"instances",instance+".json")
 
 opts = []
+
+print(fname)
 
 main(fname, "none", export_results = True)

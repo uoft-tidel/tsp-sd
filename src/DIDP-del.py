@@ -106,7 +106,7 @@ def main (fpath, opt, export_results = False):
             effects=[
                 (unvisited, unvisited.remove(j)),
             ],
-            preconditions=[d[first,j].issubset(unvisited), 
+            preconditions=[d[first,j].is_empty(), 
                            d[location,j].issubset(unvisited), unvisited.contains(j), 
                            unvisited.len()==1, location != 0]
         )

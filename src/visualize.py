@@ -25,12 +25,13 @@ def tsp_as_jobshop(res,traverse,n):
                   visu.interval(itv, a[0], '{}=>{}'.format(start,end))
   visu.show()
 
-def tsp_plot(sequence, locations, c):
+def tsp_plot(instance_name, sequence, locations, c):
 
   x = [i[0] for i in locations.values()]
   y = [i[1] for i in locations.values()]
 
-  fig, ax = plt.subplots()      # Prepare 2 plots
+  fig, ax = plt.subplots()   
+  plt.style.use('bmh')
   ax.set_title('Optimized tour')
   ax.scatter(x, y)             # plot B
   prev_node = sequence[-1]
@@ -41,13 +42,13 @@ def tsp_plot(sequence, locations, c):
       ax.annotate("",
               xy=start_pos, xycoords='data',
               xytext=end_pos, textcoords='data',
-              arrowprops=dict(arrowstyle="->",
-                              connectionstyle="arc3", color='red'))
+              arrowprops=dict(arrowstyle="-|>", color="slategray",
+                              connectionstyle="arc3"))
       #distance += np.linalg.norm(end_pos - start_pos)
       prev_node = i
 
-  textstr = "N nodes: %d\nTotal length: %.0f" % (len(sequence), c)
-  props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+  textstr = "Instance: %s N nodes: %d\nTotal length: %.0f" % (instance_name.split(".json")[0], len(sequence), c)
+  props = dict(boxstyle='round', alpha=0.5)
   ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=8, # Textbox
           verticalalignment='top', bbox=props)
 

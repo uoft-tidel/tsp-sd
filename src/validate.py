@@ -55,7 +55,7 @@ def checkRemovedEdgesDIDP(sequence_list, delete_dict):
       prev_node = cur_node
 
     else:
-      print("ENTERING NODE: ", cur_node)
+      print("ARC: ", prev_node," -> ",cur_node)
       return False
     
   #completing the cycle
