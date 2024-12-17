@@ -32,19 +32,31 @@ def main (fpath, opt, export_results = False, trace_log = False):
       p1 = instance["NODE_COORDS"][p1]
       p2 = instance["NODE_COORDS"][p2]
 
-      RRR = 6378.388
+      # RRR = 6378.388
 
-      q1 = math.cos(convertToLatLong(p1[1]) - convertToLatLong(p2[1]))
-      q2 = math.cos(convertToLatLong(p1[0]) - convertToLatLong(p2[0]))
-      q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
-      dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
+      # q1 = math.cos(convertToLatLong(p1[1]) - convertToLatLong(p2[1]))
+      # q2 = math.cos(convertToLatLong(p1[0]) - convertToLatLong(p2[0]))
+      # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
+      # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
+
+      dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*100)
+
       return dij
 
   Delete_Dict = instance["DELETE"]
 
   # Number of locations
   n = len(instance["NODE_COORDS"].keys())
+
+  deleted_edges = set((int(i),int(j)) for k in Delete_Dict.values() for [i,j] in k)
   
+  never_deleted_edges = [(i,j) for i in range(1,n+1) for j in range(1,n+1) if i != j and (i,j) not in deleted_edges and (j,i) not in deleted_edges]
+  never_deleted_set = set([i for (i,j) in never_deleted_edges])
+
+  never_deleted_dict = {i: set() for (i,j) in never_deleted_edges}
+  for (i,j) in never_deleted_edges:
+    never_deleted_dict[i].add(j)			
+
   # Travel time
   #w_i,j
   w = [[getDistance(instance,str(i),str(j), str(n+1)) for j in range(n+2)] for i in range(n+2)]
@@ -61,7 +73,15 @@ def main (fpath, opt, export_results = False, trace_log = False):
   # Node n+1 = dummy end
 
   traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-              for i in range(n+1) for j in range(1,n+2) if (i != j and j-i != n+1)}
+              for i in range(1,n+1) for j in range(1,n+2) if (i != j and j-i != n+1)}
+  
+  traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
+              for i in never_deleted_set for j in never_deleted_dict[i]}
+  
+  for i in   
+
+  for i in never_deleted_set:
+    traverse[0,i] = mdl.interval_var(name='From:{}_To:{}'.format(0,i), optional=True, size=0, end = (0,upper_bound))
 
   enter = { i : mdl.interval_var(name='In:{}'.format(i), end = (0,upper_bound))
           for i in range(1,n+2)}
@@ -93,9 +113,6 @@ def main (fpath, opt, export_results = False, trace_log = False):
     sequence_in = sequence_ins()
     sequence_out = sequence_outs()
     sequence_traverse = sequence_traverses()
-    mdl.add(mdl.no_overlap(sequence_in))
-    mdl.add(mdl.no_overlap(sequence_out))
-    mdl.add(mdl.no_overlap(sequence_traverse))
     return sequence_in, sequence_out, sequence_traverse
 
   if opt == "all":
@@ -105,8 +122,8 @@ def main (fpath, opt, export_results = False, trace_log = False):
 
   elif opt == "ins":
     sequence_in = sequence_ins()
-    for i in range(1,n+2):
-     mdl.add(mdl.start_before_start(out[0],enter[i]))
+    # for i in range(1,n+2):
+    #  mdl.add(mdl.start_before_start(out[0],enter[i]))
     mdl.add(mdl.last(sequence_in, enter[n+1]))
 
   elif opt == "outs":
@@ -135,9 +152,10 @@ def main (fpath, opt, export_results = False, trace_log = False):
   # Out interval starts when Enter interval ends
   mdl.add(mdl.start_at_end(out[i],enter[i]) for i in range(1,n+1))
 
-  # Must use edges j,k before they are deleted by going to node i
-  for i in Delete_Dict.keys():
-    mdl.add(mdl.end_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+  # # Must use edges j,k before they are deleted by going to node i
+  # for i in Delete_Dict.keys():
+  #   mdl.add(mdl.end_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+  #   mdl.add(mdl.end_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
 
   # Alternatives for enter and out intervals
   mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+2))
@@ -180,7 +198,7 @@ def main (fpath, opt, export_results = False, trace_log = False):
       for row in range(len(results_over_time["TIME"])):
         spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
 
-  solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}}
+  solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
 
   for i in traverse:
     if sol.get_value(traverse[i]) != ():
@@ -195,6 +213,13 @@ def main (fpath, opt, export_results = False, trace_log = False):
     if sol.get_value(out[i]) != ():
       solution_dict["out"][i] = sol.get_value(out[i])
 
+  j = 0
+  for i in range(n):
+    j = solution_dict["sequence"][j]
+    solution_dict["seq_list"].append(j)
+
+  print(solution_dict["seq_list"])
+
   #checks sequence is valid (all locations visited)
   print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
@@ -202,10 +227,10 @@ def main (fpath, opt, export_results = False, trace_log = False):
   print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
   #check length makes sense
-  print("LENGTH CHECK: ", vlad.checkLength(solution_dict["traverse"],solution_dict["in"][n+1]))
+  print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
 
   #check don't go along removed edges
-  print("DELETION CHECK: ", vlad.checkRemovedEdges(solution_dict["sequence"],Delete_Dict))
+  print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
 
   #visualize as job shop
   #viz.tsp_as_jobshop(solver,traverse,14)
@@ -227,8 +252,8 @@ fname = os.path.join(folderpath,"instances",instance+".json")
 
 opts = ["all","ins","outs","traverses","three","none"]
 
-main(fname, "none", export_results = True, trace_log=True)
+main(fname, "ins", export_results = False, trace_log=False)
 
-for opt in opts:
-  print("OPTION: ",opt)
+# for opt in opts:
+#   print("OPTION: ",opt)
   #main(fname, opt, export_results = True, trace_log=True)

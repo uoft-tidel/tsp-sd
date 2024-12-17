@@ -10,11 +10,14 @@ def convertToLatLong(x):
   return lat
 
 def getDistance(p1,p2):
-  RRR = 6378.388
-  q1 = math.cos(convertToLatLong(p1[1]) - convertToLatLong(p2[1]))
-  q2 = math.cos(convertToLatLong(p1[0]) - convertToLatLong(p2[0]))
-  q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
-  dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
+  # RRR = 6378.388
+  # q1 = math.cos(convertToLatLong(p1[1]) - convertToLatLong(p2[1]))
+  # q2 = math.cos(convertToLatLong(p1[0]) - convertToLatLong(p2[0]))
+  # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
+  # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
+
+  dij = math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
+
   return dij
 
 def read_file(fpath):
@@ -46,13 +49,13 @@ def main(fpath):
     #try:
     # Create a new model
     m = gp.Model("TSP-SD")
-    #n = times[-1]
+    n = 14
 
     # Create variables
     x = m.addVars(distances.keys(), obj = distances, vtype = GRB.BINARY, name="x")
 
-    #m.addConstr(gp.quicksum(x[0, j,0] for j in nodes) == 1)
-    #m.addConstr(gp.quicksum(x[j, n+1,n+1] for j in nodes) == 1)
+    # m.addConstr(gp.quicksum(x[0, int(j),0] for j in nodes) == 1)
+    # m.addConstr(gp.quicksum(x[int(j), n+1,n+1] for j in nodes) == 1)
 
     for t in times:
         for i in nodes:
@@ -63,11 +66,11 @@ def main(fpath):
     #m.write(r"C:\Users\pekar\OneDrive - University of Toronto\Masters\Masters\Code\TSP-ED\test3_2.lp")
 
     #delete edges (edges can only be visited before they're deleted)
-    # for (i, dels) in deletes.items():
-    #     #if int(i) <= 12:
-    #     for [n1, n2] in dels:
-    #         m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j))
-    #         m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j))
+    for (i, dels) in deletes.items():
+        #if int(i) <= 12:
+        for [n1, n2] in dels:
+            m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j))
+            m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j))
 
     # Optimize model
     m.optimize()

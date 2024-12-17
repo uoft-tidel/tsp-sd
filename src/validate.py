@@ -21,14 +21,7 @@ def checkSequence(sequence_list):
   #checks n+1 is last number and each number used once
   return j == len(sequence_list) and len(used_numbers) == len(sequence_list)
 
-def checkLength(traverse_list,last_in):
-  length = last_in[1]
-  l = 0
-  for i in traverse_list:
-    l += traverse_list[i][2]
-  return length == l
-
-def checkLengthDIDP(sequence, c):
+def checkLength(sequence, c):
   sequence = [int(x) for x in sequence]
   prev_node = sequence[0]
   l = c[prev_node][sequence[-1]]
@@ -78,7 +71,7 @@ def checkRemovedEdgesCP(sequence_list, delete_dict):
   removed_edges = set()
   i = 0
   #go until next value is dummy end node (never deleted)
-  while sequence_list[i] < len(sequence_list):
+  while sequence_list[i] < len(sequence_list) - 1:
     #check if current->next isn't deleted
     if (i, sequence_list[i]) not in removed_edges:
       #go to next
@@ -87,6 +80,9 @@ def checkRemovedEdgesCP(sequence_list, delete_dict):
       for j in delete_dict[str(i)]:
         removed_edges.add((int(j[0]),int(j[1])))
     else:
+
+      print("VIOLATED EDGE: ", i, sequence_list[i])
+
       return False
   
   return True

@@ -37,7 +37,7 @@ def main (fpath, opt, export_results = False):
 
             dij = math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)
 
-            return round(dij*1000)
+            return dij
     
     # Number of locations
     n = len(instance["NODE_COORDS"].keys())+1 #+1 for dummy start
@@ -57,7 +57,7 @@ def main (fpath, opt, export_results = False):
     # Travel time
     c = [[getDistance(instance,str(i),str(j)) for j in range(n)] for i in range(n)]
 
-    model = dp.Model(maximize=False, float_cost=False)
+    model = dp.Model(maximize=False, float_cost=True)
 
     customer = model.add_object_type(number=n)
 
@@ -72,12 +72,12 @@ def main (fpath, opt, export_results = False):
     # del table
     d = model.add_set_table(del_arc, object_type=customer)
 
-    travel_time = model.add_int_table(c)
+    travel_time = model.add_float_table(c)
 
     for j in range(1, n):
         visit = dp.Transition(
             name="visit {}".format(j),
-            cost=travel_time[location, j] + dp.IntExpr.state_cost(),
+            cost=travel_time[location, j] + dp.FloatExpr.state_cost(),
             preconditions=[unvisited.contains(j), unvisited.len()>1, d[location,j].issubset(unvisited), first != 0],
             effects=[
                 (unvisited, unvisited.remove(j)),
@@ -89,7 +89,7 @@ def main (fpath, opt, export_results = False):
     for j in range(1, n):
         first_visit = dp.Transition(
             name="first visit {}".format(j),
-            cost= travel_time[location, j] + dp.IntExpr.state_cost(),
+            cost= travel_time[location, j] + dp.FloatExpr.state_cost(),
             preconditions=[location == 0, first == 0], #, set(range(1,n)) == unvisited
             effects=[
                 (unvisited, unvisited.remove(j)),
@@ -102,7 +102,7 @@ def main (fpath, opt, export_results = False):
     for j in range(1,n):
         last_visit = dp.Transition(
             name="last visit {}".format(j),
-            cost=travel_time[location, j] + travel_time[j, first] + dp.IntExpr.state_cost(),
+            cost=travel_time[location, j] + travel_time[j, first] + dp.FloatExpr.state_cost(),
             effects=[
                 (unvisited, unvisited.remove(j)),
             ],
@@ -114,7 +114,7 @@ def main (fpath, opt, export_results = False):
 
     return_to_depot = dp.Transition(
         name="return",
-        cost=dp.IntExpr.state_cost(),
+        cost=dp.FloatExpr.state_cost(),
         effects=[
             (location, 0),
             (first, 0)
@@ -131,13 +131,13 @@ def main (fpath, opt, export_results = False):
     #         ~unvisited.contains(j) | (time + travel_time[location, j] <= due_time[j])
     #     )
 
-    min_to = model.add_int_table(
+    min_to = model.add_float_table(
         [min(c[k][j] for k in range(n) if k != j) for j in range(n)]
     )
 
     model.add_dual_bound(min_to[unvisited] + (location != 0).if_then_else(min_to[0], 0))
 
-    min_from = model.add_int_table(
+    min_from = model.add_float_table(
         [min(c[j][k] for k in range(n) if k != j) for j in range(n)]
     )
 
@@ -145,20 +145,46 @@ def main (fpath, opt, export_results = False):
         min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
     )
 
-    solver = dp.DFBB(model)
+    solver = dp.CABS(model, time_limit=60)
     solution = solver.search()
 
     print("Transitions to apply:")
 
-    for t in solution.transitions:
-        print(t.name)
+    sequence = []
 
-    print("Cost: {}".format(solution.cost))
+    for t in solution.transitions:
+        #print(t.name)
+        if t.name != "return":
+            sequence.append(t.name.split(" ")[-1])
+
+    sequence = list(reversed(sequence))
+    
+    #PAPER SOLUTION FOR BERLIN52-10.4:
+    #sequence = ['21', '30', '29', '44', '37', '35', '24', '5', '4', '12', '51', '52', '14', '27', '11', '13', '25', '1', '8', '39', '9', '32', '23', '48', '38', '22', '45', '34', '7', '46', '20', '36', '28', '43', '41', '50', '2', '26', '6', '42', '47', '49', '3', '19', '18', '15', '17', '40', '33', '31', '10', '16']
+    
+    print(sequence)
+
+    #check don't go along removed edges
+    try:
+        print("DELETION CHECK: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
+        print(vlad.checkLength(sequence,c))
+        print(not(solution.is_infeasible))
+
+        #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
+
+        print("Cost: {}".format(solution.cost))
+    except:
+        print("NO SOLUTION FOUND")
 
 folderpath = os.getcwd()
-instance = "ulysses22-5.5"
-fname = os.path.join(folderpath,"instances",instance+".json")
+#instance = "ulysses22-5.5"
+#fname = os.path.join(folderpath,"instances",instance+".json")
+
+instances = ["berlin52-13.2", "burma14-3.1", "d657-322.7", "eil101-27.5", "fl417-160.6", "gr202-67.3", "lin318-99.3", "rat783-481.4", "ulysses22-5.5", "vm1084-848.9"]
 
 opts = []
 
-main(fname, "none", export_results = True)
+for instance in instances:
+    fname = os.path.join(folderpath,"instances",instance+".json")
+    print(fname)
+    main(fname, "none", export_results = True)

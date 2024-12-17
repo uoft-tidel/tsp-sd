@@ -164,14 +164,12 @@ def main (fpath, opt, export_results = False):
         min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
     )
 
-    solver = dp.CABS(model, time_limit=10)
+    solver = dp.CABS(model, time_limit=60)
     solution = solver.search()
 
     print("Transitions to apply:")
 
     sequence = []
-
-
 
     for t in solution.transitions:
         #print(t.name)
@@ -187,19 +185,20 @@ def main (fpath, opt, export_results = False):
 
     #check don't go along removed edges
     print("DELETION CHECK: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
-    print(vlad.checkLengthDIDP(sequence,c))
+    print(vlad.checkLength(sequence,c))
     print(not(solution.is_infeasible))
 
-    viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
+    #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 
     print("Cost: {}".format(solution.cost))
 
 folderpath = os.getcwd()
-instance = "lin318-99.3"
-fname = os.path.join(folderpath,"instances",instance+".json")
+#"berlin52-13.2", 
+instances = ["burma14-3.1", "d657-322.7", "eil101-27.5", "fl417-160.6", "gr202-67.3", "lin318-99.3", "rat783-481.4", "ulysses22-5.5", "vm1084-848.9"]
 
 opts = []
 
-print(fname)
-
-main(fname, "none", export_results = True)
+for instance in instances:
+    fname = os.path.join(folderpath,"instances",instance+".json")
+    print(fname)
+    main(fname, "none", export_results = True)
