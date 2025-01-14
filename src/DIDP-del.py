@@ -6,7 +6,10 @@ import csv
 import validate as vlad
 import visualize as viz
 
-def main (fpath, opt, export_results = False):
+def main (fpath, output_path, timelimit, export_results = True):
+
+    if export_results:
+        stdoutf = open(output_path, 'w')
 
     with open(fpath, 'r') as file:
       instance = json.load(file)
@@ -145,7 +148,7 @@ def main (fpath, opt, export_results = False):
         min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
     )
 
-    solver = dp.CABS(model, time_limit=60)
+    solver = dp.CABS(model, time_limit=timelimit)
     solution = solver.search()
 
     print("Transitions to apply:")
@@ -162,8 +165,6 @@ def main (fpath, opt, export_results = False):
     #PAPER SOLUTION FOR BERLIN52-10.4:
     #sequence = ['21', '30', '29', '44', '37', '35', '24', '5', '4', '12', '51', '52', '14', '27', '11', '13', '25', '1', '8', '39', '9', '32', '23', '48', '38', '22', '45', '34', '7', '46', '20', '36', '28', '43', '41', '50', '2', '26', '6', '42', '47', '49', '3', '19', '18', '15', '17', '40', '33', '31', '10', '16']
     
-    print(sequence)
-
     #check don't go along removed edges
     try:
         print("DELETION CHECK: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
@@ -176,15 +177,20 @@ def main (fpath, opt, export_results = False):
     except:
         print("NO SOLUTION FOUND")
 
+    if export_results:
+        stdoutf.close()
+
 folderpath = os.getcwd()
 #instance = "ulysses22-5.5"
-#fname = os.path.join(folderpath,"instances",instance+".json")
+instance_folder = os.path.join(folderpath,"instances")
 
-instances = ["berlin52-13.2", "burma14-3.1", "d657-322.7", "eil101-27.5", "fl417-160.6", "gr202-67.3", "lin318-99.3", "rat783-481.4", "ulysses22-5.5", "vm1084-848.9"]
+sys.stdout = open(os.path.join(folderpath,"output", instance[:-5]+"_log.out"),'wt')
 
-opts = []
+for instance in os.listdir(instance_folder):
+    if "berlin52-10" not in instance:
+        fname = os.path.join(folderpath,"instances",instance)
 
-for instance in instances:
-    fname = os.path.join(folderpath,"instances",instance+".json")
-    print(fname)
-    main(fname, "none", export_results = True)
+        print(fname)
+        output_path = os.path.join(folderpath,"output", instance[:-5]+"_log.out")
+
+        main(fname, output_path, timelimit = 20, export_results = True)
