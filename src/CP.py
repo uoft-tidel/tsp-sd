@@ -72,16 +72,26 @@ def main (fpath, opt, export_results = False, trace_log = False):
   # Nodes 1 to n= real nodes
   # Node n+1 = dummy end
 
+  #valid traverses
+  # valid_traverses = [[2,8],[8,11],[11,3],[3,14],[14,7],[7,6],[6,4],[4,12],[12,13],[13,1],[1,10],[10,5],[5,9]]
+
   traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-              for i in range(1,n+1) for j in range(1,n+2) if (i != j and j-i != n+1)}
+              for i in range(1,n+1) for j in range(1,n+1) if (i != j)} #and j-i != n+1 and (i,j) not in never_deleted_edges
+  
+  # traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
+  #              for [i,j] in valid_traverses}
   
   traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
               for i in never_deleted_set for j in never_deleted_dict[i]}
   
-  for i in   
+  #for i in   
 
   for i in never_deleted_set:
     traverse[0,i] = mdl.interval_var(name='From:{}_To:{}'.format(0,i), optional=True, size=0, end = (0,upper_bound))
+
+  for i in never_deleted_dict:
+    mdl.add(mdl.if_then(mdl.presence_of(traverse[0,i]),mdl.sum(mdl.presence_of(traverse_last[j,k]) for [j,k] in traverse_last if k == i) == 1))
+    mdl.add(mdl.if_then(mdl.logical_not(mdl.presence_of(traverse[0,i])),mdl.sum(mdl.presence_of(traverse_last[j,k]) for [j,k] in traverse_last if k == i) == 0))
 
   enter = { i : mdl.interval_var(name='In:{}'.format(i), end = (0,upper_bound))
           for i in range(1,n+2)}
@@ -153,19 +163,28 @@ def main (fpath, opt, export_results = False, trace_log = False):
   mdl.add(mdl.start_at_end(out[i],enter[i]) for i in range(1,n+1))
 
   # # Must use edges j,k before they are deleted by going to node i
-  # for i in Delete_Dict.keys():
-  #   mdl.add(mdl.end_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
-  #   mdl.add(mdl.end_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+  for i in Delete_Dict.keys():
+    #  for [j,k] in Delete_Dict[i]:
+    #     if (int(j),int(k)) in traverse:
+    #       mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]))
+    #     if (int(k),int(j)) in traverse:
+          #mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]))
+    # mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+    # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+
+    mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
+    mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
 
   # Alternatives for enter and out intervals
-  mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+2))
-  mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i]) for i in range(n+1))
-
+  mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+1)) 
+  mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i] + [traverse_last[i,j] for [k,j] in traverse_last if k == i]) for i in range(1,n+1))
+  mdl.add(mdl.alternative(enter[n+1], [traverse_last[a] for a in traverse_last]))
+  mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
 
   # Minimize termination date
   mdl.add(cp.minimize(mdl.end_of(enter[n+1])))
 
-  #mdl.export_model(r"C:\Users\pekar\OneDrive - University of Toronto\Masters\Masters\Code\TSP-ED\burma14-3.1.cpo")
+  mdl.export_model(r"cp_1.cpo")
 
   # Solve model
   print('Solving model...')
@@ -205,6 +224,12 @@ def main (fpath, opt, export_results = False, trace_log = False):
         solution_dict["sequence"][i[0]] = i[1]
         solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
 
+  for i in traverse_last:
+    if sol.get_value(traverse_last[i]) != ():
+        solution_dict["sequence"][i[0]] = n+1
+        solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
+
+
   for i in enter:
     if sol.get_value(enter[i]) != ():
       solution_dict["in"][i] = sol.get_value(enter[i])
@@ -221,7 +246,8 @@ def main (fpath, opt, export_results = False, trace_log = False):
   print(solution_dict["seq_list"])
 
   #checks sequence is valid (all locations visited)
-  print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+  print(solution_dict["sequence"])
+  #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
   #check starting is at 0
   print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
@@ -239,7 +265,7 @@ def main (fpath, opt, export_results = False, trace_log = False):
     stdoutf.close()
 
 folderpath = os.getcwd()
-instance = "burma14-3.1"
+instance = "ulysses22-5.5"
 fname = os.path.join(folderpath,"instances",instance+".json")
 
 #options:
