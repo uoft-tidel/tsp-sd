@@ -39,7 +39,7 @@ def main (fpath, opt, export_results = False, trace_log = False):
       # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
       # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
 
-      dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*100)
+      dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*10)
 
       return dij
 
@@ -168,12 +168,12 @@ def main (fpath, opt, export_results = False, trace_log = False):
     #     if (int(j),int(k)) in traverse:
     #       mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]))
     #     if (int(k),int(j)) in traverse:
-          #mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]))
-    # mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
-    # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+          # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]))
+    mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+    mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
 
-    mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
-    mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
+    # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
+    # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
 
   # Alternatives for enter and out intervals
   mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+1)) 
