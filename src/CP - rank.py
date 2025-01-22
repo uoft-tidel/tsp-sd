@@ -89,11 +89,11 @@ def main (fpath, opt, export_results = False, trace_log = False):
   for i in Delete_Dict.keys():
     for [j,k] in Delete_Dict[i]:
 
-      #BACKWARD
-      # mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]<=rank[int(i)-1],rank[int(k)-1]<=rank[int(i)-1])))
+      #DELETION
+      mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]<=rank[int(i)-1],rank[int(k)-1]<=rank[int(i)-1])))
       
-      #FORWARD
-      mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
+      #ADDITION
+      # mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
 
 
   for i in never_deleted_dict:
@@ -102,7 +102,10 @@ def main (fpath, opt, export_results = False, trace_log = False):
     mdl.add(mdl.if_then(rank[i-1] == n-1, mdl.allowed_assignments(node[0],[j-1 for j in never_deleted_dict[i]])))
 
   #TODO: WRONG
-  mdl.add(cp.minimize(mdl.sum(mdl.element(w[i], mdl.element(node,mdl.mod(mdl.element(rank,i)+1,n-1))) for i in range(n))))
+  #w[i][j] = distance from i to j
+  #0-indexed
+
+  mdl.add(cp.minimize(mdl.sum(mdl.element(w[i], mdl.element(node,mdl.mod(mdl.element(rank,i)+1,n))) for i in range(n))))
 
   os.remove("cp_r.cpo")
   mdl.export_model(r"cp_r.cpo")
@@ -194,7 +197,7 @@ folderpath = os.getcwd()
 ulysses = "ulysses22-5.5"
 burma = "burma14-3.1"
 toy = "toy"
-instance = burma
+instance = ulysses
 fname = os.path.join(folderpath,"instances",instance+".json")
 
 #options:
