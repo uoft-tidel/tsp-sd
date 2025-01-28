@@ -106,13 +106,24 @@ def main(fpath):
     #m.write(r"C:\Users\pekar\OneDrive - University of Toronto\Masters\Masters\Code\TSP-ED\test3_2.lp")
 
     #delete edges (edges can only be visited before they're deleted)
+    M = n+1
     for (i, dels) in deletes.items():
         #if int(i) <= 12:
+        # for [n1, n2] in dels:
+        #     m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j), name="del_1")
+        #     m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j), name="del_2")
+
+        #DEL
         for [n1, n2] in dels:
             m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j), name="del_1")
             m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j), name="del_2")
 
-    
+        #ADD
+        # for [n1, n2] in dels:
+        #     m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) + M*(1-gp.quicksum(x[n1, n2,t] for t in times)) >= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j)+1, name="add_1")
+        #     m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) + M*(1-gp.quicksum(x[n2, n1,t] for t in times)) >= gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j)+1, name="add_2")
+
+
     #last edge
     for (i,j) in never_deleted_edges:
         m.addConstr(x['0',i,0] + gp.quicksum(x[k,j,n-2] for k in nodes[1:] if k != j) <= last_edge[i,j] + 1)
@@ -134,9 +145,10 @@ def main(fpath):
     # except gp.GurobiError as e:
     #     print(f"Error code {e.errno}: {e}")
 
-    # except AttributeError:
+    # except AttributeError:k.jk.j
     #     print("Encountered an attribute error")
 
 toy = r"C:\Users\pekar\Documents\GitHub\tsp-sd\instances\toy.json"
 burma = r"C:\Users\pekar\Documents\GitHub\tsp-sd\instances\burma14-3.1.json"
+ulysses = r"C:\Users\pekar\Documents\GitHub\tsp-sd\instances\ulysses22-5.5.json"
 main(burma)
