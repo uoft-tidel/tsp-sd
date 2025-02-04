@@ -185,9 +185,7 @@ def main (fpath, outputpath, timelimit):
             effects=[
                 (unvisited, unvisited.remove(j)),
             ],
-            preconditions=[d[first,j].is_empty(), 
-                           d[location,j].intersection(unvisited).is_empty(), unvisited.contains(j), 
-                           unvisited.len()==1, location != 0]
+            preconditions=[d[location,j].intersection(unvisited).is_empty(), unvisited.contains(j), unvisited.len()==1, location != 0] #d[first,j].is_empty(), 
         )
         model.add_transition(last_visit)
 
@@ -240,13 +238,15 @@ def main (fpath, outputpath, timelimit):
         if t.name != "return":
             sequence.append(t.name.split(" ")[-1])
 
+    print(sequence)
     sequence = list(reversed(sequence))
+    # print(sequence)
     
     #PAPER SOLUTION FOR BERLIN52-10.4:
     #sequence = ['21', '30', '29', '44', '37', '35', '24', '5', '4', '12', '51', '52', '14', '27', '11', '13', '25', '1', '8', '39', '9', '32', '23', '48', '38', '22', '45', '34', '7', '46', '20', '36', '28', '43', '41', '50', '2', '26', '6', '42', '47', '49', '3', '19', '18', '15', '17', '40', '33', '31', '10', '16']
     
     #MIP
-    sequence = ["2", "8", "11", "3", "14", "9", "7", "6", "4", "12", "13", "1", "10", "5"]
+    # sequence = ["2", "8", "11", "3", "14", "9", "7", "6", "4", "12", "13", "1", "10", "5"]
 
     #DIDP
     #sequence = ["2", "8", "11", "3", "14", "7", "6", "4", "12", "13", "1", "10", "5", "9"]
@@ -271,7 +271,7 @@ instance_folder = os.path.join(folderpath,"instances")
 
 for instance in os.listdir(instance_folder):
     #if "berlin52-10.4.json" != instance:
-    if "burma14-3.1.json" == instance:
+    if "toy_subgraphs.json" == instance:
         print("hi")
         fname = os.path.join(folderpath,"instances",instance)
         output_path = os.path.join(folderpath,"output", instance[:-5]+"_log.out")

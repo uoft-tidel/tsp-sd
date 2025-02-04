@@ -109,9 +109,8 @@ def main (fpath, output_path, timelimit, export_results = True):
             effects=[
                 (unvisited, unvisited.remove(j)),
             ],
-            preconditions=[d[first,j].is_empty(), 
-                           d[location,j].issubset(unvisited), unvisited.contains(j), 
-                           unvisited.len()==1, location != 0]
+            preconditions=[d[location,j].issubset(unvisited), unvisited.contains(j), 
+                           unvisited.len()==1, location != 0, d[first,j].is_empty()]
         )
         model.add_transition(last_visit)
 
@@ -156,11 +155,11 @@ def main (fpath, output_path, timelimit, export_results = True):
     sequence = []
 
     for t in solution.transitions:
-        #print(t.name)
+        print(t.name)
         if t.name != "return":
             sequence.append(t.name.split(" ")[-1])
 
-    sequence = list(reversed(sequence))
+    # sequence = list(reversed(sequence))
     
     #PAPER SOLUTION FOR BERLIN52-10.4:
     #sequence = ['21', '30', '29', '44', '37', '35', '24', '5', '4', '12', '51', '52', '14', '27', '11', '13', '25', '1', '8', '39', '9', '32', '23', '48', '38', '22', '45', '34', '7', '46', '20', '36', '28', '43', '41', '50', '2', '26', '6', '42', '47', '49', '3', '19', '18', '15', '17', '40', '33', '31', '10', '16']
@@ -181,16 +180,19 @@ def main (fpath, output_path, timelimit, export_results = True):
         stdoutf.close()
 
 folderpath = os.getcwd()
-#instance = "ulysses22-5.5"
-instance_folder = os.path.join(folderpath,"instances")
+instance = "toy_subgraphs.json"
+# instance_folder = os.path.join(folderpath,"instances")
+fname = os.path.join(folderpath,"instances",instance)
+output_path = "A"
+# output_path = os.path.join(folderpath,"output", instance[:-5]+"_log.out")
+main(fname, output_path, timelimit = 20, export_results = True)
+# sys.stdout = open(os.path.join(folderpath,"output", instance[:-5]+"_log.out"),'wt')
 
-sys.stdout = open(os.path.join(folderpath,"output", instance[:-5]+"_log.out"),'wt')
+# for instance in os.listdir(instance_folder):
+#     if "berlin52-10" not in instance:
+#         fname = os.path.join(folderpath,"instances",instance)
 
-for instance in os.listdir(instance_folder):
-    if "berlin52-10" not in instance:
-        fname = os.path.join(folderpath,"instances",instance)
+#         print(fname)
+#         output_path = os.path.join(folderpath,"output", instance[:-5]+"_log.out")
 
-        print(fname)
-        output_path = os.path.join(folderpath,"output", instance[:-5]+"_log.out")
-
-        main(fname, output_path, timelimit = 20, export_results = True)
+#         main(fname, output_path, timelimit = 20, export_results = True)
