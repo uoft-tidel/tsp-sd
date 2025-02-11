@@ -3,8 +3,13 @@ import math
 import json
 import os 
 import csv
+import copy
 import validate as vlad
 import visualize as viz
+import ntpath
+import contextlib
+import io
+from contextlib import contextmanager
 
 import sys
 import warnings
@@ -56,7 +61,11 @@ def limit_memory(memory_limit):
         win32job.JobObjectExtendedLimitInformation, info)
 
 def main (fpath, outputpath, timelimit):
-    print("INSTANCE: ", fpath)
+
+    # sys.stdout = open(outputpath, 'wt')
+
+    print("===INSTANCE START")
+    print("Instance Name: {}".format(ntpath.basename(fpath)))
 
     assign_job(create_job())
     memory_limit = 8 * 1024 * 1024 * 1024 # 8 GiB
@@ -104,6 +113,8 @@ def main (fpath, outputpath, timelimit):
 
     del_node = instance["DELETE"]
 
+    X = {i:set() for i in range(n)}
+
     del_arc = [[set() for j in range(n)] for i in range(n)]
     for node in del_node:
         for [i, j] in del_node[node]:
@@ -111,9 +122,22 @@ def main (fpath, outputpath, timelimit):
             j = int(j)
             del_arc[i][j].add(int(node))
             del_arc[j][i].add(int(node))
+            X[i].add(node)
+            X[j].add(node)
 
     del_arc = [[list(j) for j in i] for i in del_arc]
+    deleted_edges = set((int(i),int(j)) for k in del_node.values() for [i,j] in k)
 
+    Y = copy.deepcopy(X)
+  
+    never_deleted_edges = [(i,j) for i in range(1,n) for j in range(1,n) if i != j and (i,j) not in deleted_edges and (j,i) not in deleted_edges]
+    never_deleted_set = set([i for (i,j) in never_deleted_edges])
+
+    never_deleted_dict = {i: set() for (i,j) in never_deleted_edges}
+
+    for (i,j) in never_deleted_edges:
+        never_deleted_dict[i].add(j)	
+        Y[j].add(i)
     # for i in range(n):
     #     for j in range(n):
     #         if len(del_arc[i][j]) == 0:
@@ -157,7 +181,7 @@ def main (fpath, outputpath, timelimit):
 
             #use is_empty instead of len
 
-            preconditions=[unvisited.contains(j), unvisited.len()>1, d[location,j].intersection(unvisited).is_empty(), first != 0],
+            preconditions=[j != first,location != 0,unvisited.contains(j), unvisited.len()>1, d[location,j].intersection(unvisited).is_empty()],
             effects=[
                 (unvisited, unvisited.remove(j)),
                 (location, j)
@@ -165,46 +189,47 @@ def main (fpath, outputpath, timelimit):
         )
         model.add_transition(visit)
 
-    for j in range(1, n):
+    #TODO: for j in possible_first_nodes
+    for j in never_deleted_set:
         first_visit = dp.Transition(
             name="first visit {}".format(j),
             cost= travel_time[location, j] + dp.FloatExpr.state_cost(),
-            preconditions=[location == 0, first == 0], #, set(range(1,n)) == unvisited
+            preconditions=[location == 0], #, set(range(1,n)) == unvisited
             effects=[
-                (unvisited, unvisited.remove(j)),
                 (location, j),
-                (first, j)
+                (first, j) #(unvisited, unvisited.remove(j))
             ],
         )
         model.add_transition(first_visit)
 
-    for j in range(1,n):
+    #TODO: based on dict for first node
+    for j in never_deleted_set:
         last_visit = dp.Transition(
             name="last visit {}".format(j),
-            cost=travel_time[location, j] + travel_time[j, first] + dp.FloatExpr.state_cost(),
+            cost=travel_time[location, j] + dp.FloatExpr.state_cost(),
             effects=[
                 (unvisited, unvisited.remove(j)),
             ],
-            preconditions=[d[location,j].intersection(unvisited).is_empty(), unvisited.contains(j), unvisited.len()==1, location != 0] #d[first,j].is_empty(), 
+            preconditions=[d[location,j].intersection(unvisited).is_empty(), unvisited.contains(j), 
+                           unvisited.len()==1]
         )
         model.add_transition(last_visit)
 
-    # return_to_depot = dp.Transition(
-    #     name="return",
-    #     cost=dp.FloatExpr.state_cost(),
-    #     effects=[
-    #         (location, 0),
-    #         (first, 0)
-    #     ],
-    #     preconditions=[unvisited.is_empty(), location != 0]
-    # )
-    # model.add_transition(return_to_depot)
-
     model.add_base_case([unvisited.is_empty()]) #, location == 0, first == 0])
 
-    #
+    #But what if you create a parameter X_j that contains all the locations that delete edges going to j. 
+    # If such a set deletes all edged to j then you know that j \notin U OR X_j \intersect U != \emptyset. 
+    # If not all edges to j get deleted by some node, 
+    # you might even do better if you add to X_j all the nodes connected to j whose edges never get deleted: 
+    # if (i,j) is an edge that never gets deleted and i \in N\U and we're not currently at i, 
+    # then effectively (i,j) has been deleted - we can't go back to i so we can't use (i,j).
 
-    # State constraint 
+    # # State constraint 
+    # for j in range(1,n):
+    #     if j not in never_deleted_set: #all edges are deleted
+    #         model.add_state_constr(
+    #         ~unvisited.contains(j) | ~unvisited.intersection(Y[j]).is_empty() 
+    #     )
     # for j in range(1, n):
     #     model.add_state_constr(
     #         ~unvisited.contains(j) | (d[location,j].intersection(unvisited).is_empty())
@@ -229,50 +254,43 @@ def main (fpath, outputpath, timelimit):
     solver = dp.CABS(model, time_limit=timelimit)
     solution = solver.search()
 
-    print("Transitions to apply:")
-
     sequence = []
 
     for t in solution.transitions:
-        print(t.name)
         if t.name != "return":
             sequence.append(t.name.split(" ")[-1])
 
-    print(sequence)
     sequence = list(reversed(sequence))
-    # print(sequence)
-    
-    #PAPER SOLUTION FOR BERLIN52-10.4:
-    #sequence = ['21', '30', '29', '44', '37', '35', '24', '5', '4', '12', '51', '52', '14', '27', '11', '13', '25', '1', '8', '39', '9', '32', '23', '48', '38', '22', '45', '34', '7', '46', '20', '36', '28', '43', '41', '50', '2', '26', '6', '42', '47', '49', '3', '19', '18', '15', '17', '40', '33', '31', '10', '16']
-    
-    #MIP
-    # sequence = ["2", "8", "11", "3", "14", "9", "7", "6", "4", "12", "13", "1", "10", "5"]
 
-    #DIDP
-    #sequence = ["2", "8", "11", "3", "14", "7", "6", "4", "12", "13", "1", "10", "5", "9"]
-
-    # print(sequence)
-
+    print("ALGORITHM END")
 
     #check don't go along removed edges
-    print("DELETION CHECK: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
-    print(vlad.checkLength(sequence,c))
-    print(not(solution.is_infeasible))
+    # print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
+    # print("Length Check: ", vlad.checkLength(sequence,c))
 
     #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 
+    print("Best Bound: {}".format(solution.best_bound))
     print("Cost: {}".format(solution.cost))
+    print("Expanded: {}".format(solution.expanded))
+    print("Generated: {}".format(solution.generated))
+    print("Infeasible: {}".format(solution.is_infeasible))
+    print("Optimal: {}".format(solution.is_optimal))
+    print("Time: {}".format(solution.time))
+    print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
+
+    print("---RESULTS END")
+    
 
 folderpath = os.getcwd()
-#instance = "ulysses22-5.5"
 instance_folder = os.path.join(folderpath,"instances")
-
-
+tlim = 1800
+folderpath = os.getcwd()
+instance_folder = os.path.join(folderpath,"instances","ham_bound","random20-50")
+tlim = 1800
 
 for instance in os.listdir(instance_folder):
-    #if "berlin52-10.4.json" != instance:
-    if "toy_subgraphs.json" == instance:
-        print("hi")
-        fname = os.path.join(folderpath,"instances",instance)
-        output_path = os.path.join(folderpath,"output", instance[:-5]+"_log.out")
-        main(fname, "none", timelimit = 1800)
+    # if "burma14-3.1.json" == instance:
+    fname = os.path.join(instance_folder,instance)
+    output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
+    main(fname, output_path, timelimit = tlim)

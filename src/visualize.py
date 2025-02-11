@@ -36,19 +36,26 @@ def tsp_plot(instance_name, sequence, locations, c):
   ax.scatter(x, y)             # plot B
   prev_node = sequence[-1]
   # distance = 
-  for i in sequence:
+  for ind, i  in enumerate(sequence[1:]):
       start_pos = locations[prev_node]
       end_pos = locations[i]
-      ax.annotate("",
-              xy=start_pos, xycoords='data',
-              xytext=end_pos, textcoords='data',
-              arrowprops=dict(arrowstyle="-|>", color="slategray",
-                              connectionstyle="arc3"))
+      if ind == len(sequence)-2:
+        ax.annotate("",
+                xy=start_pos, xycoords='data',
+                xytext=end_pos, textcoords='data',
+                arrowprops=dict(arrowstyle="->", color="red",
+                                connectionstyle="arc3"))
+      else:
+         ax.annotate("",
+                xy=start_pos, xycoords='data',
+                xytext=end_pos, textcoords='data',
+                arrowprops=dict(arrowstyle="-|>", color="slategray",
+                                connectionstyle="arc3"))
       #distance += np.linalg.norm(end_pos - start_pos)
       prev_node = i
 
-  textstr = "Instance: %s N nodes: %d\nTotal length: %.0f" % (instance_name.split(".json")[0], len(sequence), c)
-  props = dict(boxstyle='round', alpha=0.5)
+  textstr = "Instance: %s N nodes: %d\nTotal length: %.0f" % (instance_name.split(".json")[0], len(sequence)-1, c)
+  props = dict(boxstyle='round', alpha=0.3)
   ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=8, # Textbox
           verticalalignment='top', bbox=props)
 

@@ -180,7 +180,7 @@ def main (fpath, output_path, timelimit, export_results = True):
         stdoutf.close()
 
 folderpath = os.getcwd()
-instance = "toy_subgraphs.json"
+instance = "toy.json"
 # instance_folder = os.path.join(folderpath,"instances")
 fname = os.path.join(folderpath,"instances",instance)
 output_path = "A"
