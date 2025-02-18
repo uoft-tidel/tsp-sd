@@ -6,9 +6,6 @@ import os
 import copy
 # import validate as vlad
 # import visualize as viz
-import ntpath
-import sys
-import warnings
 
 # import winerror
 # import win32api
@@ -73,7 +70,7 @@ if __name__ == "__main__":
             # sys.stdout = open(outputpath, 'wt')
 
             print("===INSTANCE START")
-            print("Instance Name: {}".format(ntpath.basename(fname)))
+            print("Instance Name: {}".format(os.path.basename(fname)))
 
             # assign_job(create_job())
             # memory_limit = 8 * 1024 * 1024 * 1024 # 8 GiB

@@ -28,7 +28,7 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=04:30:00
+#SBATCH --time=07:30:00
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -37,7 +37,7 @@
 ## This value is used at two places:
 ## 1. To set the number of CPUs in the resource allocation request. 
 ## 2. Assigned to SLURM_TASKS_PER_NODE environment variable.
-#SBATCH --ntasks-per-node=40
+#SBATCH --ntasks-per-node=20
 
 ## "--cpus-per-task" tells the expected count of CPU "threads" per task
 ##
@@ -64,6 +64,8 @@ module load CCEnv
 module load StdEnv/2023
 module load python/3.12.4
 module load rust/1.76.0
+module use /scinet/niagara/software/commercial/modules
+## module load gurobi/12.0.0
 
 ## Load the python virtual environment containing the installation of DIDP
 source ~/env_didp/bin/activate
@@ -75,10 +77,18 @@ source ~/env_didp/bin/activate
 ##      {1..3} and 10 20 30.
 ## 2. Any number of lists can be given as input to gnu-parallel.
 ## 3. Gnu-parallel will run the test_didp.py script in parallel for all 
-##      combinations of 'i' and 'j'. 
+##      combinations of '{1}' and '{2}'. 
 ## 4. -j specifies the number of tasks run in parallel on a node.
 ## 5. `tee` directs a copy of stdout to the log file. 
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j $SLURM_TASKS_PER_NODE "python3 -u DIDP-add.py -i {1} -j {2} | tee results/run_{1}_{2}.txt" ::: {1..3} ::: 10 20 30
+##python3 bin_wrapper.py -c "python3 run_models.py 1800 {1} {2}" -ht 1830 -hm 8100
+
+## node 1: didp, mip
+## node 2: cp models
+## CP-add CP-del CP-rank-add CP-rank-del 
+
+## parallel -j $SLURM_TASKS_PER_NODE "python3 bin_wrapper.py -c "python3 run_models.py 1800 {1} {2}" -ht 1830 -hm 8100 | tee results/run_{1}_{2}.txt" ::: CP-add CP-del CP-rank-add CP-rank-del ::: 1 2 3 4 5
+## 27000 ht
+parallel -j $SLURM_TASKS_PER_NODE "python3 bin_wrapper.py -c 'python3 run_models.py 1800 {1} {2}' -ht 30 hm 8250 | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_{1}_{2}.txt" ::: CP-add ::: 1

@@ -1,17 +1,20 @@
+#! /usr/bin/env python3
+
 import didppy as dp
 import math
 import json
 import os 
 import copy
+import sys
 # import validate as vlad
 # import visualize as viz
-import ntpath
 
 if __name__ == "__main__":
 
+    script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances","selected")
-    tlim = 1800
+    instance_folder = os.path.join(folderpath,"instances",batch)
+    tlim = int(timelim)
 
     for instance in os.listdir(instance_folder):
         # if "burma14-3.1.json" == instance:
@@ -20,7 +23,7 @@ if __name__ == "__main__":
 
         print("===INSTANCE START")
         print("ALG: DIDP-DEL")
-        print("Instance Name: {}".format(ntpath.basename(fname)))
+        print("Instance Name: {}".format(os.path.basename(fname)))
 
         with open(fname, 'r') as file:
             instance = json.load(file)
