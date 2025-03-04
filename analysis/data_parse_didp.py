@@ -2,11 +2,11 @@ import os
 import json
 
 folderpath = os.getcwd()
-results_folder = os.path.join(folderpath,"results")
+results_folder = os.path.join(folderpath,"logs")
 all_instances = {}
 i_val = 0
 
-for instance in os.listdir(results_folder):
+for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
     fname = os.path.join(results_folder, instance)
     instances = {}
     instance_lookup = {}
@@ -16,8 +16,15 @@ for instance in os.listdir(results_folder):
     for l in f:
         if "Instance Name" in l:
             i_name = l.split(" ")[2][:-6]
+            
+            if "random" in i_name:
+                nodes = int(i_name.split("-")[1])
+            else:
+                nodes = [s for s in i_name.split("-")[0] if s.isdigit()]
+                nodes = int("".join(nodes))
+            
             instance_lookup[j_val] = i_val #in order
-            instances[i_val] = {"instance":"","algorithm":"","beam_size":{"size":[],"expanded":[],"time":[]},"dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"expanded":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":True,"optimal":False,"time":0,"transitions":[]}
+            instances[i_val] = {"instance":i_name,"algorithm":"","nodes":nodes,"beam_size":{"size":[],"expanded":[],"time":[]},"dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"expanded":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[]}
             i_val += 1
             j_val += 1
 
@@ -89,5 +96,17 @@ for instance in os.listdir(results_folder):
             instances[j_name]["transitions"] = json.loads(l[13:].strip())
     all_instances.update(instances)
 
-with open('DIDP-results.json','w') as res:
-    json.dump(all_instances,res)
+results_fname = os.path.join(folderpath,"results","DIDP-results.json")
+
+pair_set = set()
+culled_instances = {}
+
+for i in all_instances:
+    alg = all_instances[i]["algorithm"]
+    inst = all_instances[i]["instance"]
+    if (alg,inst) not in pair_set:
+        pair_set.add((alg,inst))
+        culled_instances[i] = all_instances[i]
+
+with open(results_fname,'w') as res:
+    json.dump(culled_instances,res)

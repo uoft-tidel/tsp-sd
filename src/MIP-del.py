@@ -5,9 +5,11 @@ import gurobipy as gp
 from gurobipy import GRB
 import os
 import sys
+import psutil
+process = psutil.Process()
 
 if __name__ == "__main__":
-
+  
     def convertToLatLong(x):
         deg = round(x)
         min = x-deg
@@ -49,9 +51,12 @@ if __name__ == "__main__":
         
         return dist_dict, del_dict, nodes, times, n
 
-    def main(fpath):
+    def main(fpath, time_limit):
 
         distances, deletes, nodes, times, n = read_file(fpath)
+
+        if n > 101:
+            return "TOO MANY NODES - MEMORY OUT"
 
         all_edges = set()
         for i in range(1,n+1):
@@ -135,6 +140,10 @@ if __name__ == "__main__":
 
         # m.write(#"tspsd-TOY.lp")
 
+        m.Params.TimeLimit = time_limit
+        m.Params.SoftMemLimit = 8
+        m.Params.Threads = 1
+
         # Optimize model
         m.optimize()
 
@@ -143,15 +152,16 @@ if __name__ == "__main__":
                 # print(f"{v.VarName}") #{v.X:g}")
 
         # print(never_deleted_ed#ges_dict)
+        try:
+            print(f"Obj: {m.ObjVal:g}")
+            print(f"Time: {m.Runtime:g}")
+            print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
+        
+        except gp.GurobiError as e:
+            print(f"Error code {e.errno}: {e}")
 
-        print(f"Obj: {m.ObjVal:g}")
-        print(f"Time: {m.Runtime:g}")
-
-        # except gp.GurobiError as e:
-        #     print(f"Error code {e.errno}: {e}")
-
-        # except AttributeError:k.jk.j
-        #     print("Encountered an attribute error")
+        except AttributeError:
+            print("Encountered an attribute error")
         return 0
 
     # toy = r"C:\Users\pekar\Documents\GitHub\tsp-sd\instances\toy.json"
@@ -159,6 +169,9 @@ if __name__ == "__main__":
     # ulysses = r"C:\Users\pekar\Documents\GitHub\tsp-sd\instances\ulysses22-5.5.json"
     script, timelim, batch = sys.argv
     folderpath = os.getcwd()
+    # batch = "1"
+    # timelim = "1800"
+    # folderpath = r"C:\Users\pekar\Documents\GitHub\TSP-SD"
     instance_folder = os.path.join(folderpath,"instances",batch)
     tlim = int(timelim)
 
@@ -170,7 +183,10 @@ if __name__ == "__main__":
         print("===INSTANCE START")
         print("ALG: MIP-DEL")
         print("Instance Name: {}".format(os.path.basename(fname)))
-        main(fname)
+        try:
+            main(fname, tlim)
+        except Exception as e:
+            print("error: ", e)
 
         print("ALGORITHM END")
         print("---RESULTS END")

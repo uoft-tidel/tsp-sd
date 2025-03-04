@@ -6,20 +6,22 @@ import json
 import os 
 import copy
 import sys
+import psutil
+process = psutil.Process()
 # import validate as vlad
 # import visualize as viz
-
+# 
 if __name__ == "__main__":
 
     script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances",batch)
+    instance_folder = os.path.join(folderpath,"instances","1")
     tlim = int(timelim)
 
+
     for instance in os.listdir(instance_folder):
-        # if "burma14-3.1.json" == instance:
         fname = os.path.join(instance_folder,instance)
-        output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
+        # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
         print("===INSTANCE START")
         print("ALG: DIDP-DEL")
@@ -130,24 +132,25 @@ if __name__ == "__main__":
                 preconditions=[location == 0], #, set(range(1,n)) == unvisited
                 effects=[
                     (location, j),
-                    (first, j) #(unvisited, unvisited.remove(j))
+                    (first, j), (unvisited, unvisited.remove(j))
                 ],
             )
             model.add_transition(first_visit)
 
         for j in never_deleted_set:
             last_visit = dp.Transition(
-                name="last visit {}".format(j),
+                name="return {}".format(j),
                 cost=travel_time[location, j] + travel_time[j, first] + dp.FloatExpr.state_cost(),
                 effects=[
-                    (unvisited, unvisited.remove(j)),
+                    (location, 0), (unvisited, unvisited.remove(j))
                 ],
-                preconditions=[d[location,j].issubset(unvisited), unvisited.contains(j), 
-                            unvisited.len()==1]
+                preconditions=[d[first,j].is_empty(), 
+                        d[location,j].issubset(unvisited), unvisited.contains(j), 
+                        unvisited.len()==1, location != 0]
             )
             model.add_transition(last_visit)
 
-        model.add_base_case([unvisited.is_empty()])
+        model.add_base_case([unvisited.is_empty(), location == 0])
 
         # # State constraint 
         # for j in range(1,n):
@@ -174,7 +177,7 @@ if __name__ == "__main__":
             min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
         )
 
-        solver = dp.CABS(model, time_limit=tlim)
+        solver = dp.CABS(model, time_limit=tlim, quiet = True)
         solution = solver.search()
 
         sequence = []
@@ -183,7 +186,8 @@ if __name__ == "__main__":
             if t.name != "return":
                 sequence.append(t.name.split(" ")[-1])
 
-        sequence = list(reversed(sequence))
+        # sequence = list(reversed(sequence))
+        print("this process used: ",process.memory_info().rss / 1024 ** 2, " MiB")
 
         print("ALGORITHM END")
 
@@ -200,6 +204,7 @@ if __name__ == "__main__":
         print("Infeasible: {}".format(solution.is_infeasible))
         print("Optimal: {}".format(solution.is_optimal))
         print("Time: {}".format(solution.time))
-        print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
+        print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
+        print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions]))
 
         print("---RESULTS END")

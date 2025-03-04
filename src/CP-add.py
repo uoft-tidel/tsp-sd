@@ -17,8 +17,16 @@ if __name__ == "__main__":
     script, timelim, batch = sys.argv
     folderpath = os.getcwd()
     instance_folder = os.path.join(folderpath,"instances",batch)
+    # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
     tlim = int(timelim)
     opt = "ins"
+
+    #     # # folderpath = os.getcwd()
+    # # instance_folder = os.path.join(folderpath,"instances",batch)
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+    # tlim = int(20)
+    # opt = "ins"
+
 
     for instance in os.listdir(instance_folder):
 
@@ -26,13 +34,13 @@ if __name__ == "__main__":
       # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
       print("===INSTANCE START")
-      print("ALG: DIDP-ADD")
+      print("ALG: CP-ADD")
       print("Instance Name: {}".format(ntpath.basename(fname)))
 
-      print(os.path.join(folderpath,"results",instance+"_log.out"))
-      stdoutf = open(os.path.join(folderpath,"results",instance+"_log.out"), 'w')
-      config.context.log_output = stdoutf
-      config.context.solver.trace_log = True
+      # print(os.path.join(folderpath,"results",instance+"_log.out"))
+      # stdoutf = open(os.path.join(folderpath,"results",instance+"_log.out"), 'w')
+      # config.context.log_output = stdoutf
+      # config.context.solver.trace_log = True
 
       with open(fname, 'r') as file:
         instance = json.load(file)
@@ -58,7 +66,7 @@ if __name__ == "__main__":
           # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
           # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
 
-          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*10)
+          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2))
 
           return dij
 
@@ -194,95 +202,100 @@ if __name__ == "__main__":
         # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
         # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
 
-      # Alternatives for enter and out intervals
-      mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+1)) 
-      mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i] + [traverse_last[i,j] for [k,j] in traverse_last if k == i]) for i in range(1,n+1))
-      mdl.add(mdl.alternative(enter[n+1], [traverse_last[a] for a in traverse_last]))
-      mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
+      try:
 
-      # Minimize termination date
-      mdl.add(cp.minimize(mdl.end_of(enter[n+1])))
+        # Alternatives for enter and out intervals
+        mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+1)) 
+        mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i] + [traverse_last[i,j] for [k,j] in traverse_last if k == i]) for i in range(1,n+1))
+        mdl.add(mdl.alternative(enter[n+1], [traverse_last[a] for a in traverse_last]))
+        mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
 
-      # mdl.export_model(r"cp_1.cpo")
+        # Minimize termination date
+        mdl.add(cp.minimize(mdl.end_of(enter[n+1])))
 
-      # Solve model
-      print('Solving model...')
-      #res = mdl.solve()
+        # mdl.export_model(r"cp_1.cpo")
 
-      solver = cp.CpoSolver(mdl) #, TimeLimit=timelimit, Workers=1)
-      results_over_time = {"UB":[],"LB":[],"TIME":[]}
+        # Solve model
+        print('Solving model...')
+        #res = mdl.solve()
 
-      is_solution_optimal = False
-      sol_status = ''
-      start_time = datetime.datetime.now()
-      
-      while not is_solution_optimal and sol_status != 'Ended' and datetime.datetime.now()-start_time <= tlim :
-        sol = solver.search_next()
-        if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted':
-          # Solved timed out and could not find a feasible solution
-          solver.end_search()
-          sol_status = 'Ended'
+        solver = cp.CpoSolver(mdl, TimeLimit=tlim, Workers=1) #, TimeLimit=timelimit, Workers=1)
+        results_over_time = {"UB":[],"LB":[],"TIME":[]}
 
-        results_over_time["UB"].append(sol.get_objective_value())
-        results_over_time["LB"].append(sol.get_objective_bounds())
-        results_over_time["TIME"].append(sol.get_solve_time())
+        is_solution_optimal = False
+        sol_status = ''
+        start_time = datetime.datetime.now()
+        
+        while not is_solution_optimal and sol_status != 'Ended':
+          sol = solver.search_next()
+          if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted':
+            # Solved timed out and could not find a feasible solution
+            solver.end_search()
+            sol_status = 'Ended'
 
-        is_solution_optimal = sol.is_solution_optimal()
+          results_over_time["UB"].append(sol.get_objective_value())
+          results_over_time["LB"].append(sol.get_objective_bounds())
+          results_over_time["TIME"].append(sol.get_solve_time())
 
-   
-      print(os.path.join(folderpath,"results","CP_"+instance+".csv"))
-      with open(os.path.join(folderpath,"results","CP_"+instance+".csv"), 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for row in range(len(results_over_time["TIME"])):
-          spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
+          is_solution_optimal = sol.is_solution_optimal()
 
-      solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
+    
+        # print(os.path.join(folderpath,"results","CP_"+instance+".csv"))
+        # with open(os.path.join(folderpath,"results","CP_"+instance+".csv"), 'w', newline='') as csvfile:
+          # spamwriter = csv.writer(csvfile, delimiter=',',
+                                  # quotechar='|', quoting=csv.QUOTE_MINIMAL)
+          # for row in range(len(results_over_time["TIME"])):
+            # spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
 
-      for i in traverse:
-        if sol.get_value(traverse[i]) != ():
-            solution_dict["sequence"][i[0]] = i[1]
-            solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
+        solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
 
-      for i in traverse_last:
-        if sol.get_value(traverse_last[i]) != ():
-            solution_dict["sequence"][i[0]] = n+1
-            solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
+        for i in traverse:
+          if sol.get_value(traverse[i]) != ():
+              solution_dict["sequence"][i[0]] = i[1]
+              solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
+
+        for i in traverse_last:
+          if sol.get_value(traverse_last[i]) != ():
+              solution_dict["sequence"][i[0]] = n+1
+              solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
 
 
-      for i in enter:
-        if sol.get_value(enter[i]) != ():
-          solution_dict["in"][i] = sol.get_value(enter[i])
+        for i in enter:
+          if sol.get_value(enter[i]) != ():
+            solution_dict["in"][i] = sol.get_value(enter[i])
 
-      for i in out:
-        if sol.get_value(out[i]) != ():
-          solution_dict["out"][i] = sol.get_value(out[i])
+        for i in out:
+          if sol.get_value(out[i]) != ():
+            solution_dict["out"][i] = sol.get_value(out[i])
 
-      j = 0
-      for i in range(n):
-        j = solution_dict["sequence"][j]
-        solution_dict["seq_list"].append(j)
+        j = 0
+        # for i in range(n):
+          # j = solution_dict["sequence"][i]
+          # solution_dict["seq_list"].append(j)
 
-      print(solution_dict["seq_list"])
+        # print(solution_dict["seq_list"])
 
-      #checks sequence is valid (all locations visited)
-      print(solution_dict["sequence"])
-      #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+        #checks sequence is valid (all locations visited)
+        print(solution_dict["sequence"])
+      except Exception as e:
+        print("NO LAST TRAVERSES")
+        print(e)
+        #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
-      #check starting is at 0
-      # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
+        #check starting is at 0
+        # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
-      #check length makes sense
-      # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
+        #check length makes sense
+        # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
 
-      #check don't go along removed edges
-      # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
+        #check don't go along removed edges
+        # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
 
-      #visualize as job shop
-      #viz.tsp_as_jobshop(solver,traverse,14)
+        #visualize as job shop
+        #viz.tsp_as_jobshop(solver,traverse,14)
 
-      # if trace_log:
-      stdoutf.close()
+        # if trace_log:
+        # stdoutf.close()
 
     # folderpath = os.getcwd()
     # instance = "ulysses22-5.5"

@@ -9,16 +9,21 @@ import sys
 # import validate as vlad
 # import visualize as viz
 import ntpath
+import psutil
+process = psutil.Process()
 
 if __name__ == "__main__":
 
     script, timelim, batch = sys.argv
+    # timelim = "1800"
+    # batch = "1"
     folderpath = os.getcwd()
     instance_folder = os.path.join(folderpath,"instances",batch)
+    # instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles",batch)
     tlim = int(timelim)
 
     for instance in os.listdir(instance_folder):
-
+        # if "burma14-3.1.json" == instance:
         fname = os.path.join(instance_folder, instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -202,9 +207,9 @@ if __name__ == "__main__":
         print("Infeasible: {}".format(solution.is_infeasible))
         print("Optimal: {}".format(solution.is_optimal))
         print("Time: {}".format(solution.time))
+        print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
         print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
 
         print("---RESULTS END")
         
 
- 
