@@ -69,6 +69,7 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
         elif "Best Bound" in l:
             if 'None' in l:
                 instances[j_name]["best_dual"] = 0
+                instances[j_name]["infeasible"] = True
             else:
                 instances[j_name]["best_dual"] = float(l.split(" ")[-1].strip())
         elif "Cost:" in l:
@@ -80,11 +81,11 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
             instances[j_name]["expanded"] = int(l.split(" ")[-1].strip())
         elif "Generated:" in l:
             instances[j_name]["generated"] = int(l.split(" ")[-1].strip())
-        elif "Infeasible:" in l:
-            if "False" in l:
-                instances[j_name]["infeasible"] = False
-            else:
-                instances[j_name]["infeasible"] = True
+        # elif "Infeasible:" in l:
+        #     if "False" in l:
+        #         instances[j_name]["infeasible"] = False
+        #     else:
+        #         instances[j_name]["infeasible"] = True
         elif "Optimal:" in l:
             if "False" in l:
                 instances[j_name]["optimal"] = False

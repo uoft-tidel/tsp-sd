@@ -61,7 +61,7 @@ res_alg_pd = pd.DataFrame.from_dict(res_per_alg,)
 res_alg_df = res_alg_pd.transpose()
 res_alg_df = res_alg_df.reset_index().set_index('ind')
 
-print(res_alg_df)
+print(res_df)
 
 
 res_df["best_primal"] = res_df[res_df["primal"] > 0].groupby(["instance"])["primal"].transform("min")
