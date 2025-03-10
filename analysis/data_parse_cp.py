@@ -25,11 +25,39 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
     instance_lookup = {}
     print(fname)
     f = open(fname,"r")
+    cont = False
+    
+    time = 0
     for l in f:
+
+        if cont:
+            if "Search terminated" in l:
+                cont = False
+
+            elif "Search completed" in l:
+                cont = False
+            
+            elif "New bound" in l:
+                new_bound = float(l.split(" ")[5].strip())
+                instances[j_val]["dual"]["bound"].append(new_bound)
+                instances[j_val]["dual"]["time"].append(time)
+
+            elif "*" in l:
+                new_primal = float([i for i in l.split(" ") if i != '' and i != '*'][0])
+                time = float([i for i in l.split(" ") if "s" in i][0][:-1])
+                instances[j_val]["primal"]["bound"].append(new_primal)
+                instances[j_val]["primal"]["time"].append(time)
+
+
         if "===INSTANCE" in l:
             j_val += 1
             i_name = l.split(" ")[1][:-6]
-            instances[j_val] = {"instance":"","algorithm":"","beam_size":{"size":[],"expanded":[],"time":[]},"dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"expanded":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+            instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+
+        elif "Initial process time" in l:
+            time = float(l.split(" ")[6][:-1])
+        elif "Using sequential search" in l:
+            cont = True
 
         elif "ALG:" in l:
             alg_name = l.split(" ")[1][:-1]

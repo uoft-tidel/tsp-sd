@@ -1,0 +1,261 @@
+
+The following have been reloaded with a version change:
+  1) mii/1.1.1 => mii/1.1.2
+
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-20-5.00-0.json
+this process used:  9089.92578125  MiB
+ALGORITHM END
+Best Bound: 649.063693694399
+Cost: 649.063693694399
+Expanded: 200648655
+Generated: 240114581
+Infeasible: False
+Optimal: True
+Time: 1522.344762293
+Memory Used (MiB): 9089.94
+Transitions: [20, 15, 2, 4, 16, 18, 10, 19, 13, 5, 9, 3, 1, 11, 7, 6, 8, 12, 17, 14]
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-10-5.00-0.json
+this process used:  9089.98828125  MiB
+ALGORITHM END
+Best Bound: 368.9834937415585
+Cost: 368.9834937415585
+Expanded: 56252
+Generated: 68195
+Infeasible: False
+Optimal: True
+Time: 0.13477972
+Memory Used (MiB): 9089.99
+Transitions: [9, 4, 3, 7, 2, 8, 6, 1, 5, 10]
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-40-2.00-0.json
+this process used:  128.44921875  MiB
+ALGORITHM END
+Best Bound: None
+Cost: None
+Expanded: 1
+Generated: 1
+Infeasible: True
+Optimal: False
+Time: 1.0859e-05
+Memory Used (MiB): 128.45
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-30-7.60-0.json
+this process used:  8052.03125  MiB
+ALGORITHM END
+Best Bound: 164.94139455080145
+Cost: 893.9364422640549
+Expanded: 106446034
+Generated: 289025388
+Infeasible: False
+Optimal: False
+Time: 1820.373111947
+Memory Used (MiB): 8052.03
+Transitions: [15, 17, 30, 16, 10, 9, 21, 23, 25, 24, 26, 13, 6, 27, 18, 20, 14, 3, 11, 5, 1, 19, 12, 22, 4, 29, 7, 28, 2, 8]
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-20-10.00-0.json
+this process used:  9238.875  MiB
+ALGORITHM END
+Best Bound: 241.37745141175645
+Cost: 445.41951125404034
+Expanded: 128846135
+Generated: 213835308
+Infeasible: False
+Optimal: False
+Time: 1855.117619012
+Memory Used (MiB): 9238.88
+Transitions: [12, 10, 19, 17, 18, 16, 1, 6, 3, 9, 5, 20, 13, 15, 2, 4, 14, 8, 7, 11]
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-30-2.60-0.json
+this process used:  13565.76171875  MiB
+ALGORITHM END
+Best Bound: 249.4350275544848
+Cost: None
+Expanded: 138646739
+Generated: 315780763
+Infeasible: False
+Optimal: False
+Time: 1882.197975055
+Memory Used (MiB): 13565.76
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-20-0.00-0.json
+this process used:  13565.765625  MiB
+ALGORITHM END
+Best Bound: None
+Cost: None
+Expanded: 1
+Generated: 1
+Infeasible: True
+Optimal: False
+Time: 1.034e-05
+Memory Used (MiB): 13565.77
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-20-7.60-0.json
+this process used:  13033.58203125  MiB
+ALGORITHM END
+Best Bound: 292.35084029499
+Cost: 540.6787454301723
+Expanded: 150257309
+Generated: 222894373
+Infeasible: False
+Optimal: False
+Time: 1812.03957362
+Memory Used (MiB): 13033.58
+Transitions: [7, 3, 6, 1, 16, 17, 19, 18, 10, 12, 13, 4, 2, 20, 5, 8, 15, 14, 9, 11]
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-40-7.00-0.json
+this process used:  5066.46484375  MiB
+ALGORITHM END
+Best Bound: 130.4303249340624
+Cost: None
+Expanded: 116958368
+Generated: 345153829
+Infeasible: False
+Optimal: False
+Time: 1828.940483854
+Memory Used (MiB): 5066.46
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-30-0.00-0.json
+this process used:  5066.4765625  MiB
+ALGORITHM END
+Best Bound: None
+Cost: None
+Expanded: 1
+Generated: 1
+Infeasible: True
+Optimal: False
+Time: 8.778e-06
+Memory Used (MiB): 5066.48
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-20-2.60-0.json
+this process used:  4153.625  MiB
+ALGORITHM END
+Best Bound: None
+Cost: None
+Expanded: 41594171
+Generated: 47825030
+Infeasible: True
+Optimal: False
+Time: 159.668914359
+Memory Used (MiB): 4153.62
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-40-4.60-0.json
+this process used:  9265.2265625  MiB
+ALGORITHM END
+Best Bound: 148.28326938906207
+Cost: None
+Expanded: 110581262
+Generated: 333656271
+Infeasible: False
+Optimal: False
+Time: 1850.726742997
+Memory Used (MiB): 9265.23
+Transitions: []
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-30-10.00-0.json
+this process used:  9261.54296875  MiB
+ALGORITHM END
+Best Bound: 158.0384653887612
+Cost: 669.6204000065476
+Expanded: 110194327
+Generated: 312304554
+Infeasible: False
+Optimal: False
+Time: 1845.161084511
+Memory Used (MiB): 9261.64
+Transitions: [17, 1, 15, 22, 10, 16, 20, 14, 3, 18, 7, 29, 24, 13, 27, 26, 4, 9, 19, 8, 28, 2, 21, 6, 25, 5, 11, 23, 12, 30]
+---RESULTS END
+===INSTANCE START
+ALG: DIDP-DEL
+Instance Name: random-30-5.00-0.json
+this process used:  8104.63671875  MiB
+ALGORITHM END
+Best Bound: 182.7576430835804
+Cost: None
+Expanded: 141922115
+Generated: 333524597
+Infeasible: False
+Optimal: False
+Time: 1830.547001143
+Memory Used (MiB): 8104.64
+Transitions: []
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-del
+batch num is: 2
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-del.py
+
+scontrol show job 14264882
+JobId=14264882 JobName=didp-sbatch.sh
+   UserId=pekardan(3144906) GroupId=beck(6007069) MCS_label=N/A
+   Priority=1485510 Nice=0 Account=def-beck QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=04:33:46 TimeLimit=07:30:00 TimeMin=N/A
+   SubmitTime=2025-03-04T12:30:20 EligibleTime=2025-03-04T12:30:20
+   AccrueTime=2025-03-04T12:30:20
+   StartTime=2025-03-04T12:30:21 EndTime=2025-03-04T17:04:07 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-03-04T12:30:21 Scheduler=Main
+   Partition=compute AllocNode:Sid=nia-login05:145587
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=nia0443
+   BatchHost=nia0443
+   NumNodes=1 NumCPUs=80 NumTasks=20 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=40,mem=175000M,node=1,billing=20
+   AllocTRES=cpu=80,mem=175000M,node=1,billing=40
+   Socks/Node=* NtasksPerN:B:S:C=20:0:*:* CoreSpec=*
+   MinCPUsNode=40 MinMemoryNode=175000M MinTmpDiskNode=0
+   Features=[skylake|cascade] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/gpfs/fs0/scratch/b/beck/pekardan/didp-sbatch.sh
+   WorkDir=/gpfs/fs0/scratch/b/beck/pekardan
+   Comment=/opt/slurm/bin/sbatch --export=NONE didp-sbatch.sh 
+   StdErr=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14264882.out
+   StdIn=/dev/null
+   StdOut=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14264882.out
+   TresPerTask=cpu=2
+   MailUser=daniel.pekar@mail.utoronto.ca MailType=INVALID_DEPEND,BEGIN,END,FAIL,REQUEUE,STAGE_OUT
+   
+
+sacct -j 14264882
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+14264882     didp-sbat+   def-beck   04:33:46                         00:00:00   00:00:00      0:0 
+14264882.ba+      batch   def-beck   04:33:46                         00:00:00   00:00:00      0:0 
+14264882.ex+     extern   def-beck   04:33:46                         00:00:00   00:00:00      0:0 
+
+kernel messages produced during job executions:
+[Mar 4 12:30] fuse init (API version 7.23)

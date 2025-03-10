@@ -24,11 +24,60 @@ for instance in [f for f in os.listdir(results_folder) if "MIP" in f]:
     instance_lookup = {}
     f = open(fname,"r")
     print(fname)
+    
+    cont = False
     for l in f:
         if "===INSTANCE START" in l:
             j_val += 1
             i_name = l.split(" ")[1][:-6]
-            instances[j_val] = {"instance":"","algorithm":"","beam_size":{"size":[],"expanded":[],"time":[]},"dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"expanded":[],"time":[]},"hit_time_limit":False,"hit_memory_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+            instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"hit_memory_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+
+            cont = False
+            empty_counter = 0
+
+        elif cont:
+
+            if l == '\n':
+                empty_counter += 1
+                if empty_counter == 2:
+                    cont = False
+            else:
+                line = [i for i in l.split(" ") if i != '']
+                time = float(line[-1].strip()[:-1])
+                if 'H' in l:
+                    new_primal = float(line[2])
+                    new_dual = float(line[3])
+                elif '*' in l:
+                    new_primal = float(line[3])
+                    new_dual = float(line[4])
+                elif "cutoff" in l or "infeasible" in l:
+                    if line[4] == "-":
+                        new_primal = 0
+                    else:
+                        new_primal = float(line[4])
+                    if line[5] == "infeasible":
+                        new_dual = 0
+                    else:
+                        new_dual = float(line[5])
+                else:
+                    if line[5] == "-":
+                        new_primal = 0
+                    else:
+                        new_primal = float(line[5])
+                    if line[6] == "-":
+                        new_dual = 0
+                    else:
+                        new_dual = float(line[6])
+                instances[j_val]["primal"]["bound"].append(new_primal)
+                instances[j_val]["primal"]["time"].append(time)
+                instances[j_val]["dual"]["bound"].append(new_dual)
+                instances[j_val]["dual"]["time"].append(time)
+
+
+        elif "Expl Unexpl" in l:
+            cont = True
+
+       
 
         elif "ALG:" in l:
             alg_name = l.split(" ")[1][:-1]

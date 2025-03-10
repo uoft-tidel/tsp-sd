@@ -19,7 +19,7 @@ if __name__ == "__main__":
   tlim = int(timelim)
 
 
-  for instance in os.listdir(instance_folder):
+  for instance in [i for i in os.listdir(instance_folder) if "random" not in i]:
     fname = os.path.join(instance_folder,instance)
     # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -56,6 +56,7 @@ if __name__ == "__main__":
 
     # Number of locations
     n = len(instance["NODE_COORDS"].keys())
+    tlim = n*10
 
     deleted_edges = set((int(i),int(j)) for k in Delete_Dict.values() for [i,j] in k)
     

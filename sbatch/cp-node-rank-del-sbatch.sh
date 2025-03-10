@@ -27,7 +27,7 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=07:30:00
+#SBATCH --time=14:00:00
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -81,4 +81,4 @@ source ~/env_docplex/bin/activate
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j $SLURM_TASKS_PER_NODE "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_{1}_{2}.txt" ::: CP-rank-del ::: 2 3 4 5
+parallel -j $SLURM_TASKS_PER_NODE "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_{1}_{2}.txt" ::: CP-rank-del ::: 1

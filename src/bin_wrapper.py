@@ -8,7 +8,7 @@
 
 from argparse import ArgumentParser
 
-import resource
+from resource import *
 
 import subprocess
 
