@@ -3,6 +3,8 @@ import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib
+from matplotlib import font_manager
 
 
 with open(r'results\merged-results.json', 'r') as f:
@@ -27,7 +29,7 @@ for i in data:
     instances.add(data[i]["instance"])
 
 res_per_alg = {i:{"num_instances":0,"num_feasible_found":0,"num_optimal":0,"ind":0, "rand_time_of_proof":[],"proved_over_time_time":[],"proved_over_time_solved":[]} for i in algs}
-res_i = {i:{"instance":"","alg":"","nodes":0,"first_primal":0,"ttfs":0,"first_primal_gap":0,"primal":0,"dual":0,"time":0,"mem":0,"primal_integral":0,"expanded":0,"generated":0} for i in data}
+res_i = {i:{"instance":"","alg":"","nodes":0,"first_primal":0,"ttfs":0,"first_primal_gap":0,"primal":0,"dual":0,"time":0,"mem":0,"primal_integral":0,"expanded/fails/iters":0,"generated/branches/nodes":0} for i in data}
 res_per_inst = {i:{"best_primal":0} for i in instances}
 
 for j,i in enumerate(res_per_alg.keys()):
@@ -42,8 +44,19 @@ for i in data.keys():
     res_i[i]["primal"] = data[i]["best_primal"]
     res_i[i]["dual"] = data[i]["best_dual"]
     res_i[i]["time"] = data[i]["time"]
-    # res_i[i]["expanded"] = data[i]["expanded"]
-    # res_i[i]["generated"] = data[i]["generated"]
+
+    
+
+    if "MIP" in alg:
+        res_i[i]["expanded/fails/iters"] = data[i]["iterations"]
+        res_i[i]["generated/branches/nodes"] = data[i]["explored"]
+    elif "CP" in alg:
+        res_i[i]["expanded/fails/iters"] = data[i]["fails"]
+        res_i[i]["generated/branches/nodes"] = data[i]["branches"]
+    else:
+        res_i[i]["expanded/fails/iters"] = data[i]["expanded"]
+        res_i[i]["generated/branches/nodes"] = data[i]["generated"]
+
     res_i[i]["nodes"] = data[i]["nodes"]
 
     if (data[i]["optimal"] or data[i]["infeasible"]) and "random" in inst:
@@ -122,9 +135,8 @@ res_alg_pd = pd.DataFrame.from_dict(res_per_alg,)
 res_alg_df = res_alg_pd.transpose()
 res_alg_df = res_alg_df.reset_index().set_index('ind')
 
-print(res_per_alg)
+# print(res_per_alg)
 
-# res_df.to_csv("res3.csv",sep=',')
 # 
 # print(res_alg_df)
 # print(res_df)
@@ -156,10 +168,23 @@ for (i,ind) in order:
 # res_alg_df = res_alg_df.sort_values(['num_feasible_found'])
 # sns.barplot(res_alg_df,x="index",y="num_feasible_found")
 
+
+font_path = r"C:\Users\Daniel\Downloads\lm\lm\fonts\opentype\public\lm\lmroman12-regular.otf"  # Your font path goes here
+font_manager.fontManager.addfont(font_path)
+prop = font_manager.FontProperties(fname=font_path)
+
+plt.rcParams['font.family'] = 'Latin Modern Roman'
+plt.rcParams['font.sans-serif'] = prop.get_name()
+
+# print([f.name for f in matplotlib.font_manager.fontManager.ttflist])
+
+# res_df.to_csv("res5.csv",sep=',')
+
+plt.rcParams["font.family"] = "Latin Modern Roman"
 plt.title("Instances Proven Over Time")
 plt.xlabel("Time (s)")
 plt.ylabel("Number of Instances Proven (Optimal or Infeasible)")
-plt.legend(bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
+plt.legend(["CP Interval Add", "CP Interval Del", "CP Rank Add", "CP Rank Del", "DIDP Add", "DIDP Del", "MIP Add", "MIP Del"],bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
 
 plt.show()
 

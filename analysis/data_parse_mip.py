@@ -30,7 +30,7 @@ for instance in [f for f in os.listdir(results_folder) if "MIP" in f]:
         if "===INSTANCE START" in l:
             j_val += 1
             i_name = l.split(" ")[1][:-6]
-            instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"hit_memory_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+            instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"hit_memory_limit":False,"best_dual":0,"best_primal":0,"explored":0,"iterations":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
 
             cont = False
             empty_counter = 0
@@ -95,6 +95,13 @@ for instance in [f for f in os.listdir(results_folder) if "MIP" in f]:
             instances[j_val]["nodes"] = nodes
         elif "Model is infeasible" in l:
             instances[j_val]["infeasible"] = True
+        elif "Explored" in l:
+            line = l.split(" ")
+            explored = int(line[1])
+            iterations = int(line[3][1:])
+            instances[j_val]["explored"] = explored
+            instances[j_val]["iterations"] = iterations
+
         elif "Optimal" in l:
             instances[j_val]["optimal"] = True
         elif "Memory limit reached" in l:

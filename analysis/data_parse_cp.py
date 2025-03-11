@@ -52,7 +52,7 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
         if "===INSTANCE" in l:
             j_val += 1
             i_name = l.split(" ")[1][:-6]
-            instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+            instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"branches":0,"fails":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
 
         elif "Initial process time" in l:
             time = float(l.split(" ")[6][:-1])
@@ -86,6 +86,15 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
             dual = l.split(" ")
             dual = [float(s) for s in dual if isfloat(s)][0]*obj_mult
             instances[j_val]["best_dual"] = dual
+        elif "Number of branches" in l:
+            num_branches = int(l.split(" ")[-1].strip())
+            instances[j_val]["branches"] = num_branches
+            print(num_branches)
+
+        elif "Number of fails" in l:
+            num_fails = int(l.split(" ")[-1].strip())
+            instances[j_val]["fails"] = num_fails
+            print(num_fails)
         elif "Total memory usage" in l:
             if "GB" in l:
                 mem_mult = 1000

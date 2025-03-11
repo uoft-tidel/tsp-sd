@@ -24,7 +24,7 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
                 nodes = int("".join(nodes))
             
             instance_lookup[j_val] = i_val #in order
-            instances[i_val] = {"instance":i_name,"algorithm":"","nodes":nodes,"beam_size":{"size":[],"expanded":[],"time":[]},"dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"expanded":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[]}
+            instances[i_val] = {"instance":i_name,"algorithm":"","nodes":nodes,"beam_size":{"size":[],"expanded":[],"time":[]},"dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"expanded":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"expanded":0,"generated":0,"infeasible":False,"optimal":False,"time":0,"transitions":[]}
             i_val += 1
             j_val += 1
 
