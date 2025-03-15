@@ -88,7 +88,7 @@ if __name__ == "__main__":
         # Create variables
 
         x = m.addVars(distances.keys(), obj = distances, vtype = GRB.BINARY, name="x")
-        last_edge = m.addVars(dist_dict_last.keys(), obj = dist_dict_last, vtype = GRB.BINARY, name="last_edge")
+        last_edge = m.addVars(dist_dict_last.keys(), obj = 0, vtype = GRB.BINARY, name="last_edge")
 
 
         #z = m.addVars(potential_start_nodes, vtype=GRB.CONTINUOUS, lb = 0, ub = 1, name="xnor")
@@ -131,8 +131,8 @@ if __name__ == "__main__":
 
             #DEL
             for [n1, n2] in dels:
-                m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in [z[2] for z in x.keys() if z[0] == i and z[1] == j] for j in nodes if i != j), name="del_1")
-                m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in [z[2] for z in x.keys() if z[0] == i and z[1] == j] for j in nodes if i != j), name="del_2")
+                m.addConstr(gp.quicksum(t*x[n1, n2,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in list(range(n))  for j in nodes if (j,i,t) in x.keys()), name=f"del_1_from_{n1}_to_{n2}_bc_{i}")
+                m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) <= gp.quicksum(t*x[j, i,t] for t in list(range(n)) for j in nodes if (j,i,t) in x.keys()), name=f"del_2_from_{n1}_to_{n2}_bc_{i}")
                 # m.addConstr(gp.quicksum(t*x[n2, n1,t] for t in times) - gp.quicksum(t*x[j, i,t] for t in times for j in nodes if i != j) <= n  ,name="del_first/last")
                 m.addConstr(last_edge[n1,n2] == 0)
                 m.addConstr(last_edge[n2,n1] == 0)
@@ -147,7 +147,7 @@ if __name__ == "__main__":
         for i in nodes[1:]:
             for j in [z for z in nodes[1:] if z != i]:
                 # print(x.keys())
-                m.addConstr(x['0',i,0] + gp.quicksum(x[k,j,n-1] for k in nodes[1:] if k != j) <= last_edge[i,j] + 1, name = f"last edge {i}-{j}")
+                m.addConstr(x['0',i,0] + gp.quicksum(x[k,j,n-1] for k in nodes[1:] if k != j) <= last_edge[j,i] + 1, name = f"last edge {i}-{j}")
 
         m.write("tspsd-toy.lp")
 
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     # timelim = "1800"
     # folderpath = r"C:\Users\pekar\Documents\GitHub\TSP-SD"
     instance_folder = os.path.join(folderpath,"instances","toy")
-    tlim = int(200)
+    tlim = int(1800)
 
     for instance in [i for i in os.listdir(instance_folder) if "toy." in i]:
 
