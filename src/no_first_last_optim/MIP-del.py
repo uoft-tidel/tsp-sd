@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
         nodes = [str(i) for i in range(len(instance["NODE_COORDS"])+1)]
         n = len(nodes)
-        times = [int(t) for t in range(1,n)]
+        times = [int(t) for t in range(1,n-1)]
         dist_dict = {(i,j,t): getDistance(instance["NODE_COORDS"][i],instance["NODE_COORDS"][j]) for i in instance["NODE_COORDS"].keys() for j in instance["NODE_COORDS"].keys() for t in times if i != j}
         # dist_dict = {(i,j,t): getDistance(instance["NODE_COORDS"][i],instance["NODE_COORDS"][j]) for i in instance["NODE_COORDS"].keys() for j in instance["NODE_COORDS"].keys() for t in times if i != j}
         
@@ -88,7 +88,7 @@ if __name__ == "__main__":
         # Create variables
 
         x = m.addVars(distances.keys(), obj = distances, vtype = GRB.BINARY, name="x")
-        last_edge = m.addVars(dist_dict_last.keys(), obj = 0, vtype = GRB.BINARY, name="last_edge")
+        last_edge = m.addVars(dist_dict_last.keys(), obj = dist_dict_last, vtype = GRB.BINARY, name="last_edge")
 
 
         #z = m.addVars(potential_start_nodes, vtype=GRB.CONTINUOUS, lb = 0, ub = 1, name="xnor")
@@ -106,8 +106,8 @@ if __name__ == "__main__":
         m.addConstr(gp.quicksum(last_edge) == 1)
 
         #each node visited once
-        for i in nodes:
-            m.addConstr(gp.quicksum(x[i,j,t] for j in nodes[1:] for t in [z[2] for z in x.keys() if z[0] == i and z[1] == j] if i != j) == 1, name=f"each node visited once - {i}")
+        for i in nodes[1:]:
+            m.addConstr(gp.quicksum(x[j,i,t] for j in nodes for t in [z[2] for z in x.keys() if z[1] == i and z[0] == j] if i != j) == 1, name=f"each node visited once - {i}")
 
         for t in times:
             for i in nodes[1:]:
@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
 
         m.addConstr(gp.quicksum(x['0', j,0] for j in nodes[1:]) == 1, name=f"each time one node - {0}")
-        for t in times[1:]:
+        for t in times:
             m.addConstr(gp.quicksum(x[i, j,t] for i in nodes[1:] for j in nodes[1:] if i != j) == 1, name=f"each time one node - {t}")
 
         #m.write(r"C:\Users\pekar\OneDrive - University of Toronto\Masters\Masters\Code\TSP-ED\test3_2.lp")
@@ -147,7 +147,7 @@ if __name__ == "__main__":
         for i in nodes[1:]:
             for j in [z for z in nodes[1:] if z != i]:
                 # print(x.keys())
-                m.addConstr(x['0',i,0] + gp.quicksum(x[k,j,n-1] for k in nodes[1:] if k != j) <= last_edge[j,i] + 1, name = f"last edge {i}-{j}")
+                m.addConstr(x['0',i,0] + gp.quicksum(x[k,j,n-2] for k in nodes[1:] if k != j) <= last_edge[j,i] + 1, name = f"last edge {i}-{j}")
 
         m.write("tspsd-toy.lp")
 
@@ -184,10 +184,10 @@ if __name__ == "__main__":
     # batch = "1"
     # timelim = "1800"
     # folderpath = r"C:\Users\pekar\Documents\GitHub\TSP-SD"
-    instance_folder = os.path.join(folderpath,"instances","toy")
+    instance_folder = os.path.join(folderpath,"instances","1")
     tlim = int(1800)
 
-    for instance in [i for i in os.listdir(instance_folder) if "toy." in i]:
+    for instance in [i for i in os.listdir(instance_folder) if "burma" in i]:
 
         fname = os.path.join(instance_folder, instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
