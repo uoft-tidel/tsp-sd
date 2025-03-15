@@ -7,19 +7,19 @@ import json
 import os 
 import os 
 import sys
-# import validate as vlad
+import validate as vlad
 # import visualize as viz
 
 if __name__ == "__main__":
 
-  script, timelim, batch = sys.argv
+  # script, timelim, batch = sys.argv
   folderpath = os.getcwd()
-  instance_folder = os.path.join(folderpath,"instances",batch)
+  instance_folder = os.path.join(folderpath,"instances","1")
   # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
-  tlim = int(timelim)
+  tlim = int(100)
 
 
-  for instance in [i for i in os.listdir(instance_folder) if "random" not in i]:
+  for instance in [i for i in os.listdir(instance_folder) if "ulysses" in i]:
     fname = os.path.join(instance_folder,instance)
     # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -79,15 +79,15 @@ if __name__ == "__main__":
     mdl = cp.CpoModel()
 
     ## Variables 
-    node = [mdl.integer_var(name="Node at Rank 0",domain = [i-1 for i in never_deleted_set])]
-    node += [mdl.integer_var(name=f"Node at Rank {i}",domain = [i for i in range(n)]) for i in range(1,n-1)]
-    node += [mdl.integer_var(name=f"Node at Rank {n-1}",domain = [i-1 for i in never_deleted_set])]
-    rank = []
-    for i in range(n):
-      if i+1 in never_deleted_set:
-        rank += [mdl.integer_var(name=f"Rank of Node {i}",domain = [i for i in range(n)])]
-      else:
-        rank += [mdl.integer_var(name=f"Rank of Node {i}",domain = [i for i in range(1,n-1)])]
+    # node = [mdl.integer_var(name="Node at Rank 0",domain = [i-1 for i in never_deleted_set])]
+    node = [mdl.integer_var(name=f"Node at Rank {i}",domain = [i for i in range(n)]) for i in range(n)]
+    # node += [mdl.integer_var(name=f"Node at Rank {n-1}",domain = [i-1 for i in never_deleted_set])]
+    rank = [mdl.integer_var(name=f"Rank of Node {i}",domain = [i for i in range(n)]) for i in range(n)]
+    # for i in range(n):
+    #   # if i+1 in never_deleted_set:
+    #   rank += [mdl.integer_var(name=f"Rank of Node {i}",domain = [i for i in range(n)])]
+      # else:
+      #   rank += [mdl.integer_var(name=f"Rank of Node {i}",domain = [i for i in range(1,n-1)])]
 
     ## Constraints
     mdl.add(mdl.inverse(rank,node))
@@ -108,15 +108,14 @@ if __name__ == "__main__":
         #ADDITION
         mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
 
+        #last node
+        mdl.add(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=n-1) #,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
 
-    for i in never_deleted_dict:
-      #need to do i-1, j-1 for 1 index to 0 index
-      mdl.add(mdl.if_then(rank[i-1] == 0, mdl.allowed_assignments(node[n-1],[j-1 for j in never_deleted_dict[i]])))
-      mdl.add(mdl.if_then(rank[i-1] == n-1, mdl.allowed_assignments(node[0],[j-1 for j in never_deleted_dict[i]])))
 
-    #TODO: WRONG
-    #w[i][j] = distance from i to j
-    #0-indexed
+    # for i in never_deleted_dict:
+    #   #need to do i-1, j-1 for 1 index to 0 index
+    #   mdl.add(mdl.if_then(rank[i-1] == 0, mdl.allowed_assignments(node[n-1],[j-1 for j in never_deleted_dict[i]])))
+    #   mdl.add(mdl.if_then(rank[i-1] == n-1, mdl.allowed_assignments(node[0],[j-1 for j in never_deleted_dict[i]])))
 
     mdl.add(cp.minimize(mdl.sum(mdl.element(w[i], mdl.element(node,mdl.mod(mdl.element(rank,i)+1,n))) for i in range(n))))
 
@@ -157,8 +156,13 @@ if __name__ == "__main__":
 
     solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
 
-    for i in range(len(node)):
+    sequence = [0] * (n)
+
+    for i in range(n):
+      sequence[-(i+1)] = sol.get_value(node[i])+1
       print(f"Rank {i} : Node {sol.get_value(node[i])}")
+
+    # reversed(sequence)
 
     # os.remove(r"C:\Users\pekar\Documents\GitHub\tsp-sd\cp-rank-soln")
     # sol.write("cp-rank-soln")
@@ -169,7 +173,7 @@ if __name__ == "__main__":
     #       solution_dict["sequence"][i[0]] = i[1]
     #       solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
 
-    # for i in traverse_last:
+    # # for i in traverse_last:
     #   if sol.get_value(traverse_last[i]) != ():
     #       solution_dict["sequence"][i[0]] = n+1
     #       solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
@@ -192,16 +196,16 @@ if __name__ == "__main__":
 
     # #checks sequence is valid (all locations visited)
     # print(solution_dict["sequence"])
-    # #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+    print(sequence)
+    # print("SEQUENCE CHECK: ",vlad.checkSequence(sequence))
 
     # #check starting is at 0
     # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
     # #check length makes sense
-    # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
-
+    print("LENGTH CHECK: ", vlad.checkLengthRANK(sequence,w))
     # #check don't go along removed edges
-    # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
+    print("DELETION CHECK: ", vlad.checkRemovedEdgesCPRank(sequence,Delete_Dict))
 
     #visualize as job shop
     #viz.tsp_as_jobshop(solver,traverse,14)

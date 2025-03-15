@@ -13,13 +13,13 @@ process = psutil.Process()
 # 
 if __name__ == "__main__":
 
-    script, timelim, batch = sys.argv
+    # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
     instance_folder = os.path.join(folderpath,"instances","1")
-    tlim = int(timelim)
+    tlim = int(1800)
 
 
-    for instance in os.listdir(instance_folder):
+    for instance in [i for i in os.listdir(instance_folder) if "burma" in i]:
         fname = os.path.join(instance_folder,instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -125,7 +125,7 @@ if __name__ == "__main__":
             )
             model.add_transition(visit)
 
-        for j in never_deleted_set:
+        for j in range(1, n):
             first_visit = dp.Transition(
                 name="first visit {}".format(j),
                 cost= travel_time[location, j] + dp.FloatExpr.state_cost(),
@@ -137,7 +137,7 @@ if __name__ == "__main__":
             )
             model.add_transition(first_visit)
 
-        for j in never_deleted_set:
+        for j in range(1, n):
             last_visit = dp.Transition(
                 name="return {}".format(j),
                 cost=travel_time[location, j] + travel_time[j, first] + dp.FloatExpr.state_cost(),

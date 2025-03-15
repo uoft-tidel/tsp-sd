@@ -9,7 +9,7 @@ import csv
 import sys
 import ntpath
 import datetime
-# import validate as vlad
+import validate as vlad
 # import visualize as viz
 
 if __name__ == "__main__":
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
     # instance_folder = os.path.join(folderpath,"instances",batch)
-    instance_folder = r"C:\Users\Daniel\Documents\GitHub\tsp-sd\instances\selected"
+    instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
     # tlim = int(timelim)
     opt = "ins"
     tlim = 60
@@ -67,7 +67,7 @@ if __name__ == "__main__":
           # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
           # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
 
-          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2))
+          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*10)
 
           return dij
 
@@ -104,13 +104,24 @@ if __name__ == "__main__":
       # valid_traverses = [[2,8],[8,11],[11,3],[3,14],[14,7],[7,6],[6,4],[4,12],[12,13],[13,1],[1,10],[10,5],[5,9]]
 
       traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-                  for i in range(n+1) for j in range(1,n+1) if (i != j and j-i != n+1)} #and j-i != n+1 and (i,j) not in never_deleted_edges
+                  for i in range(n+1) for j in range(1,n+2) if (i != j and j-i != n+1)} #and j-i != n+1 and (i,j) not in never_deleted_edges
       
+      traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
+                  for i in range(1,n+1) for j in range(1,n+1)}
+      
+      trav_last = mdl.interval_var(name='LAST', end = (0,upper_bound))
+
+      mdl.add(mdl.alternative(trav_last, [traverse_last[i,j] for [i,j] in traverse_last])) 
+      
+      mdl.add(mdl.if_then(mdl.logical_and(mdl.presence_of(traverse[0,i]),mdl.presence_of(traverse[j,n+1])),mdl.presence_of(traverse_last[i,j])) for (i,j) in traverse_last)
+      
+
+
       # traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
       #              for [i,j] in valid_traverses}
       
-      traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-                  for i in range(1,n+1) for j in range(1,n+1) if (i != j)}
+      # traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
+      #             for i in range(1,n+1) for j in range(1,n+1) if (i != j)}
       
       #for i in   
 
@@ -206,13 +217,16 @@ if __name__ == "__main__":
       # try:
 
       # Alternatives for enter and out intervals
-      mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(n+1)) 
-      mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i] + [traverse_last[i,j] for [k,j] in traverse_last if k == i]) for i in range(n+1))
-      # mdl.add(mdl.alternative(enter[n+1], [traverse_last[a] for a in traverse_last]))
-      # mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
+
+      mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+1)) 
+      mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i]) for i in range(1,n+1))
+      mdl.add(mdl.alternative(enter[n+1], [traverse[i,j] for [i,j] in traverse if j == n+1]))
+      mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
+
+      mdl.add(mdl.start_at_start(enter[n+1],trav_last))
 
       # Minimize termination date
-      mdl.add(cp.minimize(mdl.end_of(enter[n+1])))
+      mdl.add(cp.minimize(mdl.end_of(trav_last)))
 
       # mdl.export_model(r"cp_1.cpo")
 
@@ -252,24 +266,34 @@ if __name__ == "__main__":
 
       for i in traverse:
         if sol.get_value(traverse[i]) != ():
+            print(i)
             solution_dict["sequence"][i[0]] = i[1]
             solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
 
-      for i in traverse_last:
-        if sol.get_value(traverse_last[i]) != ():
-            solution_dict["sequence"][i[0]] = n+1
-            solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
+      # for i in traverse_last:
+      #   if sol.get_value(traverse_last[i]) != ():
+      #       print("last", i)
+      #       solution_dict["sequence"][i[0]] = n+1
+      #       solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
 
 
       for i in enter:
         if sol.get_value(enter[i]) != ():
+          print("enter", i)
           solution_dict["in"][i] = sol.get_value(enter[i])
 
       for i in out:
         if sol.get_value(out[i]) != ():
+          print("out", i)
           solution_dict["out"][i] = sol.get_value(out[i])
 
+      seq = []
       j = 0
+      while j < n+1:
+        seq.append(j)
+        j = solution_dict["sequence"][j]
+
+      print(seq)
       # for i in range(n):
         # j = solution_dict["sequence"][i]
         # solution_dict["seq_list"].append(j)
@@ -281,16 +305,16 @@ if __name__ == "__main__":
       # except Exception as e:
       #   print("NO LAST TRAVERSES")
       #   print(e)
-        #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+      print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
         #check starting is at 0
-        # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
+      print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
         #check length makes sense
-        # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
+      print("LENGTH CHECK: ", vlad.checkLength(solution_dict["sequence"],w))
 
         #check don't go along removed edges
-        # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
+      print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
 
         #visualize as job shop
         #viz.tsp_as_jobshop(solver,traverse,14)
