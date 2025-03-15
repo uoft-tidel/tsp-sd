@@ -149,7 +149,7 @@ if __name__ == "__main__":
                 # print(x.keys())
                 m.addConstr(x['0',i,0] + gp.quicksum(x[k,j,n-2] for k in nodes[1:] if k != j) <= last_edge[j,i] + 1, name = f"last edge {i}-{j}")
 
-        m.write("tspsd-toy.lp")
+        # m.write("tspsd-toy.lp")
 
         m.Params.TimeLimit = time_limit
         m.Params.SoftMemLimit = 8
