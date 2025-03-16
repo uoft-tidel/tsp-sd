@@ -6,9 +6,10 @@
 ## Sbatch configuration are used by Slurm to allocate resources. It throws an
 ## error if it cannot satisfy them.
 
+
 ## Each individual command given to the gnu `parallel` is a "task".
 
-## For sbatch parameter list, see https://slurm.schedmd.com/sbatch.html
+## For sbatch parameter list, https://slurm.schedmd.com/sbatch.html
 
 ## As of November-2024, each niagara node has 40 CPUs each with 2 threads, and
 ## when a node is reserved the total number of CPUs shows as 80 (threads).
@@ -27,11 +28,9 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=1:30:00
+#SBATCH --time=01:05:00
 #SBATCH --ntasks=22
 #SBATCH --ntasks-per-core=1
-#SBATCH --mem-per-cpu=8200
-
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -65,24 +64,34 @@
 
 module load CCEnv
 module load StdEnv/2023
+module load python/3.12.4
+module load rust/1.76.0
 module use /scinet/niagara/software/commercial/modules
-module use ~/modulefiles
-module load mycplex/22.1.1
+## module load gurobi/12.0.0
 
-source ~/env_docplex/bin/activate
+## Load the python virtual environment containing the installation of DIDP
+source ~/env_didp/bin/activate
 
 ## Gnu-parallel is responsible to run tasks in parallel.
 ##
 ## Comments on the below command:
-## 1. The paramter {1} takes value from the first list, {1..3}, and 
-##      parameter {2} from the second list, 10 20 30.
-## 2. Any number of lists can be given to gnu-parallel using the `:::` option.
-## 3. Gnu-parallel will run the `test_didp.py`` script in parallel for all 
-##      the values in cartesian product of the lists.
-## 4. The first `-j` specifies the number of tasks run in parallel on a node. 
-##    We set it to $SLURM_TASKS_PER_NODE which takes value from ntasks-per-node.
+## 1. The symbol {1} and {2} refers to items in the first and second lists: 
+##      {1..3} and 10 20 30.
+## 2. Any number of lists can be given as input to gnu-parallel.
+## 3. Gnu-parallel will run the test_didp.py script in parallel for all 
+##      combinations of '{1}' and '{2}'. 
+## 4. -j specifies the number of tasks run in parallel on a node.
 ## 5. `tee` directs a copy of stdout to the log file. 
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: CP-rank-add CP-rank-del CP-add CP-del ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9
+##python3 bin_wrapper.py -c "python3 run_models.py 1800 {1} {2}" -ht 1830 -hm 8100
+
+## node 1: didp, mip
+## node 2: cp models
+## CP-add CP-del CP-rank-add CP-rank-del 
+
+## parallel -j $SLURM_TASKS_PER_NODE "python3 bin_wrapper.py -c "python3 run_models.py 1800 {1} {2}" -ht 1830 -hm 8100 | tee results/run_{1}_{2}.txt" ::: CP-add CP-del CP-rank-add CP-rank-del ::: 1 2 3 4 5
+## 27000 ht
+parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: DIDP-add-nofirst DIDP-del-nofirst ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9
+

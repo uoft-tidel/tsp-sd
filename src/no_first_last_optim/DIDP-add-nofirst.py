@@ -6,7 +6,7 @@ import json
 import os 
 import copy
 import sys
-import validate as vlad
+# import validate as vlad
 # import visualize as viz
 import ntpath
 import psutil
@@ -14,22 +14,28 @@ process = psutil.Process()
 
 if __name__ == "__main__":
 
-    # script, timelim, batch = sys.argv
-    # timelim = "1800"
-    # batch = "1"
+    script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances","selected")
-    # instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles",batch)
-    tlim = 1800
+    instance_folder = os.path.join(folderpath,"instances","1")
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+    tlim = int(timelim)
+    # tlim = 60
 
-    for instance in [f for f in os.listdir(instance_folder) if "burma" in f]:
+    #     # # folderpath = os.getcwd()
+    # # instance_folder = os.path.join(folderpath,"instances",batch)
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+    # tlim = int(20)
+    # opt = "ins"
+
+
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
         print(instance)
         # if "burma14-3.1.json" == instance:
         fname = os.path.join(instance_folder, instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
         print("===INSTANCE START")
-        print("ALG: DIDP-ADD")
+        print("ALG: DIDP-ADD-nofirst")
         print("Instance Name: {}".format(ntpath.basename(fname)))
 
         with open(fname, 'r') as file:
@@ -215,19 +221,19 @@ if __name__ == "__main__":
         print("ALGORITHM END")
 
         #check don't go along removed edges
-        print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
-        print("Length Check: ", vlad.checkLength(sequence,c))
+        # print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
+        # print("Length Check: ", vlad.checkLength(sequence,c))
         #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 
         print("Best Bound: {}".format(solution.best_bound))
-        # print("Cost: {}".format(solution.cost))
-        # print("Expanded: {}".format(solution.expanded))
-        # print("Generated: {}".format(solution.generated))
-        # print("Infeasible: {}".format(solution.is_infeasible))
-        # print("Optimal: {}".format(solution.is_optimal))
+        print("Cost: {}".format(solution.cost))
+        print("Expanded: {}".format(solution.expanded))
+        print("Generated: {}".format(solution.generated))
+        print("Infeasible: {}".format(solution.is_infeasible))
+        print("Optimal: {}".format(solution.is_optimal))
         print("Time: {}".format(solution.time))
-        # print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
-        # print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
+        print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
+        print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
 
         print("---RESULTS END")
         

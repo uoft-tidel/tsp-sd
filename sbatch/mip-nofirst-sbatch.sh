@@ -27,11 +27,9 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=1:30:00
+#SBATCH --time=01:30:00
 #SBATCH --ntasks=22
 #SBATCH --ntasks-per-core=1
-#SBATCH --mem-per-cpu=8200
-
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -66,10 +64,10 @@
 module load CCEnv
 module load StdEnv/2023
 module use /scinet/niagara/software/commercial/modules
-module use ~/modulefiles
-module load mycplex/22.1.1
+module load gurobi/11.0.1
 
-source ~/env_docplex/bin/activate
+## Load the python virtual environment containing the installation of Gurobi
+source ~/env_gurobi/bin/activate
 
 ## Gnu-parallel is responsible to run tasks in parallel.
 ##
@@ -85,4 +83,4 @@ source ~/env_docplex/bin/activate
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: CP-rank-add CP-rank-del CP-add CP-del ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9
+parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: MIP-add-2-nofirst MIP-del-nofirst ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9

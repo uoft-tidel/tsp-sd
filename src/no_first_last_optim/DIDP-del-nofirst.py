@@ -13,18 +13,27 @@ process = psutil.Process()
 # 
 if __name__ == "__main__":
 
-    # script, timelim, batch = sys.argv
+    script, timelim, batch = sys.argv
     folderpath = os.getcwd()
     instance_folder = os.path.join(folderpath,"instances","1")
-    tlim = int(1800)
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+    tlim = int(timelim)
+    opt = "ins"
+    # tlim = 60
+
+    #     # # folderpath = os.getcwd()
+    # # instance_folder = os.path.join(folderpath,"instances",batch)
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+    # tlim = int(20)
+    # opt = "ins"
 
 
-    for instance in [i for i in os.listdir(instance_folder) if "burma" in i]:
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
         fname = os.path.join(instance_folder,instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
         print("===INSTANCE START")
-        print("ALG: DIDP-DEL")
+        print("ALG: DIDP-DEL-nofirst")
         print("Instance Name: {}".format(os.path.basename(fname)))
 
         with open(fname, 'r') as file:

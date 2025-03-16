@@ -30,7 +30,6 @@
 #SBATCH --time=1:30:00
 #SBATCH --ntasks=22
 #SBATCH --ntasks-per-core=1
-#SBATCH --mem-per-cpu=8200
 
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
@@ -85,4 +84,4 @@ source ~/env_docplex/bin/activate
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: CP-rank-add CP-rank-del CP-add CP-del ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9
+parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: CP-rank-add-nofirst CP-rank-del-nofirst CP-add-nofirst CP-del-nofirst ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9

@@ -16,10 +16,11 @@ if __name__ == "__main__":
 
     script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances",batch)
-    # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
+    instance_folder = os.path.join(folderpath,"instances","1")
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
     tlim = int(timelim)
     opt = "ins"
+    # tlim = 60
 
     #     # # folderpath = os.getcwd()
     # # instance_folder = os.path.join(folderpath,"instances",batch)
@@ -28,13 +29,13 @@ if __name__ == "__main__":
     # opt = "ins"
 
 
-    for instance in os.listdir(instance_folder):
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
 
       fname = os.path.join(instance_folder, instance)
       # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
       print("===INSTANCE START")
-      print("ALG: CP-DEL")
+      print("ALG: CP-ADD-nofirst")
       print("Instance Name: {}".format(ntpath.basename(fname)))
 
       # print(os.path.join(folderpath,"results",instance+"_log.out"))
@@ -88,7 +89,10 @@ if __name__ == "__main__":
       #w_i,j
       w = [[getDistance(instance,str(i),str(j), str(n+1)) for j in range(n+2)] for i in range(n+2)]
 
-      upper_bound = sum(max(w[i] for i in range(n+2)))
+      upper_bound = 0
+      for i in w:
+        upper_bound += max(i)
+      # upper_bound = sum(max(w[i] for i in range(n+2)))
 
       # Create model
       mdl = cp.CpoModel()
@@ -103,13 +107,24 @@ if __name__ == "__main__":
       # valid_traverses = [[2,8],[8,11],[11,3],[3,14],[14,7],[7,6],[6,4],[4,12],[12,13],[13,1],[1,10],[10,5],[5,9]]
 
       traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-                  for i in range(n+1) for j in range(1,n+1) if (i != j and j-i != n+1)} #and j-i != n+1 and (i,j) not in never_deleted_edges
+                  for i in range(n+1) for j in range(1,n+2) if (i != j and j-i != n+1)} #and j-i != n+1 and (i,j) not in never_deleted_edges
       
+      traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
+                  for i in range(1,n+1) for j in range(1,n+1) if i != j}
+      
+      trav_last = mdl.interval_var(name='LAST', end = (0,upper_bound))
+
+      mdl.add(mdl.alternative(trav_last, [traverse_last[i,j] for [i,j] in traverse_last])) 
+      
+      mdl.add(mdl.if_then(mdl.logical_and(mdl.presence_of(traverse[0,i]),mdl.presence_of(traverse[j,n+1])),mdl.presence_of(traverse_last[j,i])) for (i,j) in traverse_last)
+      
+
+
       # traverse = {(i,j) : mdl.interval_var(name='From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
       #              for [i,j] in valid_traverses}
       
-      traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-                  for i in range(1,n+1) for j in range(1,n+1) if (i != j)}
+      # traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
+      #             for i in range(1,n+1) for j in range(1,n+1) if (i != j)}
       
       #for i in   
 
@@ -191,105 +206,116 @@ if __name__ == "__main__":
 
       # # Must use edges j,k before they are deleted by going to node i
       for i in Delete_Dict.keys():
-        #  for [j,k] in Delete_Dict[i]:
-        #     if (int(j),int(k)) in traverse:
-        #       mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]))
-        #     if (int(k),int(j)) in traverse:
-              # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]))
         # mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
         # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+
+        mdl.add(mdl.presence_of(traverse_last[int(k),int(j)]) == 0 for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.presence_of(traverse_last[int(j),int(k)]) == 0 for [j,k] in Delete_Dict[i])
 
         mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
         mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
 
-      try:
+      # try:
 
-        # Alternatives for enter and out intervals
-        mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(n+1)) 
-        mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i] + [traverse_last[i,j] for [k,j] in traverse_last if k == i]) for i in range(n+1))
-        # mdl.add(mdl.alternative(enter[n+1], [traverse_last[a] for a in traverse_last]))
-        # mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
+      # Alternatives for enter and out intervals
 
-        # Minimize termination date
-        mdl.add(cp.minimize(mdl.end_of(enter[n+1])))
+      mdl.add(mdl.alternative(enter[i], [traverse[j,i] for [j,k] in traverse if k == i]) for i in range(1,n+1)) 
+      mdl.add(mdl.alternative(out[i], [traverse[i,j] for [k,j] in traverse if k == i]) for i in range(1,n+1))
+      mdl.add(mdl.alternative(enter[n+1], [traverse[i,j] for [i,j] in traverse if j == n+1]))
+      mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
 
-        # mdl.export_model(r"cp_1.cpo")
+      mdl.add(mdl.start_at_end(trav_last,enter[n+1]))
 
-        # Solve model
-        print('Solving model...')
-        #res = mdl.solve()
+      # Minimize termination date
+      mdl.add(cp.minimize(mdl.end_of(trav_last)))
 
-        solver = cp.CpoSolver(mdl, TimeLimit=tlim, Workers=1) #, TimeLimit=timelimit, Workers=1)
-        results_over_time = {"UB":[],"LB":[],"TIME":[]}
+      # mdl.export_model(r"cp_1.cpo")
 
-        is_solution_optimal = False
-        sol_status = ''
-        start_time = datetime.datetime.now()
-        
-        while not is_solution_optimal and sol_status != 'Ended':
-          sol = solver.search_next()
-          if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted':
-            # Solved timed out and could not find a feasible solution
-            solver.end_search()
-            sol_status = 'Ended'
+      # Solve model
+      print('Solving model...')
+      #res = mdl.solve()
 
-          results_over_time["UB"].append(sol.get_objective_value())
-          results_over_time["LB"].append(sol.get_objective_bounds())
-          results_over_time["TIME"].append(sol.get_solve_time())
+      solver = cp.CpoSolver(mdl, TimeLimit=tlim, Workers=1) #, TimeLimit=timelimit, Workers=1)
+      results_over_time = {"UB":[],"LB":[],"TIME":[]}
 
-          is_solution_optimal = sol.is_solution_optimal()
+      is_solution_optimal = False
+      sol_status = ''
+      start_time = datetime.datetime.now()
+      
+      while not is_solution_optimal and sol_status != 'Ended':
+        sol = solver.search_next()
+        if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted':
+          # Solved timed out and could not find a feasible solution
+          solver.end_search()
+          sol_status = 'Ended'
 
-    
-        # print(os.path.join(folderpath,"results","CP_"+instance+".csv"))
-        # with open(os.path.join(folderpath,"results","CP_"+instance+".csv"), 'w', newline='') as csvfile:
-          # spamwriter = csv.writer(csvfile, delimiter=',',
-                                  # quotechar='|', quoting=csv.QUOTE_MINIMAL)
-          # for row in range(len(results_over_time["TIME"])):
-            # spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
+        results_over_time["UB"].append(sol.get_objective_value())
+        results_over_time["LB"].append(sol.get_objective_bounds())
+        results_over_time["TIME"].append(sol.get_solve_time())
 
-        solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
+        is_solution_optimal = sol.is_solution_optimal()
 
-        for i in traverse:
-          if sol.get_value(traverse[i]) != ():
-              solution_dict["sequence"][i[0]] = i[1]
-              solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
+  
+      # print(os.path.join(folderpath,"results","CP_"+instance+".csv"))
+      # with open(os.path.join(folderpath,"results","CP_"+instance+".csv"), 'w', newline='') as csvfile:
+        # spamwriter = csv.writer(csvfile, delimiter=',',
+                                # quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        # for row in range(len(results_over_time["TIME"])):
+          # spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
 
-        for i in traverse_last:
-          if sol.get_value(traverse_last[i]) != ():
-              solution_dict["sequence"][i[0]] = n+1
-              solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
+      solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
+
+      for i in traverse:
+        if sol.get_value(traverse[i]) != ():
+            print(i, sol.get_value(traverse[i]))
+            solution_dict["sequence"][i[0]] = i[1]
+            solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
+
+      for i in traverse_last:
+        if sol.get_value(traverse_last[i]) != ():
+            print("last", i, sol.get_value(traverse_last[i]))
+            # solution_dict["sequence"][i[0]] = n+1
+            # solution_dict["traverse"][i[0]] = sol.get_value(traverse_last[i])
 
 
-        for i in enter:
-          if sol.get_value(enter[i]) != ():
-            solution_dict["in"][i] = sol.get_value(enter[i])
+      for i in enter:
+        if sol.get_value(enter[i]) != ():
+          print("enter", i, sol.get_value(enter[i]))
+          solution_dict["in"][i] = sol.get_value(enter[i])
 
-        for i in out:
-          if sol.get_value(out[i]) != ():
-            solution_dict["out"][i] = sol.get_value(out[i])
+      for i in out:
+        if sol.get_value(out[i]) != ():
+          # print("out", i)
+          solution_dict["out"][i] = sol.get_value(out[i])
 
-        j = 0
-        # for i in range(n):
-          # j = solution_dict["sequence"][i]
-          # solution_dict["seq_list"].append(j)
+      seq = []
+      j = 0
+      while j < n+1:
+        seq.append(j)
+        j = solution_dict["sequence"][j]
 
-        # print(solution_dict["seq_list"])
+      print(seq)
+      # for i in range(n):
+        # j = solution_dict["sequence"][i]
+        # solution_dict["seq_list"].append(j)
 
-        #checks sequence is valid (all locations visited)
-        print(solution_dict["sequence"])
-      except Exception as e:
-        print("NO LAST TRAVERSES")
-        print(e)
-        #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+      # print(solution_dict["seq_list"])
 
-        #check starting is at 0
-        # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
+      #checks sequence is valid (all locations visited)
+      # print(solution_dict["sequence"])
+      # except Exception as e:
+      #   print("NO LAST TRAVERSES")
+      # #   print(e)
+      # print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
-        #check length makes sense
-        # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
+      #   #check starting is at 0
+      # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
-        #check don't go along removed edges
-        # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
+      #   #check length makes sense
+      # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["sequence"],w))
+
+      #   #check don't go along removed edges
+      # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
 
         #visualize as job shop
         #viz.tsp_as_jobshop(solver,traverse,14)

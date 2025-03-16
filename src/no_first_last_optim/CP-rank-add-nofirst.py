@@ -7,24 +7,32 @@ import json
 import os 
 import os 
 import sys
-import validate as vlad
+# import validate as vlad
 # import visualize as viz
 
 if __name__ == "__main__":
 
-  # script, timelim, batch = sys.argv
+  script, timelim, batch = sys.argv
   folderpath = os.getcwd()
   instance_folder = os.path.join(folderpath,"instances","1")
-  # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
-  tlim = int(100)
+  # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+  tlim = int(timelim)
+  opt = "ins"
+  # tlim = 60
+
+    #     # # folderpath = os.getcwd()
+    # # instance_folder = os.path.join(folderpath,"instances",batch)
+    # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
+    # tlim = int(20)
+    # opt = "ins"
 
 
-  for instance in [i for i in os.listdir(instance_folder) if "ulysses" in i]:
+  for instance in [i for i in os.listdir(instance_folder) if batch in i]:
     fname = os.path.join(instance_folder,instance)
     # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
     print("===INSTANCE START")
-    print("ALG: CP-RANK-DEL")
+    print("ALG: CP-RANK-ADD-nofirst")
     print("Instance Name: {}".format(os.path.basename(fname)))
 
     with open(fname, 'r') as file:
@@ -56,7 +64,7 @@ if __name__ == "__main__":
 
     # Number of locations
     n = len(instance["NODE_COORDS"].keys())
-    tlim = n*10
+    tlim = int(timelim)
 
     deleted_edges = set((int(i),int(j)) for k in Delete_Dict.values() for [i,j] in k)
     
@@ -103,10 +111,10 @@ if __name__ == "__main__":
       for [j,k] in Delete_Dict[i]:
 
         #DELETION
-        mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]<=rank[int(i)-1],rank[int(k)-1]<=rank[int(i)-1])))
+        # mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]<=rank[int(i)-1],rank[int(k)-1]<=rank[int(i)-1])))
         
         #ADDITION
-        # mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
+        mdl.add(mdl.logical_or(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=1,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
 
         #last node
         mdl.add(mdl.abs(rank[int(j)-1]-rank[int(k)-1])!=n-1) #,mdl.logical_and(rank[int(j)-1]>=rank[int(i)-1],rank[int(k)-1]>=rank[int(i)-1])))
@@ -203,9 +211,9 @@ if __name__ == "__main__":
     # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
     # #check length makes sense
-    print("LENGTH CHECK: ", vlad.checkLengthRANK(sequence,w))
+    # print("LENGTH CHECK: ", vlad.checkLengthRANK(sequence,w))
     # #check don't go along removed edges
-    print("DELETION CHECK: ", vlad.checkRemovedEdgesCPRank(sequence,Delete_Dict))
+    # print("DELETION CHECK: ", vlad.checkRemovedEdgesCPRank(sequence,Delete_Dict))
 
     #visualize as job shop
     #viz.tsp_as_jobshop(solver,traverse,14)

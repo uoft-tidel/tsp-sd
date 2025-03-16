@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles",batch)
     tlim = 1800
 
-    for instance in [f for f in os.listdir(instance_folder) if "berlin52-10.4" in f]:
+    for instance in [f for f in os.listdir(instance_folder) if "burma" in f]:
         print(instance)
         # if "burma14-3.1.json" == instance:
         fname = os.path.join(instance_folder, instance)
@@ -206,8 +206,9 @@ if __name__ == "__main__":
         # sequence = [21,30,29,11,13,14,12,48,24,35,25,9,32,8,27,45,34,51,37,28,36,20,1,38,23,39,22,52,4,44,46,7,5,43,41,50,2,26,6,42,47,49,3,19,18,15,17,40,33,31,10,16]
 
         # sequence = [21,11,29,24,8,14,9,25,35,13,30,12,48,32,27,45,34,51,37,28,36,20,1,38,23,39,22,52,4,44,46,7,5,43,41,50,2,26,6,42,47,49,3,19,18,15,17,40,33,31,10,16]
+        sequence = [3, 2, 8, 11, 9, 7, 6, 14, 5, 4, 12, 13, 1, 10]
         
-        sequence = list(reversed(sequence))
+        # sequence = list(reversed(sequence))
         sequence = [str(i) for i in sequence]
 
         print("ALGORITHM END")
