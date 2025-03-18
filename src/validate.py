@@ -56,7 +56,6 @@ def checkRemovedEdgesDIDP(sequence_list, delete_dict):
   if (prev_node, cur_node) not in removed_edges and (cur_node, prev_node) not in removed_edges:
     return True
   else:
-    print("LAST ARC FAIL")
     return False
 
   # i = 0

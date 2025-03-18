@@ -1,0 +1,1095 @@
+
+The following have been reloaded with a version change:
+  1) mii/1.1.1 => mii/1.1.2
+
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: random-10-0.00-0.json
+NO LAST TRAVERSES
+Argument 'array' should be a array of interval variables
+time limit is: 1800
+model used is: CP-add
+batch num is: random-10-0.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: random-10-1.30-0.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 117 variables, 310 constraints
+ ! Presolve      : 4 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.21s (0.21s extraction + 0.00s propagation)
+ !  . Log search space  : 947.6 (before), 947.6 (after)
+ !  . Memory usage      : 892.4 kB (before), 892.4 kB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0        117                 -
+ + New bound is 0
+ ! ----------------------------------------------------------------------------
+ ! Search completed, model has no solution.
+ ! Best bound             : 0
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 0
+ ! Number of fails        : 1
+ ! Total memory usage     : 1.4 MB (1.3 MB CP Optimizer + 0.1 MB Concert)
+ ! Time spent in solve    : 0.21s (0.00s engine + 0.21s extraction)
+ ! ----------------------------------------------------------------------------
+{1: 10, 2: 10, 3: 10, 4: 11, 5: 10, 6: 10, 7: 10, 8: 11, 9: 10, 10: 9, 0: 4}
+time limit is: 1800
+model used is: CP-add
+batch num is: random-10-1.30-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: random-10-2.50-0.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 125 variables, 242 constraints
+ ! Presolve      : 12 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.21s (0.21s extraction + 0.00s propagation)
+ !  . Log search space  : 224.5 (before), 224.5 (after)
+ !  . Memory usage      : 917.1 kB (before), 917.1 kB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0        125                 -
+ + New bound is 124
+                     1000         19              0 != startOf(From:10_To:2)
+                     2000         22              5 != startOf(From:9_To:8)
+                     3000         19                  !presenceOf(From:7_To:8)
+ ! ----------------------------------------------------------------------------
+ ! Search completed, model has no solution.
+ ! Best bound             : 124
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 3320
+ ! Number of fails        : 1651
+ ! Total memory usage     : 1.6 MB (1.6 MB CP Optimizer + 0.1 MB Concert)
+ ! Time spent in solve    : 0.71s (0.50s engine + 0.21s extraction)
+ ! Search speed (br. / s) : 6640.0
+ ! ----------------------------------------------------------------------------
+{1: 10, 2: 10, 3: 11, 4: 11, 5: 11, 6: 11, 7: 10, 8: 11, 9: 10, 10: 11, 0: 10}
+time limit is: 1800
+model used is: CP-add
+batch num is: random-10-2.50-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: burma14-3.1.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 221 variables, 624 constraints
+ ! Presolve      : 8 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.25s (0.25s extraction + 0.00s propagation)
+ !  . Log search space  : 289.7 (before), 289.7 (after)
+ !  . Memory usage      : 1.3 MB (before), 1.3 MB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0        221                 -
+ + New bound is 9
+ *            41      526  0.36s               (gap is 78.05%)
+              41     1000          7        F         !presenceOf(From:14_To:6)
+              41     2000         34        F          presenceOf(From:3_To:13)
+              41     3000         34        F          presenceOf(From:14_To:6)
+              41     4000         34                  !presenceOf(From:6_To:7)
+              41     5000         34                   presenceOf(From:2_To:8)
+              41     6000         29              2 != startOf(From:2_To:8)
+              41     7000         31        F          presenceOf(From:3_To:9)
+              41     8000         29        F     0  = startOf(From:5_To:2)
+              41     9000         39        F          presenceOf(From:9_To:6)
+              41    10000         41             16 >= startOf(From:1_To:8)
+              41    11000         34                  !presenceOf(From:3_To:9)
+              41    12000         34        F          presenceOf(From:10_To:2)
+              41    13000         34              1 != startOf(From:8_To:7)
+              41    13328         39                 -
+ + New bound is 20 (gap is 51.22%)
+ ! Using failure-directed search.
+              41    14000          7                  !presenceOf(From:12_To:6)
+              41    14606          7             23 >= endOf(In:15)
+ + New bound is 23 (gap is 43.90%)
+              41    14777          7              9 >= startOf(In:1)
+ + New bound is 27 (gap is 34.15%)
+              41    14796          7              9 >= startOf(In:13)
+ + New bound is 29 (gap is 29.27%)
+ ! Time = 1.80s, Average fail depth = 6, Memory usage = 2.4 MB
+ ! Current bound is 29 (gap is 29.27%)
+ !          Best Branches  Non-fixed            Branch decision
+              41    14801          7             20 >= endOf(Out:1)
+ + New bound is 31 (gap is 24.39%)
+              41    14807          7              9 >= startOf(In:4)
+ + New bound is 32 (gap is 21.95%)
+              41    14810          7             15 >= startOf(In:13)
+ + New bound is 34 (gap is 17.07%)
+              41    14829          7             25 >= endOf(In:10)
+ + New bound is 36 (gap is 12.20%)
+              41    14844          7        F    11 >= endOf(In:14)
+ + New bound is 41 (gap is 0.00%)
+ ! ----------------------------------------------------------------------------
+ ! Search completed, 1 solution found.
+ ! Best objective         : 41 (optimal - effective tol. is 0)
+ ! Best bound             : 41
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 14845
+ ! Number of fails        : 8010
+ ! Total memory usage     : 2.5 MB (2.4 MB CP Optimizer + 0.1 MB Concert)
+ ! Time spent in solve    : 1.81s (1.56s engine + 0.25s extraction)
+ ! Search speed (br. / s) : 9577.4
+ ! ----------------------------------------------------------------------------
+{1: 10, 2: 8, 3: 2, 4: 12, 5: 3, 6: 4, 7: 14, 8: 7, 9: 11, 11: 9, 12: 13, 13: 1, 14: 6, 0: 5, 10: 15}
+time limit is: 1800
+model used is: CP-add
+batch num is: burma14-3.1
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: random-10-3.80-0.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 135 variables, 184 constraints
+ ! Presolve      : 8 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.27s (0.27s extraction + 0.00s propagation)
+ !  . Log search space  : 228.5 (before), 228.5 (after)
+ !  . Memory usage      : 916.0 kB (before), 916.0 kB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0        135                 -
+ + New bound is 75
+ *           497      538  0.32s               (gap is 84.91%)
+             497     1000          8        F         !presenceOf(From:7_To:8)
+ *           474     1741  0.36s               (gap is 84.18%)
+             474     2000          8        F          presenceOf(From:7_To:4)
+             474     3000          8        F          presenceOf(From:4_To:9)
+             474     4000          9        F    19  = startOf(From:1_To:9)
+             474     5000          9        F         !presenceOf(From:8_To:4)
+             474     6000          9        F         !presenceOf(From:1_To:2)
+             474     7000         11                  !presenceOf(From:2_To:4)
+             474     8000          8              0 != startOf(From:4_To:1)
+             474     9000          8        F         !presenceOf(From:1_To:4)
+             474    10000          8                   presenceOf(From:1_To:3)
+             474    10179          9                 -
+ + New bound is 129 (gap is 72.78%)
+ ! Using failure-directed search.
+             474    11000          8                  !presenceOf(From:5_To:7)
+             474    12000          9        F          presenceOf(From:9_To:7)
+             474    13000          9        F     0  = startOf(From:0_To:5)
+             474    14000          9        F         !presenceOf(From:1_To:4)
+             474    15000          9        F    40  = startOf(From:4_To:1)
+             474    16000          9                  !presenceOf(From:8_To:7)
+ ! Time = 1.38s, Average fail depth = 7, Memory usage = 1.7 MB
+ ! Current bound is 129 (gap is 72.78%)
+ !          Best Branches  Non-fixed            Branch decision
+             474    17000          9                  !presenceOf(From:3_To:4)
+             474    18000          8                  !presenceOf(From:3_To:7)
+             474    19000          9                  !presenceOf(LAST From:10_To:2)
+             474    20000         35        F   176 <= startOf(In:10)
+             474    21000         35        F    50 <= startOf(In:10)
+             474    21036         54            293 <= startOf(From:6_To:3)
+ + New bound is 148 (gap is 68.78%)
+             474    21642         54            102 >= startOf(In:11)
+ + New bound is 167 (gap is 64.77%)
+             474    21962         54            206 >= endOf(In:11)
+ + New bound is 206 (gap is 56.54%)
+             474    22000         54        F   202 <= endOf(Out:3)
+             474    23000         61        F   120 <= endOf(In:2)
+             474    24000         53        F   157 <= endOf(In:10)
+             474    24508         41            159 >= startOf(In:11)
+ + New bound is 208 (gap is 56.12%)
+             474    25000         41        F   164 <= endOf(In:8)
+             474    26000         52        F    76 <= endOf(In:9)
+             474    27000         19        F    66 <= startOf(In:9)
+             474    28000         22        F   272 <= endOf(In:9)
+             474    29000         20        F   196 <= startOf(In:8)
+             474    30000         18            253 >= endOf(Out:9)
+             474    31000         24        F    99 >= endOf(In:8)
+             474    31445         24            240 <= startOf(From:10_To:9)
+ + New bound is 219 (gap is 53.80%)
+ ! Time = 2.55s, Average fail depth = 6, Memory usage = 1.7 MB
+ ! Current bound is 219 (gap is 53.80%)
+ !          Best Branches  Non-fixed            Branch decision
+             474    31939         22            143 >= startOf(In:9)
+ + New bound is 418 (gap is 11.81%)
+             474    31941         22        F   176 <= startOf(In:9)
+ + New bound is 474 (gap is 0.00%)
+ ! ----------------------------------------------------------------------------
+ ! Search completed, 2 solutions found.
+ ! Best objective         : 474 (optimal - effective tol. is 0)
+ ! Best bound             : 474
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 31942
+ ! Number of fails        : 31204
+ ! Total memory usage     : 1.8 MB (1.7 MB CP Optimizer + 0.1 MB Concert)
+ ! Time spent in solve    : 2.58s (2.31s engine + 0.27s extraction)
+ ! Search speed (br. / s) : 13827.7
+ ! ----------------------------------------------------------------------------
+{1: 5, 2: 1, 3: 6, 4: 3, 5: 7, 7: 8, 8: 10, 9: 4, 10: 9, 0: 2, 6: 11}
+time limit is: 1800
+model used is: CP-add
+batch num is: random-10-3.80-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: ulysses22-5.5.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 535 variables, 1554 constraints
+ ! Presolve      : 20 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.27s (0.27s extraction + 0.00s propagation)
+ !  . Log search space  : 555.8 (before), 555.8 (after)
+ !  . Memory usage      : 2.8 MB (before), 2.8 MB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0        535                 -
+ + New bound is 16
+                     1000         31        F          presenceOf(From:8_To:21)
+                     2000         31        F          presenceOf(From:18_To:6)
+                     3000         27        F          presenceOf(From:9_To:4)
+                     4000         28        F          presenceOf(From:15_To:22)
+                     5000         31        F          presenceOf(From:19_To:10)
+                     6000         33        F          presenceOf(From:20_To:1)
+                     7000         26              0 != startOf(From:8_To:1)
+                     8000         34                   presenceOf(From:6_To:15)
+                     9000         22                  !presenceOf(From:20_To:1)
+                    10000         33        F         !presenceOf(From:13_To:2)
+                    11000         31                  !presenceOf(From:9_To:4)
+                    12000         26        F          presenceOf(From:10_To:22)
+                    13000         30                   presenceOf(From:9_To:13)
+                    14000         30                  !presenceOf(From:21_To:1)
+                    15000         30        F         !presenceOf(From:9_To:2)
+                    16000         26        F          presenceOf(From:22_To:20)
+                    17000         26                  !presenceOf(From:16_To:21)
+                    18000         26                  !presenceOf(From:10_To:7)
+                    19000         31                  !presenceOf(From:20_To:8)
+ ! Time = 6.79s, Average fail depth = 11, Memory usage = 4.5 MB
+ ! Current bound is 16
+ !          Best Branches  Non-fixed            Branch decision
+                    20000          1                   presenceOf(From:9_To:17)
+                    21000         40                   presenceOf(From:9_To:5)
+                    22000         39                  !presenceOf(From:10_To:13)
+ *           141    22147  7.24s               (gap is 88.65%)
+             141    23000         28                  !presenceOf(From:20_To:16)
+             141    24000         38                  !presenceOf(From:15_To:21)
+             141    25000         42                  !presenceOf(From:5_To:19)
+             141    26000         38        F          presenceOf(From:22_To:8)
+             141    27000         33        F          presenceOf(From:1_To:20)
+             141    28000         36                  !presenceOf(From:13_To:5)
+             141    29000         28                  !presenceOf(From:1_To:20)
+             141    30000         45              7 != startOf(From:1_To:8)
+             141    31000         37                  !presenceOf(From:5_To:4)
+             141    32000         35             35  = startOf(From:1_To:8)
+             141    33000         33                  !presenceOf(From:10_To:15)
+             141    34000         44        F          presenceOf(From:21_To:5)
+             141    35000         37        F          presenceOf(From:19_To:20)
+             141    36000         38        F          presenceOf(From:17_To:16)
+             141    37000         38        F         !presenceOf(From:21_To:4)
+             141    37054         51        F        -
+ + New bound is 37 (gap is 73.76%)
+ ! Time = 8.95s, Average fail depth = 11, Memory usage = 4.7 MB
+ ! Current bound is 37 (gap is 73.76%)
+ !          Best Branches  Non-fixed            Branch decision
+             141    38000          1                  !presenceOf(From:22_To:12)
+ ! Using failure-directed search.
+             141    39000          7                  !presenceOf(From:13_To:7)
+ *           125    39010  9.44s               (gap is 70.40%)
+             125    40000          7        F         !presenceOf(From:12_To:13)
+             125    41000         40                  !presenceOf(From:15_To:14)
+             125    42000          7        F     0  = startOf(From:2_To:11)
+             125    43000          7        F          presenceOf(From:10_To:16)
+             125    44000          7        F   103 <= startOf(Out:0)
+             125    44067        324             46 >= endOf(In:23)
+ + New bound is 46 (gap is 63.20%)
+             125    45000        255        F    65 <= endOf(In:9)
+             125    46000        259        F          presenceOf(From:4_To:12)
+             125    47000        259        F          presenceOf(From:18_To:6)
+             125    48000        241        F    40 <= endOf(In:14)
+             125    48166        273             48 >= endOf(In:23)
+ + New bound is 48 (gap is 61.60%)
+             125    49000        254        F   104 <= endOf(In:19)
+             125    49533        254             50 >= endOf(In:23)
+ + New bound is 50 (gap is 60.00%)
+             125    50000        254        F    69 <= startOf(In:21)
+             125    51000        202        F    24 <= endOf(In:13)
+             125    52000         43        F   117 <= startOf(In:2)
+             125    53000         21        F    65 <= startOf(In:1)
+ ! Time = 11.48s, Average fail depth = 8, Memory usage = 4.8 MB
+ ! Current bound is 50 (gap is 60.00%)
+ !          Best Branches  Non-fixed            Branch decision
+             125    54000         72             36 <= endOf(Out:7)
+ *           114    54543  11.63s              (gap is 56.14%)
+             114    55000         24              2 >= endOf(Out:1)
+             114    56000         24             19 >= endOf(In:9)
+             114    57000         22             38 <= endOf(In:1)
+             114    58000        134        F     0  = startOf(From:2_To:11)
+             114    59000          7        F          presenceOf(From:4_To:16)
+             114    60000         43        F    28 >= endOf(In:19)
+             114    61000         49        F         !presenceOf(From:7_To:14)
+             114    62000          7             15 <= endOf(In:9)
+             114    63000          7        F     8  = startOf(From:17_To:7)
+             114    64000         62        F    25 >= endOf(In:10)
+             114    65000          7             11 >= endOf(In:15)
+             114    66000          7                  !presenceOf(From:18_To:17)
+             114    67000          7        F    33 <= endOf(Out:18)
+             114    68000          7        F         !presenceOf(From:12_To:14)
+             114    69000         21        F    32 >= endOf(Out:8)
+             114    70000         22                   presenceOf(From:9_To:15)
+             114    71000         65             31 >= endOf(In:19)
+             114    72000         24        F    60 <= endOf(In:10)
+ ! Time = 13.79s, Average fail depth = 9, Memory usage = 4.8 MB
+ ! Current bound is 50 (gap is 56.14%)
+ !          Best Branches  Non-fixed            Branch decision
+             114    73000          7                   presenceOf(From:11_To:7)
+             114    73734          7             57 >= startOf(From:4_To:1)
+ + New bound is 61 (gap is 46.49%)
+             114    74000          7        F    66 <= endOf(In:4)
+             114    75000         24             32 >= endOf(In:12)
+             114    76000         16        F    66 <= endOf(In:4)
+             114    77000         20        F    94 >= startOf(In:3)
+             114    78000         14        F    67 >= endOf(Out:18)
+             114    79000          7        F    24 >= endOf(In:17)
+             114    80000         22        F    22 <= startOf(In:10)
+             114    81000          4             11 <= startOf(In:18)
+             114    82000          7        F          presenceOf(From:13_To:6)
+ *           113    82681  14.54s              (gap is 46.02%)
+             113    83000         10        F    20 >= startOf(Out:0)
+             113    84000         16             12 <= endOf(In:12)
+             113    85000         25             55 <= startOf(Out:0)
+             113    86000         25        F    24 <= endOf(In:18)
+             113    87000          6        F    12 <= endOf(In:14)
+             113    88000         26        F    19 >= endOf(In:17)
+             113    89000         26        F    35 >= endOf(Out:9)
+             113    90000         33        F     2  = startOf(From:12_To:20)
+ ! Time = 15.29s, Average fail depth = 9, Memory usage = 4.8 MB
+ ! Current bound is 61 (gap is 46.02%)
+ !          Best Branches  Non-fixed            Branch decision
+             113    91000         46             65 <= startOf(In:10)
+             113    92000         22             30 <= endOf(Out:12)
+             113    93000         18        F     3 <= endOf(Out:13)
+             113    94000         20        F    71 >= endOf(In:14)
+             113    95000         33             73 >= startOf(In:8)
+             113    96000         37        F    20 >= endOf(In:13)
+             113    97000          7        F    22 <= endOf(In:20)
+             113    98000         47             31 >= endOf(In:1)
+             113    99000          7        F          presenceOf(From:19_To:8)
+             113     100k         35        F     1 <= startOf(From:18_To:4)
+             113     101k         12        F    23 <= endOf(In:12)
+             113     102k         11             33 >= endOf(Out:9)
+             113     103k         11             26 >= startOf(From:12_To:14)
+ *           111     103k  16.57s              (gap is 45.05%)
+             111     104k          1        F    17 >= startOf(In:5)
+             111     105k         30        F    32 >= endOf(In:12)
+             111     106k         12        F    90 <= endOf(In:19)
+             111     107k          7             32 <= endOf(Out:9)
+             111     108k          7        F          presenceOf(From:8_To:4)
+             111     109k         58             29 <= endOf(In:10)
+ ! Time = 17.34s, Average fail depth = 10, Memory usage = 4.8 MB
+ ! Current bound is 61 (gap is 45.05%)
+ !          Best Branches  Non-fixed            Branch decision
+             111     110k          7        F    79 >= startOf(In:19)
+             111     111k         32             62 <= endOf(In:10)
+             111     112k          7        F     8 >= endOf(Out:12)
+             111     113k          8             16 <= endOf(In:9)
+             111     114k          7        F    30 >= endOf(Out:7)
+             111     115k         12             88 >= endOf(Out:1)
+             111     116k          7        F    55 <= startOf(In:4)
+             111     117k         40            101 >= endOf(Out:3)
+             111     118k          3             19 <= endOf(In:15)
+             111     119k         52             99 >= endOf(In:18)
+             111     120k         34                   presenceOf(From:5_To:14)
+             111     121k         34        F    11 <= endOf(Out:14)
+             111     122k         25                  !presenceOf(From:14_To:13)
+             111     123k         26             26 <= endOf(In:4)
+             111     123k          7              7 >= startOf(From:3_To:19)
+ + New bound is 65 (gap is 41.44%)
+             111     124k          7        F    40 >= startOf(In:10)
+             111     125k         36        F    64 >= startOf(In:7)
+             111     126k         26             41 <= endOf(Out:16)
+             111     127k         34                  !presenceOf(From:4_To:9)
+             111     127k         56             71 >= startOf(In:2)
+ + New bound is 80 (gap is 27.93%)
+ ! Time = 19.13s, Average fail depth = 10, Memory usage = 4.8 MB
+ ! Current bound is 80 (gap is 27.93%)
+ !          Best Branches  Non-fixed            Branch decision
+             111     127k         56             66 >= endOf(In:19)
+ + New bound is 86 (gap is 22.52%)
+             111     127k         56             71 <= startOf(Out:0)
+ + New bound is 90 (gap is 18.92%)
+             111     128k         37              1 >= startOf(From:14_To:13)
+             111     129k         34        F    31 <= endOf(In:7)
+             111     130k         37        F          presenceOf(From:11_To:20)
+             111     131k          7        F          presenceOf(From:14_To:13)
+ *           110     131k  19.52s              (gap is 18.18%)
+             110     132k          1        F     2 <= startOf(In:16)
+             110     133k          5        F    13 >= startOf(In:7)
+             110     134k          9        F    75 <= startOf(In:20)
+             110     135k         12             80 >= endOf(In:19)
+             110     136k          7        F    73 <= endOf(Out:4)
+             110     137k          7             20 >= endOf(Out:12)
+             110     138k         25             12 <= startOf(From:22_To:17)
+             110     139k          4        F    16 <= endOf(In:5)
+             110     140k          7             31 >= endOf(Out:5)
+             110     141k         41        F    68 >= endOf(Out:4)
+             110     142k         31        F    16 <= endOf(In:9)
+             110     143k          7             92 <= endOf(In:18)
+             110     143k         49             75 >= endOf(In:6)
+ + New bound is 94 (gap is 14.55%)
+ ! Time = 20.76s, Average fail depth = 10, Memory usage = 4.9 MB
+ ! Current bound is 94 (gap is 14.55%)
+ !          Best Branches  Non-fixed            Branch decision
+             110     143k         49             94 >= startOf(In:23)
+ + New bound is 98 (gap is 10.91%)
+             110     143k         49             49 <= startOf(From:18_To:12)
+ + New bound is 100 (gap is 9.09%)
+             110     144k         33        F    40 <= endOf(Out:7)
+             110     144k         49        F    62 >= endOf(In:14)
+ + New bound is 110 (gap is 0.00%)
+ ! ----------------------------------------------------------------------------
+ ! Search completed, 6 solutions found.
+ ! Best objective         : 110 (optimal - effective tol. is 0)
+ ! Best bound             : 110
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 144080
+ ! Number of fails        : 101511
+ ! Total memory usage     : 5.1 MB (4.9 MB CP Optimizer + 0.2 MB Concert)
+ ! Time spent in solve    : 20.86s (20.59s engine + 0.27s extraction)
+ ! Search speed (br. / s) : 6997.6
+ ! ----------------------------------------------------------------------------
+{1: 8, 2: 18, 3: 2, 4: 16, 5: 15, 6: 19, 7: 14, 8: 1, 9: 5, 10: 9, 11: 21, 12: 13, 13: 10, 14: 11, 15: 22, 16: 20, 17: 4, 19: 3, 20: 7, 21: 6, 22: 17, 0: 12, 18: 23}
+time limit is: 1800
+model used is: CP-add
+batch num is: ulysses22-5.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: berlin52-13.2.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 2882 variables, 9542 constraints
+ ! Presolve      : 32 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.17s (0.17s extraction + 0.00s propagation)
+ !  . Log search space  : 1722.1 (before), 1722.1 (after)
+ !  . Memory usage      : 12.7 MB (before), 12.7 MB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0       2882                 -
+ + New bound is 898
+                     2021        313        F         !presenceOf(From:14_To:19)
+                     3000         54                  !presenceOf(From:26_To:27)
+                     4000         54        F          presenceOf(From:42_To:12)
+                     5000         53        F         !presenceOf(From:10_To:29)
+                     6000         53                   presenceOf(From:46_To:18)
+                     7000         65        F         !presenceOf(From:33_To:4)
+                     8000         66                   presenceOf(From:38_To:27)
+                     9000         67                  !presenceOf(From:41_To:21)
+                    10000         51                  !presenceOf(From:51_To:15)
+                    11000         60                  !presenceOf(From:33_To:10)
+                    12000         68        F         !presenceOf(From:30_To:22)
+                    13000         75                   presenceOf(From:4_To:15)
+                    14000         65                  !presenceOf(From:23_To:31)
+                    15000         58        F          presenceOf(From:28_To:10)
+                    16000         66        F          presenceOf(From:5_To:50)
+                    17000         55                   presenceOf(From:46_To:36)
+                    18000         59                  !presenceOf(From:18_To:8)
+                    19000         64        F          presenceOf(From:42_To:18)
+                    20000         70        F          presenceOf(From:17_To:40)
+ ! Time = 53.75s, Average fail depth = 29, Memory usage = 21.8 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                    21000         58        F          presenceOf(From:3_To:17)
+                    22000         58                   presenceOf(From:44_To:29)
+                    23000         72                   presenceOf(From:27_To:51)
+                    24000         65        F          presenceOf(From:16_To:13)
+                    25000         65        F          presenceOf(From:27_To:6)
+                    26000         53                  !presenceOf(From:51_To:18)
+                    27000         46                  !presenceOf(From:33_To:40)
+                    28000         28        F         !presenceOf(From:47_To:42)
+                    29000         47                  !presenceOf(From:10_To:6)
+                    30000         50        F          presenceOf(From:34_To:45)
+                    31000         56                   presenceOf(From:2_To:42)
+                    32000         58                  !presenceOf(From:17_To:41)
+                    33000         54                  !presenceOf(From:46_To:39)
+                    34000         56                  !presenceOf(From:34_To:45)
+                    35000         51                   presenceOf(From:21_To:3)
+                    36000         54                  !presenceOf(From:43_To:45)
+                    37000         54                  !presenceOf(From:9_To:23)
+                    38000         50                  !presenceOf(From:34_To:43)
+                    39000         54                   presenceOf(From:46_To:20)
+                    40000         48                  !presenceOf(From:23_To:29)
+ ! Time = 145.45s, Average fail depth = 30, Memory usage = 21.7 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                    41000         47        F          presenceOf(From:46_To:39)
+                    42000         59        F          presenceOf(From:23_To:31)
+                    43000         61        F          presenceOf(From:31_To:41)
+                    44000         67                  !presenceOf(From:17_To:40)
+                    45000         58        F         !presenceOf(From:36_To:26)
+                    46000         62                  !presenceOf(From:33_To:39)
+                    47000         58        F          presenceOf(From:33_To:31)
+                    48000         54        F          presenceOf(From:34_To:3)
+                    49000         63        F          presenceOf(From:34_To:15)
+                    50000         62                  !presenceOf(From:37_To:43)
+                    51000         64                  !presenceOf(From:17_To:1)
+                    52000         66        F          presenceOf(From:10_To:19)
+                    53000         61                  !presenceOf(From:6_To:10)
+                    54000         61                  !presenceOf(From:12_To:29)
+                    55000         58        F          presenceOf(From:21_To:9)
+                    56000         62        F         !presenceOf(From:50_To:16)
+                    57000         65        F          presenceOf(From:24_To:10)
+                    58000         67                  !presenceOf(From:7_To:24)
+                    59000         68                   presenceOf(From:5_To:21)
+                    60000         68        F          presenceOf(From:21_To:33)
+ ! Time = 211.14s, Average fail depth = 30, Memory usage = 22.0 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                    61000         70        F         !presenceOf(From:43_To:5)
+                    62000         67        F         !presenceOf(From:21_To:5)
+                    63000         67        F          presenceOf(From:9_To:47)
+                    64000         80                  !presenceOf(From:35_To:43)
+                    65000         63        F          presenceOf(From:44_To:24)
+                    66000         66                  !presenceOf(From:9_To:32)
+                    67000         64        F         !presenceOf(From:45_To:47)
+                    68000         54        F         !presenceOf(From:50_To:44)
+                    69000         59        F          presenceOf(From:48_To:32)
+                    70000         66                   presenceOf(From:43_To:35)
+                    71000         56        F          presenceOf(From:33_To:5)
+                    72000         52        F          presenceOf(From:11_To:3)
+                    73000         55                  !presenceOf(From:2_To:17)
+                    74000         67        F          presenceOf(From:33_To:9)
+                    75000         64        F          presenceOf(From:44_To:31)
+                    76000         65                   presenceOf(From:23_To:49)
+                    77000         67                  !presenceOf(From:50_To:41)
+                    78000         58                  !presenceOf(From:30_To:20)
+                    79000         66        F          presenceOf(From:50_To:45)
+                    80000         62                  !presenceOf(From:30_To:42)
+ ! Time = 252.37s, Average fail depth = 30, Memory usage = 22.0 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                    81000         65                  !presenceOf(From:29_To:41)
+                    82000         60        F         !presenceOf(From:50_To:36)
+                    83000         64        F          presenceOf(From:10_To:16)
+                    84000         63        F          presenceOf(From:10_To:18)
+                    85000         64                  !presenceOf(From:31_To:23)
+                    86000         66                  !presenceOf(From:50_To:36)
+                    87000         68                  !presenceOf(From:10_To:23)
+                    88000         63                  !presenceOf(From:29_To:41)
+                    89000         66        F          presenceOf(From:2_To:42)
+                    90000         60        F          presenceOf(From:35_To:25)
+                    91000         58                   presenceOf(From:3_To:20)
+                    92000         58        F          presenceOf(From:24_To:28)
+                    93000         61        F          presenceOf(From:39_To:26)
+                    94000         67                   presenceOf(From:36_To:46)
+                    95000         79                  !presenceOf(From:52_To:9)
+                    96000        591        F          presenceOf(From:40_To:5)
+                    97000        593        F         !presenceOf(From:5_To:43)
+                    98000        546                  !presenceOf(From:5_To:18)
+                    99000         67                  !presenceOf(From:14_To:33)
+                     100k         53        F         !presenceOf(From:9_To:19)
+ ! Time = 438.80s, Average fail depth = 29, Memory usage = 22.0 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                     101k         57        F          presenceOf(From:30_To:42)
+                     102k         56                  !presenceOf(From:20_To:4)
+                     103k         62                  !presenceOf(From:40_To:7)
+                     104k         65                  !presenceOf(From:46_To:15)
+                     105k         58                   presenceOf(From:41_To:17)
+                     106k         54        F          presenceOf(From:17_To:46)
+                     107k         63        F         !presenceOf(From:17_To:46)
+                     108k         58        F          presenceOf(From:42_To:10)
+                     109k         69                   presenceOf(From:39_To:36)
+                     110k         56        F          presenceOf(From:38_To:9)
+                     111k         69                  !presenceOf(From:22_To:10)
+                     112k         59        F          presenceOf(From:36_To:8)
+                     113k         55        F          presenceOf(From:14_To:18)
+                     114k         70        F         !presenceOf(From:37_To:38)
+                     115k         65                  !presenceOf(From:31_To:20)
+                     116k         69                  !presenceOf(From:38_To:37)
+                     117k         70                  !presenceOf(From:44_To:36)
+                     118k         74        F          presenceOf(From:25_To:23)
+                     119k         72                  !presenceOf(From:46_To:7)
+                     120k         70        F          presenceOf(From:46_To:12)
+ ! Time = 661.29s, Average fail depth = 29, Memory usage = 22.1 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                     121k        762                  !presenceOf(From:39_To:10)
+                     122k        730                  !presenceOf(From:46_To:10)
+                     123k        728                   presenceOf(From:17_To:14)
+                     124k         63        F          presenceOf(From:10_To:23)
+                     125k         68                  !presenceOf(From:23_To:15)
+                     126k         63                  !presenceOf(From:1_To:25)
+                     127k         52                  !presenceOf(From:34_To:15)
+                     128k         43        F          presenceOf(From:38_To:18)
+                     129k         57                  !presenceOf(From:8_To:15)
+                     130k         63        F          presenceOf(From:16_To:24)
+                     131k         66        F          presenceOf(From:17_To:41)
+                     132k         74        F          presenceOf(From:36_To:37)
+                     133k         49                  !presenceOf(From:41_To:40)
+                     134k         48        F         !presenceOf(From:50_To:44)
+                     135k         49        F          presenceOf(From:28_To:17)
+                     136k         50        F         !presenceOf(From:50_To:8)
+                     137k         48        F          presenceOf(From:41_To:22)
+                     138k         52        F          presenceOf(From:1_To:21)
+                     139k         60        F          presenceOf(From:21_To:16)
+                     140k         51        F          presenceOf(From:28_To:10)
+ ! Time = 831.96s, Average fail depth = 29, Memory usage = 22.0 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                     141k         53        F         !presenceOf(From:27_To:45)
+                     142k         49                  !presenceOf(From:48_To:42)
+                     143k         53        F         !presenceOf(From:17_To:40)
+                     144k         54                   presenceOf(From:46_To:19)
+                     145k        418                  !presenceOf(From:42_To:10)
+                     146k         56        F          presenceOf(From:16_To:10)
+                     147k         48        F          presenceOf(From:27_To:39)
+                     148k         64                  !presenceOf(From:34_To:45)
+                     149k         64        F         !presenceOf(From:34_To:22)
+                     150k         66                  !presenceOf(From:41_To:22)
+                     151k         64        F          presenceOf(From:18_To:15)
+                     152k         64        F          presenceOf(From:25_To:15)
+                     153k         74        F          presenceOf(From:27_To:48)
+                     154k         68                  !presenceOf(From:27_To:44)
+                     155k        628        F          presenceOf(From:33_To:40)
+                     156k        598        F          presenceOf(From:32_To:23)
+                     157k        348                  !presenceOf(From:23_To:33)
+                     158k         77        F          presenceOf(From:42_To:20)
+                     159k         55                   presenceOf(From:44_To:41)
+                     160k         56                   presenceOf(From:16_To:50)
+ ! Time = 1102.10s, Average fail depth = 29, Memory usage = 22.3 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                     161k         66        F          presenceOf(From:43_To:45)
+                     162k         45                   presenceOf(From:7_To:3)
+                     163k         59        F          presenceOf(From:20_To:7)
+                     164k         62                  !presenceOf(From:36_To:40)
+                     165k         71        F          presenceOf(From:28_To:43)
+                     166k         57                  !presenceOf(From:35_To:39)
+                     167k         52                   presenceOf(From:34_To:15)
+                     168k         59                   presenceOf(From:16_To:50)
+                     169k         64        F          presenceOf(From:34_To:3)
+                     170k         61        F          presenceOf(From:12_To:27)
+                     171k         67        F          presenceOf(From:7_To:16)
+                     172k         67                   presenceOf(From:42_To:10)
+                     173k         57        F          presenceOf(From:39_To:16)
+                     174k         47                  !presenceOf(From:10_To:28)
+                     175k         59                   presenceOf(From:8_To:28)
+                     176k         63        F          presenceOf(From:7_To:16)
+                     177k         64                  !presenceOf(From:7_To:46)
+                     178k         63        F          presenceOf(From:32_To:44)
+                     179k         73                  !presenceOf(From:21_To:8)
+                     180k        599        F          presenceOf(From:11_To:7)
+ ! Time = 1260.21s, Average fail depth = 29, Memory usage = 22.3 MB
+ ! Current bound is 898
+ !          Best Branches  Non-fixed            Branch decision
+                     181k       1207        F          presenceOf(From:11_To:49)
+                     182k       1153        F          presenceOf(From:11_To:19)
+                     183k         61        F          presenceOf(From:16_To:10)
+                     184k         56        F          presenceOf(From:5_To:25)
+                     185k        469                  !presenceOf(From:9_To:28)
+                     186k        417        F          presenceOf(From:9_To:30)
+                     187k        440        F          presenceOf(From:9_To:18)
+                     188k        492        F          presenceOf(From:9_To:40)
+                     189k        415                  !presenceOf(From:9_To:28)
+                     190k        411                  !presenceOf(From:38_To:42)
+                     191k        468        F          presenceOf(From:47_To:38)
+                     192k        454                   presenceOf(From:14_To:38)
+                     193k        430                  !presenceOf(From:25_To:40)
+                     194k        373        F          presenceOf(From:39_To:42)
+                     195k        405        F          presenceOf(From:9_To:26)
+                     196k        357        F          presenceOf(From:49_To:42)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 898
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 196252
+ ! Number of fails        : 95405
+ ! Total memory usage     : 23.4 MB (22.3 MB CP Optimizer + 1.1 MB Concert)
+ ! Time spent in solve    : 1800.00s (1799.84s engine + 0.17s extraction)
+ ! Search speed (br. / s) : 109.0
+ ! ----------------------------------------------------------------------------
+{1: 52, 2: 53, 3: 53, 4: 52, 5: 53, 6: 53, 7: 53, 8: 52, 9: 53, 10: 53, 11: 53, 12: 53, 13: 52, 14: 53, 15: 53, 16: 53, 17: 53, 18: 53, 19: 53, 20: 53, 21: 53, 22: 53, 23: 53, 24: 53, 25: 53, 26: 53, 27: 53, 28: 53, 29: 53, 30: 53, 31: 53, 32: 53, 33: 53, 34: 53, 35: 53, 36: 52, 37: 53, 38: 53, 39: 52, 40: 53, 41: 52, 42: 53, 43: 53, 44: 52, 45: 53, 46: 52, 47: 53, 48: 52, 49: 53, 50: 52, 51: 53, 52: 53, 0: 52}
+time limit is: 1800
+model used is: CP-add
+batch num is: berlin52-13.2
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: eil101-27.5.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 10740 variables, 35001 constraints
+ ! Presolve      : 20 extractables eliminated
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 0.42s (0.42s extraction + 0.00s propagation)
+ !  . Log search space  : 3475.7 (before), 3475.7 (after)
+ !  . Memory usage      : 50.6 MB (before), 50.6 MB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0      10740                 -
+ + New bound is 39
+                     9521        969        F         !presenceOf(From:15_To:81)
+                    10000        651                   presenceOf(From:3_To:79)
+                    11000         69                   presenceOf(From:24_To:28)
+                    12000         64                   presenceOf(From:8_To:21)
+                    13000         63                  !presenceOf(From:4_To:11)
+                    14000        121                   presenceOf(From:6_To:68)
+                    15000         99        F          presenceOf(From:9_To:88)
+                    16000         96        F         !presenceOf(From:32_To:30)
+                    17000         95        F         !presenceOf(From:96_To:89)
+                    18000         52                   presenceOf(From:89_To:26)
+                    19000         86                  !presenceOf(From:16_To:101)
+                    20000         76        F          presenceOf(From:56_To:51)
+                    21000         95                   presenceOf(From:84_To:99)
+                    22000         74        F          presenceOf(From:26_To:30)
+                    23000         88                  !presenceOf(From:8_To:7)
+                    24000         54        F          presenceOf(From:25_To:40)
+                    25000         53        F          presenceOf(From:54_To:7)
+                    26000        110        F         !presenceOf(From:90_To:75)
+                    27000        149                  !presenceOf(From:8_To:36)
+ ! Time = 377.00s, Average fail depth = 64, Memory usage = 85.2 MB
+ ! Current bound is 39
+ !          Best Branches  Non-fixed            Branch decision
+                    28000         96                  !presenceOf(From:71_To:52)
+                    29000       2023        F          presenceOf(From:11_To:50)
+                    30000        106        F         !presenceOf(From:81_To:10)
+                    31000         78                   presenceOf(From:9_To:78)
+                    32000         73                  !presenceOf(From:58_To:23)
+                    33000         72                   presenceOf(From:72_To:74)
+                    34000         59        F          presenceOf(From:39_To:48)
+                    35000         95                  !presenceOf(From:60_To:58)
+                    36000         92                   presenceOf(From:32_To:30)
+                    37000         81                  !presenceOf(From:15_To:41)
+                    38000         74        F          presenceOf(From:16_To:3)
+                    39000         66        F          presenceOf(From:53_To:52)
+                    40000         78                  !presenceOf(From:99_To:9)
+                    41000        104                  !presenceOf(From:9_To:33)
+                    42000         82                   presenceOf(From:14_To:81)
+                    43000         79                   presenceOf(From:64_To:47)
+                    44000         82        F          presenceOf(From:94_To:30)
+                    45000         82                  !presenceOf(From:101_To:21)
+                    46000         87        F         !presenceOf(From:3_To:16)
+                    47000         78        F          presenceOf(From:88_To:9)
+ ! Time = 793.28s, Average fail depth = 64, Memory usage = 86.0 MB
+ ! Current bound is 39
+ !          Best Branches  Non-fixed            Branch decision
+                    48000         83                  !presenceOf(From:9_To:40)
+                    49000         82                   presenceOf(From:94_To:10)
+                    50000         83        F         !presenceOf(From:85_To:92)
+                    51000         81        F         !presenceOf(From:21_To:101)
+                    52000         74                  !presenceOf(From:98_To:62)
+                    53000         91                  !presenceOf(From:69_To:31)
+                    54000         73        F         !presenceOf(From:72_To:60)
+                    55000         67        F         !presenceOf(From:12_To:81)
+                    56000         79                  !presenceOf(From:2_To:84)
+                    57000         75                   presenceOf(From:89_To:19)
+                    58000         74        F         !presenceOf(From:52_To:69)
+                    59000         86                   presenceOf(From:35_To:88)
+                    60000         90        F          presenceOf(From:25_To:63)
+                    61000         86                   presenceOf(From:52_To:82)
+                    62000         82        F          presenceOf(From:73_To:37)
+                    63000         79                   presenceOf(From:79_To:77)
+                    64000         97        F          presenceOf(From:93_To:88)
+                    65000       2362                  !presenceOf(From:42_To:74)
+                    66000        962                  !presenceOf(From:10_To:64)
+                    67000        871                  !presenceOf(From:73_To:75)
+ ! Time = 1217.30s, Average fail depth = 65, Memory usage = 85.2 MB
+ ! Current bound is 39
+ !          Best Branches  Non-fixed            Branch decision
+                    68000        832                   presenceOf(From:86_To:17)
+                    69000         85        F          presenceOf(From:8_To:36)
+                    70000        105                  !presenceOf(From:40_To:52)
+                    71000        129                  !presenceOf(From:13_To:54)
+                    72000         79                  !presenceOf(From:1_To:55)
+                    73000         72                  !presenceOf(From:85_To:76)
+                    74000         86                   presenceOf(From:20_To:75)
+                    75000         84                  !presenceOf(From:15_To:41)
+                    76000         92        F          presenceOf(From:72_To:56)
+                    77000         83                   presenceOf(From:47_To:41)
+                    78000         89        F         !presenceOf(From:47_To:10)
+                    79000         98        F          presenceOf(From:92_To:5)
+                    80000         85                   presenceOf(From:92_To:45)
+                    81000         75                  !presenceOf(From:94_To:88)
+                    82000         75                  !presenceOf(From:14_To:7)
+                    83000       1658                  !presenceOf(From:39_To:70)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 39
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 83891
+ ! Number of fails        : 34222
+ ! Total memory usage     : 90.7 MB (86.5 MB CP Optimizer + 4.3 MB Concert)
+ ! Time spent in solve    : 1800.01s (1799.59s engine + 0.42s extraction)
+ ! Search speed (br. / s) : 46.6
+ ! ----------------------------------------------------------------------------
+{1: 102, 2: 102, 3: 102, 4: 102, 5: 102, 6: 102, 7: 102, 8: 102, 9: 102, 10: 102, 11: 102, 12: 102, 13: 102, 14: 102, 15: 102, 16: 102, 17: 102, 18: 102, 19: 102, 20: 102, 21: 102, 22: 102, 23: 102, 24: 102, 25: 102, 26: 102, 27: 102, 28: 102, 29: 102, 30: 102, 31: 102, 32: 102, 33: 102, 34: 102, 35: 102, 36: 102, 37: 102, 38: 101, 39: 102, 40: 102, 41: 102, 42: 102, 43: 102, 44: 102, 45: 102, 46: 102, 47: 102, 48: 102, 49: 102, 50: 102, 51: 102, 52: 102, 53: 102, 54: 102, 55: 102, 56: 102, 57: 102, 58: 102, 59: 102, 60: 102, 61: 102, 62: 102, 63: 102, 64: 101, 65: 102, 66: 102, 67: 101, 68: 102, 69: 102, 70: 102, 71: 102, 72: 102, 73: 102, 74: 102, 75: 102, 76: 102, 77: 102, 78: 102, 79: 102, 80: 102, 81: 102, 82: 102, 83: 102, 84: 102, 85: 102, 86: 102, 87: 101, 88: 102, 89: 102, 90: 102, 91: 102, 92: 102, 93: 102, 94: 102, 95: 102, 96: 102, 97: 102, 98: 102, 99: 102, 100: 102, 101: 102, 0: 101}
+time limit is: 1800
+model used is: CP-add
+batch num is: eil101-27.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: gr202-67.3.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 43771 variables, 113454 constraints
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 2.74s (2.73s extraction + 0.01s propagation)
+ !  . Log search space  : 7654.1 (before), 7654.1 (after)
+ !  . Memory usage      : 203.5 MB (before), 203.5 MB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0      43771                 -
+ + New bound is 0
+                    40212       3369        F         !presenceOf(From:186_To:143)
+                    41091       5097        F          presenceOf(From:128_To:127)
+                    43650      40547        F   228  = startOf(LAST From:198_To:202)
+                    44000      10347                  !presenceOf(From:114_To:24)
+                    45000      10793        F          presenceOf(From:109_To:98)
+                    46000        242        F          presenceOf(From:50_To:17)
+                    47000         55                  !presenceOf(From:49_To:42)
+                    48000       7742                  !presenceOf(From:114_To:101)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 0
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 48955
+ ! Number of fails        : 2190
+ ! Total memory usage     : 342.1 MB (324.7 MB CP Optimizer + 17.4 MB Concert)
+ ! Time spent in solve    : 1800.05s (1797.33s engine + 2.73s extraction)
+ ! Search speed (br. / s) : 27.2
+ ! ----------------------------------------------------------------------------
+{1: 203, 2: 203, 3: 203, 4: 203, 5: 203, 6: 203, 7: 203, 8: 203, 9: 203, 10: 203, 11: 203, 12: 203, 13: 203, 14: 203, 15: 203, 16: 203, 17: 203, 18: 203, 19: 203, 20: 203, 21: 203, 22: 203, 23: 203, 24: 203, 25: 203, 26: 203, 27: 203, 28: 203, 29: 203, 30: 203, 31: 203, 32: 203, 33: 203, 34: 203, 35: 203, 36: 203, 37: 203, 38: 203, 39: 203, 40: 203, 41: 203, 42: 203, 43: 203, 44: 203, 45: 203, 46: 203, 47: 203, 48: 203, 49: 203, 50: 203, 51: 203, 52: 203, 53: 203, 54: 203, 55: 203, 56: 203, 57: 203, 58: 203, 59: 203, 60: 203, 61: 203, 62: 203, 63: 203, 64: 203, 65: 203, 66: 203, 67: 203, 68: 203, 69: 203, 70: 203, 71: 203, 72: 203, 73: 203, 74: 203, 75: 203, 76: 203, 77: 203, 78: 203, 79: 203, 80: 203, 81: 203, 82: 203, 83: 203, 84: 203, 85: 203, 86: 203, 87: 203, 88: 203, 89: 203, 90: 203, 91: 203, 92: 203, 93: 203, 94: 203, 95: 203, 96: 203, 97: 203, 98: 203, 99: 203, 100: 203, 101: 203, 102: 203, 103: 203, 104: 203, 105: 203, 106: 203, 107: 203, 108: 203, 109: 203, 110: 203, 111: 203, 112: 203, 113: 203, 114: 203, 115: 203, 116: 203, 117: 203, 118: 203, 119: 203, 120: 203, 121: 203, 122: 203, 123: 203, 124: 203, 125: 203, 126: 203, 127: 203, 128: 203, 129: 203, 130: 203, 131: 203, 132: 203, 133: 203, 134: 203, 135: 203, 136: 203, 137: 203, 138: 203, 139: 203, 140: 203, 141: 203, 142: 203, 143: 203, 144: 203, 145: 203, 146: 203, 147: 203, 148: 203, 149: 203, 150: 203, 151: 203, 152: 203, 153: 203, 154: 203, 155: 203, 156: 203, 157: 203, 158: 203, 159: 203, 160: 203, 161: 203, 162: 203, 163: 203, 164: 203, 165: 203, 166: 203, 167: 203, 168: 203, 169: 203, 170: 203, 171: 203, 172: 203, 173: 203, 174: 203, 175: 203, 176: 203, 177: 203, 178: 203, 179: 203, 180: 203, 181: 203, 182: 203, 183: 203, 184: 203, 185: 203, 186: 203, 187: 203, 188: 203, 189: 203, 190: 203, 191: 203, 192: 203, 193: 203, 194: 203, 195: 203, 196: 203, 197: 203, 198: 203, 199: 203, 200: 203, 201: 203, 202: 203, 0: 202}
+time limit is: 1800
+model used is: CP-add
+batch num is: gr202-67.3
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: lin318-99.3.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 106673 variables, 304092 constraints
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 11.42s (11.39s extraction + 0.04s propagation)
+ !  . Log search space  : 14535.5 (before), 14535.5 (after)
+ !  . Memory usage      : 530.1 MB (before), 530.1 MB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0     106673                 -
+ + New bound is 31
+                     100k       6183        F         !presenceOf(From:300_To:125)
+                     105k      38160        F 22697  = startOf(LAST From:280_To:318)
+                     106k      28732        F          presenceOf(From:132_To:88)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 31
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 106067
+ ! Number of fails        : 203
+ ! Total memory usage     : 855.6 MB (813.5 MB CP Optimizer + 42.1 MB Concert)
+ ! Time spent in solve    : 1800.22s (1788.84s engine + 11.39s extraction)
+ ! Search speed (br. / s) : 59.3
+ ! ----------------------------------------------------------------------------
+{1: 319, 2: 319, 3: 319, 4: 319, 5: 319, 6: 319, 7: 319, 8: 319, 9: 319, 10: 319, 11: 319, 12: 319, 13: 319, 14: 319, 15: 319, 16: 319, 17: 319, 18: 319, 19: 319, 20: 319, 21: 319, 22: 319, 23: 319, 24: 319, 25: 319, 26: 319, 27: 319, 28: 319, 29: 319, 30: 319, 31: 319, 32: 319, 33: 319, 34: 319, 35: 319, 36: 319, 37: 319, 38: 319, 39: 319, 40: 319, 41: 319, 42: 319, 43: 319, 44: 319, 45: 319, 46: 319, 47: 319, 48: 319, 49: 319, 50: 319, 51: 319, 52: 319, 53: 319, 54: 319, 55: 319, 56: 319, 57: 319, 58: 319, 59: 319, 60: 319, 61: 319, 62: 319, 63: 319, 64: 319, 65: 319, 66: 319, 67: 319, 68: 319, 69: 319, 70: 319, 71: 319, 72: 319, 73: 319, 74: 319, 75: 319, 76: 319, 77: 319, 78: 319, 79: 319, 80: 319, 81: 319, 82: 319, 83: 319, 84: 319, 85: 319, 86: 319, 87: 319, 88: 319, 89: 319, 90: 319, 91: 319, 92: 319, 93: 319, 94: 319, 95: 319, 96: 319, 97: 319, 98: 319, 99: 319, 100: 319, 101: 319, 102: 319, 103: 319, 104: 319, 105: 319, 106: 319, 107: 319, 108: 319, 109: 319, 110: 319, 111: 319, 112: 319, 113: 319, 114: 319, 115: 319, 116: 319, 117: 319, 118: 319, 119: 319, 120: 319, 121: 319, 122: 319, 123: 319, 124: 319, 125: 319, 126: 319, 127: 319, 128: 319, 129: 319, 130: 319, 131: 319, 132: 319, 133: 319, 134: 319, 135: 319, 136: 319, 137: 319, 138: 319, 139: 319, 140: 319, 141: 319, 142: 319, 143: 319, 144: 319, 145: 319, 146: 319, 147: 319, 148: 319, 149: 319, 150: 319, 151: 319, 152: 319, 153: 319, 154: 319, 155: 319, 156: 319, 157: 319, 158: 319, 159: 319, 160: 319, 161: 319, 162: 319, 163: 319, 164: 319, 165: 319, 166: 319, 167: 319, 168: 319, 169: 319, 170: 319, 171: 319, 172: 319, 173: 319, 174: 319, 175: 319, 176: 319, 177: 319, 178: 319, 179: 319, 180: 319, 181: 319, 182: 319, 183: 319, 184: 319, 185: 319, 186: 319, 187: 319, 188: 319, 189: 319, 190: 319, 191: 319, 192: 319, 193: 319, 194: 319, 195: 319, 196: 319, 197: 319, 198: 319, 199: 319, 200: 319, 201: 319, 202: 319, 203: 319, 204: 319, 205: 319, 206: 319, 207: 319, 208: 319, 209: 319, 210: 319, 211: 319, 212: 319, 213: 319, 214: 319, 215: 319, 216: 319, 217: 319, 218: 319, 219: 319, 220: 319, 221: 319, 222: 319, 223: 319, 224: 319, 225: 319, 226: 319, 227: 319, 228: 319, 229: 319, 230: 319, 231: 319, 232: 319, 233: 319, 234: 319, 235: 319, 236: 319, 237: 319, 238: 319, 239: 319, 240: 319, 241: 319, 242: 319, 243: 319, 244: 319, 245: 319, 246: 319, 247: 319, 248: 319, 249: 319, 250: 319, 251: 319, 252: 319, 253: 319, 254: 319, 255: 319, 256: 319, 257: 319, 258: 319, 259: 319, 260: 319, 261: 319, 262: 319, 263: 319, 264: 319, 265: 319, 266: 319, 267: 319, 268: 319, 269: 319, 270: 319, 271: 319, 272: 319, 273: 319, 274: 319, 275: 319, 276: 319, 277: 319, 278: 319, 279: 319, 280: 319, 281: 319, 282: 319, 283: 319, 284: 319, 285: 319, 286: 319, 287: 319, 288: 319, 289: 319, 290: 319, 291: 319, 292: 319, 293: 319, 294: 319, 295: 319, 296: 319, 297: 319, 298: 319, 299: 319, 300: 319, 301: 319, 302: 319, 303: 319, 304: 319, 305: 319, 306: 319, 307: 319, 308: 319, 309: 319, 310: 319, 311: 319, 312: 319, 313: 319, 314: 319, 315: 319, 316: 319, 317: 319, 318: 319, 0: 318}
+time limit is: 1800
+model used is: CP-add
+batch num is: lin318-99.3
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: fl417-160.6.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 191520 variables, 404217 constraints
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 15.74s (15.67s extraction + 0.07s propagation)
+ !  . Log search space  : 19864.6 (before), 19864.6 (after)
+ !  . Memory usage      : 1.0 GB (before), 1.0 GB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0     191520                 -
+ + New bound is 8
+                     172k      18461        F         !presenceOf(From:90_To:74)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 8
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 172747
+ ! Number of fails        : 6
+ ! Total memory usage     : 1.6 GB (1.5 GB CP Optimizer + 0.1 GB Concert)
+ ! Time spent in solve    : 1800.14s (1784.47s engine + 15.67s extraction)
+ ! Search speed (br. / s) : 96.8
+ ! ----------------------------------------------------------------------------
+{1: 418, 2: 418, 3: 418, 4: 418, 5: 418, 6: 418, 7: 418, 8: 418, 9: 418, 10: 418, 11: 418, 12: 418, 13: 418, 14: 418, 15: 418, 16: 418, 17: 418, 18: 418, 19: 418, 20: 418, 21: 418, 22: 418, 23: 418, 24: 418, 25: 418, 26: 418, 27: 418, 28: 418, 29: 418, 30: 418, 31: 418, 32: 418, 33: 418, 34: 418, 35: 418, 36: 418, 37: 418, 38: 418, 39: 418, 40: 418, 41: 418, 42: 418, 43: 418, 44: 418, 45: 418, 46: 418, 47: 418, 48: 418, 49: 418, 50: 418, 51: 418, 52: 418, 53: 418, 54: 418, 55: 418, 56: 418, 57: 418, 58: 418, 59: 418, 60: 418, 61: 418, 62: 418, 63: 418, 64: 418, 65: 418, 66: 418, 67: 418, 68: 418, 69: 418, 70: 418, 71: 418, 72: 418, 73: 418, 74: 418, 75: 418, 76: 418, 77: 418, 78: 418, 79: 418, 80: 418, 81: 418, 82: 418, 83: 418, 84: 418, 85: 418, 86: 418, 87: 418, 88: 418, 89: 418, 90: 418, 91: 418, 92: 418, 93: 418, 94: 418, 95: 418, 96: 418, 97: 418, 98: 418, 99: 418, 100: 418, 101: 418, 102: 418, 103: 418, 104: 418, 105: 418, 106: 418, 107: 418, 108: 418, 109: 418, 110: 418, 111: 418, 112: 418, 113: 418, 114: 418, 115: 418, 116: 418, 117: 418, 118: 418, 119: 418, 120: 418, 121: 418, 122: 418, 123: 418, 124: 418, 125: 418, 126: 418, 127: 418, 128: 418, 129: 418, 130: 418, 131: 418, 132: 418, 133: 418, 134: 418, 135: 418, 136: 418, 137: 418, 138: 418, 139: 418, 140: 418, 141: 418, 142: 418, 143: 418, 144: 418, 145: 418, 146: 418, 147: 418, 148: 418, 149: 418, 150: 418, 151: 418, 152: 418, 153: 418, 154: 418, 155: 418, 156: 418, 157: 418, 158: 418, 159: 418, 160: 418, 161: 418, 162: 418, 163: 418, 164: 418, 165: 418, 166: 418, 167: 418, 168: 418, 169: 418, 170: 418, 171: 418, 172: 418, 173: 418, 174: 418, 175: 418, 176: 418, 177: 418, 178: 418, 179: 418, 180: 418, 181: 418, 182: 418, 183: 418, 184: 418, 185: 418, 186: 418, 187: 418, 188: 418, 189: 418, 190: 418, 191: 418, 192: 418, 193: 418, 194: 418, 195: 418, 196: 418, 197: 418, 198: 418, 199: 418, 200: 418, 201: 418, 202: 418, 203: 418, 204: 418, 205: 418, 206: 418, 207: 418, 208: 418, 209: 418, 210: 418, 211: 418, 212: 418, 213: 418, 214: 418, 215: 418, 216: 418, 217: 418, 218: 418, 219: 418, 220: 418, 221: 418, 222: 418, 223: 418, 224: 418, 225: 418, 226: 418, 227: 418, 228: 418, 229: 418, 230: 418, 231: 418, 232: 418, 233: 418, 234: 418, 235: 418, 236: 418, 237: 418, 238: 418, 239: 418, 240: 418, 241: 418, 242: 418, 243: 418, 244: 418, 245: 418, 246: 418, 247: 418, 248: 418, 249: 418, 250: 418, 251: 418, 252: 418, 253: 418, 254: 418, 255: 418, 256: 418, 257: 418, 258: 418, 259: 418, 260: 418, 261: 418, 262: 418, 263: 418, 264: 418, 265: 418, 266: 418, 267: 418, 268: 418, 269: 418, 270: 418, 271: 418, 272: 418, 273: 418, 274: 418, 275: 418, 276: 418, 277: 418, 278: 418, 279: 418, 280: 418, 281: 418, 282: 418, 283: 418, 284: 418, 285: 418, 286: 418, 287: 418, 288: 418, 289: 418, 290: 418, 291: 418, 292: 418, 293: 418, 294: 418, 295: 418, 296: 418, 297: 418, 298: 418, 299: 418, 300: 418, 301: 418, 302: 418, 303: 418, 304: 418, 305: 418, 306: 418, 307: 418, 308: 418, 309: 418, 310: 418, 311: 418, 312: 418, 313: 418, 314: 418, 315: 418, 316: 418, 317: 418, 318: 418, 319: 418, 320: 418, 321: 418, 322: 418, 323: 418, 324: 418, 325: 418, 326: 418, 327: 418, 328: 418, 329: 418, 330: 418, 331: 418, 332: 418, 333: 418, 334: 418, 335: 418, 336: 418, 337: 418, 338: 418, 339: 418, 340: 418, 341: 418, 342: 418, 343: 418, 344: 418, 345: 418, 346: 418, 347: 418, 348: 418, 349: 418, 350: 418, 351: 418, 352: 418, 353: 418, 354: 418, 355: 418, 356: 418, 357: 418, 358: 418, 359: 418, 360: 418, 361: 418, 362: 418, 363: 418, 364: 418, 365: 418, 366: 418, 367: 418, 368: 418, 369: 418, 370: 418, 371: 418, 372: 418, 373: 418, 374: 418, 375: 418, 376: 418, 377: 418, 378: 418, 379: 418, 380: 418, 381: 418, 382: 418, 383: 418, 384: 418, 385: 418, 386: 418, 387: 418, 388: 418, 389: 418, 390: 418, 391: 418, 392: 418, 393: 418, 394: 418, 395: 418, 396: 418, 397: 418, 398: 418, 399: 418, 400: 418, 401: 418, 402: 418, 403: 418, 404: 418, 405: 418, 406: 418, 407: 418, 408: 418, 409: 418, 410: 418, 411: 418, 412: 418, 413: 418, 414: 418, 415: 418, 416: 418, 417: 418, 0: 417}
+time limit is: 1800
+model used is: CP-add
+batch num is: fl417-160.6
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: d657-322.7.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 517290 variables, 707629 constraints
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 53.43s (53.30s extraction + 0.13s propagation)
+ !  . Log search space  : 33428.0 (before), 33428.0 (after)
+ !  . Memory usage      : 3.8 GB (before), 3.8 GB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0     517290                 -
+ + New bound is 17
+                     429k      86953        F         !presenceOf(From:614_To:188)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 17
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 429720
+ ! Number of fails        : 3
+ ! Total memory usage     : 5.5 GB (5.3 GB CP Optimizer + 0.2 GB Concert)
+ ! Time spent in solve    : 1800.50s (1747.20s engine + 53.30s extraction)
+ ! Search speed (br. / s) : 245.9
+ ! ----------------------------------------------------------------------------
+{1: 658, 2: 658, 3: 658, 4: 658, 5: 658, 6: 658, 7: 658, 8: 658, 9: 658, 10: 658, 11: 658, 12: 658, 13: 658, 14: 658, 15: 658, 16: 658, 17: 658, 18: 658, 19: 658, 20: 658, 21: 658, 22: 658, 23: 658, 24: 658, 25: 658, 26: 658, 27: 658, 28: 658, 29: 658, 30: 658, 31: 658, 32: 658, 33: 658, 34: 658, 35: 658, 36: 658, 37: 658, 38: 658, 39: 658, 40: 658, 41: 658, 42: 658, 43: 658, 44: 658, 45: 658, 46: 658, 47: 658, 48: 658, 49: 658, 50: 658, 51: 658, 52: 658, 53: 658, 54: 658, 55: 658, 56: 658, 57: 658, 58: 658, 59: 658, 60: 658, 61: 658, 62: 658, 63: 658, 64: 658, 65: 658, 66: 658, 67: 658, 68: 658, 69: 658, 70: 658, 71: 658, 72: 658, 73: 658, 74: 658, 75: 658, 76: 658, 77: 658, 78: 658, 79: 658, 80: 658, 81: 658, 82: 658, 83: 658, 84: 658, 85: 658, 86: 658, 87: 658, 88: 658, 89: 658, 90: 658, 91: 658, 92: 658, 93: 658, 94: 658, 95: 658, 96: 658, 97: 658, 98: 658, 99: 658, 100: 658, 101: 658, 102: 658, 103: 658, 104: 658, 105: 658, 106: 658, 107: 658, 108: 658, 109: 658, 110: 658, 111: 658, 112: 658, 113: 658, 114: 658, 115: 658, 116: 658, 117: 658, 118: 658, 119: 658, 120: 658, 121: 658, 122: 658, 123: 658, 124: 658, 125: 658, 126: 658, 127: 658, 128: 658, 129: 658, 130: 658, 131: 658, 132: 658, 133: 658, 134: 658, 135: 658, 136: 658, 137: 658, 138: 658, 139: 658, 140: 658, 141: 658, 142: 658, 143: 658, 144: 658, 145: 658, 146: 658, 147: 658, 148: 658, 149: 658, 150: 658, 151: 658, 152: 658, 153: 658, 154: 658, 155: 658, 156: 658, 157: 658, 158: 658, 159: 658, 160: 658, 161: 658, 162: 658, 163: 658, 164: 658, 165: 658, 166: 658, 167: 658, 168: 658, 169: 658, 170: 658, 171: 658, 172: 658, 173: 658, 174: 658, 175: 658, 176: 658, 177: 658, 178: 658, 179: 658, 180: 658, 181: 658, 182: 658, 183: 658, 184: 658, 185: 658, 186: 658, 187: 658, 188: 658, 189: 658, 190: 658, 191: 658, 192: 658, 193: 658, 194: 658, 195: 658, 196: 658, 197: 658, 198: 658, 199: 658, 200: 658, 201: 658, 202: 658, 203: 658, 204: 658, 205: 658, 206: 658, 207: 658, 208: 658, 209: 658, 210: 658, 211: 658, 212: 658, 213: 658, 214: 658, 215: 658, 216: 658, 217: 658, 218: 658, 219: 658, 220: 658, 221: 658, 222: 658, 223: 658, 224: 658, 225: 658, 226: 658, 227: 658, 228: 658, 229: 658, 230: 658, 231: 658, 232: 658, 233: 658, 234: 658, 235: 658, 236: 658, 237: 658, 238: 658, 239: 658, 240: 658, 241: 658, 242: 658, 243: 658, 244: 658, 245: 658, 246: 658, 247: 658, 248: 658, 249: 658, 250: 658, 251: 658, 252: 658, 253: 658, 254: 658, 255: 658, 256: 658, 257: 658, 258: 658, 259: 658, 260: 658, 261: 658, 262: 658, 263: 658, 264: 658, 265: 658, 266: 658, 267: 658, 268: 658, 269: 658, 270: 658, 271: 658, 272: 658, 273: 658, 274: 658, 275: 658, 276: 658, 277: 658, 278: 658, 279: 658, 280: 658, 281: 658, 282: 658, 283: 658, 284: 658, 285: 658, 286: 658, 287: 658, 288: 658, 289: 658, 290: 658, 291: 658, 292: 658, 293: 658, 294: 658, 295: 658, 296: 658, 297: 658, 298: 658, 299: 658, 300: 658, 301: 658, 302: 658, 303: 658, 304: 658, 305: 658, 306: 658, 307: 658, 308: 658, 309: 658, 310: 658, 311: 658, 312: 658, 313: 658, 314: 658, 315: 658, 316: 658, 317: 658, 318: 658, 319: 658, 320: 658, 321: 658, 322: 658, 323: 658, 324: 658, 325: 658, 326: 658, 327: 658, 328: 658, 329: 658, 330: 658, 331: 658, 332: 658, 333: 658, 334: 658, 335: 658, 336: 658, 337: 658, 338: 658, 339: 658, 340: 658, 341: 658, 342: 658, 343: 658, 344: 658, 345: 658, 346: 658, 347: 658, 348: 658, 349: 658, 350: 658, 351: 658, 352: 658, 353: 658, 354: 658, 355: 658, 356: 658, 357: 658, 358: 658, 359: 658, 360: 658, 361: 658, 362: 658, 363: 658, 364: 658, 365: 658, 366: 658, 367: 658, 368: 658, 369: 658, 370: 658, 371: 658, 372: 658, 373: 658, 374: 658, 375: 658, 376: 658, 377: 658, 378: 658, 379: 658, 380: 658, 381: 658, 382: 658, 383: 658, 384: 658, 385: 658, 386: 658, 387: 658, 388: 658, 389: 658, 390: 658, 391: 658, 392: 658, 393: 658, 394: 658, 395: 658, 396: 658, 397: 658, 398: 658, 399: 658, 400: 658, 401: 658, 402: 658, 403: 658, 404: 658, 405: 658, 406: 658, 407: 658, 408: 658, 409: 658, 410: 658, 411: 658, 412: 658, 413: 658, 414: 658, 415: 658, 416: 658, 417: 658, 418: 658, 419: 658, 420: 658, 421: 658, 422: 658, 423: 658, 424: 658, 425: 658, 426: 658, 427: 658, 428: 658, 429: 658, 430: 658, 431: 658, 432: 658, 433: 658, 434: 658, 435: 658, 436: 658, 437: 658, 438: 658, 439: 658, 440: 658, 441: 658, 442: 658, 443: 658, 444: 658, 445: 658, 446: 658, 447: 658, 448: 658, 449: 658, 450: 658, 451: 658, 452: 658, 453: 658, 454: 658, 455: 658, 456: 658, 457: 658, 458: 658, 459: 658, 460: 658, 461: 658, 462: 658, 463: 658, 464: 658, 465: 658, 466: 658, 467: 658, 468: 658, 469: 658, 470: 658, 471: 658, 472: 658, 473: 658, 474: 658, 475: 658, 476: 658, 477: 658, 478: 658, 479: 658, 480: 658, 481: 658, 482: 658, 483: 658, 484: 658, 485: 658, 486: 658, 487: 658, 488: 658, 489: 658, 490: 658, 491: 658, 492: 658, 493: 658, 494: 658, 495: 658, 496: 658, 497: 658, 498: 658, 499: 658, 500: 658, 501: 658, 502: 658, 503: 658, 504: 658, 505: 658, 506: 658, 507: 658, 508: 658, 509: 658, 510: 658, 511: 658, 512: 658, 513: 658, 514: 658, 515: 658, 516: 658, 517: 658, 518: 658, 519: 658, 520: 658, 521: 658, 522: 658, 523: 658, 524: 658, 525: 658, 526: 658, 527: 658, 528: 658, 529: 658, 530: 658, 531: 658, 532: 658, 533: 658, 534: 658, 535: 658, 536: 658, 537: 658, 538: 658, 539: 658, 540: 658, 541: 658, 542: 658, 543: 658, 544: 658, 545: 658, 546: 658, 547: 658, 548: 658, 549: 658, 550: 658, 551: 658, 552: 658, 553: 658, 554: 658, 555: 658, 556: 658, 557: 658, 558: 658, 559: 658, 560: 658, 561: 658, 562: 658, 563: 658, 564: 658, 565: 658, 566: 658, 567: 658, 568: 658, 569: 658, 570: 658, 571: 658, 572: 658, 573: 658, 574: 658, 575: 658, 576: 658, 577: 658, 578: 658, 579: 658, 580: 658, 581: 658, 582: 658, 583: 658, 584: 658, 585: 658, 586: 658, 587: 658, 588: 658, 589: 658, 590: 658, 591: 658, 592: 658, 593: 658, 594: 658, 595: 658, 596: 658, 597: 658, 598: 658, 599: 658, 600: 658, 601: 658, 602: 658, 603: 658, 604: 658, 605: 658, 606: 658, 607: 658, 608: 658, 609: 658, 610: 658, 611: 658, 612: 658, 613: 658, 614: 658, 615: 658, 616: 658, 617: 658, 618: 658, 619: 658, 620: 658, 621: 658, 622: 658, 623: 658, 624: 658, 625: 658, 626: 658, 627: 658, 628: 658, 629: 658, 630: 658, 631: 658, 632: 658, 633: 658, 634: 658, 635: 658, 636: 658, 637: 658, 638: 658, 639: 658, 640: 658, 641: 658, 642: 658, 643: 658, 644: 658, 645: 658, 646: 658, 647: 658, 648: 658, 649: 658, 650: 658, 651: 658, 652: 658, 653: 658, 654: 658, 655: 658, 656: 658, 657: 658, 0: 657}
+time limit is: 1800
+model used is: CP-add
+batch num is: d657-322.7
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: rat783-481.4.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 826592 variables, 654543 constraints
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 99.88s (99.67s extraction + 0.21s propagation)
+ !  . Log search space  : 38067.5 (before), 38067.5 (after)
+ !  . Memory usage      : 8.6 GB (before), 8.6 GB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0     826592                 -
+ + New bound is 1
+                     610k     215065        F         !presenceOf(From:130_To:526)
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 1
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 610755
+ ! Number of fails        : 3
+ ! Total memory usage     : 11.7 GB (11.4 GB CP Optimizer + 0.3 GB Concert)
+ ! Time spent in solve    : 1800.87s (1701.20s engine + 99.67s extraction)
+ ! Search speed (br. / s) : 359.0
+ ! ----------------------------------------------------------------------------
+{1: 784, 2: 784, 3: 784, 4: 784, 5: 784, 6: 784, 7: 784, 8: 784, 9: 784, 10: 784, 11: 784, 12: 784, 13: 784, 14: 784, 15: 784, 16: 784, 17: 784, 18: 784, 19: 784, 20: 784, 21: 784, 22: 784, 23: 784, 24: 784, 25: 784, 26: 784, 27: 784, 28: 784, 29: 784, 30: 784, 31: 784, 32: 784, 33: 784, 34: 784, 35: 784, 36: 784, 37: 784, 38: 784, 39: 784, 40: 784, 41: 784, 42: 784, 43: 784, 44: 784, 45: 784, 46: 784, 47: 784, 48: 784, 49: 784, 50: 784, 51: 784, 52: 784, 53: 784, 54: 784, 55: 784, 56: 784, 57: 784, 58: 784, 59: 784, 60: 784, 61: 784, 62: 784, 63: 784, 64: 784, 65: 784, 66: 784, 67: 784, 68: 784, 69: 784, 70: 784, 71: 784, 72: 784, 73: 784, 74: 784, 75: 784, 76: 784, 77: 784, 78: 784, 79: 784, 80: 784, 81: 784, 82: 784, 83: 784, 84: 784, 85: 784, 86: 784, 87: 784, 88: 784, 89: 784, 90: 784, 91: 784, 92: 784, 93: 784, 94: 784, 95: 784, 96: 784, 97: 784, 98: 784, 99: 784, 100: 784, 101: 784, 102: 784, 103: 784, 104: 784, 105: 784, 106: 784, 107: 784, 108: 784, 109: 784, 110: 784, 111: 784, 112: 784, 113: 784, 114: 784, 115: 784, 116: 784, 117: 784, 118: 784, 119: 784, 120: 784, 121: 784, 122: 784, 123: 784, 124: 784, 125: 784, 126: 784, 127: 784, 128: 784, 129: 784, 130: 784, 131: 784, 132: 784, 133: 784, 134: 784, 135: 784, 136: 784, 137: 784, 138: 784, 139: 784, 140: 784, 141: 784, 142: 784, 143: 784, 144: 784, 145: 784, 146: 784, 147: 784, 148: 784, 149: 784, 150: 784, 151: 784, 152: 784, 153: 784, 154: 784, 155: 784, 156: 784, 157: 784, 158: 784, 159: 784, 160: 784, 161: 784, 162: 784, 163: 784, 164: 784, 165: 784, 166: 784, 167: 784, 168: 784, 169: 784, 170: 784, 171: 784, 172: 784, 173: 784, 174: 784, 175: 784, 176: 784, 177: 784, 178: 784, 179: 784, 180: 784, 181: 784, 182: 784, 183: 784, 184: 784, 185: 784, 186: 784, 187: 784, 188: 784, 189: 784, 190: 784, 191: 784, 192: 784, 193: 784, 194: 784, 195: 784, 196: 784, 197: 784, 198: 784, 199: 784, 200: 784, 201: 784, 202: 784, 203: 784, 204: 784, 205: 784, 206: 784, 207: 784, 208: 784, 209: 784, 210: 784, 211: 784, 212: 784, 213: 784, 214: 784, 215: 784, 216: 784, 217: 784, 218: 784, 219: 784, 220: 784, 221: 784, 222: 784, 223: 784, 224: 784, 225: 784, 226: 784, 227: 784, 228: 784, 229: 784, 230: 784, 231: 784, 232: 784, 233: 784, 234: 784, 235: 784, 236: 784, 237: 784, 238: 784, 239: 784, 240: 784, 241: 784, 242: 784, 243: 784, 244: 784, 245: 784, 246: 784, 247: 784, 248: 784, 249: 784, 250: 784, 251: 784, 252: 784, 253: 784, 254: 784, 255: 784, 256: 784, 257: 784, 258: 784, 259: 784, 260: 784, 261: 784, 262: 784, 263: 784, 264: 784, 265: 784, 266: 784, 267: 784, 268: 784, 269: 784, 270: 784, 271: 784, 272: 784, 273: 784, 274: 784, 275: 784, 276: 784, 277: 784, 278: 784, 279: 784, 280: 784, 281: 784, 282: 784, 283: 784, 284: 784, 285: 784, 286: 784, 287: 784, 288: 784, 289: 784, 290: 784, 291: 784, 292: 784, 293: 784, 294: 784, 295: 784, 296: 784, 297: 784, 298: 784, 299: 784, 300: 784, 301: 784, 302: 784, 303: 784, 304: 784, 305: 784, 306: 784, 307: 784, 308: 784, 309: 784, 310: 784, 311: 784, 312: 784, 313: 784, 314: 784, 315: 784, 316: 784, 317: 784, 318: 784, 319: 784, 320: 784, 321: 784, 322: 784, 323: 784, 324: 784, 325: 784, 326: 784, 327: 784, 328: 784, 329: 784, 330: 784, 331: 784, 332: 784, 333: 784, 334: 784, 335: 784, 336: 784, 337: 784, 338: 784, 339: 784, 340: 784, 341: 784, 342: 784, 343: 784, 344: 784, 345: 784, 346: 784, 347: 784, 348: 784, 349: 784, 350: 784, 351: 784, 352: 784, 353: 784, 354: 784, 355: 784, 356: 784, 357: 784, 358: 784, 359: 784, 360: 784, 361: 784, 362: 784, 363: 784, 364: 784, 365: 784, 366: 784, 367: 784, 368: 784, 369: 784, 370: 784, 371: 784, 372: 784, 373: 784, 374: 784, 375: 784, 376: 784, 377: 784, 378: 784, 379: 784, 380: 784, 381: 784, 382: 784, 383: 784, 384: 784, 385: 784, 386: 784, 387: 784, 388: 784, 389: 784, 390: 784, 391: 784, 392: 784, 393: 784, 394: 784, 395: 784, 396: 784, 397: 784, 398: 784, 399: 784, 400: 784, 401: 784, 402: 784, 403: 784, 404: 784, 405: 784, 406: 784, 407: 784, 408: 784, 409: 784, 410: 784, 411: 784, 412: 784, 413: 784, 414: 784, 415: 784, 416: 784, 417: 784, 418: 784, 419: 784, 420: 784, 421: 784, 422: 784, 423: 784, 424: 784, 425: 784, 426: 784, 427: 784, 428: 784, 429: 784, 430: 784, 431: 784, 432: 784, 433: 784, 434: 784, 435: 784, 436: 784, 437: 784, 438: 784, 439: 784, 440: 784, 441: 784, 442: 784, 443: 784, 444: 784, 445: 784, 446: 784, 447: 784, 448: 784, 449: 784, 450: 784, 451: 784, 452: 784, 453: 784, 454: 784, 455: 784, 456: 784, 457: 784, 458: 784, 459: 784, 460: 784, 461: 784, 462: 784, 463: 784, 464: 784, 465: 784, 466: 784, 467: 784, 468: 784, 469: 784, 470: 784, 471: 784, 472: 784, 473: 784, 474: 784, 475: 784, 476: 784, 477: 784, 478: 784, 479: 784, 480: 784, 481: 784, 482: 784, 483: 784, 484: 784, 485: 784, 486: 784, 487: 784, 488: 784, 489: 784, 490: 784, 491: 784, 492: 784, 493: 784, 494: 784, 495: 784, 496: 784, 497: 784, 498: 784, 499: 784, 500: 784, 501: 784, 502: 784, 503: 784, 504: 784, 505: 784, 506: 784, 507: 784, 508: 784, 509: 784, 510: 784, 511: 784, 512: 784, 513: 784, 514: 784, 515: 784, 516: 784, 517: 784, 518: 784, 519: 784, 520: 784, 521: 784, 522: 784, 523: 784, 524: 784, 525: 784, 526: 784, 527: 784, 528: 784, 529: 784, 530: 784, 531: 784, 532: 784, 533: 784, 534: 784, 535: 784, 536: 784, 537: 784, 538: 784, 539: 784, 540: 784, 541: 784, 542: 784, 543: 784, 544: 784, 545: 784, 546: 784, 547: 784, 548: 784, 549: 784, 550: 784, 551: 784, 552: 784, 553: 784, 554: 784, 555: 784, 556: 784, 557: 784, 558: 784, 559: 784, 560: 784, 561: 784, 562: 784, 563: 784, 564: 784, 565: 784, 566: 784, 567: 784, 568: 784, 569: 784, 570: 784, 571: 784, 572: 784, 573: 784, 574: 784, 575: 784, 576: 784, 577: 784, 578: 784, 579: 784, 580: 784, 581: 784, 582: 784, 583: 784, 584: 784, 585: 784, 586: 784, 587: 784, 588: 784, 589: 784, 590: 784, 591: 784, 592: 784, 593: 784, 594: 784, 595: 784, 596: 784, 597: 784, 598: 784, 599: 784, 600: 784, 601: 784, 602: 784, 603: 784, 604: 784, 605: 784, 606: 784, 607: 784, 608: 784, 609: 784, 610: 784, 611: 784, 612: 784, 613: 784, 614: 784, 615: 784, 616: 784, 617: 784, 618: 784, 619: 784, 620: 784, 621: 784, 622: 784, 623: 784, 624: 784, 625: 784, 626: 784, 627: 784, 628: 784, 629: 784, 630: 784, 631: 784, 632: 784, 633: 784, 634: 784, 635: 784, 636: 784, 637: 784, 638: 784, 639: 784, 640: 784, 641: 784, 642: 784, 643: 784, 644: 784, 645: 784, 646: 784, 647: 784, 648: 784, 649: 784, 650: 784, 651: 784, 652: 784, 653: 784, 654: 784, 655: 784, 656: 784, 657: 784, 658: 784, 659: 784, 660: 784, 661: 784, 662: 784, 663: 784, 664: 784, 665: 784, 666: 784, 667: 784, 668: 784, 669: 784, 670: 784, 671: 784, 672: 784, 673: 784, 674: 784, 675: 784, 676: 784, 677: 784, 678: 784, 679: 784, 680: 784, 681: 784, 682: 784, 683: 784, 684: 784, 685: 784, 686: 784, 687: 784, 688: 784, 689: 784, 690: 784, 691: 784, 692: 784, 693: 784, 694: 784, 695: 784, 696: 784, 697: 784, 698: 784, 699: 784, 700: 784, 701: 784, 702: 784, 703: 784, 704: 784, 705: 784, 706: 784, 707: 784, 708: 784, 709: 784, 710: 784, 711: 784, 712: 784, 713: 784, 714: 784, 715: 784, 716: 784, 717: 784, 718: 784, 719: 784, 720: 784, 721: 784, 722: 784, 723: 784, 724: 784, 725: 784, 726: 784, 727: 784, 728: 784, 729: 784, 730: 784, 731: 784, 732: 784, 733: 784, 734: 784, 735: 784, 736: 784, 737: 784, 738: 784, 739: 784, 740: 784, 741: 784, 742: 784, 743: 784, 744: 784, 745: 784, 746: 784, 747: 784, 748: 784, 749: 784, 750: 784, 751: 784, 752: 784, 753: 784, 754: 784, 755: 784, 756: 784, 757: 784, 758: 784, 759: 784, 760: 784, 761: 784, 762: 784, 763: 784, 764: 784, 765: 784, 766: 784, 767: 784, 768: 784, 769: 784, 770: 784, 771: 784, 772: 784, 773: 784, 774: 784, 775: 784, 776: 784, 777: 784, 778: 784, 779: 784, 780: 784, 781: 784, 782: 784, 783: 784, 0: 783}
+time limit is: 1800
+model used is: CP-add
+batch num is: rat783-481.4
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+===INSTANCE START
+ALG: CP-ADD
+Instance Name: vm1084-848.9.json
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 1883541 variables, 601624 constraints
+ ! TimeLimit            = 1800
+ ! Workers              = 1
+ ! Initial process time : 337.58s (337.13s extraction + 0.46s propagation)
+ !  . Log search space  : 59039.7 (before), 59039.7 (after)
+ !  . Memory usage      : 31.8 GB (before), 31.8 GB (after)
+ ! Using sequential search.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed            Branch decision
+                        0    1883541                 -
+ + New bound is 27
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, no solution found.
+ ! Best bound             : 27
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 2
+ ! Number of fails        : 1
+ ! Total memory usage     : 41.7 GB (40.9 GB CP Optimizer + 0.7 GB Concert)
+ ! Time spent in solve    : 1801.94s (1464.82s engine + 337.13s extraction)
+ ! Search speed (br. / s) : 0.0
+ ! ----------------------------------------------------------------------------
+{1: 1085, 2: 1085, 3: 1085, 4: 1085, 5: 1085, 6: 1085, 7: 1085, 8: 1085, 9: 1085, 10: 1085, 11: 1085, 12: 1085, 13: 1085, 14: 1085, 15: 1085, 16: 1085, 17: 1085, 18: 1085, 19: 1085, 20: 1085, 21: 1085, 22: 1085, 23: 1085, 24: 1085, 25: 1085, 26: 1085, 27: 1085, 28: 1085, 29: 1085, 30: 1085, 31: 1085, 32: 1085, 33: 1085, 34: 1085, 35: 1085, 36: 1085, 37: 1085, 38: 1085, 39: 1085, 40: 1085, 41: 1085, 42: 1085, 43: 1085, 44: 1085, 45: 1085, 46: 1085, 47: 1085, 48: 1085, 49: 1085, 50: 1085, 51: 1085, 52: 1085, 53: 1085, 54: 1085, 55: 1085, 56: 1085, 57: 1085, 58: 1085, 59: 1085, 60: 1085, 61: 1085, 62: 1085, 63: 1085, 64: 1085, 65: 1085, 66: 1085, 67: 1085, 68: 1085, 69: 1085, 70: 1085, 71: 1085, 72: 1085, 73: 1085, 74: 1085, 75: 1085, 76: 1085, 77: 1085, 78: 1085, 79: 1085, 80: 1085, 81: 1085, 82: 1085, 83: 1085, 84: 1085, 85: 1085, 86: 1085, 87: 1085, 88: 1085, 89: 1085, 90: 1085, 91: 1085, 92: 1085, 93: 1085, 94: 1085, 95: 1085, 96: 1085, 97: 1085, 98: 1085, 99: 1085, 100: 1085, 101: 1085, 102: 1085, 103: 1085, 104: 1085, 105: 1085, 106: 1085, 107: 1085, 108: 1085, 109: 1085, 110: 1085, 111: 1085, 112: 1085, 113: 1085, 114: 1085, 115: 1085, 116: 1085, 117: 1085, 118: 1085, 119: 1085, 120: 1085, 121: 1085, 122: 1085, 123: 1085, 124: 1085, 125: 1085, 126: 1085, 127: 1085, 128: 1085, 129: 1085, 130: 1085, 131: 1085, 132: 1085, 133: 1085, 134: 1085, 135: 1085, 136: 1085, 137: 1085, 138: 1085, 139: 1085, 140: 1085, 141: 1085, 142: 1085, 143: 1085, 144: 1085, 145: 1085, 146: 1085, 147: 1085, 148: 1085, 149: 1085, 150: 1085, 151: 1085, 152: 1085, 153: 1085, 154: 1085, 155: 1085, 156: 1085, 157: 1085, 158: 1085, 159: 1085, 160: 1085, 161: 1085, 162: 1085, 163: 1085, 164: 1085, 165: 1085, 166: 1085, 167: 1085, 168: 1085, 169: 1085, 170: 1085, 171: 1085, 172: 1085, 173: 1085, 174: 1085, 175: 1085, 176: 1085, 177: 1085, 178: 1085, 179: 1085, 180: 1085, 181: 1085, 182: 1085, 183: 1085, 184: 1085, 185: 1085, 186: 1085, 187: 1085, 188: 1085, 189: 1085, 190: 1085, 191: 1085, 192: 1085, 193: 1085, 194: 1085, 195: 1085, 196: 1085, 197: 1085, 198: 1085, 199: 1085, 200: 1085, 201: 1085, 202: 1085, 203: 1085, 204: 1085, 205: 1085, 206: 1085, 207: 1085, 208: 1085, 209: 1085, 210: 1085, 211: 1085, 212: 1085, 213: 1085, 214: 1085, 215: 1085, 216: 1085, 217: 1085, 218: 1085, 219: 1085, 220: 1085, 221: 1085, 222: 1085, 223: 1085, 224: 1085, 225: 1085, 226: 1085, 227: 1085, 228: 1085, 229: 1085, 230: 1085, 231: 1085, 232: 1085, 233: 1085, 234: 1085, 235: 1085, 236: 1085, 237: 1085, 238: 1085, 239: 1085, 240: 1085, 241: 1085, 242: 1085, 243: 1085, 244: 1085, 245: 1085, 246: 1085, 247: 1085, 248: 1085, 249: 1085, 250: 1085, 251: 1085, 252: 1085, 253: 1085, 254: 1085, 255: 1085, 256: 1085, 257: 1085, 258: 1085, 259: 1085, 260: 1085, 261: 1085, 262: 1085, 263: 1085, 264: 1085, 265: 1085, 266: 1085, 267: 1085, 268: 1085, 269: 1085, 270: 1085, 271: 1085, 272: 1085, 273: 1085, 274: 1085, 275: 1085, 276: 1085, 277: 1085, 278: 1085, 279: 1085, 280: 1085, 281: 1085, 282: 1085, 283: 1085, 284: 1085, 285: 1085, 286: 1085, 287: 1085, 288: 1085, 289: 1085, 290: 1085, 291: 1085, 292: 1085, 293: 1085, 294: 1085, 295: 1085, 296: 1085, 297: 1085, 298: 1085, 299: 1085, 300: 1085, 301: 1085, 302: 1085, 303: 1085, 304: 1085, 305: 1085, 306: 1085, 307: 1085, 308: 1085, 309: 1085, 310: 1085, 311: 1085, 312: 1085, 313: 1085, 314: 1085, 315: 1085, 316: 1085, 317: 1085, 318: 1085, 319: 1085, 320: 1085, 321: 1085, 322: 1085, 323: 1085, 324: 1085, 325: 1085, 326: 1085, 327: 1085, 328: 1085, 329: 1085, 330: 1085, 331: 1085, 332: 1085, 333: 1085, 334: 1085, 335: 1085, 336: 1085, 337: 1085, 338: 1085, 339: 1085, 340: 1085, 341: 1085, 342: 1085, 343: 1085, 344: 1085, 345: 1085, 346: 1085, 347: 1085, 348: 1085, 349: 1085, 350: 1085, 351: 1085, 352: 1085, 353: 1085, 354: 1085, 355: 1085, 356: 1085, 357: 1085, 358: 1085, 359: 1085, 360: 1085, 361: 1085, 362: 1085, 363: 1085, 364: 1085, 365: 1085, 366: 1085, 367: 1085, 368: 1085, 369: 1085, 370: 1085, 371: 1085, 372: 1085, 373: 1085, 374: 1085, 375: 1085, 376: 1085, 377: 1085, 378: 1085, 379: 1085, 380: 1085, 381: 1085, 382: 1085, 383: 1085, 384: 1085, 385: 1085, 386: 1085, 387: 1085, 388: 1085, 389: 1085, 390: 1085, 391: 1085, 392: 1085, 393: 1085, 394: 1085, 395: 1085, 396: 1085, 397: 1085, 398: 1085, 399: 1085, 400: 1085, 401: 1085, 402: 1085, 403: 1085, 404: 1085, 405: 1085, 406: 1085, 407: 1085, 408: 1085, 409: 1085, 410: 1085, 411: 1085, 412: 1085, 413: 1085, 414: 1085, 415: 1085, 416: 1085, 417: 1085, 418: 1085, 419: 1085, 420: 1085, 421: 1085, 422: 1085, 423: 1085, 424: 1085, 425: 1085, 426: 1085, 427: 1085, 428: 1085, 429: 1085, 430: 1085, 431: 1085, 432: 1085, 433: 1085, 434: 1085, 435: 1085, 436: 1085, 437: 1085, 438: 1085, 439: 1085, 440: 1085, 441: 1085, 442: 1085, 443: 1085, 444: 1085, 445: 1085, 446: 1085, 447: 1085, 448: 1085, 449: 1085, 450: 1085, 451: 1085, 452: 1085, 453: 1085, 454: 1085, 455: 1085, 456: 1085, 457: 1085, 458: 1085, 459: 1085, 460: 1085, 461: 1085, 462: 1085, 463: 1085, 464: 1085, 465: 1085, 466: 1085, 467: 1085, 468: 1085, 469: 1085, 470: 1085, 471: 1085, 472: 1085, 473: 1085, 474: 1085, 475: 1085, 476: 1085, 477: 1085, 478: 1085, 479: 1085, 480: 1085, 481: 1085, 482: 1085, 483: 1085, 484: 1085, 485: 1085, 486: 1085, 487: 1085, 488: 1085, 489: 1085, 490: 1085, 491: 1085, 492: 1085, 493: 1085, 494: 1085, 495: 1085, 496: 1085, 497: 1085, 498: 1085, 499: 1085, 500: 1085, 501: 1085, 502: 1085, 503: 1085, 504: 1085, 505: 1085, 506: 1085, 507: 1085, 508: 1085, 509: 1085, 510: 1085, 511: 1085, 512: 1085, 513: 1085, 514: 1085, 515: 1085, 516: 1085, 517: 1085, 518: 1085, 519: 1085, 520: 1085, 521: 1085, 522: 1085, 523: 1085, 524: 1085, 525: 1085, 526: 1085, 527: 1085, 528: 1085, 529: 1085, 530: 1085, 531: 1085, 532: 1085, 533: 1085, 534: 1085, 535: 1085, 536: 1085, 537: 1085, 538: 1085, 539: 1085, 540: 1085, 541: 1085, 542: 1085, 543: 1085, 544: 1085, 545: 1085, 546: 1085, 547: 1085, 548: 1085, 549: 1085, 550: 1085, 551: 1085, 552: 1085, 553: 1085, 554: 1085, 555: 1085, 556: 1085, 557: 1085, 558: 1085, 559: 1085, 560: 1085, 561: 1085, 562: 1085, 563: 1085, 564: 1085, 565: 1085, 566: 1085, 567: 1085, 568: 1085, 569: 1085, 570: 1085, 571: 1085, 572: 1085, 573: 1085, 574: 1085, 575: 1085, 576: 1085, 577: 1085, 578: 1085, 579: 1085, 580: 1085, 581: 1085, 582: 1085, 583: 1085, 584: 1085, 585: 1085, 586: 1085, 587: 1085, 588: 1085, 589: 1085, 590: 1085, 591: 1085, 592: 1085, 593: 1085, 594: 1085, 595: 1085, 596: 1085, 597: 1085, 598: 1085, 599: 1085, 600: 1085, 601: 1085, 602: 1085, 603: 1085, 604: 1085, 605: 1085, 606: 1085, 607: 1085, 608: 1085, 609: 1085, 610: 1085, 611: 1085, 612: 1085, 613: 1085, 614: 1085, 615: 1085, 616: 1085, 617: 1085, 618: 1085, 619: 1085, 620: 1085, 621: 1085, 622: 1085, 623: 1085, 624: 1085, 625: 1085, 626: 1085, 627: 1085, 628: 1085, 629: 1085, 630: 1085, 631: 1085, 632: 1085, 633: 1085, 634: 1085, 635: 1085, 636: 1085, 637: 1085, 638: 1085, 639: 1085, 640: 1085, 641: 1085, 642: 1085, 643: 1085, 644: 1085, 645: 1085, 646: 1085, 647: 1085, 648: 1085, 649: 1085, 650: 1085, 651: 1085, 652: 1085, 653: 1085, 654: 1085, 655: 1085, 656: 1085, 657: 1085, 658: 1085, 659: 1085, 660: 1085, 661: 1085, 662: 1085, 663: 1085, 664: 1085, 665: 1085, 666: 1085, 667: 1085, 668: 1085, 669: 1085, 670: 1085, 671: 1085, 672: 1085, 673: 1085, 674: 1085, 675: 1085, 676: 1085, 677: 1085, 678: 1085, 679: 1085, 680: 1085, 681: 1085, 682: 1085, 683: 1085, 684: 1085, 685: 1085, 686: 1085, 687: 1085, 688: 1085, 689: 1085, 690: 1085, 691: 1085, 692: 1085, 693: 1085, 694: 1085, 695: 1085, 696: 1085, 697: 1085, 698: 1085, 699: 1085, 700: 1085, 701: 1085, 702: 1085, 703: 1085, 704: 1085, 705: 1085, 706: 1085, 707: 1085, 708: 1085, 709: 1085, 710: 1085, 711: 1085, 712: 1085, 713: 1085, 714: 1085, 715: 1085, 716: 1085, 717: 1085, 718: 1085, 719: 1085, 720: 1085, 721: 1085, 722: 1085, 723: 1085, 724: 1085, 725: 1085, 726: 1085, 727: 1085, 728: 1085, 729: 1085, 730: 1085, 731: 1085, 732: 1085, 733: 1085, 734: 1085, 735: 1085, 736: 1085, 737: 1085, 738: 1085, 739: 1085, 740: 1085, 741: 1085, 742: 1085, 743: 1085, 744: 1085, 745: 1085, 746: 1085, 747: 1085, 748: 1085, 749: 1085, 750: 1085, 751: 1085, 752: 1085, 753: 1085, 754: 1085, 755: 1085, 756: 1085, 757: 1085, 758: 1085, 759: 1085, 760: 1085, 761: 1085, 762: 1085, 763: 1085, 764: 1085, 765: 1085, 766: 1085, 767: 1085, 768: 1085, 769: 1085, 770: 1085, 771: 1085, 772: 1085, 773: 1085, 774: 1085, 775: 1085, 776: 1085, 777: 1085, 778: 1085, 779: 1085, 780: 1085, 781: 1085, 782: 1085, 783: 1085, 784: 1085, 785: 1085, 786: 1085, 787: 1085, 788: 1085, 789: 1085, 790: 1085, 791: 1085, 792: 1085, 793: 1085, 794: 1085, 795: 1085, 796: 1085, 797: 1085, 798: 1085, 799: 1085, 800: 1085, 801: 1085, 802: 1085, 803: 1085, 804: 1085, 805: 1085, 806: 1085, 807: 1085, 808: 1085, 809: 1085, 810: 1085, 811: 1085, 812: 1085, 813: 1085, 814: 1085, 815: 1085, 816: 1085, 817: 1085, 818: 1085, 819: 1085, 820: 1085, 821: 1085, 822: 1085, 823: 1085, 824: 1085, 825: 1085, 826: 1085, 827: 1085, 828: 1085, 829: 1085, 830: 1085, 831: 1085, 832: 1085, 833: 1085, 834: 1085, 835: 1085, 836: 1085, 837: 1085, 838: 1085, 839: 1085, 840: 1085, 841: 1085, 842: 1085, 843: 1085, 844: 1085, 845: 1085, 846: 1085, 847: 1085, 848: 1085, 849: 1085, 850: 1085, 851: 1085, 852: 1085, 853: 1085, 854: 1085, 855: 1085, 856: 1085, 857: 1085, 858: 1085, 859: 1085, 860: 1085, 861: 1085, 862: 1085, 863: 1085, 864: 1085, 865: 1085, 866: 1085, 867: 1085, 868: 1085, 869: 1085, 870: 1085, 871: 1085, 872: 1085, 873: 1085, 874: 1085, 875: 1085, 876: 1085, 877: 1085, 878: 1085, 879: 1085, 880: 1085, 881: 1085, 882: 1085, 883: 1085, 884: 1085, 885: 1085, 886: 1085, 887: 1085, 888: 1085, 889: 1085, 890: 1085, 891: 1085, 892: 1085, 893: 1085, 894: 1085, 895: 1085, 896: 1085, 897: 1085, 898: 1085, 899: 1085, 900: 1085, 901: 1085, 902: 1085, 903: 1085, 904: 1085, 905: 1085, 906: 1085, 907: 1085, 908: 1085, 909: 1085, 910: 1085, 911: 1085, 912: 1085, 913: 1085, 914: 1085, 915: 1085, 916: 1085, 917: 1085, 918: 1085, 919: 1085, 920: 1085, 921: 1085, 922: 1085, 923: 1085, 924: 1085, 925: 1085, 926: 1085, 927: 1085, 928: 1085, 929: 1085, 930: 1085, 931: 1085, 932: 1085, 933: 1085, 934: 1085, 935: 1085, 936: 1085, 937: 1085, 938: 1085, 939: 1085, 940: 1085, 941: 1085, 942: 1085, 943: 1085, 944: 1085, 945: 1085, 946: 1085, 947: 1085, 948: 1085, 949: 1085, 950: 1085, 951: 1085, 952: 1085, 953: 1085, 954: 1085, 955: 1085, 956: 1085, 957: 1085, 958: 1085, 959: 1085, 960: 1085, 961: 1085, 962: 1085, 963: 1085, 964: 1085, 965: 1085, 966: 1085, 967: 1085, 968: 1085, 969: 1085, 970: 1085, 971: 1085, 972: 1085, 973: 1085, 974: 1085, 975: 1085, 976: 1085, 977: 1085, 978: 1085, 979: 1085, 980: 1085, 981: 1085, 982: 1085, 983: 1085, 984: 1085, 985: 1085, 986: 1085, 987: 1085, 988: 1085, 989: 1085, 990: 1085, 991: 1085, 992: 1085, 993: 1085, 994: 1085, 995: 1085, 996: 1085, 997: 1085, 998: 1085, 999: 1085, 1000: 1085, 1001: 1085, 1002: 1085, 1003: 1085, 1004: 1085, 1005: 1085, 1006: 1085, 1007: 1085, 1008: 1085, 1009: 1085, 1010: 1085, 1011: 1085, 1012: 1085, 1013: 1085, 1014: 1085, 1015: 1085, 1016: 1085, 1017: 1085, 1018: 1085, 1019: 1085, 1020: 1085, 1021: 1085, 1022: 1085, 1023: 1085, 1024: 1085, 1025: 1085, 1026: 1085, 1027: 1085, 1028: 1085, 1029: 1085, 1030: 1085, 1031: 1085, 1032: 1085, 1033: 1085, 1034: 1085, 1035: 1085, 1036: 1085, 1037: 1085, 1038: 1085, 1039: 1085, 1040: 1085, 1041: 1085, 1042: 1085, 1043: 1085, 1044: 1085, 1045: 1085, 1046: 1085, 1047: 1085, 1048: 1085, 1049: 1085, 1050: 1085, 1051: 1085, 1052: 1085, 1053: 1085, 1054: 1085, 1055: 1085, 1056: 1085, 1057: 1085, 1058: 1085, 1059: 1085, 1060: 1085, 1061: 1085, 1062: 1085, 1063: 1085, 1064: 1085, 1065: 1085, 1066: 1085, 1067: 1085, 1068: 1085, 1069: 1085, 1070: 1085, 1071: 1085, 1072: 1085, 1073: 1085, 1074: 1085, 1075: 1085, 1076: 1085, 1077: 1085, 1078: 1085, 1079: 1085, 1080: 1085, 1081: 1085, 1082: 1085, 1083: 1085, 1084: 1085, 0: 1084}
+time limit is: 1800
+model used is: CP-add
+batch num is: vm1084-848.9
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-add.py
+
+scontrol show job 14297608
+JobId=14297608 JobName=cp-node-add-1-sbatch.sh
+   UserId=pekardan(3144906) GroupId=beck(6007069) MCS_label=N/A
+   Priority=845267 Nice=0 Account=def-beck QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:41:05 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2025-03-17T00:10:32 EligibleTime=2025-03-17T00:10:32
+   AccrueTime=2025-03-17T00:10:32
+   StartTime=2025-03-17T00:16:56 EndTime=2025-03-17T00:58:01 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-03-17T00:16:56 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=nia-login03:44889
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=nia0444
+   BatchHost=nia0444
+   NumNodes=1 NumCPUs=80 NumTasks=14 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=28,mem=175000M,node=1,billing=14
+   AllocTRES=cpu=80,mem=175000M,node=1,billing=40
+   Socks/Node=* NtasksPerN:B:S:C=14:0:*:1 CoreSpec=*
+   MinCPUsNode=28 MinMemoryNode=175000M MinTmpDiskNode=0
+   Features=[skylake|cascade] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/gpfs/fs0/scratch/b/beck/pekardan/cp-node-add-1-sbatch.sh
+   WorkDir=/gpfs/fs0/scratch/b/beck/pekardan
+   Comment=/opt/slurm/bin/sbatch --export=NONE cp-node-add-1-sbatch.sh 
+   StdErr=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14297608.out
+   StdIn=/dev/null
+   StdOut=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14297608.out
+   TresPerTask=cpu=2
+   MailUser=daniel.pekar@mail.utoronto.ca MailType=INVALID_DEPEND,BEGIN,END,FAIL,REQUEUE,STAGE_OUT
+   
+
+sacct -j 14297608
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+14297608     cp-node-a+   def-beck   00:41:05                         00:00:00   00:00:00      0:0 
+14297608.ba+      batch   def-beck   00:41:05                         00:00:00   00:00:00      0:0 
+14297608.ex+     extern   def-beck   00:41:05                         00:00:00   00:00:00      0:0 

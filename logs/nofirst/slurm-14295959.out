@@ -1,0 +1,905 @@
+
+The following have been reloaded with a version change:
+  1) mii/1.1.1 => mii/1.1.2
+
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: burma14-3.1.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 1548 rows, 2744 columns and 127914 nonzeros
+Model fingerprint: 0x59fc6bcd
+Variable types: 0 continuous, 2744 integer (2744 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 3e+01]
+  Objective range  [2e-01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+01]
+Presolve removed 1095 rows and 1301 columns
+Presolve time: 0.55s
+Presolved: 453 rows, 1443 columns, 30723 nonzeros
+Variable types: 0 continuous, 1443 integer (1443 binary)
+
+Root relaxation: objective 3.378925e+01, 809 iterations, 0.04 seconds (0.05 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   33.78925    0  156          -   33.78925      -     -    0s
+     0     0   34.58426    0  140          -   34.58426      -     -    0s
+     0     0   34.58426    0  140          -   34.58426      -     -    0s
+
+Explored 1 nodes (1011 simplex iterations) in 0.84 seconds (0.89 work units)
+Thread count was 1 (of 80 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
+error:  Unable to retrieve attribute 'X'
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: burma14-3.1
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: burma14-3.1.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 1533 rows, 2562 columns and 115480 nonzeros
+Model fingerprint: 0xffd818dc
+Variable types: 0 continuous, 2562 integer (2562 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+01]
+  Objective range  [2e-01, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 994 rows and 1710 columns
+Presolve time: 0.92s
+Presolved: 539 rows, 852 columns, 28451 nonzeros
+Variable types: 0 continuous, 852 integer (852 binary)
+
+Root relaxation: objective 4.105176e+01, 272 iterations, 0.01 seconds (0.01 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   41.05176    0   83          -   41.05176      -     -    1s
+     0     0   41.32081    0   77          -   41.32081      -     -    1s
+     0     0   41.88015    0   81          -   41.88015      -     -    1s
+     0     0   42.14553    0   87          -   42.14553      -     -    1s
+     0     0   42.28481    0   88          -   42.28481      -     -    1s
+     0     0   42.39321    0   87          -   42.39321      -     -    1s
+     0     0   42.44736    0   90          -   42.44736      -     -    1s
+     0     0   42.44828    0   87          -   42.44828      -     -    1s
+     0     0   46.96238    0   81          -   46.96238      -     -    1s
+     0     0   47.51264    0   90          -   47.51264      -     -    1s
+     0     0   47.65906    0   79          -   47.65906      -     -    1s
+     0     0   47.96722    0   83          -   47.96722      -     -    1s
+     0     0   48.03484    0   58          -   48.03484      -     -    1s
+     0     0   48.03944    0   62          -   48.03944      -     -    1s
+     0     0   48.15705    0   68          -   48.15705      -     -    1s
+     0     0   48.16718    0   63          -   48.16718      -     -    1s
+     0     0   48.25508    0   62          -   48.25508      -     -    1s
+     0     0   48.25729    0   62          -   48.25729      -     -    1s
+     0     0   49.38060    0   77          -   49.38060      -     -    1s
+     0     0   49.53581    0   59          -   49.53581      -     -    1s
+     0     0   49.70837    0   63          -   49.70837      -     -    1s
+     0     0   49.71117    0   61          -   49.71117      -     -    1s
+     0     0   50.94962    0   79          -   50.94962      -     -    1s
+     0     0   51.08539    0   71          -   51.08539      -     -    1s
+H    0     0                      56.7170895   51.08539  9.93%     -    1s
+     0     0   51.52157    0   54   56.71709   51.52157  9.16%     -    1s
+     0     0   52.28955    0   62   56.71709   52.28955  7.81%     -    1s
+H    0     1                      52.6600643   52.28955  0.70%     -    1s
+
+Cutting planes:
+  Cover: 1
+  Clique: 5
+  MIR: 3
+  GUB cover: 12
+  Zero half: 13
+  RLT: 8
+  Relax-and-lift: 1
+
+Explored 1 nodes (1390 simplex iterations) in 1.56 seconds (1.49 work units)
+Thread count was 1 (of 80 available processors)
+
+Solution count 2: 52.6601 56.7171 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 5.266006434063e+01, best bound 5.266006434063e+01, gap 0.0000%
+x[1,10,11]
+x[2,8,1]
+x[3,14,4]
+x[4,12,8]
+x[5,9,13]
+x[6,4,7]
+x[7,6,6]
+x[8,11,2]
+x[10,5,12]
+x[11,3,3]
+x[12,13,9]
+x[13,1,10]
+x[14,7,5]
+x[0,2,0]
+last_edge[9,2]
+Obj: 52.6601
+Time: 1.56491
+Memory Used (MiB): 42.02
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: burma14-3.1
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: ulysses22-5.5.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 3889 rows, 10186 columns and 723128 nonzeros
+Model fingerprint: 0x3a140a72
+Variable types: 0 continuous, 10186 integer (10186 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+01]
+  Objective range  [9e-02, 3e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 1895 rows and 1086 columns
+Presolve time: 2.55s
+Presolved: 1994 rows, 9100 columns, 98029 nonzeros
+Variable types: 0 continuous, 9100 integer (9038 binary)
+
+Root relaxation: objective 5.679790e+01, 2011 iterations, 0.25 seconds (0.34 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   56.79790    0  282          -   56.79790      -     -    3s
+     0     0   56.80533    0  255          -   56.80533      -     -    3s
+     0     0   59.36948    0  351          -   59.36948      -     -    5s
+     0     0   59.38946    0  361          -   59.38946      -     -    5s
+     0     0   59.46887    0  362          -   59.46887      -     -    5s
+     0     0   59.47838    0  340          -   59.47838      -     -    5s
+     0     0   59.55050    0  382          -   59.55050      -     -    5s
+     0     0   59.56667    0  355          -   59.56667      -     -    5s
+     0     0   59.57231    0  375          -   59.57231      -     -    5s
+     0     0   59.66278    0  377          -   59.66278      -     -    6s
+     0     0   62.54714    0  355          -   62.54714      -     -    6s
+     0     0   62.65064    0  379          -   62.65064      -     -    7s
+     0     0   62.72341    0  342          -   62.72341      -     -    7s
+     0     0   62.76743    0  338          -   62.76743      -     -    7s
+     0     0   62.76983    0  352          -   62.76983      -     -    7s
+     0     0   63.17827    0  346          -   63.17827      -     -    7s
+     0     0   63.18084    0  350          -   63.18084      -     -    7s
+     0     0   63.18660    0  349          -   63.18660      -     -    7s
+     0     0   63.27187    0  313          -   63.27187      -     -    7s
+     0     0   63.28389    0  331          -   63.28389      -     -    7s
+     0     0   63.31614    0  328          -   63.31614      -     -    7s
+     0     0   63.32211    0  344          -   63.32211      -     -    7s
+     0     0   64.66196    0  383          -   64.66196      -     -    9s
+     0     0   64.66761    0  374          -   64.66761      -     -    9s
+     0     0   64.74025    0  399          -   64.74025      -     -    9s
+     0     0   64.74327    0  401          -   64.74327      -     -    9s
+     0     0   64.74327    0  403          -   64.74327      -     -    9s
+     0     0   65.03619    0  375          -   65.03619      -     -   11s
+     0     0   65.03675    0  364          -   65.03675      -     -   11s
+     0     0   65.72632    0  345          -   65.72632      -     -   11s
+     0     0   65.80903    0  333          -   65.80903      -     -   11s
+     0     0   65.83535    0  348          -   65.83535      -     -   11s
+     0     0   65.84053    0  334          -   65.84053      -     -   11s
+     0     0   65.96965    0  348          -   65.96965      -     -   11s
+     0     0   65.97885    0  338          -   65.97885      -     -   11s
+     0     0   65.97885    0  338          -   65.97885      -     -   11s
+     0     0   66.39799    0  361          -   66.39799      -     -   12s
+     0     0   66.43342    0  335          -   66.43342      -     -   12s
+     0     0   66.50498    0  390          -   66.50498      -     -   12s
+     0     0   66.53065    0  415          -   66.53065      -     -   12s
+     0     0   66.53151    0  411          -   66.53151      -     -   12s
+     0     0   66.89209    0  391          -   66.89209      -     -   12s
+     0     0   66.90356    0  386          -   66.90356      -     -   12s
+     0     0   66.90411    0  376          -   66.90411      -     -   12s
+     0     0   66.93334    0  374          -   66.93334      -     -   12s
+     0     0   66.93727    0  372          -   66.93727      -     -   12s
+     0     0   66.94405    0  376          -   66.94405      -     -   13s
+     0     0   66.94467    0  370          -   66.94467      -     -   13s
+     0     0   67.37608    0  358          -   67.37608      -     -   13s
+     0     0   67.41572    0  371          -   67.41572      -     -   13s
+     0     0   67.44474    0  370          -   67.44474      -     -   13s
+     0     0   67.45007    0  387          -   67.45007      -     -   13s
+     0     0   67.45646    0  383          -   67.45646      -     -   13s
+     0     0   67.45720    0  398          -   67.45720      -     -   13s
+     0     0   67.52725    0  377          -   67.52725      -     -   13s
+     0     0   67.54470    0  403          -   67.54470      -     -   13s
+     0     0   67.54488    0  400          -   67.54488      -     -   13s
+     0     0   67.54934    0  385          -   67.54934      -     -   13s
+     0     0   67.55003    0  397          -   67.55003      -     -   14s
+     0     0   67.64413    0  393          -   67.64413      -     -   14s
+     0     0   67.64812    0  410          -   67.64812      -     -   14s
+     0     0   67.64839    0  407          -   67.64839      -     -   14s
+     0     0   67.74388    0  388          -   67.74388      -     -   14s
+     0     0   67.76156    0  405          -   67.76156      -     -   14s
+     0     0   67.76445    0  400          -   67.76445      -     -   14s
+     0     0   67.76460    0  417          -   67.76460      -     -   14s
+     0     0   67.85260    0  418          -   67.85260      -     -   15s
+     0     0   67.85342    0  412          -   67.85342      -     -   15s
+     0     0   67.86017    0  403          -   67.86017      -     -   15s
+     0     0   67.86154    0  411          -   67.86154      -     -   15s
+     0     0   67.99901    0  399          -   67.99901      -     -   15s
+     0     0   67.99961    0  405          -   67.99961      -     -   15s
+     0     0   67.99962    0  401          -   67.99962      -     -   15s
+     0     0   68.02558    0  406          -   68.02558      -     -   15s
+     0     0   68.03369    0  400          -   68.03369      -     -   15s
+     0     0   68.03454    0  403          -   68.03454      -     -   15s
+     0     0   68.12024    0  407          -   68.12024      -     -   15s
+     0     0   68.14247    0  422          -   68.14247      -     -   15s
+     0     0   68.14812    0  435          -   68.14812      -     -   15s
+     0     0   68.14825    0  437          -   68.14825      -     -   16s
+     0     0   68.16137    0  432          -   68.16137      -     -   16s
+     0     0   68.16775    0  442          -   68.16775      -     -   16s
+     0     0   68.16801    0  443          -   68.16801      -     -   16s
+     0     0   68.24776    0  430          -   68.24776      -     -   16s
+     0     0   68.27859    0  450          -   68.27859      -     -   16s
+     0     0   68.27972    0  447          -   68.27972      -     -   16s
+     0     0   68.31602    0  449          -   68.31602      -     -   16s
+     0     0   68.32044    0  454          -   68.32044      -     -   16s
+     0     0   68.32060    0  459          -   68.32060      -     -   16s
+     0     0   68.43953    0  438          -   68.43953      -     -   17s
+     0     0   68.44488    0  445          -   68.44488      -     -   17s
+     0     0   68.44549    0  447          -   68.44549      -     -   17s
+     0     0   68.44578    0  445          -   68.44578      -     -   17s
+     0     0   68.45259    0  462          -   68.45259      -     -   17s
+     0     0   68.45402    0  467          -   68.45402      -     -   17s
+     0     0   68.50094    0  456          -   68.50094      -     -   17s
+     0     0   68.51535    0  447          -   68.51535      -     -   17s
+     0     0   68.51714    0  455          -   68.51714      -     -   17s
+     0     0   68.53080    0  465          -   68.53080      -     -   18s
+     0     0   68.53804    0  439          -   68.53804      -     -   18s
+     0     2   68.80972    0  438          -   68.80972      -     -   21s
+    16    16   78.15783    9  272          -   71.25236      -   975   25s
+    68    54   87.19059   32  194          -   71.25487      -   577   30s
+   139   109   80.34268   37  197          -   72.30366      -   455   35s
+   206   160   82.42732   18  267          -   74.90113      -   424   40s
+   273   212   88.46096   18  203          -   74.90120      -   407   45s
+   365   294   93.78425   74  185          -   74.90120      -   368   50s
+   468   369   91.12104   47  162          -   75.40333      -   339   55s
+   578   470   80.86190   34  439          -   75.40333      -   304   64s
+   580   471  132.60921   64  124          -  132.60921      -   303   65s
+H  580   447                     157.4326442  135.47815  13.9%   303   65s
+H  582   426                     147.6955394  136.93294  7.29%   302   65s
+H  618   407                     145.0262636  139.03553  4.13%   289   66s
+*  624   383              12     143.3635886  140.67755  1.87%   287   66s
+*  626   360              12     143.3329278  140.81955  1.75%   286   66s
+
+Cutting planes:
+  Gomory: 5
+  Cover: 1
+  Projected implied bound: 1
+  Clique: 12
+  MIR: 1
+  Flow cover: 9
+  GUB cover: 8
+  Zero half: 12
+  RLT: 18
+  Relax-and-lift: 2
+
+Explored 628 nodes (193483 simplex iterations) in 66.94 seconds (67.94 work units)
+Thread count was 1 (of 80 available processors)
+
+Solution count 5: 143.333 143.364 145.026 ... 157.433
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.433329278329e+02, best bound 1.433329278329e+02, gap 0.0000%
+x[1,2,16]
+x[2,21,17]
+x[3,9,6]
+x[4,16,21]
+x[5,15,8]
+x[6,10,13]
+x[7,4,20]
+x[8,1,15]
+x[9,5,7]
+x[10,8,14]
+x[11,7,19]
+x[12,22,2]
+x[13,12,1]
+x[14,19,10]
+x[15,14,9]
+x[17,18,4]
+x[18,3,5]
+x[19,20,11]
+x[20,6,12]
+x[21,11,18]
+x[22,17,3]
+x[0,13,0]
+last_edge[16,13]
+Obj: 143.333
+Time: 66.9392
+Memory Used (MiB): 177.99
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: ulysses22-5.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: ulysses22-5.5.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 3912 rows, 10648 columns and 772582 nonzeros
+Model fingerprint: 0xcb00694b
+Variable types: 0 continuous, 10648 integer (10648 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+01]
+  Objective range  [9e-02, 3e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+01]
+Presolve removed 2269 rows and 1669 columns
+Presolve time: 3.01s
+Presolved: 1643 rows, 8979 columns, 483132 nonzeros
+Variable types: 0 continuous, 8979 integer (8957 binary)
+
+Root relaxation: objective 5.494767e+01, 2803 iterations, 0.56 seconds (0.97 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0   54.94767    0  294          -   54.94767      -     -    4s
+     0     0   59.06928    0  246          -   59.06928      -     -    5s
+     0     0   59.06928    0  246          -   59.06928      -     -    5s
+     0     0   75.61240    0  296          -   75.61240      -     -   14s
+     0     0   76.65029    0  287          -   76.65029      -     -   15s
+     0     0   78.37747    0  307          -   78.37747      -     -   16s
+     0     0   78.48350    0  315          -   78.48350      -     -   16s
+     0     0   78.48634    0  320          -   78.48634      -     -   16s
+     0     0   78.48830    0  311          -   78.48830      -     -   16s
+     0     0   78.49176    0  303          -   78.49176      -     -   16s
+     0     0   78.49269    0  316          -   78.49269      -     -   16s
+     0     0   78.49542    0  312          -   78.49542      -     -   16s
+     0     0   78.49598    0  321          -   78.49598      -     -   16s
+     0     0   78.49793    0  328          -   78.49793      -     -   16s
+     0     0   79.33214    0  366          -   79.33214      -     -   17s
+     0     0   79.42863    0  359          -   79.42863      -     -   17s
+     0     0   79.43225    0  351          -   79.43225      -     -   17s
+     0     0   79.43656    0  344          -   79.43656      -     -   17s
+     0     0   79.43668    0  351          -   79.43668      -     -   17s
+     0     0   79.82255    0  305          -   79.82255      -     -   17s
+     0     0   79.82336    0  298          -   79.82336      -     -   17s
+     0     0   79.82465    0  300          -   79.82465      -     -   18s
+     0     0   79.82470    0  288          -   79.82470      -     -   18s
+     0     0   79.82530    0  289          -   79.82530      -     -   18s
+     0     0   80.64387    0  325          -   80.64387      -     -   18s
+     0     0   80.64387    0  325          -   80.64387      -     -   18s
+     0     0   80.65222    0  331          -   80.65222      -     -   18s
+     0     0   80.65230    0  329          -   80.65230      -     -   18s
+     0     0   81.06646    0  342          -   81.06646      -     -   19s
+     0     0   81.06647    0  335          -   81.06647      -     -   19s
+     0     0   81.06649    0  334          -   81.06649      -     -   19s
+     0     0   81.06649    0  332          -   81.06649      -     -   19s
+     0     0   81.06649    0  333          -   81.06649      -     -   19s
+     0     0   81.06676    0  337          -   81.06676      -     -   19s
+     0     0   81.60564    0  319          -   81.60564      -     -   19s
+     0     0   81.78298    0  312          -   81.78298      -     -   19s
+     0     0   81.79528    0  325          -   81.79528      -     -   19s
+     0     0   81.90615    0  311          -   81.90615      -     -   20s
+     0     0   81.90953    0  320          -   81.90953      -     -   20s
+     0     0   81.90955    0  330          -   81.90955      -     -   20s
+     0     0   81.93680    0  343          -   81.93680      -     -   20s
+     0     0   81.93757    0  341          -   81.93757      -     -   20s
+     0     0   81.93758    0  350          -   81.93758      -     -   20s
+     0     0   81.93879    0  357          -   81.93879      -     -   20s
+     0     0   81.93939    0  356          -   81.93939      -     -   20s
+     0     2   82.09994    0  356          -   82.09994      -     -   22s
+     8    10   84.64403    5  228          -   83.56805      -  1401   25s
+    67    69   88.18987   41  194          -   83.56805      -   538   30s
+   135   131   94.25520   81  234          -   83.56805      -   449   35s
+   196   170   89.15978    9  294          -   83.88575      -   452   40s
+   226   200   90.73216   26  275          -   83.88575      -   483   45s
+   270   242   93.43881   52  259          -   83.88575      -   488   50s
+   323   293  104.23856   85  201          -   83.88575      -   475   55s
+   436   402  125.41029  160  184          -   83.88575      -   402   60s
+   565   481  108.34041  123  246          -   83.92670      -   337   72s
+   571   485   91.47513   35  321          -   83.92670      -   334   75s
+   579   492   86.40217   15  317          -   84.37186      -   362   81s
+   589   499   87.00206   20  320          -   86.40441      -   369   92s
+   593   502   87.43537   22  307          -   86.40441      -   374   95s
+   599   502   87.81171   25  273          -   86.40441      -   404  100s
+   609   508   94.20193   30  246          -   86.40441      -   414  105s
+   638   522  103.62404   44  226          -   86.40441      -   427  110s
+   652   527  101.88494   51  237          -   86.40441      -   444  115s
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: ulysses22-5.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: berlin52-10.4.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: berlin52-10.4
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: rat783-481.4
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: berlin52-10.4.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: berlin52-10.4
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: berlin52-13.2.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 24062 rows, 140608 columns and 26068944 nonzeros
+Model fingerprint: 0x5b17ee75
+Variable types: 0 continuous, 140608 integer (140608 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+02]
+  Objective range  [2e+01, 2e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve removed 9300 rows and 11722 columns (presolve time = 5s)...
+Presolve removed 9300 rows and 11722 columns (presolve time = 11s)...
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: berlin52-13.2
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: berlin52-13.2.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6248 CPU @ 2.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 24009 rows, 137956 columns and 25335954 nonzeros
+Model fingerprint: 0x9805e4b2
+Variable types: 0 continuous, 137956 integer (137956 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+01]
+  Objective range  [2e+01, 2e+03]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+00]
+Presolve removed 9483 rows and 2570 columns (presolve time = 5s)...
+Presolve removed 9483 rows and 2570 columns (presolve time = 11s)...
+Presolve removed 9483 rows and 2570 columns (presolve time = 15s)...
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: berlin52-13.2
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: gr202-67.3.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: gr202-67.3
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: lin318-99.3.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: lin318-99.3
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: fl417-160.6.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: fl417-160.6
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: fl417-160.6.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: fl417-160.6
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: eil101-27.5.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: eil101-27.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: eil101-27.5.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: eil101-27.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: d657-322.7
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: lin318-99.3.json
+Set parameter TokenServer to value "nia-license"
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: lin318-99.3
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: rat783-481.4.json
+error:  
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: rat783-481.4
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+===INSTANCE START
+ALG: MIP-DEL-nofirst
+Instance Name: vm1084-848.9.json
+error:  
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-del-nofirst
+batch num is: vm1084-848.9
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirst.py
+===INSTANCE START
+ALG: MIP-ADD-nofirst
+Instance Name: vm1084-848.9.json
+error:  
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-add-2-nofirst
+batch num is: vm1084-848.9
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-2-nofirst.py
+slurmstepd: error: *** JOB 14295959 ON nia1585 CANCELLED AT 2025-03-15T23:17:52 DUE TO TIME LIMIT ***
+slurmstepd: error: Detected 2 oom_kill events in StepId=14295959.batch. Some of the step tasks have been OOM Killed.
+
+scontrol show job 14295959
+JobId=14295959 JobName=mip-nofirst-sbatch.sh
+   UserId=pekardan(3144906) GroupId=beck(6007069) MCS_label=N/A
+   Priority=813762 Nice=0 Account=def-beck QOS=normal
+   JobState=COMPLETING Reason=TimeLimit Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:125
+   RunTime=01:30:11 TimeLimit=01:30:00 TimeMin=N/A
+   SubmitTime=2025-03-15T21:45:53 EligibleTime=2025-03-15T21:45:53
+   AccrueTime=2025-03-15T21:45:53
+   StartTime=2025-03-15T21:47:41 EndTime=2025-03-15T23:17:52 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-03-15T21:47:41 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=nia-login06:208099
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=nia1585
+   BatchHost=nia1585
+   NumNodes=1 NumCPUs=80 NumTasks=22 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=44,mem=175000M,node=1,billing=22
+   AllocTRES=cpu=80,mem=175000M,node=1,billing=40
+   Socks/Node=* NtasksPerN:B:S:C=22:0:*:1 CoreSpec=*
+   MinCPUsNode=44 MinMemoryNode=175000M MinTmpDiskNode=0
+   Features=[skylake|cascade] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/gpfs/fs0/scratch/b/beck/pekardan/mip-nofirst-sbatch.sh
+   WorkDir=/gpfs/fs0/scratch/b/beck/pekardan
+   Comment=/opt/slurm/bin/sbatch --export=NONE mip-nofirst-sbatch.sh 
+   StdErr=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14295959.out
+   StdIn=/dev/null
+   StdOut=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14295959.out
+   TresPerTask=cpu=2
+   MailUser=daniel.pekar@mail.utoronto.ca MailType=INVALID_DEPEND,BEGIN,END,FAIL,REQUEUE,STAGE_OUT
+   
+
+sacct -j 14295959
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+14295959     mip-nofir+   def-beck   01:30:11                        00:00.277  00:00.757      0:0 
+14295959.ba+      batch   def-beck   01:30:26 173031712K 170467912K  00:00.277  00:00.757    0:125 
+14295959.ex+     extern   def-beck   01:30:31    136828K      1032K   00:00:00   00:00:00    0:125 
+
+kernel messages produced during job executions:
+[Mar15 20:06] python3 invoked oom-killer: gfp_mask=0xd0, order=0, oom_score_adj=0
+[  +0.009094] python3 cpuset=/ mems_allowed=0-1
+[  +0.005783] CPU: 50 PID: 236604 Comm: python3 Tainted: G           OE  ------------ T 3.10.0-1160.119.2.el7.x86_64 #1
+[  +0.012752] Hardware name: Lenovo ThinkSystem SD530 -[7X21CTO1WW]-/-[7X21CTO1WW]-, BIOS -[TEE176H-3.20]- 11/03/2021
+[  +0.012559] Call Trace:
+[  +0.003658]  [<ffffffffa35b1c6c>] dump_stack+0x19/0x1f
+[  +0.006659]  [<ffffffffa35acbcf>] dump_header+0x90/0x22d
+[  +0.006843]  [<ffffffffa2ee1182>] ? default_wake_function+0x12/0x20
+[  +0.007906]  [<ffffffffa30725c3>] ? pollwake+0x73/0xa0
+[  +0.006640]  [<ffffffffa2fcce66>] ? find_lock_task_mm+0x56/0xd0
+[  +0.007504]  [<ffffffffa304a4a8>] ? try_get_mem_cgroup_from_mm+0x28/0x70
+[  +0.008359]  [<ffffffffa2fcd3f5>] oom_kill_process+0x2d5/0x4a0
+[  +0.007382]  [<ffffffffa304e98c>] mem_cgroup_oom_synchronize+0x55c/0x590
+[  +0.008341]  [<ffffffffa304dde0>] ? mem_cgroup_charge_common+0xc0/0xc0
+[  +0.008132]  [<ffffffffa2fcdcf4>] pagefault_out_of_memory+0x14/0x90
+[  +0.007829]  [<ffffffffa35ab008>] mm_fault_error+0x6a/0x15b
+[  +0.007036]  [<ffffffffa35bfa61>] __do_page_fault+0x4a1/0x510
+[  +0.007214]  [<ffffffffa35bfb05>] do_page_fault+0x35/0x90
+[  +0.006810]  [<ffffffffa35bb7b8>] page_fault+0x28/0x30
+[  +0.006516] Task in /slurm/uid_3144906/job_14295959/step_batch/task_0 killed as a result of limit of /slurm/uid_3144906/job_14295959
+[  +0.014701] memory: usage 179200000kB, limit 179200000kB, failcnt 5736
+[  +0.008081] memory+swap: usage 179200000kB, limit 9007199254740988kB, failcnt 0
+[  +0.008943] kmem: usage 0kB, limit 9007199254740988kB, failcnt 0
+[  +0.007477] Memory cgroup stats for /slurm/uid_3144906/job_14295959: cache:0KB rss:0KB rss_huge:0KB mapped_file:0KB swap:0KB inactive_anon:0KB active_anon:0KB inactive_file:0KB active_file:0KB unevictable:0KB
+[  +0.022211] Memory cgroup stats for /slurm/uid_3144906/job_14295959/step_extern: cache:0KB rss:204KB rss_huge:0KB mapped_file:0KB swap:0KB inactive_anon:0KB active_anon:204KB inactive_file:0KB active_file:0KB unevictable:0KB
+[  +0.023763] Memory cgroup stats for /slurm/uid_3144906/job_14295959/step_batch: cache:72KB rss:488KB rss_huge:0KB mapped_file:0KB swap:0KB inactive_anon:72KB active_anon:488KB inactive_file:0KB active_file:0KB unevictable:0KB
+[  +0.023856] Memory cgroup stats for /slurm/uid_3144906/job_14295959/step_batch/task_0: cache:760KB rss:179198476KB rss_huge:43214848KB mapped_file:16KB swap:0KB inactive_anon:76KB active_anon:179198372KB inactive_file:488KB active_file:0KB unevictable:0KB
+[  +0.027411] [ pid ]   uid  tgid total_vm      rss nr_ptes swapents oom_score_adj name
+[  +0.009651] [234602]     0 234602    50591      807      41        0         -1000 slurmstepd
+[  +0.010342] [234607]     0 234607     1091       88       8        0             0 sleep
+[  +0.009853] [234729]     0 234729    50664      930      40        0         -1000 slurmstepd
+[  +0.010354] [234735] 3144906 234735    28414      545      11        0             0 slurm_script
+[  +0.010726] [234968] 3144906 234968     8723     4909      22        0             0 perl
+[  +0.009946] [235086] 3144906 235086     3203      185       8        0             0 bash
+[  +0.009947] [235116] 3144906 235116     3203      185       8        0             0 bash
+[  +0.009939] [235124] 3144906 235124     3203      185       9        0             0 bash
+[  +0.009938] [235129] 3144906 235129     3203      185       8        0             0 bash
+[  +0.009933] [235132] 3144906 235132     3203      185       9        0             0 bash
+[  +0.009920] [235134] 3144906 235134     3203      185       8        0             0 bash
+[  +0.009924] [235139] 3144906 235139     3203      185       9        0             0 bash
+[  +0.009914] [235142] 3144906 235142     3203      185       8        0             0 bash
+[  +0.009916] [235188] 3144906 235188     3203      184       9        0             0 bash
+[  +0.009892] [235199] 3144906 235199     5704     1262      14        0             0 python3
+[  +0.010189] [235201] 3144906 235201     2630       36       7        0             0 tee
+[  +0.009779] [235205] 3144906 235205     3203      184      10        0             0 bash
+[  +0.009868] [235222] 3144906 235222     3203      185       9        0             0 bash
+[  +0.009851] [235241] 3144906 235241     3203      185       9        0             0 bash
+[  +0.009845] [235270] 3144906 235270     3203      185       9        0             0 bash
+[  +0.009840] [235280] 3144906 235280     3203      185      10        0             0 bash
+[  +0.009833] [235288] 3144906 235288     3203      185       8        0             0 bash
+[  +0.009829] [235300] 3144906 235300     3203      185       8        0             0 bash
+[  +0.009824] [235312] 3144906 235312     3203      184       9        0             0 bash
+[  +0.009820] [235324] 3144906 235324     3203      185       9        0             0 bash
+[  +0.009810] [235345] 3144906 235345     3203      185       9        0             0 bash
+[  +0.009804] [235670] 3144906 235670     5704     1262      14        0             0 python3
+[  +0.010091] [235672] 3144906 235672     2630       36       6        0             0 tee
+[  +0.009701] [235673] 3144906 235673     5704     1262      15        0             0 python3
+[  +0.010085] [235675] 3144906 235675     5704     1262      16        0             0 python3
+[  +0.010077] [235676] 3144906 235676     2630       36       6        0             0 tee
+[  +0.009690] [235678] 3144906 235678     2630       36       6        0             0 tee
+[  +0.009689] [235679] 3144906 235679     5704     1263      15        0             0 python3
+[  +0.010057] [235681] 3144906 235681     2630       37       6        0             0 tee
+[  +0.009652] [235822] 3144906 235822     5704     1263      15        0             0 python3
+[  +0.010031] [235825] 3144906 235825     2630       36       7        0             0 tee
+[  +0.009638] [235901] 3144906 235901     5704     1262      15        0             0 python3
+[  +0.010022] [235903] 3144906 235903     2630       36       6        0             0 tee
+[  +0.009617] [235906] 3144906 235906     5704     1263      15        0             0 python3
+[  +0.009986] [235907] 3144906 235907     2630       36       6        0             0 tee
+[  +0.009578] [235909] 3144906 235909     5704     1263      14        0             0 python3
+[  +0.009947] [235912] 3144906 235912     2630       37       7        0             0 tee
+[  +0.009543] [235913] 3144906 235913     5704     1262      14        0             0 python3
+[  +0.009914] [235914] 3144906 235914     2630       37       6        0             0 tee
+[  +0.009508] [235922] 3144906 235922     5704     1262      15        0             0 python3
+[  +0.009878] [235923] 3144906 235923     2630       36       6        0             0 tee
+[  +0.009471] [236137] 3144906 236137     5704     1262      14        0             0 python3
+[  +0.009853] [236138] 3144906 236138     2630       37       7        0             0 tee
+[  +0.009454] [236139] 3144906 236139     5704     1262      15        0             0 python3
+[  +0.009841] [236140] 3144906 236140     2630       36       7        0             0 tee
+[  +0.009448] [236141] 3144906 236141     5704     1262      16        0             0 python3
+[  +0.009834] [236142] 3144906 236142     5704     1263      14        0             0 python3
+[  +0.009817] [236143] 3144906 236143     2630       36       7        0             0 tee
+[  +0.009430] [236144] 3144906 236144     5704     1262      14        0             0 python3
+[  +0.009830] [236145] 3144906 236145     2630       37       6        0             0 tee
+[  +0.009446] [236146] 3144906 236146     2630       37       7        0             0 tee
+[  +0.009447] [236149] 3144906 236149     5704     1263      15        0             0 python3
+[  +0.009835] [236150] 3144906 236150     5704     1262      14        0             0 python3
+[  +0.009836] [236151] 3144906 236151     2630       36       6        0             0 tee
+[  +0.009452] [236152] 3144906 236152     2630       37       7        0             0 tee
+[  +0.009453] [236153] 3144906 236153     5704     1262      16        0             0 python3
+[  +0.009842] [236154] 3144906 236154     2630       36       6        0             0 tee
+[  +0.009456] [236587] 3144906 236587  1084139  1002785    2032        0             0 python3
+[  +0.009845] [236586] 3144906 236586  5128913  5063778   10006        0             0 python3
+[  +0.009845] [236589] 3144906 236589  5105004  5042777    9959        0             0 python3
+[  +0.009846] [236588] 3144906 236588  4993388  4931119    9741        0             0 python3
+[  +0.009849] [236590] 3144906 236590    71632    46315     128        0             0 python3
+[  +0.009854] [236592] 3144906 236592  3454236  3397824    6732        0             0 python3
+[  +0.009858] [236593] 3144906 236593   162973   120258     271        0             0 python3
+[  +0.009861] [236594] 3144906 236594  5137826  5075131   10022        0             0 python3
+[  +0.009863] [236597] 3144906 236597  1088092  1004746    2023        0             0 python3
+[  +0.009866] [236595] 3144906 236595   174234   148632     329        0             0 python3
+[  +0.009872] [236596] 3144906 236596  5093328  5028468    9935        0             0 python3
+[  +0.009874] [236599] 3144906 236599  5106338  5043936    9963        0             0 python3
+[  +0.009872] [236598] 3144906 236598  3461998  3405063    6747        0             0 python3
+[  +0.009872] [236600] 3144906 236600   173225   147625     327        0             0 python3
+[  +0.009871] [236601] 3144906 236601  2145244  2033655    4044        0             0 python3
+[  +0.009875] [236603] 3144906 236603   156959   115607     262        0             0 python3
+[  +0.009877] [236604] 3144906 236604   673939   508739    1040        0             0 python3
+[  +0.009881] [236605] 3144906 236605  2143422  2031699    4041        0             0 python3
+[  +0.009878] [236607] 3144906 236607   674680   617928    1249        0             0 python3
+[  +0.009878] Memory cgroup out of memory: Kill process 236594 (python3) score 113 or sacrifice child
+[  +0.010558] Killed process 236594 (python3), UID 3144906, total-vm:20551304kB, anon-rss:20300512kB, file-rss:8kB, shmem-rss:0kB
+[Mar15 20:07] python3 invoked oom-killer: gfp_mask=0xd0, order=0, oom_score_adj=0
+[  +0.008826] python3 cpuset=/ mems_allowed=0-1
+[  +0.005506] CPU: 32 PID: 236596 Comm: python3 Tainted: G           OE  ------------ T 3.10.0-1160.119.2.el7.x86_64 #1
+[  +0.012394] Hardware name: Lenovo ThinkSystem SD530 -[7X21CTO1WW]-/-[7X21CTO1WW]-, BIOS -[TEE176H-3.20]- 11/03/2021
+[  +0.012205] Call Trace:
+[  +0.003308]  [<ffffffffa35b1c6c>] dump_stack+0x19/0x1f
+[  +0.006315]  [<ffffffffa35acbcf>] dump_header+0x90/0x22d
+[  +0.006506]  [<ffffffffa2ee1182>] ? default_wake_function+0x12/0x20
+[  +0.007575]  [<ffffffffa30725c3>] ? pollwake+0x73/0xa0
+[  +0.006321]  [<ffffffffa2fcce66>] ? find_lock_task_mm+0x56/0xd0
+[  +0.007193]  [<ffffffffa304a4a8>] ? try_get_mem_cgroup_from_mm+0x28/0x70
+[  +0.008059]  [<ffffffffa2fcd3f5>] oom_kill_process+0x2d5/0x4a0
+[  +0.007103]  [<ffffffffa304e98c>] mem_cgroup_oom_synchronize+0x55c/0x590
+[  +0.008074]  [<ffffffffa304dde0>] ? mem_cgroup_charge_common+0xc0/0xc0
+[  +0.007885]  [<ffffffffa2fcdcf4>] pagefault_out_of_memory+0x14/0x90
+[  +0.007599]  [<ffffffffa35ab008>] mm_fault_error+0x6a/0x15b
+[  +0.006826]  [<ffffffffa35bfa61>] __do_page_fault+0x4a1/0x510
+[  +0.007024]  [<ffffffffa35bfb05>] do_page_fault+0x35/0x90
+[  +0.006640]  [<ffffffffa35bb7b8>] page_fault+0x28/0x30
+[  +0.006354] Task in /slurm/uid_3144906/job_14295959/step_batch/task_0 killed as a result of limit of /slurm/uid_3144906/job_14295959
+[  +0.014392] memory: usage 179200000kB, limit 179200000kB, failcnt 24176
+[  +0.008037] memory+swap: usage 179200000kB, limit 9007199254740988kB, failcnt 0
+[  +0.008824] kmem: usage 0kB, limit 9007199254740988kB, failcnt 0
+[  +0.007375] Memory cgroup stats for /slurm/uid_3144906/job_14295959: cache:0KB rss:0KB rss_huge:0KB mapped_file:0KB swap:0KB inactive_anon:0KB active_anon:0KB inactive_file:0KB active_file:0KB unevictable:0KB
+[  +0.022062] Memory cgroup stats for /slurm/uid_3144906/job_14295959/step_extern: cache:0KB rss:204KB rss_huge:0KB mapped_file:0KB swap:0KB inactive_anon:0KB active_anon:204KB inactive_file:0KB active_file:0KB unevictable:0KB
+[  +0.023678] Memory cgroup stats for /slurm/uid_3144906/job_14295959/step_batch: cache:72KB rss:488KB rss_huge:0KB mapped_file:0KB swap:0KB inactive_anon:72KB active_anon:488KB inactive_file:0KB active_file:0KB unevictable:0KB
+[  +0.023821] Memory cgroup stats for /slurm/uid_3144906/job_14295959/step_batch/task_0: cache:416KB rss:179198820KB rss_huge:22861824KB mapped_file:12KB swap:0KB inactive_anon:28KB active_anon:179198708KB inactive_file:172KB active_file:0KB unevictable:0KB
+[  +0.027436] [ pid ]   uid  tgid total_vm      rss nr_ptes swapents oom_score_adj name
+[  +0.009678] [234602]     0 234602    50591      807      41        0         -1000 slurmstepd
+[  +0.010360] [234607]     0 234607     1091       88       8        0             0 sleep
+[  +0.009876] [234729]     0 234729    50664      930      40        0         -1000 slurmstepd
+[  +0.010364] [234735] 3144906 234735    28414      545      11        0             0 slurm_script
+[  +0.010760] [234968] 3144906 234968     8723     4909      22        0             0 perl
+[  +0.009986] [235124] 3144906 235124     3203      185       9        0             0 bash
+[  +0.009985] [235129] 3144906 235129     3203      185       8        0             0 bash
+[  +0.009975] [235205] 3144906 235205     3203      184      10        0             0 bash
+[  +0.009982] [235270] 3144906 235270     3203      185       9        0             0 bash
+[  +0.009978] [235280] 3144906 235280     3203      185      10        0             0 bash
+[  +0.009974] [235300] 3144906 235300     3203      185       8        0             0 bash
+[  +0.009960] [235312] 3144906 235312     3203      184       9        0             0 bash
+[  +0.009940] [235324] 3144906 235324     3203      185       9        0             0 bash
+[  +0.009920] [235345] 3144906 235345     3203      185       9        0             0 bash
+[  +0.009903] [235675] 3144906 235675     5704     1262      16        0             0 python3
+[  +0.010189] [235678] 3144906 235678     2630       36       6        0             0 tee
+[  +0.009790] [235679] 3144906 235679     5704     1263      15        0             0 python3
+[  +0.010158] [235681] 3144906 235681     2630       37       6        0             0 tee
+[  +0.009761] [235913] 3144906 235913     5704     1262      14        0             0 python3
+[  +0.010142] [235914] 3144906 235914     2630       37       6        0             0 tee
+[  +0.009757] [236137] 3144906 236137     5704     1262      14        0             0 python3
+[  +0.010141] [236138] 3144906 236138     2630       37       7        0             0 tee
+[  +0.009753] [236139] 3144906 236139     5704     1262      15        0             0 python3
+[  +0.010135] [236140] 3144906 236140     2630       36       7        0             0 tee
+[  +0.009747] [236141] 3144906 236141     5704     1262      16        0             0 python3
+[  +0.010128] [236143] 3144906 236143     2630       36       7        0             0 tee
+[  +0.009738] [236144] 3144906 236144     5704     1262      14        0             0 python3
+[  +0.010122] [236146] 3144906 236146     2630       37       7        0             0 tee
+[  +0.009732] [236149] 3144906 236149     5704     1263      15        0             0 python3
+[  +0.010114] [236151] 3144906 236151     2630       36       6        0             0 tee
+[  +0.009728] [236153] 3144906 236153     5704     1262      16        0             0 python3
+[  +0.010115] [236154] 3144906 236154     2630       36       6        0             0 tee
+[  +0.009724] [236587] 3144906 236587  1084139  1002820    2032        0             0 python3
+[  +0.010088] [236586] 3144906 236586  8232145  8138984   16068        0             0 python3
+[  +0.010081] [236589] 3144906 236589  7879020  7801642   15377        0             0 python3
+[  +0.010071] [236588] 3144906 236588  7717740  7643045   15063        0             0 python3
+[  +0.010064] [236595] 3144906 236595   174234   148632     329        0             0 python3
+[  +0.010058] [236596] 3144906 236596  7999440  7909569   15612        0             0 python3
+[  +0.010043] [236599] 3144906 236599  7940258  7861928   15499        0             0 python3
+[  +0.010024] [236600] 3144906 236600   173225   147626     327        0             0 python3
+[  +0.010004] [236601] 3144906 236601  4199324  4126906    8170        0             0 python3
+[  +0.009989] Memory cgroup out of memory: Kill process 236586 (python3) score 182 or sacrifice child
+[  +0.010664] Killed process 236586 (python3), UID 3144906, total-vm:32928580kB, anon-rss:32555936kB, file-rss:0kB, shmem-rss:0kB

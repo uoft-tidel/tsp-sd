@@ -28,7 +28,7 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=00:15:00
+#SBATCH --time=0:30:00
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -62,20 +62,17 @@
 
 module load CCEnv
 module load StdEnv/2023
-module load gcc/12.2.0
-module load gcc/9.4.0
-module load intel/2020u4
-module load intelmpi/2020u4
-module load boost/1.78.0
+module load gcc/12.3
+module load boost/1.85.0
 ## module load python/3.12.4
 ##module load boost/1.85.0
 ## module load rust/1.76.0
-
+ 
 ## module use /scinet/niagara/software/commercial/modules
 ## module load gurobi/12.0.0
 
 ## Load the python virtual environment containing the installation of DIDP
-# source ~/env_didp/bin/activate
+## source ~/env_didp/bin/activate
 
 ## Gnu-parallel is responsible to run tasks in parallel.
 ##
@@ -85,10 +82,9 @@ module load boost/1.78.0
 ## 2. Any number of lists can be given as input to gnu-parallel.
 ## 3. Gnu-parallel will run the test_didp.py script in parallel for all 
 ##      combinations of '{1}' and '{2}'. 
-## 4. -j specifies the number of tasks run in parallel on a node.
+## 4. -j specifies the number of tasks run in parallel on a node. 
 ## 5. `tee` directs a copy of stdout to the log file. 
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j $SLURM_TASKS_PER_NODE "python3 run_permutator.py ./cmake-build-release/TSPSD_meta ./data_demo/results/TSPSD/init/{1}_init.json ./data_demo/datasets/TSPSD/{1}.json ./data_demo/results/TSPSD/run_{1}_{2}.json 60 | tee /gpfs/fs0/scratch/b/beck/pekardan/results/perm/run_{1}_{2}.txt" :: burma14-3.1 ulysses22-5.5 :: 0 1 
-##2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49
+parallel -j $SLURM_TASKS_PER_NODE "/gpfs/fs0/scratch/b/beck/pekardan/permutator/permutator/cmake-build-release/TSPSD_meta -i /gpfs/fs1/home/b/beck/pekardan/permutator/permutator/data_demo/results/TSPSD/init/{1}_init.json -d /gpfs/fs1/home/b/beck/pekardan/permutator/permutator/data_demo/datasets/TSPSD/{1}.json -o ./data_demo/results/TSPSD/run_{1}_{2}_{3}.json -c /gpfs/fs1/home/b/beck/pekardan/permutator/permutator/configs/TSPSD_opt.json -t {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/perm/run_{1}_{2}.txt" ::: berlin52-10.4 berlin52-13.2 eil101-27.5 gr202-67.3 lin318-99.3 fl417-160.6 d657-322.7 rat783-481.4 vm1084-848.9 :::+ 520 520 1010 2020 3180 4170 6570 7830 10840 ::: {0..49}

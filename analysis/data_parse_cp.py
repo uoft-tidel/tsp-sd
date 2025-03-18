@@ -14,7 +14,7 @@ def isfloat(item):
         return False
 
 folderpath = os.getcwd()
-results_folder = os.path.join(folderpath,"logs")
+results_folder = os.path.join(folderpath,"logs","original")
 all_instances = {}
 j_val = 999
 # instance = "cp-test.txt"
@@ -53,6 +53,9 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
             j_val += 1
             i_name = l.split(" ")[1][:-6]
             instances[j_val] = {"instance":"","algorithm":"","dual":{"bound":[],"expanded":[],"time":[]},"primal":{"bound":[],"gap":[],"time":[]},"hit_time_limit":False,"best_dual":0,"best_primal":0,"branches":0,"fails":0,"infeasible":False,"optimal":False,"time":0,"transitions":[],"memory":0,"nodes":0}
+
+        elif "model has no solution" in l:
+            instances[j_val]["infeasible"] = True
 
         elif "Initial process time" in l:
             time = float(l.split(" ")[6][:-1])
@@ -114,7 +117,7 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
 
     all_instances.update(instances)
 
-results_fname = os.path.join(folderpath,"results","CP-results.json")
+results_fname = os.path.join(folderpath,"results","CP-results_OG.json")
 
 with open(results_fname,'w') as res:
     json.dump(all_instances,res)

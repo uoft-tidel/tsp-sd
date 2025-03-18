@@ -178,13 +178,14 @@ plt.rcParams['font.sans-serif'] = prop.get_name()
 
 # print([f.name for f in matplotlib.font_manager.fontManager.ttflist])
 
-# res_df.to_csv("res5.csv",sep=',')
+res_df.to_csv("res9.csv",sep=',')
 
 plt.rcParams["font.family"] = "Latin Modern Roman"
 plt.title("Instances Proven Over Time")
 plt.xlabel("Time (s)")
 plt.ylabel("Number of Instances Proven (Optimal or Infeasible)")
-plt.legend(["CP Interval Add", "CP Interval Del", "CP Rank Add", "CP Rank Del", "DIDP Add", "DIDP Del", "MIP Add", "MIP Del"],bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
+# plt.legend(["CP Interval Add", "CP Interval Del", "CP Rank Add", "CP Rank Del", "DIDP Add", "DIDP Del", "MIP Add", "MIP Del"],bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
+plt.legend(bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
 
 plt.show()
 

@@ -27,11 +27,7 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=1:30:00
-#SBATCH --ntasks=22
-#SBATCH --ntasks-per-core=1
-#SBATCH --mem-per-cpu=8200
-
+#SBATCH --time=07:30:00
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -40,7 +36,7 @@
 ## This value is used at two places:
 ## 1. To set the number of CPUs in the resource allocation request. 
 ## 2. Assigned to SLURM_TASKS_PER_NODE environment variable.
-#SBATCH --ntasks-per-node=22
+#SBATCH --ntasks-per-node=20
 
 ## "--cpus-per-task" tells the expected count of CPU "threads" per task
 ##
@@ -85,4 +81,6 @@ source ~/env_docplex/bin/activate
 ##
 ## !!!--USER ACTION--!!! Create `results` directory in the working directory.
 
-parallel -j 22 "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_nofirst_{1}_{2}.txt" ::: CP-rank-add CP-rank-del CP-add CP-del ::: berlin52-10.4 berlin52-13.2 burma14-3.1 d657-322.7 eil101-27.5 fl417-160.6 gr202-67.3 lin318-99.3 rat783-481.4 ulysses22-5.5 vm1084-848.9
+parallel -j $SLURM_TASKS_PER_NODE "python3 run_models.py 1800 {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/run_{1}_{2}.txt" ::: CP-rank-add CP-rank-del CP-add CP-del ::: 1
+
+## 14219106 is the right job lol
