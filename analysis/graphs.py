@@ -7,7 +7,7 @@ import matplotlib
 from matplotlib import font_manager
 
 
-with open(r'results\merged-results.json', 'r') as f:
+with open(r'results\MIP-results-nofirst.json', 'r') as f:
     data = json.load(f)
 
 # Closing file
@@ -57,7 +57,7 @@ for i in data.keys():
         res_i[i]["expanded/fails/iters"] = data[i]["expanded"]
         res_i[i]["generated/branches/nodes"] = data[i]["generated"]
 
-    res_i[i]["nodes"] = data[i]["nodes"]
+    # res_i[i]["nodes"] = data[i]["nodes"]
 
     if (data[i]["optimal"] or data[i]["infeasible"]) and "random" in inst:
         res_per_alg[alg]["rand_time_of_proof"].append(data[i]["time"])
@@ -142,23 +142,23 @@ res_alg_df = res_alg_df.reset_index().set_index('ind')
 # print(res_df)
 
 
-# res_df["best_primal"] = res_df[res_df["primal"] > 0].groupby(["instance"])["primal"].transform("min")
-# res_df["primal_gap"] = (res_df["primal"] - res_df["best_primal"]) / res_df["best_primal"]
+res_df["best_primal"] = res_df[res_df["primal"] > 0].groupby(["instance"])["primal"].transform("min")
+res_df["primal_gap"] = (res_df["primal"] - res_df["best_primal"]) / res_df["best_primal"]
 
 
 # res_df = res_df.sort_values(['nodes'])
 # sns.barplot(res_df,x="instance",y="primal_integral",hue="alg")
 
 
-# res_df = res_df.sort_values(['nodes'])
+res_df = res_df.sort_values(['nodes'])
 
-order = []
-for i in range(len(algs)):
-    order.append((res_alg_df.iloc[i, 0],i))
+# order = []
+# for i in range(len(algs)):
+#     order.append((res_alg_df.iloc[i, 0],i))
 
-order.sort(key=lambda tup: tup[0])
-for (i,ind) in order:
-    plt.plot(res_alg_df.iloc[ind, 5], res_alg_df.iloc[ind, 6], label=res_alg_df.iloc[ind, 0])
+# order.sort(key=lambda tup: tup[0])
+# for (i,ind) in order:
+#     plt.plot(res_alg_df.iloc[ind, 5], res_alg_df.iloc[ind, 6], label=res_alg_df.iloc[ind, 0])
 
 # sns.barplot(res_df,x="alg",y="primal",hue="nodes")
 
@@ -169,23 +169,23 @@ for (i,ind) in order:
 # sns.barplot(res_alg_df,x="index",y="num_feasible_found")
 
 
-font_path = r"C:\Users\Daniel\Downloads\lm\lm\fonts\opentype\public\lm\lmroman12-regular.otf"  # Your font path goes here
-font_manager.fontManager.addfont(font_path)
-prop = font_manager.FontProperties(fname=font_path)
+# font_path = r"C:\Users\Daniel\Downloads\lm\lm\fonts\opentype\public\lm\lmroman12-regular.otf"  # Your font path goes here
+# font_manager.fontManager.addfont(font_path)
+# prop = font_manager.FontProperties(fname=font_path)
 
-plt.rcParams['font.family'] = 'Latin Modern Roman'
-plt.rcParams['font.sans-serif'] = prop.get_name()
+# plt.rcParams['font.family'] = 'Latin Modern Roman'
+# plt.rcParams['font.sans-serif'] = prop.get_name()
 
 # print([f.name for f in matplotlib.font_manager.fontManager.ttflist])
 
-res_df.to_csv("res9.csv",sep=',')
+res_df.to_csv("res_mip_nofirst.csv",sep=',')
 
-plt.rcParams["font.family"] = "Latin Modern Roman"
-plt.title("Instances Proven Over Time")
-plt.xlabel("Time (s)")
-plt.ylabel("Number of Instances Proven (Optimal or Infeasible)")
-# plt.legend(["CP Interval Add", "CP Interval Del", "CP Rank Add", "CP Rank Del", "DIDP Add", "DIDP Del", "MIP Add", "MIP Del"],bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
-plt.legend(bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
+# plt.rcParams["font.family"] = "Latin Modern Roman"
+# plt.title("Instances Proven Over Time")
+# plt.xlabel("Time (s)")
+# plt.ylabel("Number of Instances Proven (Optimal or Infeasible)")
+# # plt.legend(["CP Interval Add", "CP Interval Del", "CP Rank Add", "CP Rank Del", "DIDP Add", "DIDP Del", "MIP Add", "MIP Del"],bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
+# plt.legend(bbox_to_anchor=(0.6, 0.9), loc='upper left', borderaxespad=0)
 
-plt.show()
+# plt.show()
 

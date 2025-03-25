@@ -1,0 +1,39 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, expanded: 4, elapsed time: 0.000215596
+New dual bound: 0, expanded: 4, elapsed time: 0.000251914
+Searched with beam size: 2, expanded: 10, elapsed time: 0.000287501
+Searched with beam size: 4, expanded: 20, elapsed time: 0.000342078
+Searched with beam size: 8, expanded: 163, elapsed time: 0.000941071
+New primal bound: 160.4069672782029, expanded: 163, elapsed time: 0.000945618
+Searched with beam size: 16, expanded: 434, elapsed time: 0.001863243
+New dual bound: 88.36238517787937, expanded: 434, elapsed time: 0.001867759
+Searched with beam size: 32, expanded: 867, elapsed time: 0.003271268
+New dual bound: 108.86448259849848, expanded: 867, elapsed time: 0.003274963
+New primal bound: 143.36358859838913, expanded: 867, elapsed time: 0.003284811
+Searched with beam size: 64, expanded: 1523, elapsed time: 0.004970351
+New dual bound: 115.89696131498462, expanded: 1523, elapsed time: 0.004974216
+Searched with beam size: 128, expanded: 2531, elapsed time: 0.007480247
+New dual bound: 125.47371918890134, expanded: 2531, elapsed time: 0.007484114
+New primal bound: 143.3329278328816, expanded: 2531, elapsed time: 0.007494026
+Searched with beam size: 256, expanded: 4022, elapsed time: 0.010831754
+New dual bound: 136.96634573751518, expanded: 4022, elapsed time: 0.010835923
+Searched with beam size: 512, expanded: 5699, elapsed time: 0.014484599
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: ulysses22-5.5.json
+ALGORITHM END
+Best Bound: 143.3329278328816
+Cost: 143.3329278328816
+Expanded: 5699
+Generated: 6645
+Infeasible: False
+Optimal: True
+Time: 0.014488986
+Memory Used (MiB): 14.45
+Transitions: [13, 16, 4, 7, 11, 21, 2, 1, 8, 10, 6, 20, 19, 14, 15, 5, 9, 3, 18, 17, 22, 12]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-add
+batch num is: ulysses22-5.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add.py

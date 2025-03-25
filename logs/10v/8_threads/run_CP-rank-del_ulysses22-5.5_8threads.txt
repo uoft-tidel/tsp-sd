@@ -1,0 +1,162 @@
+===INSTANCE START
+ALG: CP-RANK-DEL
+Instance Name: ulysses22-5.5.json
+31
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 44 variables, 757 constraints
+ ! Presolve      : 46 extractables eliminated
+ ! TimeLimit            = 220
+ ! Workers              = 8
+ ! Initial process time : 0.02s (0.02s extraction + 0.00s propagation)
+ !  . Log search space  : 193.1 (before), 193.1 (after)
+ !  . Memory usage      : 994.7 kB (before), 994.7 kB (after)
+ ! Using parallel search with 8 workers.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed    W       Branch decision
+                        0         44                 -
+ + New bound is 0
+                        0         44    1            -
+ + New bound is 1.424600
+ *      176.8368       52  0.10s        1      (gap is 99.19%)
+ *      176.6150      104  0.10s        1      (gap is 99.19%)
+        176.6150     1000          6    1   F     8  = Rank of Node 14
+ *      176.4541       45  0.10s        2      (gap is 99.19%)
+        176.4541     1000          4    2        14 != Node at Rank 4
+        176.4541     1000         16    3            -
+        176.4541     1000          4    4   F    13 != Rank of Node 4
+        176.4541     1000         22    5   F    21  = Rank of Node 10
+        176.4541     1000         16    6   F    19 != Rank of Node 10
+ *      175.4846       65  0.10s        7      (gap is 99.19%)
+        175.4846     1000          6    7        13 != Node at Rank 5
+        175.4846     1000         10    8         0  = Node at Rank 3
+        175.4846     2000         18    6   F     1 != Node at Rank 0
+        175.4846     2000         14    8   F    17 != Rank of Node 10
+ *      173.9816     1582  0.15s        1      (gap is 99.18%)
+ *      172.9890     1483  0.15s        3      (gap is 99.18%)
+        172.9890     2000          4    3         1 != Node at Rank 0
+        172.9890     2000          6    4   F    17  = Node at Rank 17
+ ! Time = 0.15s, Average fail depth = 10, Memory usage = 16.6 MB
+ ! Current bound is 1.424600 (gap is 99.18%)
+ !          Best Branches  Non-fixed    W       Branch decision
+        172.9890     3000         18    8   F     7  = Rank of Node 8
+        172.9890     2000          4    1   F    21  = Node at Rank 17
+        172.9890     2000          6    5   F    20 != Rank of Node 19
+ *      164.0305     1945  0.19s        2      (gap is 99.13%)
+        164.0305     2000          4    2         3  = Rank of Node 15
+        164.0305     3000          6    4   F     3  = Rank of Node 19
+        164.0305     2000          4    7         6  = Rank of Node 20
+        164.0305     3000         16    3   F    13  = Rank of Node 12
+        164.0305     3000         18    5   F    21  = Rank of Node 17
+        164.0305     3000          8    6        11 != Node at Rank 6
+        164.0305     3000         12    7   F    13  = Rank of Node 6
+        164.0305     3000          6    1   F     2  = Rank of Node 14
+        164.0305     3000          8    2   F    12  = Rank of Node 9
+ *      162.3842     3236  0.22s        2      (gap is 99.12%)
+ *      161.1774     3510  0.22s        2      (gap is 99.12%)
+ *      157.9265     3074  0.22s        4      (gap is 99.10%)
+        157.9265     4000          4    4   F     4 != Rank of Node 18
+        157.9265     3440         12    7   F     2 != Node at Rank 19
+ + New bound is 82.72757 (gap is 47.62%)
+        157.9265     4000         20    8   F    12 != Node at Rank 21
+        157.9265     4000         16    3   F    11  = Node at Rank 21
+ ! Time = 0.26s, Average fail depth = 9, Memory usage = 16.8 MB
+ ! Current bound is 82.72757 (gap is 47.62%)
+ !          Best Branches  Non-fixed    W       Branch decision
+        157.9265     4000         10    5        20  = Node at Rank 1
+        157.9265     4000          8    6   F    12  = Node at Rank 5
+        157.9265     4000          4    1   F    11 != Node at Rank 6
+        157.9265     4000          4    2   F     5  = Rank of Node 21
+ *      156.2382     4697  0.26s        4      (gap is 47.05%)
+        156.2382     5000          4    4   F    16  = Node at Rank 2
+        156.2382     4000          8    7   F     3  = Rank of Node 2
+        156.2382     5000          8    8            -
+        156.2382     5000          4    1        14  = Node at Rank 2
+        156.2382     5000          6    3         2  = Node at Rank 5
+        156.2382     5000         12    5        13 != Rank of Node 16
+        156.2382     5000          4    6            -
+ *      156.1424     5232  0.30s        8      (gap is 47.02%)
+        156.1424     5000          4    2         5 != Rank of Node 21
+ *      143.3635     5256  0.30s        4      (gap is 42.30%)
+        143.3635     5000          8    7   F     5 != Node at Rank 7
+        143.3635     5027         10    7   F    11 != Node at Rank 12
+ + New bound is 123.3790 (gap is 13.94%)
+        143.3635     6000          4    8   F    19 != Node at Rank 21
+        143.3635     6000          6    3   F     1  = Rank of Node 1
+        143.3635     6000          8    5        16 != Node at Rank 7
+ ! Time = 0.34s, Average fail depth = 16, Memory usage = 18.2 MB
+ ! Current bound is 123.3790 (gap is 13.94%)
+ !          Best Branches  Non-fixed    W       Branch decision
+        143.3635     6000          4    6   F     2  = Node at Rank 21
+        143.3635     6000          4    1   F    14  = Node at Rank 5
+        143.3635     6000          4    2   F    15  = Rank of Node 4
+        143.3635     6000          4    4   F     1  = Rank of Node 14
+        143.3635     6000          4    7   F     1  = Rank of Node 16
+        143.3635     7000         14    8        16 != Node at Rank 13
+        143.3635     7000          6    3   F    11  = Node at Rank 21
+        143.3635     7000          4    4   F    18 != Node at Rank 6
+        143.3635     7000          4    5   F    13 != Node at Rank 4
+        143.3635     7000          6    6   F     0 != Rank of Node 17
+        143.3635     7000          4    1   F     1  = Rank of Node 21
+        143.3635     7000          4    2   F    19 != Node at Rank 3
+ *      143.3329     7151  0.38s        2      (gap is 13.92%)
+        143.3329     6458          6    7   F    14 != Node at Rank 5
+ + New bound is 133.3713 (gap is 6.95%)
+        143.3329     7000          6    7   F     1  = Rank of Node 2
+        143.3329     8000          6    8   F     1  = Node at Rank 21
+        143.3329     8000          8    3   F    17  = Node at Rank 13
+        143.3329     8000         10    5   F     2  = Node at Rank 20
+        143.3329     8000          4    6         3  = Rank of Node 2
+        143.3329     8000          4    1        14 != Node at Rank 2
+ ! Time = 0.40s, Average fail depth = 16, Memory usage = 18.5 MB
+ ! Current bound is 133.3713 (gap is 6.95%)
+ !          Best Branches  Non-fixed    W       Branch decision
+        143.3329     8000          6    2         4  = Rank of Node 4
+        143.3329     8000          4    4   F     1 != Rank of Node 11
+        143.3329     7311          6    7   F     3 != Rank of Node 16
+ + New bound is 138.3674 (gap is 3.46%)
+        143.3329     8000          6    7   F     1  = Rank of Node 21
+        143.3329     9000         12    8   F     2  = Node at Rank 8
+        143.3329     9000          8    3         0  = Node at Rank 15
+        143.3329     9000          4    5   F    17 != Node at Rank 0
+        143.3329     9000          4    6   F     5  = Rank of Node 8
+        143.3329     8836          4    1            -
+ + New bound is 143.3185 (gap is 0.01%)
+ ! ----------------------------------------------------------------------------
+ ! Search completed, 14 solutions found.
+ ! Best objective         : 143.3329 (optimal - effective tol. is 0.0143333)
+ ! Best bound             : 143.3185
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 73805
+ ! Number of fails        : 36298
+ ! Total memory usage     : 18.7 MB (18.7 MB CP Optimizer + 0.0 MB Concert)
+ ! Time spent in solve    : 0.44s (0.42s engine + 0.02s extraction)
+ ! Search speed (br. / s) : 175726.2
+ ! ----------------------------------------------------------------------------
+Rank 0 : Node 12
+Rank 1 : Node 11
+Rank 2 : Node 21
+Rank 3 : Node 16
+Rank 4 : Node 17
+Rank 5 : Node 2
+Rank 6 : Node 8
+Rank 7 : Node 4
+Rank 8 : Node 14
+Rank 9 : Node 13
+Rank 10 : Node 18
+Rank 11 : Node 19
+Rank 12 : Node 5
+Rank 13 : Node 9
+Rank 14 : Node 7
+Rank 15 : Node 0
+Rank 16 : Node 1
+Rank 17 : Node 20
+Rank 18 : Node 10
+Rank 19 : Node 6
+Rank 20 : Node 3
+Rank 21 : Node 15
+time limit is: 1800
+model used is: CP-rank-del
+batch num is: ulysses22-5.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-rank-del.py

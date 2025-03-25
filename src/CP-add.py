@@ -14,11 +14,11 @@ import datetime
 
 if __name__ == "__main__":
 
-    script, timelim, batch = sys.argv
+    # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances",batch)
+    instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles","3")
     # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
-    tlim = int(timelim)
+    tlim = int(60)
     opt = "ins"
 
     #     # # folderpath = os.getcwd()
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # opt = "ins"
 
 
-    for instance in os.listdir(instance_folder):
+    for instance in [i for i in os.listdir(instance_folder) if "random-50-12" in i]:
 
       fname = os.path.join(instance_folder, instance)
       # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")

@@ -1,0 +1,80 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, threads: 8, kept: 21954, sent: 0
+Searched with beam size: 1, expanded: 418, elapsed time: 0.063884205
+New primal bound: 32552.125197645546, expanded: 418, elapsed time: 0.063894992
+Searched with beam size: 2, threads: 8, kept: 21591, sent: 21474
+Searched with beam size: 2, expanded: 1253, elapsed time: 0.140460477
+New dual bound: 0, expanded: 1253, elapsed time: 0.140464678
+New primal bound: 29500.626173713288, expanded: 1253, elapsed time: 0.140862773
+Searched with beam size: 4, threads: 8, kept: 21601, sent: 64456
+Searched with beam size: 4, expanded: 2918, elapsed time: 0.265377581
+Searched with beam size: 8, threads: 8, kept: 21247, sent: 149941
+Searched with beam size: 8, expanded: 6247, elapsed time: 0.40139228
+Searched with beam size: 16, threads: 8, kept: 42665, sent: 299072
+Searched with beam size: 16, expanded: 12900, elapsed time: 0.667265779
+New primal bound: 27788.084716805057, expanded: 12900, elapsed time: 0.667889679
+Searched with beam size: 32, threads: 8, kept: 85141, sent: 596297
+Searched with beam size: 32, expanded: 26214, elapsed time: 1.190660266
+New primal bound: 26667.913266211886, expanded: 26214, elapsed time: 1.19124884
+Searched with beam size: 64, threads: 8, kept: 169149, sent: 1184386
+Searched with beam size: 64, expanded: 52809, elapsed time: 2.257358115
+Searched with beam size: 128, threads: 8, kept: 343819, sent: 2403436
+Searched with beam size: 128, expanded: 106013, elapsed time: 4.339579007
+New primal bound: 25855.611054645266, expanded: 106013, elapsed time: 4.341526446
+Searched with beam size: 256, threads: 8, kept: 682344, sent: 4786508
+Searched with beam size: 256, expanded: 212353, elapsed time: 8.629771011999999
+New primal bound: 25673.024602253496, expanded: 212353, elapsed time: 8.630749038
+Searched with beam size: 512, threads: 8, kept: 1368865, sent: 9579087
+Searched with beam size: 512, expanded: 424873, elapsed time: 15.006371546
+New dual bound: 33.42494427818848, expanded: 424873, elapsed time: 15.006375646
+New primal bound: 24945.206636027582, expanded: 424873, elapsed time: 15.007144442
+Searched with beam size: 1024, threads: 8, kept: 2735371, sent: 19132972
+Searched with beam size: 1024, expanded: 849640, elapsed time: 28.001743877
+New dual bound: 54.15748043477241, expanded: 849640, elapsed time: 28.001749156
+New primal bound: 23306.61279639178, expanded: 849640, elapsed time: 28.002949806
+Searched with beam size: 2048, threads: 8, kept: 5450329, sent: 38159027
+Searched with beam size: 2048, expanded: 1697024, elapsed time: 53.492018949
+New dual bound: 76.58565012770529, expanded: 1697024, elapsed time: 53.492022913
+Searched with beam size: 4096, threads: 8, kept: 10925232, sent: 76459308
+Searched with beam size: 4096, expanded: 3387029, elapsed time: 104.3807773
+New dual bound: 96.48663747047841, expanded: 3387029, elapsed time: 104.380781142
+Searched with beam size: 8192, threads: 8, kept: 21761383, sent: 152329483
+Searched with beam size: 8192, expanded: 6768082, elapsed time: 204.366991512
+New dual bound: 114.69525862118026, expanded: 6768082, elapsed time: 204.366995498
+Searched with beam size: 16384, threads: 8, kept: 43457981, sent: 304215161
+Searched with beam size: 16384, expanded: 13546767, elapsed time: 404.286027236
+New dual bound: 134.76657294519092, expanded: 13546767, elapsed time: 404.28603198
+New primal bound: 22925.63598195691, expanded: 13546767, elapsed time: 404.287202215
+Searched with beam size: 32768, threads: 8, kept: 86781656, sent: 607524448
+Searched with beam size: 32768, expanded: 27067482, elapsed time: 812.588808401
+New dual bound: 153.02199743535584, expanded: 27067482, elapsed time: 812.588812137
+Searched with beam size: 65536, threads: 8, kept: 174103569, sent: 1218550802
+Searched with beam size: 65536, expanded: 54090625, elapsed time: 1637.863257924
+New dual bound: 171.5848660447278, expanded: 54090625, elapsed time: 1637.863262514
+New primal bound: 22693.704161356512, expanded: 54090625, elapsed time: 1637.864376495
+Searched with beam size: 131072, threads: 8, kept: 347247726, sent: 2430579442
+Searched with beam size: 131072, expanded: 107938215, elapsed time: 3303.508891274
+New dual bound: 191.1216337604946, expanded: 107938215, elapsed time: 3303.508896159
+Searched with beam size: 262144, threads: 8, kept: 129336184, sent: 905386135
+Searched with beam size: 262144, expanded: 130761955, elapsed time: 4183.572724596
+New dual bound: 210.14596673821566, expanded: 130761955, elapsed time: 4183.572727937
+Reached time limit.
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: fl417-160.6.json
+ALGORITHM END
+Best Bound: 210.14596673821566
+Cost: 22693.704161356512
+Expanded: 130761955
+Generated: 651741251
+Infeasible: False
+Optimal: False
+Time: 4183.572733776
+Memory Used (MiB): 914.12
+Transitions: [122, 146, 149, 127, 129, 153, 147, 144, 118, 143, 136, 119, 117, 137, 134, 132, 133, 112, 111, 135, 116, 139, 138, 140, 113, 110, 108, 109, 106, 130, 114, 145, 148, 151, 152, 125, 126, 121, 141, 131, 308, 333, 346, 329, 345, 298, 300, 342, 343, 344, 301, 340, 302, 299, 341, 321, 322, 304, 142, 115, 123, 23, 14, 11, 20, 13, 5, 6, 7, 349, 334, 350, 310, 312, 354, 325, 327, 315, 318, 179, 185, 187, 163, 167, 166, 168, 192, 170, 171, 196, 173, 197, 175, 172, 176, 198, 177, 200, 174, 194, 195, 193, 190, 186, 159, 154, 155, 158, 160, 181, 161, 184, 162, 164, 191, 165, 180, 183, 156, 182, 157, 316, 314, 356, 353, 337, 357, 335, 309, 351, 311, 313, 336, 352, 324, 1, 19, 18, 26, 16, 12, 28, 21, 9, 3, 15, 30, 2, 4, 31, 22, 25, 24, 32, 34, 41, 48, 49, 46, 43, 50, 55, 52, 54, 51, 76, 81, 92, 99, 98, 61, 71, 79, 86, 85, 64, 67, 70, 66, 63, 84, 95, 83, 91, 88, 82, 94, 73, 90, 69, 62, 89, 65, 77, 87, 93, 78, 74, 97, 96, 102, 104, 222, 246, 248, 249, 225, 224, 223, 244, 245, 243, 241, 217, 216, 218, 220, 221, 219, 242, 240, 238, 215, 237, 239, 214, 236, 213, 210, 211, 234, 233, 232, 208, 209, 207, 230, 205, 203, 227, 226, 204, 206, 228, 202, 367, 365, 364, 383, 391, 407, 382, 404, 405, 403, 390, 389, 402, 380, 359, 401, 400, 358, 388, 360, 362, 361, 406, 408, 392, 368, 229, 231, 212, 235, 247, 369, 384, 371, 395, 396, 412, 413, 374, 386, 416, 417, 397, 375, 398, 399, 378, 251, 274, 275, 253, 276, 254, 256, 278, 255, 279, 257, 281, 259, 280, 258, 260, 284, 263, 285, 287, 265, 264, 288, 267, 289, 291, 269, 290, 268, 270, 294, 271, 273, 272, 296, 297, 295, 293, 292, 266, 286, 262, 283, 261, 282, 252, 277, 250, 379, 377, 376, 387, 415, 414, 373, 385, 372, 411, 370, 394, 410, 409, 101, 100, 80, 75, 59, 56, 53, 40, 33, 35, 330, 328, 320, 303, 347, 348, 323, 331, 332, 306, 305, 307, 107, 120, 124, 128, 29, 17, 27, 8, 326, 355, 338, 317, 339, 319, 178, 188, 189, 169, 199, 201, 38, 44, 47, 45, 42, 58, 60, 72, 103, 381, 363, 366, 393, 105, 68, 57, 36, 10, 39, 37, 150]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-add
+batch num is: fl417-160.6
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add.py

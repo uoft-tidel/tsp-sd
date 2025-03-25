@@ -1,0 +1,48 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, threads: 8, kept: 14, sent: 0
+Searched with beam size: 1, expanded: 4, elapsed time: 0.000329109
+Searched with beam size: 2, threads: 8, kept: 7, sent: 8
+Searched with beam size: 2, expanded: 9, elapsed time: 0.000483171
+New dual bound: 0, expanded: 9, elapsed time: 0.000485944
+Searched with beam size: 4, threads: 8, kept: 12, sent: 42
+Searched with beam size: 4, expanded: 47, elapsed time: 0.000833813
+Searched with beam size: 8, threads: 8, kept: 10, sent: 58
+Searched with beam size: 8, expanded: 103, elapsed time: 0.001382499
+Searched with beam size: 16, threads: 8, kept: 40, sent: 280
+Searched with beam size: 16, expanded: 323, elapsed time: 0.002025035
+New primal bound: 160.4069672782029, expanded: 323, elapsed time: 0.002027509
+Searched with beam size: 32, threads: 8, kept: 77, sent: 490
+Searched with beam size: 32, expanded: 719, elapsed time: 0.002741569
+New dual bound: 92.60516690050827, expanded: 719, elapsed time: 0.002745008
+Searched with beam size: 64, threads: 8, kept: 121, sent: 878
+Searched with beam size: 64, expanded: 1386, elapsed time: 0.003713671
+New dual bound: 110.96294695786843, expanded: 1386, elapsed time: 0.003717517
+New primal bound: 143.36358859838913, expanded: 1386, elapsed time: 0.003738993
+Searched with beam size: 128, threads: 8, kept: 186, sent: 1218
+Searched with beam size: 128, expanded: 2364, elapsed time: 0.004922275
+New dual bound: 122.39928279435378, expanded: 2364, elapsed time: 0.004925038
+Searched with beam size: 256, threads: 8, kept: 243, sent: 1606
+Searched with beam size: 256, expanded: 3828, elapsed time: 0.00632151
+New dual bound: 129.2634862611487, expanded: 3828, elapsed time: 0.006323699
+New primal bound: 143.3329278328816, expanded: 3828, elapsed time: 0.006340463
+Searched with beam size: 512, threads: 8, kept: 252, sent: 1660
+Searched with beam size: 512, expanded: 5505, elapsed time: 0.008067051
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: ulysses22-5.5.json
+ALGORITHM END
+Best Bound: 143.3329278328816
+Cost: 143.3329278328816
+Expanded: 5505
+Generated: 6287
+Infeasible: False
+Optimal: True
+Time: 0.008068988
+Memory Used (MiB): 15.41
+Transitions: [13, 16, 4, 7, 11, 21, 2, 1, 8, 10, 6, 20, 19, 14, 15, 5, 9, 3, 18, 17, 22, 12]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-add
+batch num is: ulysses22-5.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add.py

@@ -1,0 +1,62 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, expanded: 102, elapsed time: 0.001988293
+New dual bound: 0, expanded: 102, elapsed time: 0.002005406
+New primal bound: 1594.7686923399604, expanded: 102, elapsed time: 0.00200795
+Searched with beam size: 2, expanded: 303, elapsed time: 0.005498949
+Searched with beam size: 4, expanded: 706, elapsed time: 0.012467042
+New primal bound: 1536.1785158876407, expanded: 706, elapsed time: 0.01250658
+Searched with beam size: 8, expanded: 1511, elapsed time: 0.026302425
+New primal bound: 1405.4238926899804, expanded: 1511, elapsed time: 0.026345889
+Searched with beam size: 16, expanded: 3101, elapsed time: 0.053402185
+Searched with beam size: 32, expanded: 6278, elapsed time: 0.107798205
+Searched with beam size: 64, expanded: 12687, elapsed time: 0.218103103
+New primal bound: 1360.3781095331697, expanded: 12687, elapsed time: 0.218182592
+Searched with beam size: 128, expanded: 25387, elapsed time: 0.436870894
+New dual bound: 26.68332812825267, expanded: 25387, elapsed time: 0.436883654
+Searched with beam size: 256, expanded: 50645, elapsed time: 0.876893672
+New dual bound: 45.69463863518345, expanded: 50645, elapsed time: 0.876906118
+Searched with beam size: 512, expanded: 100906, elapsed time: 1.769308526
+New dual bound: 61.550610322603816, expanded: 100906, elapsed time: 1.7693170980000001
+New primal bound: 1323.6631589223114, expanded: 100906, elapsed time: 1.7693910210000001
+Searched with beam size: 1024, expanded: 200192, elapsed time: 3.571003311
+New dual bound: 79.27626753856299, expanded: 200192, elapsed time: 3.571025727
+Searched with beam size: 2048, expanded: 398959, elapsed time: 7.22207315
+New dual bound: 96.75147353334052, expanded: 398959, elapsed time: 7.222091929
+New primal bound: 1256.4871633521598, expanded: 398959, elapsed time: 7.222195186
+Searched with beam size: 4096, expanded: 790363, elapsed time: 14.800084983
+New dual bound: 113.04964647640053, expanded: 790363, elapsed time: 14.800106834
+Searched with beam size: 8192, expanded: 1569700, elapsed time: 30.744326909
+New dual bound: 129.80593555184294, expanded: 1569700, elapsed time: 30.744352524
+New primal bound: 1244.8185958897716, expanded: 1569700, elapsed time: 30.744463234
+Searched with beam size: 16384, expanded: 3120495, elapsed time: 65.135197262
+New dual bound: 145.28280469847203, expanded: 3120495, elapsed time: 65.135219744
+New primal bound: 1222.214589415914, expanded: 3120495, elapsed time: 65.135329016
+Searched with beam size: 32768, expanded: 6188880, elapsed time: 136.910256511
+New dual bound: 160.93886904852852, expanded: 6188880, elapsed time: 136.910278987
+New primal bound: 1211.2389722855735, expanded: 6188880, elapsed time: 136.910388908
+Searched with beam size: 65536, expanded: 12255426, elapsed time: 287.539137329
+New dual bound: 176.63860722872903, expanded: 12255426, elapsed time: 287.539160342
+Searched with beam size: 131072, expanded: 24318336, elapsed time: 599.738559026
+New dual bound: 192.0473979358832, expanded: 24318336, elapsed time: 599.738579742
+New primal bound: 1198.9494473497575, expanded: 24318336, elapsed time: 599.738713711
+Searched with beam size: 262144, expanded: 37937121, elapsed time: 1012.246199757
+Reached time limit.
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: eil101-27.5.json
+ALGORITHM END
+Best Bound: 192.0473979358832
+Cost: 1198.9494473497575
+Expanded: 37937121
+Generated: 119366503
+Infeasible: False
+Optimal: False
+Time: 1012.246227685
+Memory Used (MiB): 500.64
+Transitions: [96, 95, 73, 12, 1, 30, 32, 52, 31, 69, 62, 18, 85, 37, 2, 40, 56, 21, 101, 22, 41, 15, 42, 14, 43, 100, 97, 94, 5, 83, 88, 63, 11, 48, 19, 46, 45, 60, 84, 17, 92, 93, 16, 98, 99, 44, 61, 6, 13, 58, 4, 75, 72, 74, 23, 67, 25, 55, 24, 80, 68, 3, 81, 70, 50, 77, 79, 51, 33, 9, 34, 29, 54, 26, 28, 27, 89, 82, 8, 7, 47, 36, 49, 64, 10, 90, 20, 66, 65, 71, 35, 78, 76, 53, 39, 57, 87, 38, 86, 91, 59]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-add
+batch num is: eil101-27.5
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add.py

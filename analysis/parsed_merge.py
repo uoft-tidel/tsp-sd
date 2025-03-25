@@ -4,7 +4,7 @@ import json
 folderpath = os.getcwd()
 results_folder = os.path.join(folderpath,"results")
 
-files=[f for f in os.listdir(results_folder) if "merged" not in f and "nofirst" not in f]
+files=[f for f in os.listdir(results_folder) if "thread" in f]
 
 def combine_jsons(files, resname):
     all_data_dict = {}
@@ -19,5 +19,5 @@ def combine_jsons(files, resname):
         json.dump(all_data_dict, outfile)
 
 
-results_fname = os.path.join(folderpath,"results","merged-results.json")
+results_fname = os.path.join(folderpath,"results","merged-results-threads.json")
 combine_jsons(files, results_fname)

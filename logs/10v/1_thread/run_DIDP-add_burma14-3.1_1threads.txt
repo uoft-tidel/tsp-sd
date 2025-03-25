@@ -1,0 +1,27 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, expanded: 3, elapsed time: 0.000084831
+New dual bound: 0, expanded: 3, elapsed time: 0.000101417
+Searched with beam size: 2, expanded: 26, elapsed time: 0.000208523
+New primal bound: 52.66006434063039, expanded: 26, elapsed time: 0.000212938
+Searched with beam size: 4, expanded: 68, elapsed time: 0.000304064
+New dual bound: 44.03929997012304, expanded: 68, elapsed time: 0.00030788
+Searched with beam size: 8, expanded: 112, elapsed time: 0.000398128
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: burma14-3.1.json
+ALGORITHM END
+Best Bound: 52.66006434063039
+Cost: 52.66006434063039
+Expanded: 112
+Generated: 117
+Infeasible: False
+Optimal: True
+Time: 0.000401994
+Memory Used (MiB): 13.93
+Transitions: [2, 9, 5, 10, 1, 13, 12, 4, 6, 7, 14, 3, 11, 8]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-add
+batch num is: burma14-3.1
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add.py

@@ -2,7 +2,7 @@ import os
 import json
 
 folderpath = os.getcwd()
-results_folder = os.path.join(folderpath,"logs")
+results_folder = os.path.join(folderpath,"logs","10v","8_threads")
 all_instances = {}
 i_val = 0
 
@@ -15,6 +15,8 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
     j_val = 0
     for l in f:
         if "Instance Name" in l:
+            if "random-20-5" in l:
+                pass
             i_name = l.split(" ")[2][:-6]
             
             if "random" in i_name:
@@ -39,6 +41,8 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
         elif "===INSTANCE START" in l:
             j += 1
             j_name = instance_lookup[j]
+        elif 'threads' in l:
+            pass
         elif "Searched" in l:
             beam_size = int(l.split(" ")[4][:-1])
             expanded = int(l.split(" ")[6][:-1])
@@ -97,7 +101,7 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
             instances[j_name]["transitions"] = json.loads(l[13:].strip())
     all_instances.update(instances)
 
-results_fname = os.path.join(folderpath,"results","DIDP-results.json")
+results_fname = os.path.join(folderpath,"results","DIDP-results-10v-8thread.json")
 
 pair_set = set()
 culled_instances = {}

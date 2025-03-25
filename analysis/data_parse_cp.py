@@ -14,7 +14,7 @@ def isfloat(item):
         return False
 
 folderpath = os.getcwd()
-results_folder = os.path.join(folderpath,"logs","original")
+results_folder = os.path.join(folderpath,"logs","10v","1_thread")
 all_instances = {}
 j_val = 999
 # instance = "cp-test.txt"
@@ -28,6 +28,7 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
     cont = False
     
     time = 0
+    cur_time = 0
     for l in f:
 
         if cont:
@@ -37,16 +38,25 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
             elif "Search completed" in l:
                 cont = False
             
-            elif "New bound" in l:
-                new_bound = float(l.split(" ")[5].strip())
-                instances[j_val]["dual"]["bound"].append(new_bound)
-                instances[j_val]["dual"]["time"].append(time)
-
+            # elif "New bound" in l:
+            #     new_bound = float(l.strip().split(" ")[-1])
+            #     instances[j_val]["dual"]["bound"].append(new_bound)
+            #     instances[j_val]["dual"]["time"].append(time)
+            elif "Time =" in l:
+                line = l.split(" ")
+                cur_time = float(line[4][:-2])
+            elif "Current bound" in l and "%" in l:
+                new_dual = float([i for i in l.split(" ") if '%' in i][0].strip()[:-2])
+                instances[j_val]["dual"]["time"].append(cur_time)
+                instances[j_val]["dual"]["bound"].append(new_dual)
             elif "*" in l:
                 new_primal = float([i for i in l.split(" ") if i != '' and i != '*'][0])
+                new_dual = float([i for i in l.split(" ") if '%' in i][0].strip()[:-2])
                 time = float([i for i in l.split(" ") if "s" in i][0][:-1])
                 instances[j_val]["primal"]["bound"].append(new_primal)
                 instances[j_val]["primal"]["time"].append(time)
+                instances[j_val]["dual"]["bound"].append(new_dual)
+                instances[j_val]["dual"]["time"].append(time)
 
 
         if "===INSTANCE" in l:
@@ -59,7 +69,7 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
 
         elif "Initial process time" in l:
             time = float(l.split(" ")[6][:-1])
-        elif "Using sequential search" in l:
+        elif "Using " in l:
             cont = True
 
         elif "ALG:" in l:
@@ -92,12 +102,10 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
         elif "Number of branches" in l:
             num_branches = int(l.split(" ")[-1].strip())
             instances[j_val]["branches"] = num_branches
-            print(num_branches)
 
         elif "Number of fails" in l:
             num_fails = int(l.split(" ")[-1].strip())
             instances[j_val]["fails"] = num_fails
-            print(num_fails)
         elif "Total memory usage" in l:
             if "GB" in l:
                 mem_mult = 1000
@@ -117,7 +125,7 @@ for instance in [f for f in os.listdir(results_folder) if "CP" in f]:
 
     all_instances.update(instances)
 
-results_fname = os.path.join(folderpath,"results","CP-results_OG.json")
+results_fname = os.path.join(folderpath,"results","CP-results-10v-1thread.json")
 
 with open(results_fname,'w') as res:
     json.dump(all_instances,res)

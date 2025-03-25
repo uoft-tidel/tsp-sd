@@ -13,13 +13,13 @@ process = psutil.Process()
 # 
 if __name__ == "__main__":
 
-    script, timelim, batch = sys.argv
+    # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances","1")
-    tlim = int(timelim)
+    instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles","2")
+    tlim = int(60)
+    valid = ["random-10-3.80-0", "random-10-5.00-0", "random-20-10.00-0", "random-20-5.00-0", "random-20-7.60-0", "random-30-10.00-0", "random-30-7.60-0"]
 
-
-    for instance in os.listdir(instance_folder):
+    for instance in [i for i in os.listdir(instance_folder) if any([v in i for v in valid])]:
         fname = os.path.join(instance_folder,instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -177,7 +177,7 @@ if __name__ == "__main__":
             min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
         )
 
-        solver = dp.CABS(model, time_limit=tlim, quiet = True)
+        solver = dp.CABS(model, time_limit=tlim)
         solution = solver.search()
 
         sequence = []

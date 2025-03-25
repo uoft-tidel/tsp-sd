@@ -1,0 +1,1900 @@
+===INSTANCE START
+ALG: CP-RANK-DEL
+Instance Name: vm1084-848.9.json
+20348
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 2168 variables, 300271 constraints
+ ! Presolve      : 76 extractables eliminated
+ ! TimeLimit            = 10840
+ ! Workers              = 8
+ ! Initial process time : 18.04s (17.97s extraction + 0.07s propagation)
+ !  . Log search space  : 21858.1 (before), 21858.1 (after)
+ !  . Memory usage      : 421.1 MB (before), 421.1 MB (after)
+ ! Using parallel search with 8 workers.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed    W       Branch decision
+                        0       2168                 -
+ + New bound is 0
+                     1000       1776    1       113 != Node at Rank 1069
+                     1000       1772    2       120  = Node at Rank 1074
+                     1000        572    3       464  = Node at Rank 601
+                     1000       1776    4       109  = Node at Rank 1071
+                     1000        988    5       316  = Node at Rank 769
+                     1000        184    6       991  = Node at Rank 93
+                     1000       1776    7        95  = Node at Rank 1072
+                     1000        514    8       965  = Node at Rank 953
+                     2000         44    8   F   296  = Node at Rank 491
+ *  6.027884e+06     1101  483.38s      6      (gap is 100.0%)
+    6.027884e+06     2000          4    6       515  = Node at Rank 602
+    6.027884e+06     3000         44    8   F   909  = Rank of Node 841
+    6.027884e+06     2000        414    3       538  = Node at Rank 261
+    6.027884e+06     3000        402    6        10  = Node at Rank 1080
+    6.027884e+06     2000          4    7       859  = Rank of Node 1024
+    6.027884e+06     2000          4    1       299  = Node at Rank 152
+    6.027884e+06     2000          6    2       642  = Node at Rank 39
+    6.027884e+06     2000          4    4       975  = Node at Rank 58
+    6.027884e+06     2000          4    5       954  = Rank of Node 902
+ ! Time = 651.19s, Average fail depth = 118, Memory usage = 23.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.027884e+06     3000        208    7        40  = Rank of Node 626
+    6.027884e+06     3000        318    1       865  = Node at Rank 237
+    6.027884e+06     3000        390    2       850  = Node at Rank 296
+    6.027884e+06     3000          4    3       768  = Node at Rank 316
+    6.027884e+06     3000        472    5   F   597  = Node at Rank 232
+    6.027884e+06     4000        168    6         4  = Rank of Node 1066
+    6.027884e+06     4000          4    7       313 != Rank of Node 986
+    6.027884e+06     4000          4    1        21  = Rank of Node 722
+    6.027884e+06     4000          4    2       389  = Node at Rank 496
+    6.027884e+06     4000         28    3   F  1052 != Node at Rank 75
+    6.027884e+06     3000        332    4       108 != Node at Rank 200
+    6.027884e+06     4000        470    5   F   465  = Node at Rank 208
+    6.027884e+06     5000         20    6      1075 != Node at Rank 55
+    6.027884e+06     5000         26    7   F   309  = Node at Rank 948
+    6.027884e+06     5000         46    1       496 != Node at Rank 295
+    6.027884e+06     5000         54    2   F   146  = Node at Rank 14
+    6.027884e+06     5000         28    3   F  1057  = Node at Rank 96
+    6.027884e+06     4000          4    4        11  = Rank of Node 212
+    6.027884e+06     5000        470    5       161  = Node at Rank 753
+    6.027884e+06     6000         20    6      1050 != Node at Rank 82
+ ! Time = 1133.65s, Average fail depth = 118, Memory usage = 23.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.027884e+06     6000         32    7       853  = Node at Rank 193
+    6.027884e+06     6000         50    1       716 != Node at Rank 555
+    6.027884e+06     6000         56    2   F   363  = Node at Rank 205
+    6.027884e+06     6000         28    3   F   362  = Node at Rank 861
+    6.027884e+06     5000         68    4   F  1072 != Rank of Node 301
+    6.027884e+06     6000        414    5   F   574  = Node at Rank 1039
+    6.027884e+06     7000         24    6       224  = Node at Rank 1006
+    6.027884e+06     7000        162    7        91  = Node at Rank 340
+    6.027884e+06     7000        168    1       146  = Rank of Node 278
+    6.027884e+06     7000        418    3       618 != Node at Rank 767
+    6.027884e+06     6000         66    4       773 != Node at Rank 297
+    6.027884e+06     7000        418    5       361  = Node at Rank 414
+    6.027884e+06     8000        628    6       243  = Node at Rank 198
+    6.027884e+06     8000        192    1       740 != Node at Rank 765
+    6.027884e+06     7000        378    2       286  = Rank of Node 312
+    6.027884e+06     8000        418    3   F   617  = Rank of Node 948
+    6.027884e+06     7000         54    4       103 != Node at Rank 1064
+    6.027884e+06     8000        504    5       402 != Node at Rank 34
+    6.027884e+06     9000        346    6   F   816  = Rank of Node 839
+    6.027884e+06     8000        288    7       675  = Rank of Node 767
+ ! Time = 1399.52s, Average fail depth = 118, Memory usage = 23.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.027884e+06     8000          6    2      1056  = Rank of Node 864
+    6.027884e+06     9000        418    3        91  = Node at Rank 239
+    6.027884e+06     8000         54    4       536  = Node at Rank 887
+    6.027884e+06     9000        504    5       867  = Node at Rank 10
+    6.027884e+06    10000        340    6   F  1081  = Rank of Node 938
+    6.027884e+06     9000          4    7       796 != Rank of Node 702
+    6.027884e+06     9000          4    1       670  = Rank of Node 571
+    6.027884e+06    10000        346    3   F   364  = Node at Rank 555
+    6.027884e+06    10000        520    5       966  = Node at Rank 432
+    6.027884e+06    11000        340    6       208  = Node at Rank 930
+    6.027884e+06     4000         54    8       519  = Node at Rank 542
+    6.027884e+06     9000        934    2       137  = Rank of Node 195
+    6.027884e+06    11000        346    3   F   290  = Node at Rank 820
+    6.027884e+06     9000          6    4       865  = Node at Rank 625
+    6.027884e+06    11000        368    5       792 != Rank of Node 291
+    6.027884e+06    12000        396    6   F   625  = Node at Rank 777
+    6.027884e+06    10000        492    7       729  = Node at Rank 530
+    6.027884e+06     5000        428    8       595 != Node at Rank 1069
+    6.027884e+06    10000          4    1       219  = Node at Rank 328
+    6.027884e+06    10000        190    2       997 != Node at Rank 316
+ ! Time = 1677.13s, Average fail depth = 118, Memory usage = 23.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.027884e+06    10000        190    4       312  = Rank of Node 143
+    6.027884e+06    12000        368    5      1053  = Rank of Node 930
+    6.027884e+06    13000        396    6       594  = Node at Rank 752
+    6.027884e+06    11000        230    7         8  = Node at Rank 624
+    6.027884e+06     6000        430    8       606 != Rank of Node 591
+    6.027884e+06    11000        126    1      1031 != Node at Rank 324
+    6.027884e+06    11000        180    2        79  = Rank of Node 952
+    6.027884e+06    12000        426    3       326  = Node at Rank 759
+    6.027884e+06    13000        986    5       845  = Node at Rank 399
+    6.027884e+06    14000        340    6         4  = Rank of Node 298
+    6.027884e+06    12000          4    7       596  = Node at Rank 476
+    6.027884e+06    12000        130    1   F   780  = Node at Rank 474
+    6.027884e+06    12000          4    2       560  = Node at Rank 466
+    6.027884e+06    11000          4    4       684  = Node at Rank 671
+    6.027884e+06    13000        212    7      1068 != Rank of Node 559
+    6.027884e+06    13000          4    1      1053  = Node at Rank 60
+    6.027884e+06    13000        450    2      1027 != Node at Rank 674
+    6.027884e+06    12000        186    4       470  = Node at Rank 894
+    6.027884e+06    14000       1082    5   F   818  = Rank of Node 125
+ *  6.026280e+06    12820  1913.42s     3      (gap is 100.0%)
+ ! Time = 1913.42s, Average fail depth = 170, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.026280e+06    13000         24    4       834  = Node at Rank 223
+    6.026280e+06    15000        778    5   F  1035  = Node at Rank 718
+    6.026280e+06    15000        444    6   F   369  = Rank of Node 828
+    6.026280e+06    14000         50    7       483  = Node at Rank 592
+    6.026280e+06    14000        118    1       761  = Node at Rank 407
+    6.026280e+06    14000         52    2      1080  = Rank of Node 189
+    6.026280e+06    13000          4    3        87  = Node at Rank 636
+    6.026280e+06    14000        524    4      1082 != Rank of Node 897
+    6.026280e+06    16000        420    5       519 != Node at Rank 387
+    6.026280e+06    16000        438    6        62  = Node at Rank 668
+    6.026280e+06    15000        216    7   F   598  = Rank of Node 608
+    6.026280e+06     7000        430    8       541  = Node at Rank 273
+    6.026280e+06    15000         46    1       431  = Node at Rank 793
+    6.026280e+06    15000        328    2       703  = Node at Rank 686
+    6.026280e+06    14000        408    3       623 != Node at Rank 1063
+    6.026280e+06    15000         68    4       706  = Node at Rank 811
+    6.026280e+06    16000          4    7       469  = Node at Rank 1076
+    6.026280e+06     8000        428    8       300  = Rank of Node 933
+    6.026280e+06    16000         44    1       758 != Node at Rank 712
+    6.026280e+06    15000        404    3       122  = Rank of Node 357
+ ! Time = 2167.50s, Average fail depth = 170, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.026280e+06    16000        442    4       669  = Node at Rank 338
+    6.026280e+06    17000        430    6        11  = Rank of Node 945
+    6.026280e+06    17000        428    7   F   924  = Node at Rank 726
+    6.026280e+06     9000        402    8       146  = Rank of Node 249
+    6.026280e+06    16000        184    2       372  = Node at Rank 594
+    6.026280e+06    16000        386    3       620 != Node at Rank 697
+    6.026280e+06    17000          4    4       352  = Node at Rank 1039
+    6.026280e+06    17000        422    5       676  = Node at Rank 567
+    6.026280e+06    18000        434    6       592  = Rank of Node 888
+    6.026280e+06    10000        364    8       589  = Node at Rank 472
+    6.026280e+06    17000          4    1       572  = Node at Rank 1029
+    6.026280e+06    17000        414    2       476  = Node at Rank 890
+    6.026280e+06    17000        384    3        34  = Rank of Node 620
+    6.026280e+06    19000        402    6       617 != Node at Rank 979
+    6.026280e+06    18000       1174    7        83  = Node at Rank 972
+    6.026280e+06    11000        346    8       938  = Rank of Node 426
+    6.026280e+06    18000        496    3   F  1082  = Rank of Node 574
+    6.026280e+06    18000        422    4       129  = Rank of Node 326
+    6.026280e+06    18000        324    5       378  = Rank of Node 892
+    6.026280e+06    20000        402    6       960  = Node at Rank 726
+ ! Time = 2463.01s, Average fail depth = 170, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.026280e+06    12000        352    8   F   561  = Node at Rank 879
+    6.026280e+06    18000        396    1       842 != Rank of Node 465
+    6.026280e+06    18000       1126    2       727 != Node at Rank 740
+    6.026280e+06    19000        346    3        53  = Rank of Node 450
+    6.026280e+06    19000       1120    4        65 != Node at Rank 771
+    6.026280e+06    21000       1210    6   F   364  = Node at Rank 925
+    6.026280e+06    19000       1220    7       472 != Node at Rank 346
+    6.026280e+06    19000       1164    1       532  = Node at Rank 107
+    6.026280e+06    19000       1178    2       104 != Node at Rank 1015
+    6.026280e+06    20000        388    3   F   618  = Node at Rank 734
+    6.026280e+06    20000        984    4   F   899  = Node at Rank 606
+    6.026280e+06    19000        444    5       159  = Node at Rank 1033
+    6.026280e+06    22000        426    6   F   829  = Node at Rank 1075
+    6.026280e+06    20000        960    1        97  = Rank of Node 177
+    6.026280e+06    21000        380    3       613  = Rank of Node 788
+    6.026280e+06    21000        840    4   F   524  = Node at Rank 213
+    6.026280e+06    20000       1282    7       368  = Node at Rank 886
+    6.026280e+06    21000        812    1        55 != Node at Rank 339
+    6.026280e+06    22000        324    3       477 != Rank of Node 870
+    6.026280e+06    22000        794    4       944 != Node at Rank 6
+ ! Time = 2752.96s, Average fail depth = 170, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.026280e+06    20000        444    5       201  = Node at Rank 518
+    6.026280e+06    21000        472    5       299 != Rank of Node 665
+    6.026280e+06    23000        778    6       160  = Rank of Node 857
+    6.026280e+06    20000       1322    2       345 != Node at Rank 734
+    6.026280e+06    23000        322    3       129  = Rank of Node 436
+    6.026280e+06    22000        338    5   F   931  = Node at Rank 724
+    6.026280e+06    24000        394    6       314  = Node at Rank 405
+    6.026280e+06    21000       1282    7       402  = Node at Rank 215
+    6.026280e+06    22000        796    1       207  = Node at Rank 958
+    6.026280e+06    24000        298    3       181 != Node at Rank 521
+    6.026280e+06    23000        730    4   F   622  = Node at Rank 235
+    6.026280e+06    23000        336    5       530  = Rank of Node 424
+    6.026280e+06    23000        752    1   F    55  = Node at Rank 1042
+    6.026280e+06    25000        298    3       120  = Rank of Node 773
+    6.026280e+06    24000        682    4       475 != Node at Rank 639
+    6.026280e+06    25000        946    6       257  = Rank of Node 863
+    6.026280e+06    22000       1314    7       870  = Rank of Node 194
+    6.026280e+06    13000        328    8       734  = Node at Rank 349
+    6.026280e+06    24000        618    1       629  = Rank of Node 1035
+    6.026280e+06    21000       1274    2       645  = Node at Rank 845
+ ! Time = 2982.75s, Average fail depth = 170, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.026280e+06    26000        950    3        39  = Node at Rank 1048
+    6.026280e+06    25000        680    4       663  = Node at Rank 878
+    6.026280e+06    24000        426    5       394 != Rank of Node 1056
+    6.026280e+06    26000        410    6   F   615  = Rank of Node 847
+    6.026280e+06    14000         12    8        62  = Node at Rank 1049
+    6.026280e+06    25000       1188    1       927 != Rank of Node 554
+    6.026280e+06    26000        728    4      1050  = Rank of Node 774
+    6.026280e+06    25000        420    5       100 != Node at Rank 371
+    6.026280e+06    27000        410    6       303  = Rank of Node 573
+    6.026280e+06    23000       1290    7       607  = Node at Rank 1049
+    6.026280e+06    26000        576    1       676 != Node at Rank 654
+    6.026280e+06    22000       1296    2       681  = Node at Rank 985
+    6.026280e+06    26000        422    5       124  = Rank of Node 508
+    6.026280e+06    28000        404    6       608 != Node at Rank 652
+    6.026280e+06    15000        488    8        77  = Node at Rank 348
+    6.026280e+06    27000        568    4       185  = Node at Rank 951
+    6.026280e+06    27000        432    5       193  = Node at Rank 401
+    6.026280e+06    29000        402    6   F   608  = Rank of Node 614
+    6.026280e+06    23000       1348    2       828  = Rank of Node 623
+    6.026280e+06    27000         96    3      1035  = Node at Rank 17
+ ! Time = 3311.63s, Average fail depth = 170, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+ *  6.022842e+06    27336  3311.75s     3      (gap is 100.0%)
+    6.022842e+06    30000        402    6       339  = Node at Rank 376
+    6.022842e+06    24000       1296    7       567 != Node at Rank 599
+    6.022842e+06    16000        862    8   F  1013  = Rank of Node 905
+    6.022842e+06    27000        572    1       488  = Node at Rank 604
+    6.022842e+06    28000          4    3       790  = Node at Rank 874
+    6.022842e+06    28000        444    4       721 != Node at Rank 587
+    6.022842e+06    28000        336    5        37  = Node at Rank 611
+    6.022842e+06    31000        444    6       331  = Rank of Node 322
+    6.022842e+06    17000        354    8       859  = Node at Rank 59
+    6.022842e+06    28000        506    1       104  = Rank of Node 9
+    6.022842e+06    29000        354    3      1008  = Node at Rank 91
+    6.022842e+06    29000        468    5       901  = Rank of Node 730
+    6.022842e+06    32000        404    6   F   468  = Rank of Node 1039
+    6.022842e+06    25000       1296    7       514  = Node at Rank 820
+    6.022842e+06    18000        630    8       132  = Rank of Node 19
+    6.022842e+06    29000        536    1   F   749  = Node at Rank 904
+    6.022842e+06    24000       1304    2       121 != Node at Rank 688
+    6.022842e+06    30000        690    3   F  1011  = Node at Rank 1012
+    6.022842e+06    29000        440    4       415  = Rank of Node 302
+ ! Time = 3665.71s, Average fail depth = 164, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.022842e+06    33000        406    6       872  = Node at Rank 936
+    6.022842e+06    26000       1346    7       361  = Rank of Node 675
+    6.022842e+06    19000        666    8       795  = Rank of Node 538
+    6.022842e+06    30000        520    1       417 != Node at Rank 76
+    6.022842e+06    31000        320    3   F   315  = Node at Rank 641
+    6.022842e+06    30000        572    4       678  = Node at Rank 971
+    6.022842e+06    30000        404    5   F   998  = Node at Rank 174
+    6.022842e+06    34000        646    6   F   596  = Rank of Node 333
+    6.022842e+06    20000        330    8   F  1051  = Rank of Node 390
+    6.022842e+06    31000        510    1       770  = Rank of Node 12
+    6.022842e+06    25000       1276    2       347  = Node at Rank 836
+    6.022842e+06    32000        394    3   F   365  = Rank of Node 993
+    6.022842e+06    31000        522    4       112  = Node at Rank 1034
+    6.022842e+06    35000        494    6   F   979  = Rank of Node 661
+    6.022842e+06    21000        328    8       988 != Rank of Node 1045
+    6.022842e+06    33000        394    3       677 != Rank of Node 61
+    6.022842e+06    32000        456    4   F   897  = Node at Rank 970
+    6.022842e+06    31000        396    5       372  = Rank of Node 1003
+    6.022842e+06    36000        328    6   F   678  = Rank of Node 393
+    6.022842e+06    27000       1340    7      1042  = Node at Rank 727
+ ! Time = 3945.55s, Average fail depth = 164, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.022842e+06    22000        320    8         5  = Rank of Node 956
+    6.022842e+06    32000        430    1       108  = Rank of Node 581
+    6.022842e+06    26000       1320    2       542  = Node at Rank 918
+    6.022842e+06    37000        326    6       820  = Rank of Node 831
+    6.022842e+06    34000        462    3       182  = Node at Rank 748
+    6.022842e+06    33000        446    4       328  = Node at Rank 826
+    6.022842e+06    28000       1334    7       216 != Node at Rank 699
+    6.022842e+06    23000        404    8       604  = Rank of Node 1034
+    6.022842e+06    33000        370    1       112  = Node at Rank 861
+    6.022842e+06    27000       1316    2       851 != Node at Rank 1035
+    6.022842e+06    35000        386    3       582 != Node at Rank 881
+    6.022842e+06    32000        412    5       510  = Node at Rank 576
+    6.022842e+06    24000        384    8      1050 != Rank of Node 761
+    6.022842e+06    34000        434    1       958 != Node at Rank 164
+    6.022842e+06    34000        386    4      1079  = Node at Rank 918
+    6.022842e+06    38000        378    6       357  = Node at Rank 727
+    6.022842e+06    29000       1346    7        11  = Rank of Node 409
+    6.022842e+06    25000        354    8   F   904  = Rank of Node 639
+    6.022842e+06    35000        434    1       259  = Node at Rank 420
+    6.022842e+06    28000       1326    2       985  = Node at Rank 309
+ ! Time = 4378.62s, Average fail depth = 164, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.022842e+06    35000        506    4       716  = Node at Rank 1026
+    6.022842e+06    30000       1038    7   F   500  = Node at Rank 552
+    6.022842e+06    26000        348    8       926 != Rank of Node 230
+    6.022842e+06    36000        452    1       445  = Node at Rank 530
+    6.022842e+06    36000       1130    4         5  = Node at Rank 886
+    6.022842e+06    39000          6    6       360  = Node at Rank 1051
+    6.022842e+06    36000        298    3       933  = Node at Rank 153
+    6.022842e+06    37000        404    4      1008 != Node at Rank 829
+    6.022842e+06    33000         40    5       362  = Node at Rank 720
+    6.022842e+06    31000       1038    7       133  = Node at Rank 1000
+    6.022842e+06    37000        408    1       160  = Node at Rank 964
+    6.022842e+06    29000       1328    2       395  = Node at Rank 708
+    6.022842e+06    37000          8    3   F   446  = Rank of Node 848
+    6.022842e+06    40000        692    6       309  = Node at Rank 774
+    6.022842e+06    30000        996    2       500 != Node at Rank 635
+    6.022842e+06    38000        406    3   F   264  = Rank of Node 1021
+    6.022842e+06    34000         30    5       498  = Rank of Node 651
+    6.022842e+06    32000        978    7       309  = Node at Rank 701
+    6.022842e+06    38000        306    1       508  = Node at Rank 681
+    6.022842e+06    39000        406    3   F   248  = Rank of Node 1021
+ ! Time = 5004.89s, Average fail depth = 164, Memory usage = 24.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.022842e+06    38000        356    4       809  = Node at Rank 486
+    6.022842e+06    35000        414    5   F   485  = Rank of Node 6
+    6.022842e+06    33000        968    7       492  = Node at Rank 648
+    6.022842e+06    31000        978    2       132  = Node at Rank 998
+    6.022842e+06    40000        406    3       204  = Rank of Node 1025
+    6.022842e+06    36000        412    5       225 != Rank of Node 11
+    6.022842e+06    41000         14    6        78 != Rank of Node 1082
+    6.022842e+06    27000        348    8       868  = Node at Rank 216
+    6.022842e+06    39000        434    1   F   290  = Node at Rank 165
+    6.022842e+06    39000        304    4       992  = Node at Rank 555
+    6.022842e+06    37000        412    5       521  = Node at Rank 358
+    6.022842e+06    34000        916    7       582 != Node at Rank 588
+    6.022842e+06    40000        434    1       759 != Rank of Node 865
+    6.022842e+06    32000        930    2       363  = Node at Rank 773
+ *  6.021621e+06    27281  5377.38s     8      (gap is 100.0%)
+    6.021621e+06    41000        422    1       749 != Node at Rank 1073
+    6.021621e+06    40000        498    4   F   422  = Node at Rank 940
+    6.021621e+06    42000         14    6       199  = Node at Rank 885
+    6.021621e+06    35000        978    7       101  = Node at Rank 1038
+    6.021621e+06    42000        366    1   F  1061  = Node at Rank 706
+ ! Time = 5630.52s, Average fail depth = 272, Memory usage = 26.8 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.021621e+06    33000        992    2       596 != Node at Rank 420
+    6.021621e+06    41000        368    3       897  = Node at Rank 185
+    6.021621e+06    41000        422    4       915  = Rank of Node 281
+    6.021621e+06    38000        598    5       342  = Node at Rank 742
+    6.021621e+06    28000          4    8            -
+    6.021621e+06    34000        976    2        96  = Node at Rank 1047
+    6.021621e+06    42000        368    4       625 != Node at Rank 733
+    6.021621e+06    36000       1048    7       394  = Node at Rank 776
+    6.021621e+06    42000         14    3       402  = Rank of Node 849
+    6.021621e+06    43000         26    6   F  1056  = Node at Rank 75
+    6.021621e+06    43000        338    1       797  = Node at Rank 255
+    6.021621e+06    35000       1000    2       382  = Node at Rank 761
+    6.021621e+06    43000        412    3   F    69  = Node at Rank 1042
+    6.021621e+06    39000         52    5       138  = Node at Rank 945
+    6.021621e+06    44000         26    6       772  = Node at Rank 337
+    6.021621e+06    37000        936    7   F   793  = Node at Rank 442
+    6.021621e+06    43000        308    4       809  = Node at Rank 376
+    6.021621e+06    45000        314    6   F   937  = Node at Rank 254
+    6.021621e+06    38000        936    7       972  = Rank of Node 963
+    6.021621e+06    44000        276    1       985  = Node at Rank 548
+ ! Time = 6272.93s, Average fail depth = 272, Memory usage = 26.8 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.021621e+06    36000       1002    2   F   620  = Node at Rank 217
+    6.021621e+06    46000        296    6       222 != Rank of Node 906
+    6.021621e+06    39000       1504    7   F   943  = Node at Rank 1019
+    6.021621e+06    29000        176    8       995  = Node at Rank 90
+    6.021621e+06    45000        448    1       466  = Node at Rank 534
+    6.021621e+06    37000       1000    2       108  = Node at Rank 1040
+    6.021621e+06    44000        126    3      1015  = Node at Rank 69
+    6.021621e+06    44000        248    4        34  = Rank of Node 793
+    6.021621e+06    40000         18    5        90 != Rank of Node 1079
+    6.021621e+06    47000        296    6       643  = Node at Rank 365
+    6.021621e+06    40000       1468    7       233  = Node at Rank 939
+    6.021621e+06    30000          4    8      1082 != Node at Rank 59
+ *  6.018025e+06    44392  6402.76s     3      (gap is 100.0%)
+    6.018025e+06    45000        372    4   F   909  = Rank of Node 688
+    6.018025e+06    41000         14    5      1071 != Node at Rank 81
+    6.018025e+06    48000        340    6   F    85  = Rank of Node 752
+    6.018025e+06    41000       1476    7       612  = Node at Rank 998
+    6.018025e+06    31000          4    8   F  1078  = Node at Rank 60
+    6.018025e+06    46000        452    1       121  = Rank of Node 99
+    6.018025e+06    45000          4    3       718  = Rank of Node 56
+ ! Time = 6532.88s, Average fail depth = 271, Memory usage = 26.8 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.018025e+06    46000        460    4       769  = Rank of Node 337
+    6.018025e+06    42000         12    5      1046  = Rank of Node 107
+    6.018025e+06    49000        340    6       193  = Node at Rank 73
+    6.018025e+06    42000       1332    7       140  = Node at Rank 751
+    6.018025e+06    32000         10    8        46  = Rank of Node 700
+    6.018025e+06    47000        324    1       121 != Node at Rank 1079
+    6.018025e+06    38000       1008    2       340  = Node at Rank 821
+    6.018025e+06    46000        318    3       268  = Node at Rank 710
+    6.018025e+06    47000        370    4   F   772  = Rank of Node 659
+    6.018025e+06    43000        734    5        72  = Node at Rank 686
+    6.018025e+06    43000       1308    7       803 != Node at Rank 748
+    6.018025e+06    33000        378    8            -
+    6.018025e+06    48000          4    1   F   242 != Rank of Node 1033
+    6.018025e+06    39000        984    2   F   515  = Node at Rank 598
+    6.018025e+06    47000        666    3      1042  = Rank of Node 897
+ *  6.017517e+06    48130  6801.01s     1      (gap is 100.0%)
+ *  6.010071e+06    48496  6801.34s     1      (gap is 100.0%)
+    6.010071e+06    40000        974    2       155  = Node at Rank 998
+    6.010071e+06    48000        352    3       886 != Node at Rank 1070
+    6.010071e+06    48000        212    4       822  = Rank of Node 262
+ ! Time = 6931.71s, Average fail depth = 353, Memory usage = 27.0 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    6.010071e+06    44000        370    5   F   639  = Node at Rank 1060
+    6.010071e+06    50000        340    6       195  = Node at Rank 889
+    6.010071e+06    44000        848    7       897 != Rank of Node 292
+    6.010071e+06    34000        486    8       904  = Node at Rank 824
+    6.010071e+06    49000          4    1       585  = Node at Rank 500
+ *  5.978634e+06    49208  6932.00s     1      (gap is 100.0%)
+ *  5.977181e+06    49290  6932.42s     1      (gap is 100.0%)
+ *  5.976258e+06    49585  6932.81s     1      (gap is 100.0%)
+    5.976258e+06    41000       1044    2       609  = Rank of Node 1009
+    5.976258e+06    45000        804    7       984  = Rank of Node 384
+    5.976258e+06    35000        356    8       931  = Node at Rank 116
+    5.976258e+06    50000          4    1       103  = Node at Rank 982
+    5.976258e+06    49000          4    4       393  = Node at Rank 692
+ *  5.973354e+06    49337  7021.04s     4      (gap is 100.0%)
+ *  5.971740e+06    50554  7021.34s     1      (gap is 100.0%)
+    5.971740e+06    42000        814    2      1064 != Rank of Node 69
+    5.971740e+06    50000          4    4       726 != Rank of Node 575
+    5.971740e+06    45000        370    5       576 != Node at Rank 920
+    5.971740e+06    51000         48    6   F  1077  = Node at Rank 93
+    5.971740e+06    46000        796    7       991 != Node at Rank 1040
+ ! Time = 7115.34s, Average fail depth = 435, Memory usage = 27.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.971740e+06    36000        682    8      1026  = Node at Rank 831
+ *  5.964520e+06    50396  7115.44s     4      (gap is 100.0%)
+    5.964520e+06    51000          4    1       954  = Rank of Node 835
+    5.964520e+06    43000        806    2       280  = Node at Rank 357
+    5.964520e+06    49000        352    3       756  = Node at Rank 330
+    5.964520e+06    51000          4    4       431  = Node at Rank 655
+    5.964520e+06    46000        392    5       624 != Rank of Node 996
+    5.964520e+06    52000         46    6        63  = Rank of Node 891
+    5.964520e+06    47000        744    7        24 != Node at Rank 586
+    5.964520e+06    37000        364    8        44 != Rank of Node 1060
+    5.964520e+06    52000          4    1   F    19  = Node at Rank 850
+    5.964520e+06    44000        794    2        51  = Node at Rank 1055
+    5.964520e+06    50000         22    3      1062 != Node at Rank 49
+    5.964520e+06    52000          4    4       224 != Rank of Node 664
+    5.964520e+06    47000        392    5            -
+    5.964520e+06    53000        376    6       654 != Node at Rank 673
+    5.964520e+06    48000        744    7       192  = Node at Rank 844
+    5.964520e+06    38000        366    8       117 != Rank of Node 2
+    5.964520e+06    53000          4    1         3 != Node at Rank 1082
+ *  5.962463e+06    53034  7291.01s     1      (gap is 100.0%)
+ ! Time = 7291.01s, Average fail depth = 430, Memory usage = 27.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.962463e+06    45000       1228    2      1035  = Node at Rank 817
+    5.962463e+06    51000         22    3   F    50  = Rank of Node 1053
+    5.962463e+06    48000        902    5   F   321  = Node at Rank 143
+    5.962463e+06    54000        372    6        95  = Node at Rank 1013
+    5.962463e+06    49000        718    7       662 != Node at Rank 530
+    5.962463e+06    39000        366    8      1074  = Node at Rank 502
+    5.962463e+06    54000          4    1       301  = Node at Rank 784
+    5.962463e+06    46000        780    2       827 != Node at Rank 173
+    5.962463e+06    52000         20    3       336  = Rank of Node 1007
+    5.962463e+06    49000        920    5      1047 != Rank of Node 529
+ *  5.958111e+06    54481  7508.22s     1      (gap is 100.0%)
+    5.958111e+06    55000          4    1       100  = Rank of Node 984
+ *  5.957411e+06    55025  7508.58s     1      (gap is 100.0%)
+    5.957411e+06    47000        778    2       402  = Node at Rank 173
+    5.957411e+06    53000        356    3   F   250  = Node at Rank 911
+    5.957411e+06    53000        158    4       960  = Node at Rank 124
+    5.957411e+06    50000       1296    5   F  1047  = Node at Rank 376
+    5.957411e+06    50000        720    7       498  = Node at Rank 667
+    5.957411e+06    40000        862    8       694 != Rank of Node 654
+ *  5.952636e+06    55447  7574.84s     1      (gap is 100.0%)
+ ! Time = 7574.84s, Average fail depth = 428, Memory usage = 27.4 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+ *  5.950112e+06    55479  7575.18s     1      (gap is 100.0%)
+    5.950112e+06    56000          4    1       421  = Node at Rank 902
+    5.950112e+06    48000        780    2   F   295  = Node at Rank 616
+    5.950112e+06    54000        362    3   F   921  = Node at Rank 349
+    5.950112e+06    54000          4    4       441  = Node at Rank 460
+    5.950112e+06    55000        216    6   F  1043 != Node at Rank 90
+    5.950112e+06    51000        580    7       180  = Node at Rank 970
+    5.950112e+06    41000        696    8       975  = Node at Rank 596
+ *  5.949951e+06    56607  7687.21s     1      (gap is 100.0%)
+    5.949951e+06    57000          4    1       576  = Node at Rank 508
+    5.949951e+06    49000        810    2       179  = Node at Rank 976
+    5.949951e+06    55000        364    3   F   978  = Node at Rank 406
+    5.949951e+06    55000        382    4       522  = Node at Rank 563
+    5.949951e+06    56000        216    6       440  = Rank of Node 413
+    5.949951e+06    52000        598    7   F   798  = Node at Rank 143
+    5.949951e+06    42000        340    8   F   831  = Rank of Node 766
+    5.949951e+06    58000          4    1       492  = Node at Rank 593
+ *  5.937856e+06    58136  7763.96s     1      (gap is 100.0%)
+    5.937856e+06    50000        590    2   F  1051  = Node at Rank 660
+    5.937856e+06    56000        372    3       836  = Node at Rank 706
+ ! Time = 7874.81s, Average fail depth = 428, Memory usage = 27.6 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.937856e+06    51000       1298    5       407  = Node at Rank 676
+    5.937856e+06    57000        558    6       567  = Rank of Node 353
+    5.937856e+06    53000        608    7   F   540  = Node at Rank 1017
+    5.937856e+06    43000        340    8       371 != Node at Rank 651
+    5.937856e+06    56000          4    4       148  = Node at Rank 936
+ *  5.934020e+06    56072  7875.00s     4      (gap is 100.0%)
+ *  5.925334e+06    56159  7875.30s     4      (gap is 100.0%)
+    5.925334e+06    59000          4    1       596  = Node at Rank 486
+    5.925334e+06    51000        588    2       214  = Node at Rank 951
+    5.925334e+06    57000        368    3       379 != Rank of Node 960
+    5.925334e+06    52000         14    5      1082  = Node at Rank 54
+    5.925334e+06    54000       1328    7   F   553  = Node at Rank 901
+ *  5.910420e+06    56196  7965.19s     4      (gap is 100.0%)
+    5.910420e+06    57000          4    4       195  = Rank of Node 889
+    5.910420e+06    60000          4    1       408  = Rank of Node 676
+    5.910420e+06    52000        576    2   F   844  = Node at Rank 150
+    5.910420e+06    58000        304    3       130  = Node at Rank 981
+    5.910420e+06    53000         12    5   F  1073  = Node at Rank 63
+    5.910420e+06    58000        426    6       878 != Rank of Node 410
+    5.910420e+06    55000       1044    7       475  = Node at Rank 481
+ ! Time = 8062.59s, Average fail depth = 427, Memory usage = 27.7 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.910420e+06    61000          6    1       187  = Rank of Node 897
+ *  5.891289e+06    57752  8062.79s     4      (gap is 100.0%)
+    5.891289e+06    58000          4    4       145  = Rank of Node 938
+    5.891289e+06    53000        576    2   F    46  = Node at Rank 1013
+    5.891289e+06    59000          4    4       274  = Node at Rank 812
+    5.891289e+06    54000         12    5        35  = Node at Rank 264
+    5.891289e+06    59000        428    6       325  = Rank of Node 1035
+    5.891289e+06    56000        568    7       235  = Rank of Node 335
+ *  5.883505e+06    61570  8126.43s     1      (gap is 100.0%)
+    5.883505e+06    62000          4    1       408  = Node at Rank 733
+    5.883505e+06    54000        538    2       931  = Node at Rank 172
+    5.883505e+06    59000        372    3      1070  = Rank of Node 305
+    5.883505e+06    60000          4    4       757  = Rank of Node 327
+    5.883505e+06    55000        440    5   F   627  = Node at Rank 1025
+    5.883505e+06    57000        542    7   F    24  = Rank of Node 106
+ *  5.882723e+06    62341  8202.62s     1      (gap is 100.0%)
+    5.882723e+06    55000        574    2       817  = Node at Rank 998
+    5.882723e+06    60000       1096    3   F   764  = Rank of Node 302
+    5.882723e+06    60000        404    6       139  = Rank of Node 788
+    5.882723e+06    58000        542    7   F   806  = Node at Rank 561
+ ! Time = 8290.00s, Average fail depth = 424, Memory usage = 27.9 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.882723e+06    44000        340    8       763  = Node at Rank 321
+    5.882723e+06    63000          4    1       205  = Rank of Node 878
+ *  5.869913e+06    63076  8290.13s     1      (gap is 100.0%)
+    5.869913e+06    56000        798    2       993  = Rank of Node 427
+    5.869913e+06    61000        602    3       461  = Node at Rank 78
+    5.869913e+06    61000          4    4       933  = Rank of Node 151
+    5.869913e+06    45000         20    8      1071 != Node at Rank 62
+ *  5.869839e+06    63922  8376.58s     1      (gap is 100.0%)
+    5.869839e+06    64000          4    1       977  = Node at Rank 107
+    5.869839e+06    57000       1038    2       781  = Node at Rank 772
+    5.869839e+06    62000        342    3       906  = Rank of Node 273
+    5.869839e+06    61000        266    6       530  = Node at Rank 853
+    5.869839e+06    59000        608    7       151  = Node at Rank 441
+    5.869839e+06    46000         22    8       378  = Rank of Node 691
+    5.869839e+06    62000          4    4       223  = Rank of Node 861
+ *  5.858707e+06    62043  8468.63s     4      (gap is 100.0%)
+ *  5.857503e+06    62137  8468.89s     4      (gap is 100.0%)
+    5.857503e+06    63000        494    3       173  = Node at Rank 498
+    5.857503e+06    56000        348    5       909  = Node at Rank 175
+    5.857503e+06    62000        466    6       424  = Node at Rank 8
+ ! Time = 8567.10s, Average fail depth = 423, Memory usage = 28.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.857503e+06    60000        586    7       483  = Node at Rank 709
+    5.857503e+06    65000          4    1       111  = Node at Rank 972
+ *  5.857016e+06    62743  8567.22s     4      (gap is 100.0%)
+    5.857016e+06    63000          4    4       781  = Node at Rank 304
+ *  5.851887e+06    63262  8567.51s     4      (gap is 100.0%)
+ *  5.845394e+06    63283  8567.90s     4      (gap is 100.0%)
+ *  5.843957e+06    63300  8568.18s     4      (gap is 100.0%)
+    5.843957e+06    57000         38    5   F        -
+    5.843957e+06    63000        354    6   F   458  = Node at Rank 254
+    5.843957e+06    61000        570    7       236  = Node at Rank 1016
+    5.843957e+06    47000        406    8       805 != Node at Rank 327
+    5.843957e+06    58000        534    2       408  = Rank of Node 377
+    5.843957e+06    64000        390    3        20  = Rank of Node 1058
+ *  5.835823e+06    65984  8657.90s     1      (gap is 100.0%)
+    5.835823e+06    66000          4    1       268  = Node at Rank 817
+ *  5.833104e+06    63609  8658.38s     4      (gap is 100.0%)
+    5.833104e+06    64000          4    4       909  = Node at Rank 175
+    5.833104e+06    58000        978    5       160  = Node at Rank 310
+    5.833104e+06    64000        450    6   F   593  = Node at Rank 392
+    5.833104e+06    67000          4    1        54 != Rank of Node 921
+ ! Time = 8748.88s, Average fail depth = 422, Memory usage = 28.4 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.833104e+06    59000        582    2       451  = Node at Rank 695
+ *  5.831072e+06    67022  8749.00s     1      (gap is 100.0%)
+ *  5.829945e+06    67034  8749.29s     1      (gap is 100.0%)
+ *  5.817191e+06    64707  8749.55s     4      (gap is 100.0%)
+    5.817191e+06    65000          4    4       610  = Rank of Node 477
+    5.817191e+06    59000        366    5   F   281  = Rank of Node 999
+    5.817191e+06    65000        450    6   F   661  = Node at Rank 660
+    5.817191e+06    62000        602    7      1019  = Rank of Node 587
+    5.817191e+06    48000        626    8       218  = Node at Rank 869
+    5.817191e+06    60000        504    2   F   435  = Node at Rank 710
+ *  5.810161e+06    67668  8843.10s     1      (gap is 100.0%)
+ *  5.806221e+06    67892  8843.52s     1      (gap is 100.0%)
+    5.806221e+06    68000          4    1       829  = Node at Rank 256
+    5.806221e+06    61000        588    2       624  = Node at Rank 697
+    5.806221e+06    65000        282    3       779  = Node at Rank 348
+    5.806221e+06    66000          4    4        28  = Rank of Node 1046
+    5.806221e+06    60000        364    5       413  = Rank of Node 1027
+    5.806221e+06    66000        450    6       116  = Rank of Node 771
+    5.806221e+06    63000        636    7       432 != Node at Rank 137
+ *  5.796230e+06    68701  8934.29s     1      (gap is 100.0%)
+ ! Time = 8934.29s, Average fail depth = 422, Memory usage = 28.5 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.796230e+06    69000          4    1       918  = Node at Rank 165
+    5.796230e+06    62000        674    2       518  = Node at Rank 747
+    5.796230e+06    66000        282    3   F   763  = Node at Rank 348
+    5.796230e+06    67000          4    4       386  = Node at Rank 699
+    5.796230e+06    61000        412    5       604 != Rank of Node 923
+    5.796230e+06    67000        404    6   F   599  = Rank of Node 714
+ *  5.796186e+06    69700  9025.19s     1      (gap is 100.0%)
+ *  5.796147e+06    69793  9025.54s     1      (gap is 100.0%)
+ *  5.795824e+06    69872  9025.94s     1      (gap is 100.0%)
+    5.795824e+06    70000          4    1       965 != Node at Rank 759
+    5.795824e+06    63000        664    2       563  = Node at Rank 775
+    5.795824e+06    67000        286    3        69  = Node at Rank 813
+    5.795824e+06    62000        412    5   F   598  = Node at Rank 1034
+    5.795824e+06    64000        574    7       504  = Node at Rank 586
+    5.795824e+06    68000          4    4       324  = Node at Rank 762
+ *  5.784480e+06    68255  9119.96s     4      (gap is 100.0%)
+ *  5.755952e+06    70445  9120.22s     1      (gap is 100.0%)
+    5.755952e+06    71000          4    1        44  = Rank of Node 1062
+ *  5.734518e+06    71074  9120.52s     1      (gap is 100.0%)
+    5.734518e+06    68000        838    3       365  = Rank of Node 546
+ ! Time = 9214.33s, Average fail depth = 420, Memory usage = 28.9 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.734518e+06    65000        684    7       447  = Node at Rank 1051
+    5.734518e+06    49000         60    8      1023  = Node at Rank 133
+    5.734518e+06    69000          4    4        94  = Node at Rank 989
+ *  5.734511e+06    69077  9214.56s     4      (gap is 100.0%)
+ *  5.732570e+06    69228  9214.98s     4      (gap is 100.0%)
+    5.732570e+06    63000        412    5       434  = Node at Rank 751
+    5.732570e+06    50000        634    8   F   612  = Rank of Node 281
+    5.732570e+06    64000        680    2       998  = Node at Rank 762
+    5.732570e+06    69000        494    3       848  = Node at Rank 743
+ *  5.726022e+06    69641  9306.55s     4      (gap is 100.0%)
+    5.726022e+06    70000          4    4       478 != Rank of Node 492
+ *  5.713476e+06    70299  9306.85s     4      (gap is 100.0%)
+    5.713476e+06    68000        402    6       860  = Node at Rank 223
+    5.713476e+06    69000         40    6      1064  = Node at Rank 45
+    5.713476e+06    66000        556    7       268  = Node at Rank 1026
+    5.713476e+06    51000        456    8   F   519  = Rank of Node 301
+    5.713476e+06    72000          4    1       896  = Node at Rank 188
+    5.713476e+06    65000        708    2       322  = Node at Rank 612
+ *  5.709551e+06    70912  9398.30s     4      (gap is 100.0%)
+    5.709551e+06    71000          4    4       257  = Rank of Node 827
+ ! Time = 9398.71s, Average fail depth = 418, Memory usage = 29.0 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.709551e+06    64000        386    5      1049  = Node at Rank 433
+    5.709551e+06    67000        598    7        68  = Node at Rank 529
+    5.709551e+06    70000        500    3       502  = Node at Rank 587
+ *  5.700231e+06    72890  9494.04s     1      (gap is 100.0%)
+    5.700231e+06    73000          4    1       865  = Rank of Node 221
+ *  5.684737e+06    71748  9494.34s     4      (gap is 100.0%)
+    5.684737e+06    72000          4    4       865  = Rank of Node 221
+    5.684737e+06    65000        910    5       704  = Node at Rank 81
+    5.684737e+06    70000         38    6       649  = Rank of Node 560
+    5.684737e+06    52000        456    8       196  = Rank of Node 134
+    5.684737e+06    66000        720    2       151  = Node at Rank 553
+    5.684737e+06    73000          4    4       739  = Node at Rank 344
+    5.684737e+06    66000        864    5   F   685  = Rank of Node 663
+    5.684737e+06    71000        492    6   F   508  = Node at Rank 397
+    5.684737e+06    68000        632    7        67  = Node at Rank 963
+    5.684737e+06    53000        478    8   F   759  = Node at Rank 677
+    5.684737e+06    74000          4    1       710  = Rank of Node 375
+    5.684737e+06    67000        672    2       956 != Node at Rank 499
+    5.684737e+06    71000        152    3       235  = Rank of Node 907
+    5.684737e+06    74000          4    4       241  = Rank of Node 997
+ ! Time = 9681.52s, Average fail depth = 418, Memory usage = 29.1 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.684737e+06    67000        864    5       165  = Rank of Node 968
+    5.684737e+06    72000        492    6   F   508  = Node at Rank 52
+    5.684737e+06    69000        598    7       226  = Node at Rank 950
+    5.684737e+06    54000        480    8       514  = Rank of Node 44
+    5.684737e+06    72000        718    3   F    91  = Node at Rank 431
+ *  5.683071e+06    74534  9772.67s     4      (gap is 100.0%)
+    5.683071e+06    75000          4    4       568  = Rank of Node 515
+    5.683071e+06    68000        392    5   F   916  = Node at Rank 926
+    5.683071e+06    73000        492    6       431  = Rank of Node 531
+    5.683071e+06    75000          4    1       183  = Node at Rank 901
+    5.683071e+06    68000        650    2       112 != Node at Rank 166
+    5.683071e+06    73000        824    3   F    50  = Node at Rank 877
+    5.683071e+06    76000          4    4       183  = Node at Rank 901
+ *  5.675762e+06    75509  9867.68s     1      (gap is 100.0%)
+    5.675762e+06    69000        650    2       575  = Node at Rank 463
+    5.675762e+06    74000        808    3        56 != Node at Rank 200
+    5.675762e+06    69000        392    5       149 != Rank of Node 25
+    5.675762e+06    74000        418    6   F   514  = Node at Rank 704
+    5.675762e+06    70000        634    7       308  = Node at Rank 883
+    5.675762e+06    55000        838    8   F   267  = Node at Rank 371
+ ! Time = 9961.15s, Average fail depth = 418, Memory usage = 29.2 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.675762e+06    76000          4    1       129  = Rank of Node 955
+ *  5.672499e+06    76049  9961.30s     1      (gap is 100.0%)
+    5.672499e+06    70000        608    2       707  = Node at Rank 0
+    5.672499e+06    75000        574    3   F    36  = Rank of Node 325
+    5.672499e+06    77000          4    4       472 != Node at Rank 722
+    5.672499e+06    70000        416    5       282  = Rank of Node 406
+    5.672499e+06    75000        416    6       628 != Node at Rank 707
+    5.672499e+06    56000        804    8       194  = Rank of Node 215
+ *  5.670176e+06    77878  10064.62s    4      (gap is 100.0%)
+ *  5.666821e+06    76612  10065.00s    1      (gap is 100.0%)
+ *  5.663718e+06    76852  10065.30s    1      (gap is 100.0%)
+    5.663718e+06    77000          4    1       304  = Node at Rank 780
+    5.663718e+06    78000          4    4       284  = Rank of Node 1054
+    5.663718e+06    71000        456    5   F   566  = Node at Rank 797
+    5.663718e+06    76000        416    6       190  = Node at Rank 918
+    5.663718e+06    71000        686    7       337  = Node at Rank 793
+    5.663718e+06    57000        384    8       650 != Rank of Node 24
+ *  5.648009e+06    78149  10156.98s    4      (gap is 100.0%)
+ *  5.646668e+06    78642  10157.35s    4      (gap is 100.0%)
+ *  5.613004e+06    78683  10157.65s    4      (gap is 100.0%)
+ ! Time = 10157.65s, Average fail depth = 418, Memory usage = 29.5 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.613004e+06    78000          4    1      1077  = Node at Rank 59
+    5.613004e+06    71000        722    2       314  = Node at Rank 947
+    5.613004e+06    76000        566    3        26  = Rank of Node 964
+    5.613004e+06    79000          4    4       943  = Rank of Node 142
+    5.613004e+06    72000        456    5       568 != Node at Rank 1019
+    5.613004e+06    72000        708    7       652  = Node at Rank 688
+    5.613004e+06    58000        378    8   F   534  = Node at Rank 924
+    5.613004e+06    77000        492    3       546 != Rank of Node 557
+    5.613004e+06    79000          4    1         1  = Rank of Node 1019
+ *  5.606971e+06    79727  10336.47s    4      (gap is 100.0%)
+    5.606971e+06    80000          4    4       226  = Node at Rank 858
+    5.606971e+06    72000        712    2       856  = Node at Rank 828
+    5.606971e+06    78000        492    3       184  = Rank of Node 709
+    5.606971e+06    77000        650    6       558  = Node at Rank 525
+    5.606971e+06    73000        636    7       429  = Node at Rank 702
+    5.606971e+06    59000        378    8       240  = Node at Rank 848
+ *  5.588598e+06    79778  10424.64s    1      (gap is 100.0%)
+    5.588598e+06    80000          4    1       648  = Rank of Node 436
+    5.588598e+06    73000        684    2      1036  = Node at Rank 839
+    5.588598e+06    79000        474    3       526 != Node at Rank 985
+ ! Time = 10517.59s, Average fail depth = 417, Memory usage = 29.6 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.588598e+06    81000          4    4       447  = Node at Rank 638
+    5.588598e+06    73000        458    5       584  = Node at Rank 502
+    5.588598e+06    74000        562    7      1016  = Node at Rank 678
+    5.588598e+06    81000          4    1   F    74 != Rank of Node 837
+    5.588598e+06    74000        132    5   F  1023  = Node at Rank 71
+    5.588598e+06    78000         96    6   F   927  = Rank of Node 629
+    5.588598e+06    75000        632    7        37  = Node at Rank 725
+    5.588598e+06    82000          4    1         0  = Node at Rank 0
+    5.588598e+06    74000        734    2       978  = Node at Rank 691
+    5.588598e+06    80000        474    3       277  = Node at Rank 696
+    5.588598e+06    82000          4    4       905  = Node at Rank 179
+    5.588598e+06    75000        132    5       579 != Rank of Node 392
+    5.588598e+06    79000       1082    6   F   252  = Node at Rank 615
+    5.588598e+06    60000        162    8       895 != Node at Rank 344
+    5.588598e+06    83000          4    1       170  = Rank of Node 849
+    5.588598e+06    81000        638    3       627  = Node at Rank 558
+    5.588598e+06    83000          4    4       306  = Rank of Node 779
+    5.588598e+06    76000        472    5       308  = Node at Rank 21
+    5.588598e+06    76000        664    7       108  = Node at Rank 622
+    5.588598e+06    61000        402    8   F  1064  = Rank of Node 639
+ ! Time = 10792.59s, Average fail depth = 417, Memory usage = 29.6 GB
+ ! Current bound is 0 (gap is 100.0%)
+ !          Best Branches  Non-fixed    W       Branch decision
+    5.588598e+06    75000        758    2       486  = Node at Rank 312
+ ! ----------------------------------------------------------------------------
+ ! Search terminated by limit, 66 solutions found.
+ ! Best objective         : 5.588598e+06 (gap is 100.0%)
+ ! Best bound             : 0
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 623348
+ ! Number of fails        : 117349
+ ! Total memory usage     : 26.8 GB (26.8 GB CP Optimizer + 0.0 GB Concert)
+ ! Time spent in solve    : 10865.34s (10847.37s engine + 17.97s extraction)
+ ! Search speed (br. / s) : 57.5
+ ! ----------------------------------------------------------------------------
+Rank 0 : Node 0
+Rank 1 : Node 1019
+Rank 2 : Node 1020
+Rank 3 : Node 1021
+Rank 4 : Node 930
+Rank 5 : Node 1023
+Rank 6 : Node 1024
+Rank 7 : Node 1067
+Rank 8 : Node 1026
+Rank 9 : Node 951
+Rank 10 : Node 1028
+Rank 11 : Node 1029
+Rank 12 : Node 1030
+Rank 13 : Node 1031
+Rank 14 : Node 1032
+Rank 15 : Node 1033
+Rank 16 : Node 1034
+Rank 17 : Node 1035
+Rank 18 : Node 1036
+Rank 19 : Node 1037
+Rank 20 : Node 1038
+Rank 21 : Node 706
+Rank 22 : Node 1040
+Rank 23 : Node 1041
+Rank 24 : Node 1042
+Rank 25 : Node 1043
+Rank 26 : Node 1044
+Rank 27 : Node 1047
+Rank 28 : Node 1046
+Rank 29 : Node 1045
+Rank 30 : Node 958
+Rank 31 : Node 1049
+Rank 32 : Node 992
+Rank 33 : Node 1048
+Rank 34 : Node 1052
+Rank 35 : Node 1053
+Rank 36 : Node 801
+Rank 37 : Node 1055
+Rank 38 : Node 735
+Rank 39 : Node 1057
+Rank 40 : Node 1058
+Rank 41 : Node 1059
+Rank 42 : Node 1060
+Rank 43 : Node 1061
+Rank 44 : Node 1062
+Rank 45 : Node 1063
+Rank 46 : Node 1064
+Rank 47 : Node 1065
+Rank 48 : Node 1066
+Rank 49 : Node 1025
+Rank 50 : Node 1068
+Rank 51 : Node 1069
+Rank 52 : Node 1070
+Rank 53 : Node 1071
+Rank 54 : Node 921
+Rank 55 : Node 1073
+Rank 56 : Node 1074
+Rank 57 : Node 1075
+Rank 58 : Node 1076
+Rank 59 : Node 1077
+Rank 60 : Node 1082
+Rank 61 : Node 1083
+Rank 62 : Node 1078
+Rank 63 : Node 1081
+Rank 64 : Node 1079
+Rank 65 : Node 1080
+Rank 66 : Node 1018
+Rank 67 : Node 514
+Rank 68 : Node 1016
+Rank 69 : Node 1015
+Rank 70 : Node 1014
+Rank 71 : Node 1013
+Rank 72 : Node 1012
+Rank 73 : Node 985
+Rank 74 : Node 1010
+Rank 75 : Node 1009
+Rank 76 : Node 1008
+Rank 77 : Node 1007
+Rank 78 : Node 1006
+Rank 79 : Node 1005
+Rank 80 : Node 1004
+Rank 81 : Node 1003
+Rank 82 : Node 1002
+Rank 83 : Node 947
+Rank 84 : Node 811
+Rank 85 : Node 999
+Rank 86 : Node 975
+Rank 87 : Node 843
+Rank 88 : Node 995
+Rank 89 : Node 963
+Rank 90 : Node 993
+Rank 91 : Node 994
+Rank 92 : Node 911
+Rank 93 : Node 991
+Rank 94 : Node 990
+Rank 95 : Node 989
+Rank 96 : Node 988
+Rank 97 : Node 987
+Rank 98 : Node 986
+Rank 99 : Node 883
+Rank 100 : Node 984
+Rank 101 : Node 983
+Rank 102 : Node 982
+Rank 103 : Node 981
+Rank 104 : Node 795
+Rank 105 : Node 979
+Rank 106 : Node 1050
+Rank 107 : Node 977
+Rank 108 : Node 976
+Rank 109 : Node 978
+Rank 110 : Node 974
+Rank 111 : Node 973
+Rank 112 : Node 972
+Rank 113 : Node 970
+Rank 114 : Node 971
+Rank 115 : Node 969
+Rank 116 : Node 842
+Rank 117 : Node 967
+Rank 118 : Node 966
+Rank 119 : Node 965
+Rank 120 : Node 758
+Rank 121 : Node 1001
+Rank 122 : Node 962
+Rank 123 : Node 961
+Rank 124 : Node 960
+Rank 125 : Node 895
+Rank 126 : Node 959
+Rank 127 : Node 821
+Rank 128 : Node 956
+Rank 129 : Node 955
+Rank 130 : Node 954
+Rank 131 : Node 840
+Rank 132 : Node 952
+Rank 133 : Node 1027
+Rank 134 : Node 950
+Rank 135 : Node 949
+Rank 136 : Node 948
+Rank 137 : Node 79
+Rank 138 : Node 946
+Rank 139 : Node 945
+Rank 140 : Node 944
+Rank 141 : Node 943
+Rank 142 : Node 941
+Rank 143 : Node 942
+Rank 144 : Node 940
+Rank 145 : Node 938
+Rank 146 : Node 937
+Rank 147 : Node 939
+Rank 148 : Node 936
+Rank 149 : Node 833
+Rank 150 : Node 935
+Rank 151 : Node 932
+Rank 152 : Node 933
+Rank 153 : Node 907
+Rank 154 : Node 931
+Rank 155 : Node 929
+Rank 156 : Node 928
+Rank 157 : Node 184
+Rank 158 : Node 926
+Rank 159 : Node 925
+Rank 160 : Node 924
+Rank 161 : Node 923
+Rank 162 : Node 922
+Rank 163 : Node 1072
+Rank 164 : Node 920
+Rank 165 : Node 918
+Rank 166 : Node 919
+Rank 167 : Node 917
+Rank 168 : Node 916
+Rank 169 : Node 915
+Rank 170 : Node 849
+Rank 171 : Node 914
+Rank 172 : Node 892
+Rank 173 : Node 934
+Rank 174 : Node 910
+Rank 175 : Node 909
+Rank 176 : Node 867
+Rank 177 : Node 996
+Rank 178 : Node 906
+Rank 179 : Node 905
+Rank 180 : Node 904
+Rank 181 : Node 903
+Rank 182 : Node 902
+Rank 183 : Node 900
+Rank 184 : Node 901
+Rank 185 : Node 899
+Rank 186 : Node 898
+Rank 187 : Node 897
+Rank 188 : Node 896
+Rank 189 : Node 1051
+Rank 190 : Node 823
+Rank 191 : Node 893
+Rank 192 : Node 784
+Rank 193 : Node 891
+Rank 194 : Node 890
+Rank 195 : Node 889
+Rank 196 : Node 888
+Rank 197 : Node 886
+Rank 198 : Node 887
+Rank 199 : Node 885
+Rank 200 : Node 884
+Rank 201 : Node 1011
+Rank 202 : Node 732
+Rank 203 : Node 881
+Rank 204 : Node 880
+Rank 205 : Node 878
+Rank 206 : Node 879
+Rank 207 : Node 877
+Rank 208 : Node 876
+Rank 209 : Node 872
+Rank 210 : Node 875
+Rank 211 : Node 874
+Rank 212 : Node 871
+Rank 213 : Node 873
+Rank 214 : Node 870
+Rank 215 : Node 869
+Rank 216 : Node 868
+Rank 217 : Node 908
+Rank 218 : Node 866
+Rank 219 : Node 741
+Rank 220 : Node 927
+Rank 221 : Node 863
+Rank 222 : Node 862
+Rank 223 : Node 861
+Rank 224 : Node 860
+Rank 225 : Node 859
+Rank 226 : Node 857
+Rank 227 : Node 858
+Rank 228 : Node 856
+Rank 229 : Node 855
+Rank 230 : Node 854
+Rank 231 : Node 853
+Rank 232 : Node 852
+Rank 233 : Node 851
+Rank 234 : Node 968
+Rank 235 : Node 850
+Rank 236 : Node 848
+Rank 237 : Node 847
+Rank 238 : Node 846
+Rank 239 : Node 845
+Rank 240 : Node 844
+Rank 241 : Node 997
+Rank 242 : Node 998
+Rank 243 : Node 841
+Rank 244 : Node 839
+Rank 245 : Node 802
+Rank 246 : Node 768
+Rank 247 : Node 837
+Rank 248 : Node 836
+Rank 249 : Node 835
+Rank 250 : Node 834
+Rank 251 : Node 838
+Rank 252 : Node 832
+Rank 253 : Node 831
+Rank 254 : Node 830
+Rank 255 : Node 828
+Rank 256 : Node 829
+Rank 257 : Node 827
+Rank 258 : Node 826
+Rank 259 : Node 825
+Rank 260 : Node 824
+Rank 261 : Node 953
+Rank 262 : Node 822
+Rank 263 : Node 957
+Rank 264 : Node 820
+Rank 265 : Node 817
+Rank 266 : Node 819
+Rank 267 : Node 818
+Rank 268 : Node 816
+Rank 269 : Node 815
+Rank 270 : Node 813
+Rank 271 : Node 814
+Rank 272 : Node 812
+Rank 273 : Node 913
+Rank 274 : Node 810
+Rank 275 : Node 806
+Rank 276 : Node 799
+Rank 277 : Node 807
+Rank 278 : Node 178
+Rank 279 : Node 809
+Rank 280 : Node 805
+Rank 281 : Node 804
+Rank 282 : Node 803
+Rank 283 : Node 894
+Rank 284 : Node 1054
+Rank 285 : Node 800
+Rank 286 : Node 798
+Rank 287 : Node 676
+Rank 288 : Node 797
+Rank 289 : Node 796
+Rank 290 : Node 1017
+Rank 291 : Node 793
+Rank 292 : Node 794
+Rank 293 : Node 792
+Rank 294 : Node 761
+Rank 295 : Node 789
+Rank 296 : Node 790
+Rank 297 : Node 788
+Rank 298 : Node 787
+Rank 299 : Node 786
+Rank 300 : Node 785
+Rank 301 : Node 1000
+Rank 302 : Node 782
+Rank 303 : Node 783
+Rank 304 : Node 781
+Rank 305 : Node 780
+Rank 306 : Node 779
+Rank 307 : Node 771
+Rank 308 : Node 777
+Rank 309 : Node 776
+Rank 310 : Node 775
+Rank 311 : Node 773
+Rank 312 : Node 772
+Rank 313 : Node 663
+Rank 314 : Node 770
+Rank 315 : Node 769
+Rank 316 : Node 767
+Rank 317 : Node 1039
+Rank 318 : Node 766
+Rank 319 : Node 765
+Rank 320 : Node 764
+Rank 321 : Node 762
+Rank 322 : Node 763
+Rank 323 : Node 759
+Rank 324 : Node 791
+Rank 325 : Node 760
+Rank 326 : Node 964
+Rank 327 : Node 724
+Rank 328 : Node 755
+Rank 329 : Node 756
+Rank 330 : Node 754
+Rank 331 : Node 753
+Rank 332 : Node 752
+Rank 333 : Node 751
+Rank 334 : Node 750
+Rank 335 : Node 18
+Rank 336 : Node 747
+Rank 337 : Node 748
+Rank 338 : Node 746
+Rank 339 : Node 745
+Rank 340 : Node 744
+Rank 341 : Node 743
+Rank 342 : Node 742
+Rank 343 : Node 865
+Rank 344 : Node 739
+Rank 345 : Node 740
+Rank 346 : Node 738
+Rank 347 : Node 737
+Rank 348 : Node 1056
+Rank 349 : Node 609
+Rank 350 : Node 734
+Rank 351 : Node 733
+Rank 352 : Node 730
+Rank 353 : Node 731
+Rank 354 : Node 688
+Rank 355 : Node 728
+Rank 356 : Node 729
+Rank 357 : Node 417
+Rank 358 : Node 726
+Rank 359 : Node 757
+Rank 360 : Node 725
+Rank 361 : Node 723
+Rank 362 : Node 882
+Rank 363 : Node 721
+Rank 364 : Node 720
+Rank 365 : Node 719
+Rank 366 : Node 717
+Rank 367 : Node 718
+Rank 368 : Node 716
+Rank 369 : Node 715
+Rank 370 : Node 712
+Rank 371 : Node 714
+Rank 372 : Node 710
+Rank 373 : Node 711
+Rank 374 : Node 713
+Rank 375 : Node 709
+Rank 376 : Node 708
+Rank 377 : Node 707
+Rank 378 : Node 912
+Rank 379 : Node 705
+Rank 380 : Node 704
+Rank 381 : Node 702
+Rank 382 : Node 703
+Rank 383 : Node 700
+Rank 384 : Node 701
+Rank 385 : Node 699
+Rank 386 : Node 698
+Rank 387 : Node 697
+Rank 388 : Node 695
+Rank 389 : Node 696
+Rank 390 : Node 694
+Rank 391 : Node 691
+Rank 392 : Node 693
+Rank 393 : Node 692
+Rank 394 : Node 690
+Rank 395 : Node 722
+Rank 396 : Node 689
+Rank 397 : Node 687
+Rank 398 : Node 685
+Rank 399 : Node 686
+Rank 400 : Node 684
+Rank 401 : Node 683
+Rank 402 : Node 682
+Rank 403 : Node 680
+Rank 404 : Node 679
+Rank 405 : Node 681
+Rank 406 : Node 678
+Rank 407 : Node 478
+Rank 408 : Node 808
+Rank 409 : Node 675
+Rank 410 : Node 674
+Rank 411 : Node 673
+Rank 412 : Node 672
+Rank 413 : Node 670
+Rank 414 : Node 671
+Rank 415 : Node 669
+Rank 416 : Node 668
+Rank 417 : Node 667
+Rank 418 : Node 666
+Rank 419 : Node 778
+Rank 420 : Node 665
+Rank 421 : Node 664
+Rank 422 : Node 660
+Rank 423 : Node 659
+Rank 424 : Node 662
+Rank 425 : Node 656
+Rank 426 : Node 661
+Rank 427 : Node 658
+Rank 428 : Node 657
+Rank 429 : Node 655
+Rank 430 : Node 654
+Rank 431 : Node 653
+Rank 432 : Node 652
+Rank 433 : Node 651
+Rank 434 : Node 650
+Rank 435 : Node 649
+Rank 436 : Node 648
+Rank 437 : Node 645
+Rank 438 : Node 647
+Rank 439 : Node 646
+Rank 440 : Node 644
+Rank 441 : Node 643
+Rank 442 : Node 642
+Rank 443 : Node 641
+Rank 444 : Node 640
+Rank 445 : Node 639
+Rank 446 : Node 637
+Rank 447 : Node 636
+Rank 448 : Node 638
+Rank 449 : Node 635
+Rank 450 : Node 634
+Rank 451 : Node 633
+Rank 452 : Node 632
+Rank 453 : Node 631
+Rank 454 : Node 630
+Rank 455 : Node 629
+Rank 456 : Node 626
+Rank 457 : Node 628
+Rank 458 : Node 627
+Rank 459 : Node 625
+Rank 460 : Node 624
+Rank 461 : Node 623
+Rank 462 : Node 622
+Rank 463 : Node 621
+Rank 464 : Node 620
+Rank 465 : Node 618
+Rank 466 : Node 619
+Rank 467 : Node 615
+Rank 468 : Node 617
+Rank 469 : Node 616
+Rank 470 : Node 614
+Rank 471 : Node 613
+Rank 472 : Node 612
+Rank 473 : Node 610
+Rank 474 : Node 611
+Rank 475 : Node 736
+Rank 476 : Node 608
+Rank 477 : Node 607
+Rank 478 : Node 605
+Rank 479 : Node 606
+Rank 480 : Node 604
+Rank 481 : Node 603
+Rank 482 : Node 601
+Rank 483 : Node 600
+Rank 484 : Node 602
+Rank 485 : Node 599
+Rank 486 : Node 596
+Rank 487 : Node 594
+Rank 488 : Node 597
+Rank 489 : Node 598
+Rank 490 : Node 595
+Rank 491 : Node 590
+Rank 492 : Node 592
+Rank 493 : Node 593
+Rank 494 : Node 591
+Rank 495 : Node 589
+Rank 496 : Node 587
+Rank 497 : Node 586
+Rank 498 : Node 588
+Rank 499 : Node 584
+Rank 500 : Node 585
+Rank 501 : Node 583
+Rank 502 : Node 582
+Rank 503 : Node 727
+Rank 504 : Node 579
+Rank 505 : Node 580
+Rank 506 : Node 578
+Rank 507 : Node 577
+Rank 508 : Node 576
+Rank 509 : Node 575
+Rank 510 : Node 574
+Rank 511 : Node 573
+Rank 512 : Node 774
+Rank 513 : Node 572
+Rank 514 : Node 571
+Rank 515 : Node 570
+Rank 516 : Node 568
+Rank 517 : Node 569
+Rank 518 : Node 567
+Rank 519 : Node 566
+Rank 520 : Node 565
+Rank 521 : Node 564
+Rank 522 : Node 563
+Rank 523 : Node 560
+Rank 524 : Node 562
+Rank 525 : Node 561
+Rank 526 : Node 558
+Rank 527 : Node 559
+Rank 528 : Node 557
+Rank 529 : Node 556
+Rank 530 : Node 555
+Rank 531 : Node 554
+Rank 532 : Node 553
+Rank 533 : Node 551
+Rank 534 : Node 552
+Rank 535 : Node 550
+Rank 536 : Node 549
+Rank 537 : Node 548
+Rank 538 : Node 547
+Rank 539 : Node 545
+Rank 540 : Node 546
+Rank 541 : Node 544
+Rank 542 : Node 543
+Rank 543 : Node 542
+Rank 544 : Node 540
+Rank 545 : Node 541
+Rank 546 : Node 539
+Rank 547 : Node 538
+Rank 548 : Node 537
+Rank 549 : Node 536
+Rank 550 : Node 535
+Rank 551 : Node 534
+Rank 552 : Node 533
+Rank 553 : Node 530
+Rank 554 : Node 532
+Rank 555 : Node 529
+Rank 556 : Node 528
+Rank 557 : Node 526
+Rank 558 : Node 531
+Rank 559 : Node 527
+Rank 560 : Node 523
+Rank 561 : Node 525
+Rank 562 : Node 524
+Rank 563 : Node 522
+Rank 564 : Node 520
+Rank 565 : Node 519
+Rank 566 : Node 521
+Rank 567 : Node 517
+Rank 568 : Node 515
+Rank 569 : Node 518
+Rank 570 : Node 516
+Rank 571 : Node 513
+Rank 572 : Node 980
+Rank 573 : Node 510
+Rank 574 : Node 512
+Rank 575 : Node 511
+Rank 576 : Node 508
+Rank 577 : Node 509
+Rank 578 : Node 507
+Rank 579 : Node 506
+Rank 580 : Node 503
+Rank 581 : Node 504
+Rank 582 : Node 505
+Rank 583 : Node 501
+Rank 584 : Node 502
+Rank 585 : Node 500
+Rank 586 : Node 499
+Rank 587 : Node 497
+Rank 588 : Node 498
+Rank 589 : Node 494
+Rank 590 : Node 495
+Rank 591 : Node 496
+Rank 592 : Node 493
+Rank 593 : Node 492
+Rank 594 : Node 489
+Rank 595 : Node 491
+Rank 596 : Node 487
+Rank 597 : Node 490
+Rank 598 : Node 488
+Rank 599 : Node 486
+Rank 600 : Node 485
+Rank 601 : Node 484
+Rank 602 : Node 483
+Rank 603 : Node 480
+Rank 604 : Node 482
+Rank 605 : Node 481
+Rank 606 : Node 677
+Rank 607 : Node 479
+Rank 608 : Node 475
+Rank 609 : Node 474
+Rank 610 : Node 477
+Rank 611 : Node 476
+Rank 612 : Node 473
+Rank 613 : Node 472
+Rank 614 : Node 471
+Rank 615 : Node 470
+Rank 616 : Node 469
+Rank 617 : Node 468
+Rank 618 : Node 465
+Rank 619 : Node 466
+Rank 620 : Node 467
+Rank 621 : Node 464
+Rank 622 : Node 463
+Rank 623 : Node 462
+Rank 624 : Node 460
+Rank 625 : Node 459
+Rank 626 : Node 458
+Rank 627 : Node 461
+Rank 628 : Node 456
+Rank 629 : Node 457
+Rank 630 : Node 453
+Rank 631 : Node 455
+Rank 632 : Node 452
+Rank 633 : Node 454
+Rank 634 : Node 450
+Rank 635 : Node 451
+Rank 636 : Node 449
+Rank 637 : Node 448
+Rank 638 : Node 447
+Rank 639 : Node 446
+Rank 640 : Node 445
+Rank 641 : Node 444
+Rank 642 : Node 442
+Rank 643 : Node 443
+Rank 644 : Node 441
+Rank 645 : Node 440
+Rank 646 : Node 439
+Rank 647 : Node 438
+Rank 648 : Node 436
+Rank 649 : Node 437
+Rank 650 : Node 435
+Rank 651 : Node 434
+Rank 652 : Node 433
+Rank 653 : Node 432
+Rank 654 : Node 430
+Rank 655 : Node 431
+Rank 656 : Node 429
+Rank 657 : Node 428
+Rank 658 : Node 427
+Rank 659 : Node 426
+Rank 660 : Node 425
+Rank 661 : Node 424
+Rank 662 : Node 423
+Rank 663 : Node 422
+Rank 664 : Node 421
+Rank 665 : Node 420
+Rank 666 : Node 419
+Rank 667 : Node 581
+Rank 668 : Node 416
+Rank 669 : Node 415
+Rank 670 : Node 418
+Rank 671 : Node 413
+Rank 672 : Node 414
+Rank 673 : Node 412
+Rank 674 : Node 409
+Rank 675 : Node 411
+Rank 676 : Node 408
+Rank 677 : Node 410
+Rank 678 : Node 407
+Rank 679 : Node 406
+Rank 680 : Node 405
+Rank 681 : Node 403
+Rank 682 : Node 404
+Rank 683 : Node 397
+Rank 684 : Node 402
+Rank 685 : Node 401
+Rank 686 : Node 400
+Rank 687 : Node 399
+Rank 688 : Node 396
+Rank 689 : Node 398
+Rank 690 : Node 395
+Rank 691 : Node 394
+Rank 692 : Node 393
+Rank 693 : Node 392
+Rank 694 : Node 390
+Rank 695 : Node 391
+Rank 696 : Node 389
+Rank 697 : Node 388
+Rank 698 : Node 387
+Rank 699 : Node 386
+Rank 700 : Node 385
+Rank 701 : Node 384
+Rank 702 : Node 382
+Rank 703 : Node 383
+Rank 704 : Node 381
+Rank 705 : Node 379
+Rank 706 : Node 380
+Rank 707 : Node 378
+Rank 708 : Node 377
+Rank 709 : Node 376
+Rank 710 : Node 375
+Rank 711 : Node 374
+Rank 712 : Node 373
+Rank 713 : Node 372
+Rank 714 : Node 371
+Rank 715 : Node 370
+Rank 716 : Node 369
+Rank 717 : Node 368
+Rank 718 : Node 366
+Rank 719 : Node 367
+Rank 720 : Node 364
+Rank 721 : Node 365
+Rank 722 : Node 363
+Rank 723 : Node 362
+Rank 724 : Node 360
+Rank 725 : Node 361
+Rank 726 : Node 359
+Rank 727 : Node 357
+Rank 728 : Node 356
+Rank 729 : Node 358
+Rank 730 : Node 355
+Rank 731 : Node 354
+Rank 732 : Node 352
+Rank 733 : Node 351
+Rank 734 : Node 353
+Rank 735 : Node 350
+Rank 736 : Node 349
+Rank 737 : Node 347
+Rank 738 : Node 348
+Rank 739 : Node 346
+Rank 740 : Node 345
+Rank 741 : Node 343
+Rank 742 : Node 344
+Rank 743 : Node 342
+Rank 744 : Node 341
+Rank 745 : Node 339
+Rank 746 : Node 340
+Rank 747 : Node 338
+Rank 748 : Node 336
+Rank 749 : Node 335
+Rank 750 : Node 332
+Rank 751 : Node 334
+Rank 752 : Node 331
+Rank 753 : Node 337
+Rank 754 : Node 330
+Rank 755 : Node 333
+Rank 756 : Node 328
+Rank 757 : Node 327
+Rank 758 : Node 325
+Rank 759 : Node 329
+Rank 760 : Node 326
+Rank 761 : Node 323
+Rank 762 : Node 324
+Rank 763 : Node 322
+Rank 764 : Node 321
+Rank 765 : Node 320
+Rank 766 : Node 319
+Rank 767 : Node 317
+Rank 768 : Node 316
+Rank 769 : Node 318
+Rank 770 : Node 313
+Rank 771 : Node 315
+Rank 772 : Node 314
+Rank 773 : Node 312
+Rank 774 : Node 311
+Rank 775 : Node 310
+Rank 776 : Node 309
+Rank 777 : Node 307
+Rank 778 : Node 308
+Rank 779 : Node 305
+Rank 780 : Node 304
+Rank 781 : Node 306
+Rank 782 : Node 303
+Rank 783 : Node 302
+Rank 784 : Node 301
+Rank 785 : Node 300
+Rank 786 : Node 298
+Rank 787 : Node 299
+Rank 788 : Node 297
+Rank 789 : Node 296
+Rank 790 : Node 294
+Rank 791 : Node 295
+Rank 792 : Node 292
+Rank 793 : Node 293
+Rank 794 : Node 291
+Rank 795 : Node 290
+Rank 796 : Node 289
+Rank 797 : Node 288
+Rank 798 : Node 287
+Rank 799 : Node 286
+Rank 800 : Node 285
+Rank 801 : Node 284
+Rank 802 : Node 283
+Rank 803 : Node 281
+Rank 804 : Node 282
+Rank 805 : Node 280
+Rank 806 : Node 279
+Rank 807 : Node 277
+Rank 808 : Node 276
+Rank 809 : Node 278
+Rank 810 : Node 273
+Rank 811 : Node 275
+Rank 812 : Node 274
+Rank 813 : Node 272
+Rank 814 : Node 271
+Rank 815 : Node 270
+Rank 816 : Node 269
+Rank 817 : Node 268
+Rank 818 : Node 267
+Rank 819 : Node 266
+Rank 820 : Node 265
+Rank 821 : Node 264
+Rank 822 : Node 262
+Rank 823 : Node 261
+Rank 824 : Node 260
+Rank 825 : Node 263
+Rank 826 : Node 256
+Rank 827 : Node 259
+Rank 828 : Node 258
+Rank 829 : Node 257
+Rank 830 : Node 255
+Rank 831 : Node 254
+Rank 832 : Node 253
+Rank 833 : Node 252
+Rank 834 : Node 251
+Rank 835 : Node 250
+Rank 836 : Node 249
+Rank 837 : Node 248
+Rank 838 : Node 244
+Rank 839 : Node 247
+Rank 840 : Node 246
+Rank 841 : Node 245
+Rank 842 : Node 243
+Rank 843 : Node 241
+Rank 844 : Node 242
+Rank 845 : Node 239
+Rank 846 : Node 237
+Rank 847 : Node 240
+Rank 848 : Node 236
+Rank 849 : Node 238
+Rank 850 : Node 234
+Rank 851 : Node 235
+Rank 852 : Node 232
+Rank 853 : Node 231
+Rank 854 : Node 233
+Rank 855 : Node 230
+Rank 856 : Node 229
+Rank 857 : Node 228
+Rank 858 : Node 226
+Rank 859 : Node 227
+Rank 860 : Node 225
+Rank 861 : Node 224
+Rank 862 : Node 222
+Rank 863 : Node 223
+Rank 864 : Node 220
+Rank 865 : Node 221
+Rank 866 : Node 217
+Rank 867 : Node 218
+Rank 868 : Node 219
+Rank 869 : Node 216
+Rank 870 : Node 215
+Rank 871 : Node 212
+Rank 872 : Node 214
+Rank 873 : Node 213
+Rank 874 : Node 211
+Rank 875 : Node 210
+Rank 876 : Node 204
+Rank 877 : Node 209
+Rank 878 : Node 208
+Rank 879 : Node 206
+Rank 880 : Node 201
+Rank 881 : Node 202
+Rank 882 : Node 207
+Rank 883 : Node 200
+Rank 884 : Node 203
+Rank 885 : Node 205
+Rank 886 : Node 197
+Rank 887 : Node 199
+Rank 888 : Node 196
+Rank 889 : Node 198
+Rank 890 : Node 195
+Rank 891 : Node 194
+Rank 892 : Node 193
+Rank 893 : Node 192
+Rank 894 : Node 189
+Rank 895 : Node 191
+Rank 896 : Node 187
+Rank 897 : Node 190
+Rank 898 : Node 188
+Rank 899 : Node 864
+Rank 900 : Node 181
+Rank 901 : Node 183
+Rank 902 : Node 185
+Rank 903 : Node 180
+Rank 904 : Node 186
+Rank 905 : Node 182
+Rank 906 : Node 179
+Rank 907 : Node 177
+Rank 908 : Node 176
+Rank 909 : Node 175
+Rank 910 : Node 174
+Rank 911 : Node 172
+Rank 912 : Node 169
+Rank 913 : Node 168
+Rank 914 : Node 173
+Rank 915 : Node 171
+Rank 916 : Node 166
+Rank 917 : Node 170
+Rank 918 : Node 167
+Rank 919 : Node 163
+Rank 920 : Node 165
+Rank 921 : Node 164
+Rank 922 : Node 161
+Rank 923 : Node 162
+Rank 924 : Node 160
+Rank 925 : Node 159
+Rank 926 : Node 155
+Rank 927 : Node 158
+Rank 928 : Node 154
+Rank 929 : Node 157
+Rank 930 : Node 156
+Rank 931 : Node 153
+Rank 932 : Node 152
+Rank 933 : Node 151
+Rank 934 : Node 150
+Rank 935 : Node 149
+Rank 936 : Node 148
+Rank 937 : Node 147
+Rank 938 : Node 146
+Rank 939 : Node 141
+Rank 940 : Node 145
+Rank 941 : Node 144
+Rank 942 : Node 143
+Rank 943 : Node 142
+Rank 944 : Node 139
+Rank 945 : Node 140
+Rank 946 : Node 136
+Rank 947 : Node 138
+Rank 948 : Node 137
+Rank 949 : Node 135
+Rank 950 : Node 134
+Rank 951 : Node 132
+Rank 952 : Node 129
+Rank 953 : Node 131
+Rank 954 : Node 130
+Rank 955 : Node 133
+Rank 956 : Node 128
+Rank 957 : Node 123
+Rank 958 : Node 126
+Rank 959 : Node 127
+Rank 960 : Node 125
+Rank 961 : Node 122
+Rank 962 : Node 124
+Rank 963 : Node 121
+Rank 964 : Node 120
+Rank 965 : Node 118
+Rank 966 : Node 119
+Rank 967 : Node 115
+Rank 968 : Node 117
+Rank 969 : Node 116
+Rank 970 : Node 114
+Rank 971 : Node 113
+Rank 972 : Node 111
+Rank 973 : Node 112
+Rank 974 : Node 110
+Rank 975 : Node 109
+Rank 976 : Node 108
+Rank 977 : Node 107
+Rank 978 : Node 105
+Rank 979 : Node 106
+Rank 980 : Node 101
+Rank 981 : Node 104
+Rank 982 : Node 103
+Rank 983 : Node 102
+Rank 984 : Node 96
+Rank 985 : Node 100
+Rank 986 : Node 98
+Rank 987 : Node 97
+Rank 988 : Node 99
+Rank 989 : Node 94
+Rank 990 : Node 92
+Rank 991 : Node 95
+Rank 992 : Node 89
+Rank 993 : Node 91
+Rank 994 : Node 93
+Rank 995 : Node 90
+Rank 996 : Node 85
+Rank 997 : Node 87
+Rank 998 : Node 88
+Rank 999 : Node 84
+Rank 1000 : Node 86
+Rank 1001 : Node 83
+Rank 1002 : Node 82
+Rank 1003 : Node 81
+Rank 1004 : Node 1022
+Rank 1005 : Node 77
+Rank 1006 : Node 78
+Rank 1007 : Node 75
+Rank 1008 : Node 80
+Rank 1009 : Node 76
+Rank 1010 : Node 73
+Rank 1011 : Node 74
+Rank 1012 : Node 72
+Rank 1013 : Node 71
+Rank 1014 : Node 70
+Rank 1015 : Node 69
+Rank 1016 : Node 68
+Rank 1017 : Node 67
+Rank 1018 : Node 66
+Rank 1019 : Node 63
+Rank 1020 : Node 65
+Rank 1021 : Node 64
+Rank 1022 : Node 60
+Rank 1023 : Node 62
+Rank 1024 : Node 56
+Rank 1025 : Node 61
+Rank 1026 : Node 58
+Rank 1027 : Node 59
+Rank 1028 : Node 57
+Rank 1029 : Node 55
+Rank 1030 : Node 54
+Rank 1031 : Node 53
+Rank 1032 : Node 52
+Rank 1033 : Node 45
+Rank 1034 : Node 51
+Rank 1035 : Node 50
+Rank 1036 : Node 48
+Rank 1037 : Node 49
+Rank 1038 : Node 47
+Rank 1039 : Node 46
+Rank 1040 : Node 44
+Rank 1041 : Node 43
+Rank 1042 : Node 42
+Rank 1043 : Node 40
+Rank 1044 : Node 41
+Rank 1045 : Node 38
+Rank 1046 : Node 39
+Rank 1047 : Node 37
+Rank 1048 : Node 35
+Rank 1049 : Node 34
+Rank 1050 : Node 32
+Rank 1051 : Node 36
+Rank 1052 : Node 33
+Rank 1053 : Node 29
+Rank 1054 : Node 30
+Rank 1055 : Node 31
+Rank 1056 : Node 28
+Rank 1057 : Node 27
+Rank 1058 : Node 26
+Rank 1059 : Node 25
+Rank 1060 : Node 20
+Rank 1061 : Node 22
+Rank 1062 : Node 24
+Rank 1063 : Node 23
+Rank 1064 : Node 749
+Rank 1065 : Node 19
+Rank 1066 : Node 16
+Rank 1067 : Node 21
+Rank 1068 : Node 15
+Rank 1069 : Node 17
+Rank 1070 : Node 14
+Rank 1071 : Node 13
+Rank 1072 : Node 9
+Rank 1073 : Node 12
+Rank 1074 : Node 11
+Rank 1075 : Node 8
+Rank 1076 : Node 10
+Rank 1077 : Node 7
+Rank 1078 : Node 5
+Rank 1079 : Node 6
+Rank 1080 : Node 4
+Rank 1081 : Node 2
+Rank 1082 : Node 3
+Rank 1083 : Node 1
+time limit is: 1800
+model used is: CP-rank-del
+batch num is: vm1084-848.9
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-rank-del.py
