@@ -164,13 +164,13 @@ if __name__ == "__main__":
         #     )
 
         min_to = model.add_float_table(
-            [min(c[k][j] for k in range(n) if k != j) for j in range(n)]
+            [0] + [min(c[k][j] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
         model.add_dual_bound(min_to[unvisited] + (location != 0).if_then_else(min_to[0], 0))
 
         min_from = model.add_float_table(
-            [min(c[j][k] for k in range(n) if k != j) for j in range(n)]
+            [0] + [min(c[j][k] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
         model.add_dual_bound(

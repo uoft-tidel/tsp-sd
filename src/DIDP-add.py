@@ -168,13 +168,13 @@ if __name__ == "__main__":
         #     )
 
         min_to = model.add_float_table(
-            [min(c[k][j] for k in range(n) if k != j) for j in range(n)]
+            [0] + [min(c[k][j] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
         model.add_dual_bound(min_to[unvisited] + (location != 0).if_then_else(min_to[0], 0))
 
         min_from = model.add_float_table(
-            [min(c[j][k] for k in range(n) if k != j) for j in range(n)]
+            [0] + [min(c[j][k] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
         model.add_dual_bound(
@@ -217,15 +217,15 @@ if __name__ == "__main__":
 
         #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 
-        # print("Best Bound: {}".format(solution.best_bound))
-        # print("Cost: {}".format(solution.cost))
-        # print("Expanded: {}".format(solution.expanded))
-        # print("Generated: {}".format(solution.generated))
-        # print("Infeasible: {}".format(solution.is_infeasible))
-        # print("Optimal: {}".format(solution.is_optimal))
-        # print("Time: {}".format(solution.time))
-        # print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
-        # print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
+        print("Best Bound: {}".format(solution.best_bound))
+        print("Cost: {}".format(solution.cost))
+        print("Expanded: {}".format(solution.expanded))
+        print("Generated: {}".format(solution.generated))
+        print("Infeasible: {}".format(solution.is_infeasible))
+        print("Optimal: {}".format(solution.is_optimal))
+        print("Time: {}".format(solution.time))
+        print("Memory Used (MiB): {}".format(round(process.memory_info().rss / 1024 ** 2,2)))
+        print("Transitions: {}".format([int(i.name.split(' ')[-1]) for i in solution.transitions][:-1]))
 
         print("---RESULTS END")
         
