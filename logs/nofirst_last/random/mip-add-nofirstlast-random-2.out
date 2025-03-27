@@ -1,0 +1,158 @@
+
+The following have been reloaded with a version change:
+  1) mii/1.1.1 => mii/1.1.2
+
+===INSTANCE START
+ALG: MIP-ADD
+Instance Name: random-100-6.00-0.json
+Set parameter TokenServer to value "nia-license"
+Set parameter TimeLimit to value 1800
+Set parameter SoftMemLimit to value 8
+Set parameter Threads to value 1
+Gurobi Optimizer version 12.0.0 build v12.0.0rc1 (linux64 - "CentOS Linux 7 (Core)")
+
+CPU model: Intel(R) Xeon(R) Gold 6148 CPU @ 2.40GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 40 physical cores, 80 logical processors, using up to 1 threads
+
+Non-default parameters:
+TimeLimit  1800
+SoftMemLimit  8
+Threads  1
+
+Optimize a model with 127382 rows, 1000000 columns and 543971740 nonzeros
+Model fingerprint: 0x7b93a0d3
+Variable types: 0 continuous, 1000000 integer (1000000 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+02]
+  Objective range  [1e+00, 1e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 1e+02]
+
+Explored 0 nodes (0 simplex iterations) in 4.75 seconds (0.00 work units)
+Thread count was 1 (of 80 available processors)
+
+Solution count 0
+
+Memory limit reached
+Best objective -, best bound -, gap -
+Obj: inf
+Time: 4.74745
+Memory Used (MiB): 13064.27
+ALGORITHM END
+---RESULTS END
+time limit is: 1800
+model used is: MIP-add-nofirst
+batch num is: random-100-6.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-nofirst.py
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-add-nofirst.py:106: DeprecationWarning: Calling quicksum on a tupledict is deprecated, use .sum() instead.
+  m.addConstr(gp.quicksum(last_edge) == 1)
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-150-60.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-200-8.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-200-20.96-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-200-32.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-200-47.12-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-200-60.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-100-6.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-150-6.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-150-19.68-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-150-32.80-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+time limit is: 1800
+model used is: MIP-del-nofirsrt
+batch num is: random-150-46.40-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py
+python3: can't open file '/gpfs/fs0/scratch/b/beck/pekardan/MIP-del-nofirsrt.py': [Errno 2] No such file or directory
+slurmstepd: error: *** JOB 14309791 ON nia0362 CANCELLED AT 2025-03-20T02:34:06 DUE TO TIME LIMIT ***
+
+scontrol show job 14309791
+JobId=14309791 JobName=mip-both-nofirst-sbatch.sh
+   UserId=pekardan(3144906) GroupId=beck(6007069) MCS_label=N/A
+   Priority=1085324 Nice=0 Account=def-beck QOS=normal
+   JobState=COMPLETING Reason=TimeLimit Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:15
+   RunTime=01:55:20 TimeLimit=01:55:00 TimeMin=N/A
+   SubmitTime=2025-03-20T00:33:30 EligibleTime=2025-03-20T00:33:30
+   AccrueTime=2025-03-20T00:33:30
+   StartTime=2025-03-20T00:38:46 EndTime=2025-03-20T02:34:06 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-03-20T00:38:46 Scheduler=Backfill
+   Partition=compute AllocNode:Sid=nia-login05:12865
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=nia0362
+   BatchHost=nia0362
+   NumNodes=1 NumCPUs=80 NumTasks=11 CPUs/Task=2 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=22,mem=175000M,node=1,billing=11
+   AllocTRES=cpu=80,mem=175000M,node=1,billing=40
+   Socks/Node=* NtasksPerN:B:S:C=11:0:*:1 CoreSpec=*
+   MinCPUsNode=22 MinMemoryNode=175000M MinTmpDiskNode=0
+   Features=[skylake|cascade] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) Network=(null)
+   Command=/gpfs/fs0/scratch/b/beck/pekardan/mip-both-nofirst-sbatch.sh
+   WorkDir=/gpfs/fs0/scratch/b/beck/pekardan
+   Comment=/opt/slurm/bin/sbatch --export=NONE mip-both-nofirst-sbatch.sh 
+   StdErr=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14309791.out
+   StdIn=/dev/null
+   StdOut=/gpfs/fs0/scratch/b/beck/pekardan/slurm-14309791.out
+   TresPerTask=cpu=2
+   MailUser=daniel.pekar@mail.utoronto.ca MailType=INVALID_DEPEND,BEGIN,END,FAIL,REQUEUE,STAGE_OUT
+   
+
+sacct -j 14309791
+JobID           JobName    Account    Elapsed  MaxVMSize     MaxRSS  SystemCPU    UserCPU ExitCode 
+------------ ---------- ---------- ---------- ---------- ---------- ---------- ---------- -------- 
+14309791     mip-both-+   def-beck   01:55:20                        00:00.341  00:00.833      0:0 
+14309791.ba+      batch   def-beck   01:55:21  71449308K  64115572K  00:00.341  00:00.833     0:15 
+14309791.ex+     extern   def-beck   01:55:21    136828K      1032K   00:00:00   00:00:00      0:0 
+
+kernel messages produced during job executions:
+[Mar20 00:37] fuse init (API version 7.23)

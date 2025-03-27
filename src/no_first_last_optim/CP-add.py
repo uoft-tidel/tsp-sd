@@ -17,10 +17,10 @@ if __name__ == "__main__":
     # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
     # instance_folder = os.path.join(folderpath,"instances",batch)
-    instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
-    # tlim = int(timelim)
+    instance_folder = os.path.join(folderpath,"instances","1")
+    # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
+    tlim = int(60)
     opt = "ins"
-    tlim = 60
 
     #     # # folderpath = os.getcwd()
     # # instance_folder = os.path.join(folderpath,"instances",batch)
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # opt = "ins"
 
 
-    for instance in [i for i in os.listdir(instance_folder) if "burma14-3.1" in i]:
+    for instance in [i for i in os.listdir(instance_folder) if "ulysses" in i]:
 
       fname = os.path.join(instance_folder, instance)
       # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
@@ -89,7 +89,9 @@ if __name__ == "__main__":
       #w_i,j
       w = [[getDistance(instance,str(i),str(j), str(n+1)) for j in range(n+2)] for i in range(n+2)]
 
-      upper_bound = sum(max(w[i] for i in range(n+2)))
+      upper_bound = 0
+      for i in w:
+        upper_bound += max(i)
 
       # Create model
       mdl = cp.CpoModel()
@@ -107,13 +109,13 @@ if __name__ == "__main__":
                   for i in range(n+1) for j in range(1,n+2) if (i != j and j-i != n+1)} #and j-i != n+1 and (i,j) not in never_deleted_edges
       
       traverse_last = {(i,j) : mdl.interval_var(name='LAST From:{}_To:{}'.format(i,j), optional=True, size=w[i][j], end = (0,upper_bound))
-                  for i in range(1,n+1) for j in range(1,n+1)}
+                  for i in range(1,n+1) for j in range(1,n+1) if i != j}
       
       trav_last = mdl.interval_var(name='LAST', end = (0,upper_bound))
 
       mdl.add(mdl.alternative(trav_last, [traverse_last[i,j] for [i,j] in traverse_last])) 
       
-      mdl.add(mdl.if_then(mdl.logical_and(mdl.presence_of(traverse[0,i]),mdl.presence_of(traverse[j,n+1])),mdl.presence_of(traverse_last[i,j])) for (i,j) in traverse_last)
+      mdl.add(mdl.if_then(mdl.logical_and(mdl.presence_of(traverse[0,i]),mdl.presence_of(traverse[j,n+1])),mdl.presence_of(traverse_last[j,i])) for (i,j) in traverse_last)
       
 
 
@@ -208,11 +210,14 @@ if __name__ == "__main__":
         #       mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]))
         #     if (int(k),int(j)) in traverse:
               # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]))
-        mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
-        mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+              # mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+        # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
 
-        # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
-        # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.presence_of(traverse_last[int(k),int(j)]) == 0 for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.presence_of(traverse_last[int(j),int(k)]) == 0 for [j,k] in Delete_Dict[i])
+
+        mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
 
       # try:
 
@@ -223,7 +228,7 @@ if __name__ == "__main__":
       mdl.add(mdl.alternative(enter[n+1], [traverse[i,j] for [i,j] in traverse if j == n+1]))
       mdl.add(mdl.alternative(out[0], [traverse[0,i] for [j,i] in traverse if j == 0]))
 
-      mdl.add(mdl.start_at_start(enter[n+1],trav_last))
+      mdl.add(mdl.start_at_end(trav_last,enter[n+1]))
 
       # Minimize termination date
       mdl.add(cp.minimize(mdl.end_of(trav_last)))
@@ -266,7 +271,7 @@ if __name__ == "__main__":
 
       for i in traverse:
         if sol.get_value(traverse[i]) != ():
-            print(i)
+            # print(i)
             solution_dict["sequence"][i[0]] = i[1]
             solution_dict["traverse"][i[0]] = sol.get_value(traverse[i])
 
@@ -279,12 +284,12 @@ if __name__ == "__main__":
 
       for i in enter:
         if sol.get_value(enter[i]) != ():
-          print("enter", i)
+          # print("enter", i)
           solution_dict["in"][i] = sol.get_value(enter[i])
 
       for i in out:
         if sol.get_value(out[i]) != ():
-          print("out", i)
+          # print("out", i)
           solution_dict["out"][i] = sol.get_value(out[i])
 
       seq = []
@@ -293,7 +298,7 @@ if __name__ == "__main__":
         seq.append(j)
         j = solution_dict["sequence"][j]
 
-      print(seq)
+      # print(seq)
       # for i in range(n):
         # j = solution_dict["sequence"][i]
         # solution_dict["seq_list"].append(j)
@@ -301,20 +306,20 @@ if __name__ == "__main__":
       # print(solution_dict["seq_list"])
 
       #checks sequence is valid (all locations visited)
-      print(solution_dict["sequence"])
+      # print(solution_dict["sequence"])
       # except Exception as e:
       #   print("NO LAST TRAVERSES")
       #   print(e)
-      print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+      # print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
-        #check starting is at 0
-      print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
+      #   #check starting is at 0
+      # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
-        #check length makes sense
-      print("LENGTH CHECK: ", vlad.checkLength(solution_dict["sequence"],w))
+      #   #check length makes sense
+      # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["sequence"],w))
 
-        #check don't go along removed edges
-      print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
+      #   #check don't go along removed edges
+      # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
 
         #visualize as job shop
         #viz.tsp_as_jobshop(solver,traverse,14)

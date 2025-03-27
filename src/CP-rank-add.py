@@ -12,14 +12,14 @@ import sys
 
 if __name__ == "__main__":
 
-  script, timelim, batch = sys.argv
+  # script, timelim, batch = sys.argv
   folderpath = os.getcwd()
-  instance_folder = os.path.join(folderpath,"instances",batch)
+  instance_folder = os.path.join(folderpath,"instances","1")
   # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
-  tlim = int(timelim)
+  tlim = int(1800)
 
 
-  for instance in [i for i in os.listdir(instance_folder) if "random" not in i]:
+  for instance in [i for i in os.listdir(instance_folder) if "random" in i]:
     fname = os.path.join(instance_folder,instance)
     # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
