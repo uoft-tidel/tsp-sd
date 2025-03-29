@@ -13,18 +13,19 @@ process = psutil.Process()
 # 
 if __name__ == "__main__":
 
-    # script, timelim, batch = sys.argv
+    script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances","1")
+    instance_folder = os.path.join(folderpath,"instances","random")
     tlim = int(1800)
 
 
-    for instance in [i for i in os.listdir(instance_folder) if "burma" in i]:
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
         fname = os.path.join(instance_folder,instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
         print("===INSTANCE START")
         print("ALG: DIDP-DEL")
+        print("OPT: NO FIRST/LAST")
         print("Instance Name: {}".format(os.path.basename(fname)))
 
         with open(fname, 'r') as file:
@@ -177,7 +178,7 @@ if __name__ == "__main__":
             min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
         )
 
-        solver = dp.CABS(model, time_limit=tlim, quiet = True)
+        solver = dp.CABS(model, time_limit=tlim)
         solution = solver.search()
 
         sequence = []
@@ -186,7 +187,9 @@ if __name__ == "__main__":
             if t.name != "return":
                 sequence.append(t.name.split(" ")[-1])
 
-        # sequence = list(reversed(sequence))
+        if sequence != []:
+            sequence = list(reversed(sequence))
+        print(sequence)
         print("this process used: ",process.memory_info().rss / 1024 ** 2, " MiB")
 
         print("ALGORITHM END")

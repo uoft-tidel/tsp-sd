@@ -14,14 +14,15 @@ process = psutil.Process()
 
 if __name__ == "__main__":
 
-    # script, timelim, batch = sys.argv
+    script, timelim, batch = sys.argv
     # timelim = "1800"
     # batch = "1"
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances","selected")
+    instance_folder = os.path.join(folderpath,"instances","random")
     # instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles",batch)
+    tlim = int(timelim)
 
-    for instance in [f for f in os.listdir(instance_folder) if "eil101" not in f and "berlin" not in f]:
+    for instance in [f for f in os.listdir(instance_folder) if batch in f]:
         print(instance)
         # if "burma14-3.1.json" == instance:
         fname = os.path.join(instance_folder, instance)
@@ -181,7 +182,7 @@ if __name__ == "__main__":
             min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
         )
 
-        solver = dp.CABS(model, time_limit=(n-1)*10, threads=8)
+        solver = dp.CABS(model, time_limit=tlim)
         print("Time Limit: ", (n-1)*10)
         solution = solver.search()
 
@@ -207,7 +208,8 @@ if __name__ == "__main__":
 
         # sequence = [21,11,29,24,8,14,9,25,35,13,30,12,48,32,27,45,34,51,37,28,36,20,1,38,23,39,22,52,4,44,46,7,5,43,41,50,2,26,6,42,47,49,3,19,18,15,17,40,33,31,10,16]
         sequence = list(reversed(sequence))
-        sequence = [str(i) for i in sequence]
+        # sequence = [str(i) for i in sequence]
+        print(sequence)
 
         print("ALGORITHM END")
 

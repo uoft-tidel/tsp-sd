@@ -28,7 +28,7 @@
 ##  - the max value is 24:00:00
 ##  - the min value is 00:15:00
 ## It is advisable to request 30 minutes more than the expected run time.
-#SBATCH --time=3:30:00
+#SBATCH --time=2:00:00
 
 ## "--ntasks-per-node" parameter tells Slurm the number of parallel task runs.
 ## Typical value: minimum of 40 and (175 GB / memory-limit-per-task)
@@ -92,4 +92,4 @@ source ~/env_didp/bin/activate
 
 ## parallel -j $SLURM_TASKS_PER_NODE "python3 bin_wrapper.py -c "python3 run_models.py 1800 {1} {2}" -ht 1830 -hm 8100 | tee results/run_{1}_{2}.txt" ::: CP-add CP-del CP-rank-add CP-rank-del ::: 1 2 3 4 5
 ## 27000 ht
-parallel -j 5 "python3 run_models.py {3} {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/didp_fixed_lb_8threads_{2}.txt" ::: DIDP-add-8t-10v ::: vm1084 rat783 d657 burma ulysses :::+ 10840 7830 6570 140 220 
+parallel -j 5 "python3 run_models.py {3} {1} {2} | tee /gpfs/fs0/scratch/b/beck/pekardan/results/didp_fixed_lb_8threads_{2}.txt" ::: DIDP-add-8t-10v ::: berlin52-13.2 lin318 gr202 fl417 eil101 :::+ 520 3180 2020 4170 1010 
