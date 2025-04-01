@@ -150,9 +150,9 @@ if __name__ == "__main__":
         except gp.GurobiError as e:
             print(f"Error code {e.errno}: {e}")
 
-        # for v in m.getVars():
-            # if v.X > 0.1:
-                # print(f"{v.VarName}") #{v.X:g}")
+        for v in m.getVars():
+            if v.X > 0.1:
+                print(f"{v.VarName}") #{v.X:g}")
 
         # print(never_deleted_ed#ges_dict)
         try:
@@ -173,17 +173,16 @@ if __name__ == "__main__":
     # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
     # instance_folder = os.path.join(folderpath,"instances",batch)
-    # tlim = int(timelim)
-
+    tlim = int(1800)
+    batch = "20-7.6"
     # batch = "1"
     # timelim = "1800"
     # folderpath = r"C:\Users\pekar\Documents\GitHub\TSP-SD"
     instance_folder = os.path.join(folderpath,"instances","random")
-    tlim = int(1800)
+    # tlim = int(1800)
 
-    instance_list = ["random-10-0.00-0", "random-10-1.30-0", "random-10-2.50-0", "random-10-3.80-0"]
 
-    for instance in [i for i in os.listdir(instance_folder) if any([j in i for j in instance_list])]:
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
 
         fname = os.path.join(instance_folder, instance)
         # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")

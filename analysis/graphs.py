@@ -7,7 +7,7 @@ import matplotlib
 from matplotlib import font_manager
 
 
-with open(r'results\MIP-results-nofirst.json', 'r') as f:
+with open(r'results\MIP-results-original.json', 'r') as f:
     data = json.load(f)
 
 # Closing file
@@ -119,13 +119,13 @@ res_inst_df = pd.DataFrame.from_dict(res_per_inst).transpose()
 
 new_data = {}
 
-for i in res_per_alg:
-    time_vec = sorted(list(set(j for j in res_per_alg[i]["rand_time_of_proof"])))
-    amt_vec = [sum(k <= h for k in res_per_alg[i]["rand_time_of_proof"]) for h in time_vec]
-    time_vec.append(1800)
-    amt_vec.append(amt_vec[-1])
-    res_per_alg[i]["proved_over_time_time"] = time_vec
-    res_per_alg[i]["proved_over_time_solved"] = amt_vec
+# for i in res_per_alg:
+#     time_vec = sorted(list(set(j for j in res_per_alg[i]["rand_time_of_proof"])))
+#     amt_vec = [sum(k <= h for k in res_per_alg[i]["rand_time_of_proof"]) for h in time_vec]
+#     time_vec.append(1800)
+#     amt_vec.append(amt_vec[-1])
+#     res_per_alg[i]["proved_over_time_time"] = time_vec
+#     res_per_alg[i]["proved_over_time_solved"] = amt_vec
 
 res_pd = pd.DataFrame.from_dict(res_i)
 res_df = res_pd.transpose()
@@ -178,7 +178,7 @@ res_df = res_df.sort_values(['nodes'])
 
 # print([f.name for f in matplotlib.font_manager.fontManager.ttflist])
 
-res_df.to_csv("res_mip_nofirst.csv",sep=',')
+res_df.to_csv("res_mip_original.csv",sep=',')
 
 # plt.rcParams["font.family"] = "Latin Modern Roman"
 # plt.title("Instances Proven Over Time")

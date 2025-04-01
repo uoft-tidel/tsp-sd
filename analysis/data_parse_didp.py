@@ -2,11 +2,11 @@ import os
 import json
 
 folderpath = os.getcwd()
-results_folder = os.path.join(folderpath,"logs","10v","8_threads")
+results_folder = os.path.join(folderpath,"logs","original")
 all_instances = {}
 i_val = 0
 
-for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
+for instance in [f for f in os.listdir(results_folder) if "didp" in f]:
     fname = os.path.join(results_folder, instance)
     instances = {}
     instance_lookup = {}
@@ -101,7 +101,7 @@ for instance in [f for f in os.listdir(results_folder) if "DIDP" in f]:
             instances[j_name]["transitions"] = json.loads(l[13:].strip())
     all_instances.update(instances)
 
-results_fname = os.path.join(folderpath,"results","DIDP-results-10v-8thread.json")
+results_fname = os.path.join(folderpath,"results","DIDP-results-fixed-random.json")
 
 pair_set = set()
 culled_instances = {}

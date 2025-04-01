@@ -14,7 +14,9 @@ process = psutil.Process()
 
 if __name__ == "__main__":
 
-    script, timelim, inst = sys.argv
+    # script, timelim, inst = sys.argv
+    timelim = 1800
+    inst = ["random-80-16.00-0.json"]
     # timelim = "1800"
     # batch = "1"
     folderpath = os.getcwd()
@@ -22,7 +24,7 @@ if __name__ == "__main__":
     # instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles",batch)
     tlim = int(timelim)
 
-    for instance in [f for f in os.listdir(instance_folder) if inst in f]:
+    for instance in [f for f in os.listdir(instance_folder) if f in inst]:
         print(instance)
         # if "burma14-3.1.json" == instance:
         fname = os.path.join(instance_folder, instance)
@@ -169,18 +171,19 @@ if __name__ == "__main__":
         #         ~unvisited.contains(j) | (d[location,j].intersection(unvisited).is_empty())
         #     )
 
+
         min_to = model.add_float_table(
             [0] + [min(c[k][j] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
-        model.add_dual_bound(min_to[unvisited] + (location != 0).if_then_else(min_to[0], 0))
+        model.add_dual_bound(min_to[unvisited])
 
         min_from = model.add_float_table(
             [0] + [min(c[j][k] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
         model.add_dual_bound(
-            min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
+            min_from[unvisited.remove(first)] + (unvisited.is_empty()).if_then_else(0,min_from[location])
         )
 
         solver = dp.CABS(model, time_limit=tlim)

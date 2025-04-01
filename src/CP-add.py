@@ -9,16 +9,17 @@ import csv
 import sys
 import ntpath
 import datetime
-# import validate as vlad
-# import visualize as viz
+import validate as vlad
+import visualize as viz
 
 if __name__ == "__main__":
 
     # script, timelim, batch = sys.argv
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances","selected_and_quintiles","3")
+    timelim = 1800
+    instance_folder = os.path.join(folderpath,"instances","random")
     # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
-    tlim = int(60)
+    tlim = int(timelim)
     opt = "ins"
 
     #     # # folderpath = os.getcwd()
@@ -26,9 +27,9 @@ if __name__ == "__main__":
     # instance_folder = r"C:\Users\pekar\Documents\GitHub\TSP-SD\instances\1"
     # tlim = int(20)
     # opt = "ins"
+    batch = "20-7.6"
 
-
-    for instance in [i for i in os.listdir(instance_folder) if "random-50-12" in i]:
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
 
       fname = os.path.join(instance_folder, instance)
       # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
@@ -51,7 +52,7 @@ if __name__ == "__main__":
         lat = (math.pi*(deg+5*minute)/3)/180
         return lat
 
-      def getDistance(instance, p1,p2, end):
+      def getDistance(instance, p1,p2, end,mult):
 
         if p1 == '0' or p2 == '0' or p1 == end or p2 == end:
           return 0    
@@ -66,7 +67,7 @@ if __name__ == "__main__":
           # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
           # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
 
-          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2))
+          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*1)
 
           return dij
 
@@ -84,9 +85,13 @@ if __name__ == "__main__":
       for (i,j) in never_deleted_edges:
         never_deleted_dict[i].add(j)			
 
+      mult = 1
+      if n < 30:
+        mult = 10
+
       # Travel time
       #w_i,j
-      w = [[getDistance(instance,str(i),str(j), str(n+1)) for j in range(n+2)] for i in range(n+2)]
+      w = [[getDistance(instance,str(i),str(j), str(n+1),mult) for j in range(n+2)] for i in range(n+2)]
 
       upper_bound = sum(max(w[i] for i in range(n+2)))
 
@@ -196,8 +201,8 @@ if __name__ == "__main__":
         #       mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]))
         #     if (int(k),int(j)) in traverse:
               # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]))
-        mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
-        mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.start_before_start(out[int(i)],traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.start_before_start(out[int(i)],traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
 
         # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
         # mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
@@ -228,7 +233,7 @@ if __name__ == "__main__":
         
         while not is_solution_optimal and sol_status != 'Ended':
           sol = solver.search_next()
-          if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted':
+          if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted' or sol.get_objective_value() == 534:
             # Solved timed out and could not find a feasible solution
             solver.end_search()
             sol_status = 'Ended'
@@ -248,7 +253,10 @@ if __name__ == "__main__":
             # spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
 
         solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
-
+        print("Cost: ",float(sol.get_objective_value())/mult)
+        print("TIME: ",sol.get_solve_time())
+        print("MULT: ",mult)
+        
         for i in traverse:
           if sol.get_value(traverse[i]) != ():
               solution_dict["sequence"][i[0]] = i[1]
@@ -269,30 +277,30 @@ if __name__ == "__main__":
             solution_dict["out"][i] = sol.get_value(out[i])
 
         j = 0
-        # for i in range(n):
-          # j = solution_dict["sequence"][i]
-          # solution_dict["seq_list"].append(j)
+        for i in range(n):
+          j = solution_dict["sequence"][i]
+          solution_dict["seq_list"].append(j)
 
-        # print(solution_dict["seq_list"])
-
+        print(solution_dict["seq_list"])
+# 
         #checks sequence is valid (all locations visited)
         print(solution_dict["sequence"])
       except Exception as e:
         print("NO LAST TRAVERSES")
         print(e)
-        #print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
+        print("SEQUENCE CHECK: ",vlad.checkSequence(solution_dict["sequence"]))
 
         #check starting is at 0
-        # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
+        print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
         #check length makes sense
-        # print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
+        print("LENGTH CHECK: ", vlad.checkLength(solution_dict["seq_list"],w))
 
         #check don't go along removed edges
-        # print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
+        print("DELETION CHECK: ", vlad.checkRemovedEdgesCP(solution_dict["sequence"],Delete_Dict))
 
         #visualize as job shop
-        #viz.tsp_as_jobshop(solver,traverse,14)
+        viz.tsp_as_jobshop(solver,traverse,20)
 
         # if trace_log:
         # stdoutf.close()

@@ -14,7 +14,9 @@ process = psutil.Process()
 
 if __name__ == "__main__":
 
-    script, timelim, batch = sys.argv
+    # script, timelim, batch = sys.argv
+    batch = "random-20-7.6"
+    timelim = 1800
     # timelim = "1800"
     # batch = "1"
     folderpath = os.getcwd()
@@ -138,19 +140,21 @@ if __name__ == "__main__":
                 preconditions=[location == 0], #, set(range(1,n)) == unvisited
                 effects=[
                     (location, j),
-                    (first, j) #(unvisited, unvisited.remove(j))
+                    (first, j),
+                    (unvisited, unvisited.remove(j))
                 ],
             )
             model.add_transition(first_visit)
 
+
         for j in never_deleted_set:
             last_visit = dp.Transition(
                 name="last visit {}".format(j),
-                cost=travel_time[location, j] + dp.FloatExpr.state_cost(),
+                cost=travel_time[location, j] + travel_time[j,first] + dp.FloatExpr.state_cost(),
                 effects=[
                     (unvisited, unvisited.remove(j)),
                 ],
-                preconditions=[d[location,j].intersection(unvisited).is_empty(), unvisited.contains(j), 
+                preconditions=[d[location,j].intersection(unvisited).is_empty(), d[j,first].is_empty(),unvisited.contains(j), 
                             unvisited.len()==1]
             )
             model.add_transition(last_visit)
@@ -172,25 +176,25 @@ if __name__ == "__main__":
             [0] + [min(c[k][j] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
-        model.add_dual_bound(min_to[unvisited] + (location != 0).if_then_else(min_to[0], 0))
+        model.add_dual_bound(min_to[unvisited])
 
         min_from = model.add_float_table(
             [0] + [min(c[j][k] for k in range(1,n) if k != j) for j in range(1,n)]
         )
 
         model.add_dual_bound(
-            min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
+            min_from[unvisited.remove(first)] + (unvisited.is_empty()).if_then_else(0,min_from[location])
         )
 
-        solver = dp.CABS(model, time_limit=tlim)
+        solver = dp.CABS(model, time_limit=1)
         print("Time Limit: ", (n-1)*10)
         solution = solver.search()
 
         sequence = []
 
-        # for t in solution.transitions:
-        #     if t.name != "return":
-        #         sequence.append(t.name.split(" ")[-1])
+        for t in solution.transitions:
+            print(t.name)
+            sequence.append(t.name.split(" ")[-1])
 
         # sequence = list(reversed(sequence))
 
@@ -207,15 +211,28 @@ if __name__ == "__main__":
         # sequence = [21,30,29,11,13,14,12,48,24,35,25,9,32,8,27,45,34,51,37,28,36,20,1,38,23,39,22,52,4,44,46,7,5,43,41,50,2,26,6,42,47,49,3,19,18,15,17,40,33,31,10,16]
 
         # sequence = [21,11,29,24,8,14,9,25,35,13,30,12,48,32,27,45,34,51,37,28,36,20,1,38,23,39,22,52,4,44,46,7,5,43,41,50,2,26,6,42,47,49,3,19,18,15,17,40,33,31,10,16]
-        sequence = list(reversed(sequence))
+        # sequence = list(reversed(sequence))
+        # sequence = [11, 6, 4, 7, 13, 20, 3, 21, 5, 14, 18, 9, 10, 12, 15, 8, 1, 16, 19, 17]
+        # sequence = ['11', '9', '14', '15', '8', '5', '20', '2', '4', '13', '12', '10', '18', '19', '17', '16', '1', '6', '3', '7']
+        # sequence = ['11', '9', '14', '15', '8', '5', '20', '2', '4', '13', '12', '10', '18', '19', '17', '16', '1', '6', '3', '7']
+        # sequence = [14, 17, 12, 8, 6, 7, 11, 1, 3, 9, 5, 13, 19, 10, 18, 16, 4, 2, 15, 20]
+        # sequence = ['62', '33', '69', '46', '60', '45', '10', '1', '76', '71', '42', '67', '51', '44', '80', '41', '72', '55', '39', '12', '56', '58', '73', '6', '70', '43', '17', '79', '26', '75', '9', '66', '29', '16', '54', '13', '18', '38', '57', '77', '61', '49', '15', '25', '8', '24', '27', '23', '47', '78', '30', '2', '32', '36', '20', '28', '64', '31', '37', '34', '21', '19', '63', '35', '50', '14', '48', '5', '7', '65', '53', '4', '68', '52', '22', '11', '40', '3', '59', '74']
+        # sequence = [2,1,5,7,8,10,9,4,3,6] #10-3.8
+        sequence = [11, 9, 14, 15, 8, 5, 20, 2, 4, 13, 12, 10, 18, 19, 17, 16, 1, 6, 3, 7]
+        # sequence = [14, 17, 12, 2, 4, 20, 9, 11, 7, 15, 13, 5, 10, 19, 18, 16, 1, 6, 3, 8]
+        # sequence =[11, 6, 4, 7, 13, 20, 3, 21, 5, 14, 18, 9, 10, 12, 15, 8, 1, 16, 19, 17]
+    
         # sequence = [str(i) for i in sequence]
-        print(sequence)
+        sequence = list(reversed(sequence))
+        sequence = [str(i) for i in sequence]
+        # sequence = [str(i) for i in sequence]
+        # print(sequence)
 
         print("ALGORITHM END")
 
         #check don't go along removed edges
-        # print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
-        # print("Length Check: ", vlad.checkLength(sequence,c))
+        print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
+        print("Length Check: ", vlad.checkLength(sequence,c))
 
         #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 

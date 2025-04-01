@@ -13,12 +13,12 @@ def isfloat(item):
         return False
 
 folderpath = os.getcwd()
-results_folder = os.path.join(folderpath,"logs","original")
+results_folder = os.path.join(folderpath,"logs","nofirst_last","random")
 all_instances = {}
 j = 1999
 # instance = "cp-test.txt"
 
-for instance in [f for f in os.listdir(results_folder) if "MIP" in f]:
+for instance in [f for f in os.listdir(results_folder) if "mip" in f]:
     fname = os.path.join(results_folder, instance)
     instances = {}
     instance_lookup = {}
@@ -158,7 +158,7 @@ for instance in [f for f in os.listdir(results_folder) if "MIP" in f]:
 
     all_instances.update(instances)
 
-results_fname = os.path.join(folderpath,"results","MIP-results-OG-time.json")
+results_fname = os.path.join(folderpath,"results","MIP-results-original-nofirstlast.json")
 
 with open(results_fname,'w') as res:
     json.dump(all_instances,res)

@@ -14,9 +14,11 @@ import datetime
 
 if __name__ == "__main__":
 
-    script, timelim, batch = sys.argv
+    # script, timelim, batch = sys.argv
+    timelim = 100
+    batch = "random-10-3.80"
     folderpath = os.getcwd()
-    instance_folder = os.path.join(folderpath,"instances",batch)
+    instance_folder = os.path.join(folderpath,"instances","random")
     tlim = int(timelim)
     opt = "ins"
 
@@ -26,7 +28,7 @@ if __name__ == "__main__":
     # tlim = int(20)
     # opt = "ins"
 
-    for instance in os.listdir(instance_folder):
+    for instance in [i for i in os.listdir(instance_folder) if batch in i]:
       fname = os.path.join(instance_folder, instance)
       # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -48,10 +50,10 @@ if __name__ == "__main__":
         lat = (math.pi*(deg+5*minute)/3)/180
         return lat
 
-      def getDistance(instance, p1,p2, end):
+      def getDistance(instance, p1,p2, end,mult):
 
         if p1 == '0' or p2 == '0' or p1 == end or p2 == end:
-          return 0    
+          return 1    
         else:
           p1 = instance["NODE_COORDS"][p1]
           p2 = instance["NODE_COORDS"][p2]
@@ -63,7 +65,7 @@ if __name__ == "__main__":
           # q3 = math.cos(convertToLatLong(p1[0]) + convertToLatLong(p2[0]))
           # dij = round((RRR*math.acos(0.5*((1.0+q1)*q2 - (1.0-q1)*q3))+1.0))
 
-          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2))
+          dij = int(math.sqrt((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)*1)
 
           return dij
 
@@ -83,7 +85,12 @@ if __name__ == "__main__":
 
       # Travel time
       #w_i,j
-      w = [[getDistance(instance,str(i),str(j), str(n+1)) for j in range(n+2)] for i in range(n+2)]
+
+      mult = 1
+      if n < 30:
+        mult = 10
+
+      w = [[getDistance(instance,str(i),str(j), str(n+1),mult) for j in range(n+2)] for i in range(n+2)]
 
       upper_bound = sum(max(w[i] for i in range(n+2)))
 
@@ -196,8 +203,8 @@ if __name__ == "__main__":
         # mdl.add(mdl.start_before_start(traverse[int(j),int(k)],enter[int(i)]) for [j,k] in Delete_Dict[i])
         # mdl.add(mdl.start_before_start(traverse[int(k),int(j)],enter[int(i)]) for [j,k] in Delete_Dict[i])
 
-        mdl.add(mdl.start_before_start(out[int(i)], traverse[int(j),int(k)]) for [j,k] in Delete_Dict[i])
-        mdl.add(mdl.start_before_start(out[int(i)], traverse[int(k),int(j)]) for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.end_before_end(traverse[int(j),int(k)], enter[int(i)]) for [j,k] in Delete_Dict[i])
+        mdl.add(mdl.end_before_end(traverse[int(k),int(j)], enter[int(i)]) for [j,k] in Delete_Dict[i])
 
       try:
         # Alternatives for enter and out intervals
@@ -244,6 +251,9 @@ if __name__ == "__main__":
         #     spamwriter.writerow([results_over_time["TIME"][row],results_over_time["UB"][row],results_over_time["LB"][row]])
 
         solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
+        print("Cost: ",float(sol.get_objective_value())/mult)
+        print("TIME: ",sol.get_solve_time())
+        print("MULT: ", mult)
 
         for i in traverse:
           if sol.get_value(traverse[i]) != ():
@@ -273,6 +283,9 @@ if __name__ == "__main__":
 
         #checks sequence is valid (all locations visited)
         print(solution_dict["sequence"])
+
+        [2,1,5,7,8,10,9,4,3,6]
+
       except Exception as e:
         print("NO LAST TRAVERSES")
         print(e)

@@ -14,12 +14,12 @@ if __name__ == "__main__":
 
   # script, timelim, batch = sys.argv
   folderpath = os.getcwd()
-  instance_folder = os.path.join(folderpath,"instances","1")
+  instance_folder = os.path.join(folderpath,"instances","random")
   # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
   tlim = int(100)
 
 
-  for instance in [i for i in os.listdir(instance_folder) if "ulysses" in i]:
+  for instance in [i for i in os.listdir(instance_folder) if "-10-" in i]:
     fname = os.path.join(instance_folder,instance)
     # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -157,9 +157,9 @@ if __name__ == "__main__":
 
     sequence = [0] * (n)
 
-    for i in range(n):
-      sequence[-(i+1)] = sol.get_value(node[i])+1
-      print(f"Rank {i} : Node {sol.get_value(node[i])}")
+    # for i in range(n):
+    #   sequence[-(i+1)] = sol.get_value(node[i])+1
+    #   print(f"Rank {i} : Node {sol.get_value(node[i])}")
 
     # reversed(sequence)
 
@@ -202,9 +202,9 @@ if __name__ == "__main__":
     # print("START CHECK: ", vlad.checkFirst(solution_dict["in"][solution_dict["sequence"][0]]))
 
     # #check length makes sense
-    print("LENGTH CHECK: ", vlad.checkLengthRANK(sequence,w))
-    # #check don't go along removed edges
-    print("DELETION CHECK: ", vlad.checkRemovedEdgesCPRank(sequence,Delete_Dict))
+    # print("LENGTH CHECK: ", vlad.checkLengthRANK(sequence,w))
+    #check don't go along removed edges
+    # print("DELETION CHECK: ", vlad.checkRemovedEdgesCPRank(sequence,Delete_Dict))
 
     #visualize as job shop
     #viz.tsp_as_jobshop(solver,traverse,14)

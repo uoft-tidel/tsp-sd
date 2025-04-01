@@ -8,15 +8,19 @@ import copy
 import sys
 import psutil
 process = psutil.Process()
-# import validate as vlad
-# import visualize as viz
+import validate as vlad
+import visualize as viz
 # 
 if __name__ == "__main__":
 
-    script, timelim, batch = sys.argv
+    # script, timelim, batch = sys.argv
+    batch = "20-5"
+    timelim = 1800
+    # timelim = "1800"
+    # batch = "1"
     folderpath = os.getcwd()
     instance_folder = os.path.join(folderpath,"instances","random")
-    tlim = int(timelim)
+    # tlim = int(timelim)
     # valid = ["random-10-3.80-0", "random-10-5.00-0", "random-20-10.00-0", "random-20-5.00-0", "random-20-7.60-0", "random-30-10.00-0", "random-30-7.60-0"]
 
     for instance in [i for i in os.listdir(instance_folder) if batch in i]:
@@ -128,7 +132,7 @@ if __name__ == "__main__":
         for j in never_deleted_set:
             first_visit = dp.Transition(
                 name="first visit {}".format(j),
-                cost= travel_time[location, j] + dp.FloatExpr.state_cost(),
+                cost= 0, #travel_time[location, j] + dp.FloatExpr.state_cost(),
                 preconditions=[location == 0], #, set(range(1,n)) == unvisited
                 effects=[
                     (location, j),
@@ -142,7 +146,7 @@ if __name__ == "__main__":
                 name="return {}".format(j),
                 cost=travel_time[location, j] + travel_time[j, first] + dp.FloatExpr.state_cost(),
                 effects=[
-                    (location, 0), (unvisited, unvisited.remove(j))
+                    (unvisited, unvisited.remove(j))
                 ],
                 preconditions=[d[first,j].is_empty(), 
                         d[location,j].issubset(unvisited), unvisited.contains(j), 
@@ -150,7 +154,7 @@ if __name__ == "__main__":
             )
             model.add_transition(last_visit)
 
-        model.add_base_case([unvisited.is_empty(), location == 0])
+        model.add_base_case([unvisited.is_empty()])
 
         # # State constraint 
         # for j in range(1,n):
@@ -177,7 +181,7 @@ if __name__ == "__main__":
             min_from[unvisited] + (location != 0).if_then_else(min_from[location], 0)
         )
 
-        solver = dp.CABS(model, time_limit=tlim)
+        solver = dp.CABS(model, time_limit=230)
         solution = solver.search()
 
         sequence = []
@@ -187,7 +191,7 @@ if __name__ == "__main__":
                 sequence.append(t.name.split(" ")[-1])
 
         if sequence != []:
-            sequence = list(reversed(sequence))
+            # sequence = list(reversed(sequence))
             print(sequence)
 
         # sequence = list(reversed(sequence))
@@ -196,8 +200,8 @@ if __name__ == "__main__":
         print("ALGORITHM END")
 
         #check don't go along removed edges
-        # print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
-        # print("Length Check: ", vlad.checkLength(sequence,c))
+        print("Deletion Check: ", vlad.checkRemovedEdgesDIDP(sequence,del_node))
+        print("Length Check: ", vlad.checkLength(sequence,c))
 
         #viz.tsp_plot(os.path.basename(fpath), sequence, instance["NODE_COORDS"], solution.cost)
 

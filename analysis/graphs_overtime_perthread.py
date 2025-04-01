@@ -16,7 +16,7 @@ with open(r'results\merged-results-threads.json', 'r') as f:
 f.close()
 
 set_algs = "DIDP Add, DIDP Del, CP Rank Add, CP Rank Del"
-res = {i:{"times":[],"gaps":[],"updated_gaps":[],"average_gap":[], ""} for i in set_algs}
+res = {i:{"times":[],"gaps":[],"updated_gaps":[],"average_gap":[], "opt_gap":[],"opt_gap_times":[]} for i in set_algs}
 
 i_best = {}
 feasible = {}

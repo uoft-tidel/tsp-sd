@@ -14,12 +14,12 @@ if __name__ == "__main__":
 
   # script, timelim, batch = sys.argv
   folderpath = os.getcwd()
-  instance_folder = os.path.join(folderpath,"instances","1")
+  instance_folder = os.path.join(folderpath,"instances","random")
   # instance_folder = r"C:\Users\pekar\Documents\Github\TSP-SD\instances\1"
   tlim = int(1800)
 
 
-  for instance in [i for i in os.listdir(instance_folder) if "random" in i]:
+  for instance in [i for i in os.listdir(instance_folder) if "-20-5" in i]:
     fname = os.path.join(instance_folder,instance)
     # output_path = os.path.join(folderpath,"log", instance[:-5]+"_"+str(tlim)+".log")
 
@@ -114,9 +114,6 @@ if __name__ == "__main__":
       mdl.add(mdl.if_then(rank[i-1] == 0, mdl.allowed_assignments(node[n-1],[j-1 for j in never_deleted_dict[i]])))
       mdl.add(mdl.if_then(rank[i-1] == n-1, mdl.allowed_assignments(node[0],[j-1 for j in never_deleted_dict[i]])))
 
-    #TODO: WRONG
-    #w[i][j] = distance from i to j
-    #0-indexed
 
     mdl.add(cp.minimize(mdl.sum(mdl.element(w[i], mdl.element(node,mdl.mod(mdl.element(rank,i)+1,n))) for i in range(n))))
 
@@ -136,7 +133,7 @@ if __name__ == "__main__":
     while not is_solution_optimal and sol_status != 'Ended':
       sol = solver.search_next()
       
-      if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted':
+      if sol.get_solve_status() == 'Unknown' or sol.fail_status == 'SearchCompleted' or sol.get_objective_value()<650:
         # Solved timed out and could not find a feasible solution
         solver.end_search()
         sol_status = 'Ended'
@@ -157,9 +154,13 @@ if __name__ == "__main__":
 
     solution_dict = {"sequence":{},"in":{},"out":{}, "traverse":{}, "seq_list":[]}
 
+    sequence = []
     for i in range(len(node)):
       print(f"Rank {i} : Node {sol.get_value(node[i])}")
+      sequence.append(sol.get_value(node[i])+1)
 
+
+    # print([ssequence)
     # os.remove(r"C:\Users\pekar\Documents\GitHub\tsp-sd\cp-rank-soln")
     # sol.write("cp-rank-soln")
 
