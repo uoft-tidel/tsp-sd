@@ -1,0 +1,55 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, expanded: 93, elapsed time: 0.003994699
+New dual bound: 590.3536760435785, expanded: 93, elapsed time: 0.004014198
+Searched with beam size: 2, expanded: 287, elapsed time: 0.011790816
+Searched with beam size: 4, expanded: 658, elapsed time: 0.026957397
+Searched with beam size: 8, expanded: 1448, elapsed time: 0.057580013
+Searched with beam size: 16, expanded: 3003, elapsed time: 0.118678841
+Searched with beam size: 32, expanded: 5973, elapsed time: 0.239712443
+New dual bound: 590.3536760435786, expanded: 5973, elapsed time: 0.23972158
+Searched with beam size: 64, expanded: 11914, elapsed time: 0.481728498
+Searched with beam size: 128, expanded: 24386, elapsed time: 0.978355292
+Searched with beam size: 256, expanded: 50357, elapsed time: 1.9849631300000001
+New dual bound: 592.2904178970031, expanded: 50357, elapsed time: 1.9849794090000001
+Searched with beam size: 512, expanded: 100202, elapsed time: 3.988230765
+New dual bound: 594.1846279384239, expanded: 100202, elapsed time: 3.988247602
+Searched with beam size: 1024, expanded: 199501, elapsed time: 8.080519824
+New dual bound: 595.6949630388965, expanded: 199501, elapsed time: 8.080537385
+Searched with beam size: 2048, expanded: 395825, elapsed time: 16.577836842
+New dual bound: 597.3607597300038, expanded: 395825, elapsed time: 16.577856941
+Searched with beam size: 4096, expanded: 789890, elapsed time: 33.798649269
+New dual bound: 599.1696438569431, expanded: 789890, elapsed time: 33.798669457
+Searched with beam size: 8192, expanded: 1592402, elapsed time: 69.449817003
+New dual bound: 600.8303244122711, expanded: 1592402, elapsed time: 69.449836191
+Searched with beam size: 16384, expanded: 3180600, elapsed time: 142.158850551
+New dual bound: 602.6551249894362, expanded: 3180600, elapsed time: 142.15887171399999
+Searched with beam size: 32768, expanded: 6347390, elapsed time: 291.710917958
+New dual bound: 604.3880173966486, expanded: 6347390, elapsed time: 291.710937915
+Searched with beam size: 65536, expanded: 12697712, elapsed time: 595.590274185
+New dual bound: 606.2514571539523, expanded: 12697712, elapsed time: 595.590293403
+Searched with beam size: 131072, expanded: 25416460, elapsed time: 1217.375434516
+New dual bound: 607.9980038736855, expanded: 25416460, elapsed time: 1217.375454865
+Searched with beam size: 262144, expanded: 30863974, elapsed time: 1802.454794931
+Reached time limit.
+===INSTANCE START
+ALG: DIDP-DEL
+OPT: NO FIRST/LAST
+Instance Name: random-150-6.00-0.json
+[]
+this process used:  1072.6484375  MiB
+ALGORITHM END
+Best Bound: 607.9980038736855
+Cost: None
+Expanded: 30863974
+Generated: 126761139
+Infeasible: False
+Optimal: False
+Time: 1802.454817728
+Memory Used (MiB): 1072.65
+Transitions: []
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-del-nofirst
+batch num is: random-150-6.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-del-nofirst.py

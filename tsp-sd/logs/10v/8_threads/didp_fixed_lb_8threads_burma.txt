@@ -1,0 +1,35 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, threads: 8, kept: 5, sent: 0
+Searched with beam size: 1, expanded: 3, elapsed time: 0.000223963
+Searched with beam size: 2, threads: 8, kept: 3, sent: 3
+Searched with beam size: 2, expanded: 7, elapsed time: 0.000386742
+New dual bound: 21.43163336772214, expanded: 7, elapsed time: 0.000388485
+Searched with beam size: 4, threads: 8, kept: 7, sent: 17
+Searched with beam size: 4, expanded: 27, elapsed time: 0.000780716
+New primal bound: 52.66006434063039, expanded: 27, elapsed time: 0.000782162
+Searched with beam size: 8, threads: 8, kept: 4, sent: 18
+Searched with beam size: 8, expanded: 46, elapsed time: 0.001307457
+Searched with beam size: 16, threads: 8, kept: 4, sent: 35
+Searched with beam size: 16, expanded: 86, elapsed time: 0.001752434
+burma14-3.1.json
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: burma14-3.1.json
+Time Limit:  140
+[]
+ALGORITHM END
+Best Bound: 52.66006434063039
+Cost: 52.66006434063039
+Expanded: 86
+Generated: 90
+Infeasible: False
+Optimal: True
+Time: 0.001756535
+Memory Used (MiB): 14.54
+Transitions: [2, 9, 5, 10, 1, 13, 12, 4, 6, 7, 14, 3, 11, 8]
+---RESULTS END
+time limit is: 140
+model used is: DIDP-add-8t-10v
+batch num is: burma
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add-8t-10v.py

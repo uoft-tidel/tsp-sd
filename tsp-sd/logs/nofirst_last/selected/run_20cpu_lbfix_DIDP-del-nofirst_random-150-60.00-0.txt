@@ -1,0 +1,54 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, expanded: 142, elapsed time: 0.007134083
+New dual bound: 635.2862090420402, expanded: 142, elapsed time: 0.007156994
+Searched with beam size: 2, expanded: 413, elapsed time: 0.020560003
+Searched with beam size: 4, expanded: 979, elapsed time: 0.047574305
+Searched with beam size: 8, expanded: 2119, elapsed time: 0.101083734
+Searched with beam size: 16, expanded: 4454, elapsed time: 0.208824793
+Searched with beam size: 32, expanded: 9133, elapsed time: 0.422757865
+New dual bound: 635.2862090420404, expanded: 9133, elapsed time: 0.422770436
+Searched with beam size: 64, expanded: 18432, elapsed time: 0.851015264
+Searched with beam size: 128, expanded: 36680, elapsed time: 1.71539829
+Searched with beam size: 256, expanded: 73171, elapsed time: 3.449429918
+New dual bound: 637.2657042600406, expanded: 73171, elapsed time: 3.449450434
+Searched with beam size: 512, expanded: 146985, elapsed time: 6.971424606
+New dual bound: 638.5663189313209, expanded: 146985, elapsed time: 6.971443919
+Searched with beam size: 1024, expanded: 293352, elapsed time: 14.363597089
+New dual bound: 640.2862090420402, expanded: 293352, elapsed time: 14.363618662
+Searched with beam size: 2048, expanded: 585314, elapsed time: 29.404795528
+New dual bound: 641.9756939085712, expanded: 585314, elapsed time: 29.404815662
+Searched with beam size: 4096, expanded: 1174722, elapsed time: 60.828349659
+New dual bound: 643.7436321325088, expanded: 1174722, elapsed time: 60.828375058
+Searched with beam size: 8192, expanded: 2356782, elapsed time: 124.545096116
+New dual bound: 645.5398664632028, expanded: 2356782, elapsed time: 124.545126269
+Searched with beam size: 16384, expanded: 4721204, elapsed time: 255.456548036
+New dual bound: 647.3413932210907, expanded: 4721204, elapsed time: 255.457072448
+Searched with beam size: 32768, expanded: 9429587, elapsed time: 522.818539036
+New dual bound: 649.200572618584, expanded: 9429587, elapsed time: 522.818563788
+Searched with beam size: 65536, expanded: 18759088, elapsed time: 1067.356941856
+New dual bound: 651.0643749688651, expanded: 18759088, elapsed time: 1067.356964373
+New primal bound: 2227.661780488051, expanded: 18759088, elapsed time: 1067.356968039
+Searched with beam size: 131072, expanded: 25912701, elapsed time: 1802.205918226
+Reached time limit.
+===INSTANCE START
+ALG: DIDP-DEL
+OPT: NO FIRST/LAST
+Instance Name: random-150-60.00-0.json
+['113', '87', '105', '74', '85', '125', '96', '77', '47', '141', '91', '66', '126', '28', '130', '106', '136', '144', '145', '92', '71', '76', '16', '21', '48', '29', '124', '20', '27', '116', '58', '42', '148', '53', '70', '142', '107', '5', '65', '3', '99', '89', '135', '129', '54', '57', '22', '10', '133', '36', '52', '30', '35', '18', '46', '67', '122', '118', '102', '104', '121', '39', '50', '131', '132', '127', '61', '95', '38', '81', '63', '37', '2', '69', '8', '150', '103', '17', '108', '31', '143', '64', '86', '56', '137', '12', '139', '97', '93', '123', '6', '79', '13', '34', '49', '83', '88', '40', '115', '11', '14', '147', '41', '80', '114', '23', '7', '19', '9', '119', '117', '25', '110', '78', '94', '120', '68', '134', '82', '128', '32', '90', '84', '60', '43', '24', '62', '146', '55', '109', '75', '138', '140', '112', '26', '33', '100', '44', '149', '45', '51', '98', '101', '4', '15', '1', '73', '72', '111', '59']
+this process used:  522.01953125  MiB
+ALGORITHM END
+Best Bound: 651.0643749688651
+Cost: 2227.661780488051
+Expanded: 25912701
+Generated: 122914634
+Infeasible: False
+Optimal: False
+Time: 1802.205943725
+Memory Used (MiB): 522.02
+Transitions: [59, 111, 72, 73, 1, 15, 4, 101, 98, 51, 45, 149, 44, 100, 33, 26, 112, 140, 138, 75, 109, 55, 146, 62, 24, 43, 60, 84, 90, 32, 128, 82, 134, 68, 120, 94, 78, 110, 25, 117, 119, 9, 19, 7, 23, 114, 80, 41, 147, 14, 11, 115, 40, 88, 83, 49, 34, 13, 79, 6, 123, 93, 97, 139, 12, 137, 56, 86, 64, 143, 31, 108, 17, 103, 150, 8, 69, 2, 37, 63, 81, 38, 95, 61, 127, 132, 131, 50, 39, 121, 104, 102, 118, 122, 67, 46, 18, 35, 30, 52, 36, 133, 10, 22, 57, 54, 129, 135, 89, 99, 3, 65, 5, 107, 142, 70, 53, 148, 42, 58, 116, 27, 20, 124, 29, 48, 21, 16, 76, 71, 92, 145, 144, 136, 106, 130, 28, 126, 66, 91, 141, 47, 77, 96, 125, 85, 74, 105, 87, 113]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-del-nofirst
+batch num is: random-150-60.00-0
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-del-nofirst.py

@@ -6,6 +6,7 @@ import json
 
 import matplotlib.ticker as ticker
 
+import matplotlib.patheffects as pe
 from matplotlib.ticker import MaxNLocator
 import pandas as pd
 
@@ -79,7 +80,7 @@ sns.set_theme(style="ticks")
 palette = sns.color_palette("husl", 9)
 
 cols1 = ["DIDP Add", "CP Rank Add", "CP Rank Del", "MIP Del", "MIP Add", "CP Interval Del", "CP Interval Add","DIDP Del"]
-cols = ["DIDP Add", "CP Rank Add", "CP Rank Del", "MIP Del", "CP Interval Del", "MIP Add", "CP Interval Add", "DIDP Del"]
+cols = ["DIDP Add", "CP Rank Add", "CP Rank Del", "MIP Add", "MIP Del", "CP Interval Add", "CP Interval Del", "DIDP Del"]
 
 clrs = sns.color_palette("hls", 8)
 colours = {}
@@ -87,21 +88,29 @@ colours = {}
 for i,clr in enumerate(clrs):
    colours[cols1[i]] = clr
 
+
+
+##PROVENN OPTIMAL OVER TIME
 # Plot the lines on two facets
-fig, axs = plt.subplots(figsize=(11, 6),ncols=2)
+fig, axs = plt.subplots(figsize=(13, 5),ncols=2)
 # ax.yaxis.set_major_formatter(ticker.EngFormatter())
 for i,each in enumerate(cols):
-    sns.lineplot(data = graphboth_df, x = 'Time (s)', y = each, label = str(each), color=colours[each], linewidth=1.5,zorder = 9-i,ax=axs[0])
-    sns.lineplot(data = graphboth_nof_df, x = 'Time (s)', y = each, label = str(each), color=colours[each],linewidth=1.5,zorder = 9-i,ax=axs[1])
+    sns.lineplot(data = graphboth_df, x = 'Time (s)', y = each, label = str(each), color=colours[each], linewidth=2.5,zorder = 9-i,ax=axs[0], path_effects=[pe.Stroke(linewidth=3, foreground='white',alpha=1), pe.Normal()])
+    sns.lineplot(data = graphboth_nof_df, x = 'Time (s)', y = each, label = str(each), color=colours[each],linewidth=2.5,zorder = 9-i,ax=axs[1], path_effects=[pe.Stroke(linewidth=3.5, foreground='white',alpha=1), pe.Normal()])
 
+
+##PROVENN OPTIMAL VS N (BY FIRST/LAST)
+
+#FINAL OPT GAP VS N (BY FIRST/LAST)
+
+#FINAL PRIMAL GAP VS N (BY FIRST/LAST)
 
 sns.despine()
 
-fig.suptitle('Proven Infeasible or Optimal Over Time', fontsize=18) # or plt.suptitle('Main title')
+# fig.suptitle('Proven Infeasible or Optimal Over Time', fontsize=18) # or plt.suptitle('Main title')
 axs[0].set_xlim(0,1800)
 axs[0].set_ylim(0,60)
 # axs[1].ylim(0,60)
-axs[0].grid(True, which='major', axis='both', linestyle='--', linewidth=0.7) 
 axs[0].grid(True, which='major', axis='both', linestyle='--', linewidth=0.7) 
 
 axs[0].axes.grid(visible=True)
@@ -118,7 +127,6 @@ axs[0].get_legend().set_visible(False)
 axs[1].set_xlim(0,1800)
 axs[1].set_ylim(0,60)
 # axs[1].ylim(0,60)
-axs[1].grid(True, which='major', axis='both', linestyle='--', linewidth=0.7) 
 axs[1].grid(True, which='major', axis='both', linestyle='--', linewidth=0.7) 
 
 axs[1].set_title("Without First/Last Vertex Restrictions", fontsize=16)

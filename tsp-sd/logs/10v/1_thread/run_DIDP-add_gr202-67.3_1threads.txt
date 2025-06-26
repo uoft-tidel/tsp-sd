@@ -1,0 +1,61 @@
+Solver: CABS from DIDPPy v0.8.0
+Searched with beam size: 1, expanded: 203, elapsed time: 0.009303422
+New dual bound: 0, expanded: 203, elapsed time: 0.009332797
+New primal bound: 1021.2949144772089, expanded: 203, elapsed time: 0.009337515
+Searched with beam size: 2, expanded: 608, elapsed time: 0.027202483
+New primal bound: 976.4038363704076, expanded: 608, elapsed time: 0.027369118
+Searched with beam size: 4, expanded: 1416, elapsed time: 0.062246953
+New primal bound: 912.9274007503535, expanded: 1416, elapsed time: 0.062441728
+Searched with beam size: 8, expanded: 3024, elapsed time: 0.132500786
+Searched with beam size: 16, expanded: 6246, elapsed time: 0.27201379
+New primal bound: 894.4933490473418, expanded: 6246, elapsed time: 0.272225033
+Searched with beam size: 32, expanded: 12688, elapsed time: 0.550266819
+New primal bound: 859.2407717091202, expanded: 12688, elapsed time: 0.550466228
+Searched with beam size: 64, expanded: 25530, elapsed time: 1.113968255
+New primal bound: 854.6456711546982, expanded: 25530, elapsed time: 1.114185916
+Searched with beam size: 128, expanded: 51236, elapsed time: 2.248453748
+New primal bound: 838.5378574099122, expanded: 51236, elapsed time: 2.249089307
+Searched with beam size: 256, expanded: 102405, elapsed time: 4.525714354
+New dual bound: 4.935929497065372, expanded: 102405, elapsed time: 4.525729226
+Searched with beam size: 512, expanded: 204632, elapsed time: 9.105691553
+New dual bound: 7.143794509922581, expanded: 204632, elapsed time: 9.105707197
+Searched with beam size: 1024, expanded: 408495, elapsed time: 18.289065937
+New dual bound: 9.656881535975193, expanded: 408495, elapsed time: 18.289081303
+New primal bound: 837.022511940356, expanded: 408495, elapsed time: 18.289298129
+Searched with beam size: 2048, expanded: 816091, elapsed time: 36.94214161
+New dual bound: 11.805783975883525, expanded: 816091, elapsed time: 36.942156687
+New primal bound: 826.4675816056891, expanded: 816091, elapsed time: 36.942362259
+Searched with beam size: 4096, expanded: 1630193, elapsed time: 75.878234856
+New dual bound: 14.088131954686155, expanded: 1630193, elapsed time: 75.878250096
+New primal bound: 807.8580713593037, expanded: 1630193, elapsed time: 75.87849189
+Searched with beam size: 8192, expanded: 3251979, elapsed time: 157.478257852
+New dual bound: 16.215638311123964, expanded: 3251979, elapsed time: 157.478276967
+New primal bound: 792.9133207319453, expanded: 3251979, elapsed time: 157.47853996
+Searched with beam size: 16384, expanded: 6486886, elapsed time: 326.476566047
+New dual bound: 18.366898838844254, expanded: 6486886, elapsed time: 326.476584815
+Searched with beam size: 32768, expanded: 12946895, elapsed time: 684.484499
+New dual bound: 20.435770433442883, expanded: 12946895, elapsed time: 684.48452056
+Searched with beam size: 65536, expanded: 25834570, elapsed time: 1418.283551853
+New dual bound: 22.546746159789315, expanded: 25834570, elapsed time: 1418.283573515
+New primal bound: 779.8843610492427, expanded: 25834570, elapsed time: 1418.283853628
+Searched with beam size: 131072, expanded: 34060140, elapsed time: 2021.419733976
+Reached time limit.
+===INSTANCE START
+ALG: DIDP-ADD
+Instance Name: gr202-67.3.json
+ALGORITHM END
+Best Bound: 22.546746159789315
+Cost: 779.8843610492427
+Expanded: 34060140
+Generated: 145976272
+Infeasible: False
+Optimal: False
+Time: 2021.419778144
+Memory Used (MiB): 386.87
+Transitions: [115, 101, 156, 117, 110, 120, 105, 42, 40, 129, 130, 118, 111, 107, 104, 38, 119, 50, 41, 108, 48, 49, 103, 123, 124, 95, 99, 106, 96, 88, 92, 97, 94, 168, 170, 163, 158, 160, 161, 165, 177, 176, 186, 140, 144, 141, 145, 133, 134, 185, 139, 126, 132, 121, 113, 46, 47, 45, 43, 109, 131, 138, 39, 128, 23, 137, 142, 24, 28, 37, 29, 27, 35, 44, 34, 54, 51, 52, 53, 56, 62, 66, 64, 63, 59, 61, 55, 31, 33, 11, 10, 7, 5, 4, 8, 14, 13, 12, 19, 21, 26, 22, 127, 143, 25, 147, 148, 150, 151, 192, 198, 193, 196, 195, 181, 182, 180, 194, 178, 173, 171, 136, 167, 114, 112, 100, 98, 159, 157, 169, 174, 189, 175, 135, 184, 187, 188, 190, 197, 199, 155, 154, 153, 152, 146, 18, 9, 17, 6, 2, 16, 15, 20, 32, 30, 69, 70, 73, 72, 71, 58, 57, 60, 65, 67, 84, 85, 93, 87, 89, 90, 91, 166, 172, 164, 116, 102, 122, 125, 149, 191, 200, 201, 202, 183, 179, 162, 81, 82, 80, 79, 77, 78, 83, 86, 36, 3, 1, 75, 76, 74, 68]
+---RESULTS END
+time limit is: 1800
+model used is: DIDP-add
+batch num is: gr202-67.3
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/DIDP-add.py

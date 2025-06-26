@@ -1,0 +1,53 @@
+===INSTANCE START
+ALG: CP-RANK-DEL
+Instance Name: burma14-3.1.json
+11
+Solving model...
+ ! --------------------------------------------------- CP Optimizer 22.1.1.0 --
+ ! Minimization problem - 28 variables, 296 constraints
+ ! Presolve      : 34 extractables eliminated
+ ! TimeLimit            = 140
+ ! Workers              = 8
+ ! Initial process time : 0.08s (0.08s extraction + 0.00s propagation)
+ !  . Log search space  : 100.8 (before), 100.8 (after)
+ !  . Memory usage      : 550.8 kB (before), 550.8 kB (after)
+ ! Using parallel search with 8 workers.
+ ! ----------------------------------------------------------------------------
+ !          Best Branches  Non-fixed    W       Branch decision
+                        0         28                 -
+ + New bound is 0
+                        0         28    1   F        -
+ + New bound is 1.768116
+ *      52.66006       10  0.12s        1      (gap is 96.64%)
+        52.66006      880          4    1            -
+ + New bound is 52.65479 (gap is 0.01%)
+ ! ----------------------------------------------------------------------------
+ ! Search completed, 1 solution found.
+ ! Best objective         : 52.66006 (optimal - effective tol. is 0.00526601)
+ ! Best bound             : 52.65479
+ ! ----------------------------------------------------------------------------
+ ! Number of branches     : 7290
+ ! Number of fails        : 3726
+ ! Total memory usage     : 9.5 MB (9.4 MB CP Optimizer + 0.0 MB Concert)
+ ! Time spent in solve    : 0.12s (0.05s engine + 0.08s extraction)
+ ! Search speed (br. / s) : 182250.0
+ ! ----------------------------------------------------------------------------
+Rank 0 : Node 1
+Rank 1 : Node 7
+Rank 2 : Node 10
+Rank 3 : Node 2
+Rank 4 : Node 13
+Rank 5 : Node 6
+Rank 6 : Node 5
+Rank 7 : Node 3
+Rank 8 : Node 11
+Rank 9 : Node 12
+Rank 10 : Node 0
+Rank 11 : Node 9
+Rank 12 : Node 4
+Rank 13 : Node 8
+time limit is: 1800
+model used is: CP-rank-del
+batch num is: burma14-3.1
+/gpfs/fs0/scratch/b/beck/pekardan
+/gpfs/fs0/scratch/b/beck/pekardan/CP-rank-del.py
