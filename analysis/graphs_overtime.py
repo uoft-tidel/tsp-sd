@@ -212,11 +212,14 @@ palette = sns.color_palette("husl", 9)
 cols1 = ["DIDP Add", "CP Rank Add", "CP Rank Del", "MIP Del", "MIP Add", "CP Interval Del", "CP Interval Add","DIDP Del"]
 cols = ["MIP Del", "MIP Add", "DIDP Del", "CP Interval Del", "CP Rank Add", "CP Rank Del", "CP Interval Add", "DIDP Add"]
 
-clrs = sns.color_palette("hls", 8)
+
+cols2 = ["DIDP", "CP Rank", "MIP", "CP Interval"]
+
+clrs = sns.color_palette("hls", 4)
 colours = {}
 
 for i,clr in enumerate(clrs):
-   colours[cols1[i]] = clr
+   colours[cols2[i]] = clr
 
 
 # graph_df.to_csv("res_overtime.csv",sep=',')
@@ -226,12 +229,16 @@ for i,clr in enumerate(clrs):
 fig, axs = plt.subplots(figsize=(13, 5),ncols=2)
 # ax.yaxis.set_major_formatter(ticker.EngFormatter())
 for i,each in enumerate(cols):
-    sns.lineplot(data = graph_df, x = 'Time (s)', y = each, label = str(each), color=colours[each], linewidth=2.5, ax=axs[0], path_effects=[pe.Stroke(linewidth=3.5, foreground='white',alpha=1), pe.Normal()])
-    sns.lineplot(data = graph_df_nof, x = 'Time (s)', y = each, label = str(each), color=colours[each], linewidth=2.5,ax=axs[1], path_effects=[pe.Stroke(linewidth=3.5, foreground='white',alpha=1), pe.Normal()])
+    if "Add" in each:
+      ls = '-'
+    else:
+      ls = '--'
+    sns.lineplot(data = graph_df, x = 'Time (s)', y = each, label = str(each), color=colours[each[:-4]], linestyle=ls, linewidth=2.5, ax=axs[0], path_effects=[pe.Stroke(linewidth=3.5, foreground='white',alpha=1), pe.Normal()])
+    sns.lineplot(data = graph_df_nof, x = 'Time (s)', y = each, label = str(each), color=colours[each[:-4]], linestyle=ls, linewidth=2.5,ax=axs[1], path_effects=[pe.Stroke(linewidth=3.5, foreground='white',alpha=1), pe.Normal()])
 
 sns.despine()
 
-# fig.suptitle('Proven Primal Gap Over Time', fontsize=18) # or plt.suptitle('Main title')
+fig.suptitle('Primal Gap Over Time', fontsize=18) # or plt.suptitle('Main title')
 axs[0].set_xlim(0,1800)
 axs[0].set_ylim(0,1)
 # axs[1].ylim(0,60)
